@@ -41,6 +41,8 @@ __all__ = [
     "quotient_by_global_conjugation",
     "tetrahedron_moduli",
     "burnside_prediction",
+    "stabilizer_of_config",
+    "symmetry_classification",
 ]
 
 # --------------------------------------------------------------------------- #
@@ -176,6 +178,61 @@ def burnside_prediction(group: Group, n_free_edges: int) -> float:
     return total / group.order()
 
 
+# --------------------------------------------------------------------------- #
+# little groups: the symmetry classification of the physical states
+# --------------------------------------------------------------------------- #
+def stabilizer_of_config(config: Sequence[object], group: Group) -> frozenset:
+    r"""The residual gauge elements leaving a configuration fixed.
+
+    .. math::  H = \{\lambda \in G : \lambda^{-1} x \lambda = x \ \mathrm{for\ all}\ x \in \mathrm{config}\}
+
+    ``|orbit| = |G| / |H|``, so the orbit-size histogram is really a list of little groups:
+    unbroken residual-gauge symmetry of each physical state, in the same spirit as Wigner's
+    classification of particles by stabilisers.
+    """
+    return frozenset(
+        lam for lam in group.elements if global_conjugate_config(config, lam, group) == tuple(config)
+    )
+
+
+def symmetry_classification(orbits: Iterable[frozenset], group: Group):
+    """Group the physical states by isomorphism type of their little group.
+
+    Returns ``{name: {"count": n, "orbit_size": s, "members": [...]}}``.  For ``A_4`` on
+    ``d(Delta^3)`` this reproduces the histogram ``12 x 130, 4 x 26, 3 x 21, 1 x 1``, i.e.
+    trivial x 130, Z3 x 26, V4 x 21, A4 x 1 -- and it is computed from stabilisers rather
+    than read off the sizes.
+    """
+    table: Dict[str, dict] = {}
+    for orbit in orbits:
+        representative = min(orbit)
+        stab = stabilizer_of_config(representative, group)
+        name = _little_group_name(stab, group)
+        entry = table.setdefault(name, {"count": 0, "orbit_size": len(orbit), "members": []})
+        entry["count"] += 1
+        entry["members"].append(representative)
+    return dict(sorted(table.items(), key=lambda kv: -kv[1]["orbit_size"]))
+
+
+def _little_group_name(stab: frozenset, group: Group) -> str:
+    """Identify a subgroup of ``A_4`` (or an abelian group) up to isomorphism."""
+    order = len(stab)
+    if order == 1:
+        return "trivial"
+    if order == group.order():
+        return group.name
+    elements = sorted(stab, key=repr)
+    orders = {group.order_of(x) for x in elements}
+    if order == 2:
+        return "Z2"
+    if order == 3:
+        return "Z3"
+    if order == 4:
+        # A4 has no element of order 4, so an order-4 subgroup must be the Klein four
+        return "V4" if orders <= {1, 2} else "Z4"
+    return f"order-{order}"
+
+
 def tetrahedron_moduli(group: Group):
     """The milestone-1 benchmark: raw gauge-fixed count and inequivalent classes.
 
@@ -193,4 +250,5 @@ def tetrahedron_moduli(group: Group):
         "orbits": orbits,
         "canonical_index": index,
         "burnside": burnside_prediction(group, len(free_edges)),
+        "symmetry": symmetry_classification(orbits, group),
     }

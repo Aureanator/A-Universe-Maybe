@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import itertools
 from dataclasses import dataclass
-from typing import Dict, FrozenSet, Iterable, List, Set, Tuple
+from typing import Dict, FrozenSet, Iterable, List, Sequence, Set, Tuple
 
 from .complex import SimplicialComplex, face_induced_signs, fundamental_cycles
 from .groups import Group
@@ -83,6 +83,16 @@ class Appearance:
         return all(cid == 0 for _, cid in self.face_curvatures) and all(
             cid == 0 for _, cid in self.cycle_charges
         )
+
+    def signature(self) -> tuple:
+        """A compact hashable label for this appearance (used as a sector id)."""
+        return (
+            tuple(sorted((list(face), cid) for face, cid in self.face_curvatures)),
+            tuple(sorted((list(loop), cid) for loop, cid in self.cycle_charges)),
+        )
+
+    def nontrivial_face_count(self) -> int:
+        return sum(1 for _, cid in self.face_curvatures if cid != 0)
 
 
 class Region:

@@ -184,13 +184,17 @@ class Group(ABC):
 
     # ------------------------------------------------------- word metric/cost
     def move_generators(self) -> tuple:
-        """Generators plus their inverses -- the elementary relabelling steps."""
-        gens = list(self.generators())
+        """Generators together with their inverses -- the elementary relabelling steps.
+
+        Both directions are included so that the word metric is symmetric and so that a
+        single move can step in either direction along a Cayley-graph edge.
+        """
         out = []
-        for g in gens:
+        for g in self.generators():
             inv = self.inverse(g)
-            if inv != self.identity():
-                out.append(inv)
+            for candidate in (g, inv):
+                if candidate != self.identity():
+                    out.append(candidate)
         return tuple(dict.fromkeys(out)) or (self.identity(),)
 
     def word_lengths(self) -> dict:

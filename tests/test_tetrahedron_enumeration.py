@@ -21,6 +21,7 @@ from constraintnet.gauge import (
     global_conjugate_config,
     orbit_of_config,
     quotient_by_global_conjugation,
+    stabilizer_of_config,
     tetrahedron_moduli,
 )
 from constraintnet.holonomy import triangle_holonomy
@@ -110,3 +111,45 @@ def test_gauge_fixed_complexes_realise_distinct_states(a4):
 
 def id_key(group, element):
     return next(i for i, cls in enumerate(group.conjugacy_classes()) if element in cls)
+
+
+class TestSymmetryClassification:
+    """The orbit-size histogram is a little-group classification of the 178 states."""
+
+    def test_little_group_histogram(self, a4):
+        result = tetrahedron_moduli(a4)
+        counts = {name: entry["count"] for name, entry in result["symmetry"].items()}
+        assert counts == {"trivial": 130, "Z3": 26, "V4": 21, "A4": 1}
+        assert sum(counts.values()) == 178
+
+    def test_orbit_size_times_stabilizer_is_the_group_order(self, a4):
+        result = tetrahedron_moduli(a4)
+        for orbit in result["orbits"]:
+            representative = min(orbit)
+            stab = stabilizer_of_config(representative, a4)
+            assert len(orbit) * len(stab) == 12
+
+    def test_stabiliser_is_a_subgroup(self, a4):
+        result = tetrahedron_moduli(a4)
+        for orbit in list(result["orbits"])[:60]:
+            stab = stabilizer_of_config(min(orbit), a4)
+            assert a4.identity() in stab
+            for x in stab:
+                assert a4.inverse(x) in stab
+            for x in stab:
+                for y in stab:
+                    assert a4.multiply(x, y) in stab
+
+    def test_only_the_flat_state_has_full_symmetry(self, a4):
+        result = tetrahedron_moduli(a4)
+        full = result["symmetry"]["A4"]
+        assert full["count"] == 1
+        e = a4.identity()
+        assert full["members"] == [(e, e, e)], "only the vacuum should be fixed by all of A4"
+
+    def test_Z3_little_groups_are_order_three_stabilisers(self, a4):
+        result = tetrahedron_moduli(a4)
+        for member in result["symmetry"]["Z3"]["members"]:
+            stab = stabilizer_of_config(member, a4)
+            assert len(stab) == 3
+            assert all(a4.order_of(x) in (1, 3) for x in stab)
