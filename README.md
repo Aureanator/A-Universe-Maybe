@@ -17,7 +17,7 @@ Coordinates exist only in the visualization layer. They never determine dynamics
 ```bash
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install pytest matplotlib numpy   # Windows
-PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 95 tests, ~8 s
+PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 114 tests, ~18 s
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 1728 -> 178
 ```
 
@@ -56,6 +56,12 @@ cells. Keys: `space` play/pause, `right` step, `e/f/o/d` toggle layers, `r` auto
 | Conservation filter, `d(Δ³)` from random state | ~36 % of proposals accepted | ✅ measured |
 | Conservation filter, Kuhn 3-ball (48 tets) | ~21 % accepted; interior moves 100 %, boundary moves rejected | ✅ measured |
 | Internal dynamics on `d(Δ³)` under conservation | **zero** accepted moves from the vacuum | ✅ expected: no interior edges |
+| Cone `v * ∂Δ³`: flat boundary, no flux | `\|I\| = 1` — light-like (raw = \|G\|) | ✅ |
+| …curved boundary, no flux | `\|I\| = 0` — curvature cannot be capped by one vertex | ✅ |
+| …uniform Klein-four flux | **`\|I\| = 6`** hidden interiors (raw 72) | ✅ matter-like |
+| Flux census for flat `B` | 103 realisable patterns, `\|I\| ∈ {{1,3,4,6,12,16,24,36,48}}` | ✅ exact |
+| …unique light-like pattern | the vacuum, and nothing else | ✅ |
+| Abelian control `Z₃` | all 27 patterns give `\|I\| = 1` — no hidden state | ✅ non-abelian-ness required |
 
 ## Two counting traps (found the hard way, now guarded by tests)
 
@@ -94,6 +100,7 @@ src/constraintnet/
   moves.py       elementary relabellings + Pachner 2<->3 with legality checks
   dynamics.py    the main loop: propose -> test boundary -> commit or revert
   states.py      canonical state ids and transition graphs over physical states
+  resolutions.py cone over d(Delta^3): hidden internal states, |I(B)| flux census
   objects.py     curvature clusters as matter candidates
   observer.py    relational coarse-graining, mesh fineness n, propagation delay
   viz/           animated interactive viewer (projection only; matplotlib)

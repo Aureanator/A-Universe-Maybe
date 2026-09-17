@@ -101,9 +101,44 @@ programming specification; `[Unreleased]` holds work in progress.
 - `Region.appearance()` on a complex with no tetrahedra reported "nothing to protect"; such a
   complex is now treated as its own observable surface, otherwise conservation did nothing there.
 
+## [0.3.0] — Milestone 3 (cone over `∂Δ³`: hidden internal states)
+
+### Added
+- **Resolutions** (`resolutions.py`): the cone `v * ∂Δ³` (= `Δ⁴`) with four genuine internal
+  edges `x_i = A_{*i}`; admissibility `Φ_{(*ij)} = x_i A_ij x_j⁻¹ ∈ c_ij`; quotient by the
+  boundary-invisible gauge `x_i → ν⁻¹ x_i` (only the apex transforms); `ResolutionSpace.kind()`
+  classifies a boundary as light-like / matter-like / forbidden; `resolution_table()` produces a
+  complete flux census in one pass over all `|G|⁴` interiors instead of `|G|⁶` searches.
+- **Seeds**: `make_cone_over_tetrahedron(group, apex, seed_labels)` returning `(complex, apex, boundary)`.
+- **Example** `examples/milestone3.py`; 19 new tests (`tests/test_resolutions.py`) — 114 passing.
+
+### Measured (exact brute force over ≤ 20736 assignments, not sampled)
+- Cone combinatorics: `V=5, E=10, F=10, T=4`, `χ = 1`.
+- **Flat boundary + zero flux → `|I| = 1`** (light-like). Raw count is exactly `|G| = 12`: the free
+  apex gauge, everything else forced by flatness — matching the closed-form derivation
+  (`x_j = x_i A_ij` around the boundary is consistent iff `B` is flat).
+- **Curved boundary + zero flux → `|I| = 0`** for every random seed tested: a single interior vertex
+  cannot cap off curvature. Matter needs more interior than one vertex.
+- **Uniform order-2 (Klein four) flux on all six interior faces → raw 72, `|I| = 6`.** The
+  representative is literally the three nontrivial elements of `V₄` on the apex edges: a charge knot.
+- Full census for flat `B`: **103 realisable flux patterns out of 4096**, with
+  `|I| ∈ {1, 3, 4, 6, 12, 16, 24, 36, 48}`; the **vacuum is the unique light-like pattern** — every
+  other realisable interior hides at least three states.
+- Uniform order-3 flux is unrealisable (three equal order-3 curvatures do not close around a
+  triangle), while uniform order-2 does — an ordering/chirality effect of non-abelian-ness.
+- **Abelian control: for `Z₃` every one of the 27 realisable patterns has `|I| = 1`.** Hidden
+  internal ambiguity requires a non-abelian group, exactly as the specification argues.
+- `|I(B)|` is invariant under gauge transformations (it depends only on conjugacy classes), and
+  materialising a resolution never disturbs the external boundary labels.
+
+### Note on class indexing
+Conjugacy-class *indices* follow `Group.conjugacy_classes()` order — for `A₄` that is
+`[identity, order-3 (−), order-3 (+), order-2]`, which is **not** the textbook order. A label list
+hand-written in an early exploration script mislabelled results; all reporting now derives names via
+`Group.class_name`. Guarded by tests.
+
 ## Planned
-- **0.3.0** Milestone 3 — cone over `∂Δ³`, internal resolution counting (`|I(B)|`).
-- **0.4.0** Milestone 4 — persistent defect with conserved charge class.
+- **0.4.0** Milestone 4 — persistent defect with conserved charge class (next).
 - **0.5.0** Milestone 5 — motion cost / first mass proxy.
 - **0.6.0** Milestone 6 — interaction by gluing, joint resolutions, forbidden channels.
 - **0.7.0** Milestone 7 — observer density and gravity-like propagation delay.
