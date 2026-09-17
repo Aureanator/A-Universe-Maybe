@@ -31,7 +31,7 @@ This document is the condensed map: axiom → structure → module. Nothing here
 1. **Tetrahedral seed** ✅ — A₄ engine, gauge fixing, 1728 raw → **178** classes (Burnside cross-checked).
 2. **Boundary-preserving dynamics** ✅ — generator moves accepted iff watched `Appearance` preserved; canonical transition graph on the 178 physical states (one connected component).
 3. **Cone internal resolution** ✅ — $|\mathcal{I}(B)|$ computed exactly; vacuum is the unique light-like interior of a flat boundary; uniform Klein-four flux hides 6 states.
-4. **Persistent defect** 🚧 in progress — seed localized curvature, run conserved dynamics, track identity + charge class over a history window.
+4. **Persistent defect** ✅ — charged defect persists (100 % survival, zero gaps), external signature strictly conserved through 1500 steps; surface moves rejected 1108/1108 (**confinement is exact**), interior moves accepted 392/392; neutral lump correctly classified as virtual fluctuation, not matter.
 5. **Motion cost / mass proxy** ⬜ — minimum accepted-rewrite cost to translate (or reconfigure) a defect; see PHYSICS_NOTES §6 for the region-relativity question this must settle.
 6. **Interaction** ⬜ — gluing along shared faces, charge conservation on glue, fiber product $\mathcal{I}_1 \times_F \mathcal{I}_2$ (empty ⇒ forbidden).
 7. **Observer density / gravity-like delay** ⬜ — quantitative delay vs density near persistent defects.
@@ -45,6 +45,6 @@ This document is the condensed map: axiom → structure → module. Nothing here
 | 2 gauge invariance | ✅ | `tests/test_gauge_invariance.py` |
 | 3 tetrahedron enumeration (1728 → 178) | ✅ | `tests/test_tetrahedron_enumeration.py`, `examples/milestone1.py` |
 | 4 boundary conservation | ✅ | `tests/test_boundary_conservation.py` |
-| 5 persistent-defect conservation | 🚧 M4 | planned `tests/test_persistence.py` |
+| 5 persistent-defect conservation | ✅ | `tests/test_persistence.py`, `examples/milestone4.py` |
 | 6 no coordinate teleportation | partial (layout label-independence) | `tests/test_viz.py`; dedicated test planned |
 | 7 interaction conservation | ⬜ M6 | — |

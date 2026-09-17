@@ -137,8 +137,43 @@ Conjugacy-class *indices* follow `Group.conjugacy_classes()` order — for `A₄
 hand-written in an early exploration script mislabelled results; all reporting now derives names via
 `Group.class_name`. Guarded by tests.
 
+## [0.4.0] — Milestone 4 (persistent defect)
+
+### Added
+- **Persistence module** (`persistence.py`): `seed_charged_defect` / `seed_neutral_defect`,
+  relational cluster tracking (`DefectTracker`, vertex-overlap identity matching, gap and
+  split accounting), `TrackedDefect` with conserved `charge_core`, and `is_persistent`
+  implementing the specification's three conditions with semantics forced by measurement.
+- **Experiment harness** `run_persistence_experiment(kind=charged|neutral)` reporting
+  confinement statistics (accepted/rejected split by interior vs surface support),
+  curvature-heating time series, tracking metrics and strict conservation checks.
+- `examples/milestone4.py` — runnable narrative with internal assertions.
+- `tests/test_persistence.py` — spec Test 5 plus confinement theorems and a tamper guard
+  proving `charge_core_stable` is not vacuously true. Suite now **121 tests**.
+
+### Verified
+- **Confinement is exact**: over 1500 steps on the closed Kuhn ball (n=2), surface-edge
+  moves were rejected **1108/1108** and interior moves accepted **392/392** — charge can
+  never leak through an observed boundary, and nothing inside ever can.
+- **Spec Test 5**: the charged defect's conserved external signature (two frozen boundary
+  faces, order-2 class) is identical at start and end; universe sector invariant throughout.
+- **Persistence theorem holds empirically**: with nontrivial cycle/face charge, curvature
+  never vanishes (`ever_flat: False`) while the interior churns chaotically.
+- Tracked identity survival 100 %, zero gaps, cluster stays a single connected structure.
+- **Negative control**: the neutral lump (interior seed, trivial external signature)
+  correctly fails `is_persistent` — nothing measures it, so it is a virtual fluctuation,
+  not matter. `matter := nontrivial conserved external residue`.
+
+### Finding: interior heating and diffusion
+Because every strictly-interior relabelling is accepted unconditionally, curvature *heats*
+and diffuses through the bulk (curved-face count wanders 3 → 72 in 1500 steps). Localization
+of matter is therefore anchored by the frozen core — the conserved external residue — and
+never by the halo. This sharpens the M5 region-relativity question (PHYSICS_NOTES §6):
+any mass proxy must be defined against a fixed watched region, since free interior churn
+makes unanchored "defect position" meaningless.
+
 ## Planned
-- **0.4.0** Milestone 4 — persistent defect with conserved charge class (next).
+- **0.4.1** Milestone 4b — cone demo in the viewer: frozen core vs flickering halo (nice-to-have).
 - **0.5.0** Milestone 5 — motion cost / first mass proxy.
 - **0.6.0** Milestone 6 — interaction by gluing, joint resolutions, forbidden channels.
 - **0.7.0** Milestone 7 — observer density and gravity-like propagation delay.

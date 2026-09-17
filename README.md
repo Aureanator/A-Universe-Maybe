@@ -17,8 +17,10 @@ Coordinates exist only in the visualization layer. They never determine dynamics
 ```bash
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install pytest matplotlib numpy   # Windows
-PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 114 tests, ~18 s
+PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 121 tests, ~21 s
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 1728 -> 178
+PYTHONPATH=src .venv/Scripts/python.exe examples/milestone3.py    # hidden internal states |I(B)|
+PYTHONPATH=src .venv/Scripts/python.exe examples/milestone4.py    # persistent defect + confinement
 ```
 
 ## Watch it buzz
@@ -62,6 +64,9 @@ cells. Keys: `space` play/pause, `right` step, `e/f/o/d` toggle layers, `r` auto
 | Flux census for flat `B` | 103 realisable patterns, `\|I\| ∈ {{1,3,4,6,12,16,24,36,48}}` | ✅ exact |
 | …unique light-like pattern | the vacuum, and nothing else | ✅ |
 | Abelian control `Z₃` | all 27 patterns give `\|I\| = 1` — no hidden state | ✅ non-abelian-ness required |
+| Confinement of charge (closed ball, 1500 steps) | surface moves rejected **1108/1108**, interior accepted 392/392 | ✅ exact |
+| Persistent charged defect (spec Test 5) | survival 100 %, zero gaps, charge class start == end | ✅ |
+| Neutral interior lump | not matter: trivial external signature, unprotected | ✅ negative control |
 
 ## Two counting traps (found the hard way, now guarded by tests)
 
@@ -102,9 +107,10 @@ src/constraintnet/
   states.py      canonical state ids and transition graphs over physical states
   resolutions.py cone over d(Delta^3): hidden internal states, |I(B)| flux census
   objects.py     curvature clusters as matter candidates
+  persistence.py defect seeding, relational tracking, confinement, is_persistent (M4)
   observer.py    relational coarse-graining, mesh fineness n, propagation delay
   viz/           animated interactive viewer (projection only; matplotlib)
-tests/           the specification's strict tests + integrity guards (114 passing)
+tests/           the specification's strict tests + integrity guards (121 passing)
 examples/        one runnable script per milestone
 docs/            theory notes, conventions, architecture, findings
 docs/figures/    pachner_2_3.svg -- both triangulations of the bipyramid

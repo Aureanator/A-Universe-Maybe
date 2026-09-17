@@ -92,4 +92,7 @@ flagged in-session and **not yet settled by the user**; M5 must state its choice
 | Little groups of the 178 | trivial ×130, Z₃ ×26, V₄ ×21, A₄ ×1 (only the vacuum is fully symmetric) |
 | Cone $v*\partial\Delta^3$ | V=5, E=10, F=10, T=4, χ=1 |
 | Conservation filter acceptance | ~36% on ∂Δ³ from random state; ~21% on 48-tet Kuhn ball; interior moves 100%, boundary moves generically rejected |
-| Tests | 114 passing (~19 s) |
+| Confinement (M4, closed ball, 1500 steps) | surface-edge moves rejected **1108/1108**; interior moves accepted **392/392** — charge cannot leak |
+| Interior heating (M4) | curved-face count wanders 3 → 72; localization anchored by frozen core only |
+| Persistence (M4) | charged defect: survival 100 %, zero gaps, charge class start == end; neutral lump: not matter |
+| Tests | 121 passing (~21 s) |
