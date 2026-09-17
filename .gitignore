@@ -13,6 +13,9 @@ dist/
 venv/
 env/
 
+# Generated visualization output (regenerate with `python -m constraintnet.viz`)
+out/
+
 # Local scratch / large artifacts
 tmp/
 *.log

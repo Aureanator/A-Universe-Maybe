@@ -89,6 +89,21 @@ def test_rejected_moves_leave_labels_untouched(ball_a4):
             assert dict(cx._labels) == snapshot  # noqa: SLF001
 
 
+def test_appearance_signature_is_hashable_and_sector_stable(ball_a4):
+    """Sector ids are used as dict keys; lists anywhere in them would explode."""
+    region = Region(ball_a4, ball_a4.tetrahedra(), "ball")
+    signature = region.appearance().signature()
+    as_key = {signature: "sector-a"}
+    assert as_key[region.appearance().signature()] == "sector-a"
+
+    sim = Simulation(ball_a4, region=region)
+    sectors = set()
+    for _ in range(150):
+        sim.attempt()
+        sectors.add(region.appearance().signature())
+    assert sectors == {signature}, "sector drifted during evolution"
+
+
 def test_probe_regions_pin_a_subregion(ball_z3):
     """Watching a smaller region is stricter than watching the whole complex."""
     cx = ball_z3

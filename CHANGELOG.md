@@ -52,8 +52,56 @@ programming specification; `[Unreleased]` holds work in progress.
   orientation had to be added as explicit state (absent from the spec) or boundaries do
   not cancel.
 
+## [0.2.0] — Milestone 2 (boundary-preserving dynamics) + viewer
+
+### Added
+- **Dynamics** (`dynamics.py`): the specification's main loop -- propose, apply temporarily,
+  test whether the watched region's `Appearance` is preserved, commit or revert. Conservation
+  is not a rule bolted on; it *is* the acceptance predicate. Event log, accept/reject stats,
+  per-edge rejection counts, optional probe regions ("this observer watches that object").
+- **Canonical states** (`states.py`): `StateId` = orbit representative + superselection sector;
+  `transition_graph()` exploring raw gauge-slice configurations and projecting to orbits.
+- **Observer layer** (`observer.py`): cells defined *relationally* (graph-distance shells or an
+  explicit vertex grouping -- never coordinates), event recording, density `rho`, mesh-fineness
+  `n = rho/rho0`, curvature proxy `rho - rho0`, and `propagation_delay(path)` where dense cells
+  cost more reductions.
+- **Object detection** (`objects.py`): curved faces, edge-connected curvature clusters, per-cluster
+  class summaries (Milestone 4 groundwork).
+- **Animated interactive viewer** (`viz/`): live 3D view with play/pause, single-step, speed slider,
+  layer toggles and keyboard shortcuts; accepted moves flash green ▲, rejected ones red ✗;
+  curvature clusters drawn as spheres; vertex size/colour = mesh fineness; a white star carries a
+  test implication through the mesh so delay is visible. Identical code path records GIFs headlessly.
+  Demos: `--demo tetra | orbit | lattice` (`python -m constraintnet.viz`).
+- **Layout** (`viz/layout.py`): grid-metadata or deterministic force-directed embedding; verified
+  label-independent, i.e. purely a projection.
+
+### Measured
+- Transition graph over `d(Δ³)`/A4: 1728 slice configurations → **178 physical states in one
+  connected component**; little groups trivial ×130, Z₃ ×26, V₄ ×21, A₄ ×1.
+- Conservation filter: interior-edge moves accepted 100 % of the time (they cannot be seen from
+  outside), boundary-edge moves rejected generically; ~36 % acceptance on `d(Δ³)` and ~21 % on a
+  48-tetrahedron Kuhn ball. From the vacuum, `d(Δ³)` accepts **zero** moves -- no interior edges,
+  hence no internal degrees of freedom.
+- Signals cost strictly more reductions through loaded cells than through the vacuum.
+
+### Fixed (both would have silently corrupted results)
+- **Canonicalize for reporting, never for exploration.** Exploring only canonical representatives
+  loses transitions because right-multiplication does not commute with conjugation: it found 174
+  orbits instead of 178, missing exactly the four pure-Klein-four configurations. Regression test
+  added (`tests/test_states.py`).
+- `move_generators()` returned only inverses, dropping the generators themselves and skewing the
+  word metric that serves as the cost/mass primitive.
+- `detect_candidates()` clustered *all* faces, so the flat vacuum registered as one giant matter
+  candidate; it now clusters only curved faces.
+- Observer baseline: using the emptiest active cell as `rho0` is degenerate early in a run (the one
+  populated cell becomes its own reference and every reading says `n = 1`, hiding all delay). Now
+  the uniform expectation `total_events / n_cells`.
+- `Appearance.signature()` contained lists, so sector ids were unhashable; nested tuples now.
+- `Move` dataclass fields lacked annotations (silently ignored by `@dataclass`).
+- `Region.appearance()` on a complex with no tetrahedra reported "nothing to protect"; such a
+  complex is now treated as its own observable surface, otherwise conservation did nothing there.
+
 ## Planned
-- **0.2.0** Milestone 2 — boundary-preserving dynamics, accept/reject logging, transition-graph connectivity.
 - **0.3.0** Milestone 3 — cone over `∂Δ³`, internal resolution counting (`|I(B)|`).
 - **0.4.0** Milestone 4 — persistent defect with conserved charge class.
 - **0.5.0** Milestone 5 — motion cost / first mass proxy.

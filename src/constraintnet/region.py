@@ -85,10 +85,14 @@ class Appearance:
         )
 
     def signature(self) -> tuple:
-        """A compact hashable label for this appearance (used as a sector id)."""
+        """A compact hashable label for this appearance (used as a sector id).
+
+        Nested tuples throughout -- lists would make it unhashable and it is used as a
+        dictionary key for superselection sectors.
+        """
         return (
-            tuple(sorted((list(face), cid) for face, cid in self.face_curvatures)),
-            tuple(sorted((list(loop), cid) for loop, cid in self.cycle_charges)),
+            tuple(sorted((tuple(face), cid) for face, cid in self.face_curvatures)),
+            tuple(sorted((tuple(loop), cid) for loop, cid in self.cycle_charges)),
         )
 
     def nontrivial_face_count(self) -> int:
@@ -180,13 +184,34 @@ class Region:
                 usage[key] = usage.get(key, 0) + 1
         return bool(usage) and all(count == 2 for count in usage.values())
 
-    def probe_cycles(self) -> List[Tuple[int, ...]]:
-        """Fundamental cycles of the boundary surface's 1-skeleton.
+    def observed_faces(self) -> List[FaceKey]:
+        """Faces whose curvature is externally visible.
 
-        These are the loops an external observer can walk without entering the
-        region; their holonomy conjugacy classes are the observable charges.
+        For a 3D region that is ``d(region)``.  A complex with no tetrahedra -- such as
+        ``d(Delta^3)`` itself -- *is* its own observable surface, so every face counts;
+        otherwise such a complex would report "nothing to protect" and conservation would
+        silently do nothing.
         """
-        return fundamental_cycles(self.boundary_surface_edges())
+        if self.tets:
+            return self.boundary_faces()
+        return sorted({tuple(sorted(face)) for face in self.cx.faces()})
+
+    def surface_edges(self) -> List[EdgeKey]:
+        """1-skeleton of the observable surface (see :meth:`observed_faces`)."""
+        out: Set[EdgeKey] = set()
+        for face in self.observed_faces():
+            for pair in itertools.combinations(face, 2):
+                if self.cx.has_edge(*pair):
+                    out.add(tuple(sorted(pair)))  # type: ignore[arg-type]
+        return sorted(out)
+
+    def probe_cycles(self) -> List[Tuple[int, ...]]:
+        """Fundamental cycles of the observable surface's 1-skeleton.
+
+        These are the loops an external observer can walk without entering the region;
+        their holonomy conjugacy classes are the observable charges.
+        """
+        return fundamental_cycles(self.surface_edges())
 
     # ---------------------------------------------------------- observables
     def appearance(self) -> Appearance:
@@ -201,7 +226,7 @@ class Region:
 
         face_curvatures = tuple(
             (face, class_id(group.class_of(triangle_holonomy(self.cx, face))))
-            for face in self.boundary_faces()
+            for face in self.observed_faces()
         )
         cycle_charges = tuple(
             (loop, class_id(group.class_of(loop_holonomy(self.cx, loop))))

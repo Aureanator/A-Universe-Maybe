@@ -17,9 +17,28 @@ Coordinates exist only in the visualization layer. They never determine dynamics
 ```bash
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install pytest matplotlib numpy   # Windows
-PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 54 tests, ~1 s
+PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 95 tests, ~8 s
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 1728 -> 178
 ```
+
+## Watch it buzz
+
+An interactive window with live animation, play/pause, single-step, speed control and layer
+toggles (also works headless — the GIF path is the same code):
+
+```bash
+PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo lattice --group A4 --n 2
+PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo tetra   # d(Delta^3), conservation bites
+PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo orbit    # tour the 178 gauge classes
+PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo lattice --gif out/buzz.gif --frames 200
+```
+
+What you see: edges coloured by constraint conjugacy class, triangles coloured by curvature,
+**green ▲ = accepted reduction, red ✗ = rejected attempt**, glowing spheres = curvature
+clusters (matter candidates), vertex size/colour = local mesh fineness `n = rho/rho0`, and a
+white star carrying a test implication through the mesh so you can watch it slow down in dense
+cells. Keys: `space` play/pause, `right` step, `e/f/o/d` toggle layers, `r` auto-rotate,
+`s` save PNG, `q` quit.
 
 ## What has been reproduced so far
 
@@ -29,9 +48,25 @@ PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 17
 | Gauge-fixed tetrahedron configurations | **1728** raw | ✅ |
 | …quotiented by residual global conjugation | **178** inequivalent classes | ✅ |
 | Independent prediction (Burnside: `(12³+3·4³+8·3³)/12`) | **178.0** | ✅ matches brute force |
-| Face-holonomy conjugacy classes under gauge transform | invariant | ✅ |
+| Physical state graph over `d(Δ³)` | 178 states, **one** connected component | ✅ |
+| Little-group classification of the 178 states | trivial ×130, Z₃ ×26, V₄ ×21, A₄ ×1 | ✅ from stabilisers |
+| Face-holonomy classes under gauge transform | invariant | ✅ |
 | Region appearance (curvature + cycle charges) under gauge transform | invariant | ✅ |
 | Bianchi identity `Σ_{∂R} ±Φ_f = 0` for abelian groups | holds for every labelling | ✅ |
+| Conservation filter, `d(Δ³)` from random state | ~36 % of proposals accepted | ✅ measured |
+| Conservation filter, Kuhn 3-ball (48 tets) | ~21 % accepted; interior moves 100 %, boundary moves rejected | ✅ measured |
+| Internal dynamics on `d(Δ³)` under conservation | **zero** accepted moves from the vacuum | ✅ expected: no interior edges |
+
+## Two counting traps (found the hard way, now guarded by tests)
+
+1. **Canonicalize for reporting, never for exploration.** Right-multiplication does not
+   commute with conjugation, so walking the state graph from canonical representatives only
+   *loses transitions*: it finds 174 orbits instead of 178, missing exactly four pure-Klein-four
+   configurations whose incoming edges come from non-canonical neighbours. Explore raw
+   gauge-slice configurations, project to orbits afterwards — see
+   [src/constraintnet/states.py](<src/constraintnet/states.py>).
+2. **Re-gauge-fix after every move** before recording a state, or gauge copies inflate counts by
+   up to `|G|`.
 
 ## Two findings worth knowing before reading the code
 
@@ -49,10 +84,23 @@ PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 17
 ## Layout
 
 ```
-src/constraintnet/     the engine (group, complex, holonomy, region, gauge, seeds, ...)
-tests/                 the specification's strict tests + integrity guards
-examples/              one runnable script per milestone
-docs/                  theory notes, conventions, architecture, findings
+src/constraintnet/
+  groups.py      finite-group engine (Z_n, A4) + word metric = the cost primitive
+  complex.py     vertices / oriented edges / faces / tetrahedra; orientation-aware boundaries
+  holonomy.py    curvature on faces, charge on cycles, Bianchi identity
+  region.py      regions, signed boundaries, gauge-invariant Appearance (the sector label)
+  gauge.py       gauge transforms, spanning-tree fixing, moduli enumeration, little groups
+  seeds.py       d(Delta^3), bipyramid (both Pachner sides), Kuhn balls, stacked balls
+  moves.py       elementary relabellings + Pachner 2<->3 with legality checks
+  dynamics.py    the main loop: propose -> test boundary -> commit or revert
+  states.py      canonical state ids and transition graphs over physical states
+  objects.py     curvature clusters as matter candidates
+  observer.py    relational coarse-graining, mesh fineness n, propagation delay
+  viz/           animated interactive viewer (projection only; matplotlib)
+tests/           the specification's strict tests + integrity guards (95 passing)
+examples/        one runnable script per milestone
+docs/            theory notes, conventions, architecture, findings
+docs/figures/    pachner_2_3.svg -- both triangulations of the bipyramid
 ```
 
 See [docs/SPEC.md](<docs/SPEC.md>) for the basement-to-capstone derivation,
