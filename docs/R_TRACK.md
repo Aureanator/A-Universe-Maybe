@@ -32,6 +32,12 @@ deterministic churn on the raw gauge slice (`do-undo-churn`). Randomness lives O
 6. Protocol semantics implemented over all phase pairs: duty cycle / deferred waits /
    scatter fractions + wait histogram (`phase_locked_outcomes`), deterministic.
 
+7. **reps.py (quantum sector machinery, spec-critical)**: A4 irreps via chi_3(g)=fix(g)-1
+   and abelianization A4/V4 = Z3 (homomorphism asserted at construction). Verified:
+   orthonormality, sum d^2 = 12, fusion 3x3 = 1 + 1' + 1'' + 2*3, singlet counting as
+   multiplicity of the trivial. Lesson re-learned: "three 1D summands" != three singlets --
+   exactly ONE invariant in 3x3 (the omega-charged partners are twisted sectors).
+
 ## Honest caveats
 
 - "Temperature" in the kick experiment = statistical Metropolis parameter over a chosen
