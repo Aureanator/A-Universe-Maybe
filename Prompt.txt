@@ -1,0 +1,658 @@
+The complete basement-to-capstone summary and programming specification for a local simulation agent is as follows.
+
+The basement axiom is: directed implications reduce. This means that if an implication is binding and its precondition is resolved, its consequence is resolved. Nothing else is assumed at the basement. No space, no time, no matter, no energy, no observer, no continuum, no coordinates.
+
+From the axiom, the first necessary structure is a set of events. Let $\mathcal{E}$ be the set of events. An event is a primitive actualization, not a point in space. The second necessary structure is a directed implication relation. If $A, B \in \mathcal{E}$, then $A \to B$ means event $A$ implies event $B$. This relation is directed. In general, $A \to B$ does not imply $B \to A$. This directedness is the first seed of temporal orientation.
+
+The next step is reduction. A possible implication is written $A \to B$. An actualized implication is written $A \Rightarrow B$. Reduction is the operation by which an implication becomes realized. The set of realized reductions generates a causal order. Define $A \prec B$ if there is a chain of realized reductions from $A$ to $B$. This partial order is not embedded in time. It is time. Therefore, time emerges as causal precedence.
+
+Once events and directed implications exist, the next necessary addition is constraint. Each implication carries a constraint label from a group $G$. For an implication $A \to B$, assign $A_{AB} \in G$. The label is the obligation that must be satisfied for the implication to reduce. In the electromagnetic continuum limit, $G = U(1)$. In the finite tetrahedral seed, $G = A_4$. For early simulation, $G = \mathbb{Z}_3$ is acceptable as a simpler test group, but the architecture should be group-generic.
+
+Given constrained implications, cycles become physically meaningful. A cycle is a sequence $C = e_1 \to e_2 \to \cdots \to e_n \to e_1$. The holonomy of the cycle is the ordered product of constraint labels around the cycle:
+
+\[
+\Phi_C = \prod_{(i,j) \in C} A_{ij}.
+\]
+
+If $\Phi_C = e_G$, the cycle fully reduces. If $\Phi_C \neq e_G$, the cycle partially reduces and leaves a residue. That residue is charge:
+
+\[
+Q_C = \Phi_C.
+\]
+
+Thus charge is not a substance. It is the nontrivial holonomy of a cyclic constraint that fails to close cleanly.
+
+The labels $A_{AB}$ are gauge-dependent. A local gauge transformation assigns a group element $\lambda_A$ to each event and transforms the edge label as
+
+\[
+A_{AB} \to \lambda_A^{-1} A_{AB} \lambda_B.
+\]
+
+The holonomy around a closed cycle transforms by conjugation:
+
+\[
+\Phi_C \to \lambda^{-1} \Phi_C \lambda.
+\]
+
+Therefore the conjugacy class of the holonomy is gauge-invariant. Physical charge is not the raw edge label. It is the gauge-invariant residue of a closed constraint loop.
+
+Conservation arises when we define legitimate local updates correctly. An arbitrary rewrite of an edge label is not a physical reduction. A physical internal resolution must preserve the unresolved constraint presented to the outside. For a region $R$, an allowed update must satisfy
+
+\[
+\Phi_{\partial R}^{\text{before}} \sim \Phi_{\partial R}^{\text{after}},
+\]
+
+where $\sim$ means same conjugacy class. If the boundary residue is preserved, local internal changes cannot create or destroy net external charge. Thus conservation is not added as a separate law. It is the condition for a rewrite to count as a legitimate resolution.
+
+The next step is the emergence of 3D geometry. The minimal relational structure capable of supporting nontrivial local cyclic closure is the boundary of the tetrahedron, $\partial \Delta^3$. It has 4 vertices, 6 edges, and 4 triangular faces. Its orientation-preserving automorphism group is $A_4$. The natural representation of $A_4$ is constructed from $\mathbb{R}^4$ by quotienting the diagonal subspace:
+
+\[
+W = \mathbb{R}^4 / \mathbb{R}(1,1,1,1).
+\]
+
+This gives $\dim W = 3$. The crucial identity is
+
+\[
+\wedge^2 W \cong W.
+\]
+
+This identity is unique to three dimensions. It gives the cross product and the Lie algebra $\mathfrak{so}(3)$. The dimensional selection equation is
+
+\[
+d = \frac{d(d-1)}{2},
+\]
+
+whose nontrivial solution is $d = 3$. Therefore 3D rotational structure is not assumed. It is selected by relational closure.
+
+Translations emerge by extending to the boundary of the 4-simplex, $\partial \Delta^4$. Its symmetry structure, in the local flat contraction, yields the Euclidean algebra
+
+\[
+\mathfrak{e}(3) = \mathbb{R}^3 \rtimes \mathfrak{so}(3).
+\]
+
+Therefore the sequence is: cycle, tetrahedron, rotations, translations, 3D Euclidean relational geometry.
+
+Matter is then defined as a persistent relational structure. Let $F$ be the reduction operator acting on relational structures. A structure $O$ is persistent if
+
+\[
+F(O) \cong O.
+\]
+
+Matter is a persistent topological fixed point of reduction. It is not a substance. It is a pattern of constraints that survives reduction. Its persistence is protected by topological invariants. If $\tau(O)$ is a nontrivial invariant and local reductions preserve $\tau$, then $O$ cannot be reduced to nothing.
+
+Mass is the structural resistance of a persistent object to reconfiguration. If $\Delta O$ is a change in the object, define a reconfiguration cost $\mathcal{C}(\Delta O)$. Then
+
+\[
+m(O) \propto \mathcal{C}(\Delta O_{\text{unit}}).
+\]
+
+Mass is not primitive. It is the cost of moving or deforming a persistent constraint knot.
+
+The distinction between light-like direct implication and matter is resolution multiplicity. A direct implication has one clean resolution:
+
+\[
+A \Rightarrow B.
+\]
+
+Matter has hidden internal ambiguity. Given a fixed external boundary $B$, there may be multiple inequivalent internal resolutions $r_i$ such that
+
+\[
+\partial r_i = B.
+\]
+
+The internal state space is
+
+\[
+\mathcal{I}(B) = \frac{\text{admissible internal resolutions of } B}{\text{boundary-indistinguishable equivalence}}.
+\]
+
+If $|\mathcal{I}(B)| = 1$, the process is direct or light-like. If $|\mathcal{I}(B)| > 1$, the process carries hidden matter-like internal state. Matter is not light because its interaction state is not uniquely determined by the external boundary.
+
+Quantum structure arises from these internal resolution spaces. The residual gauge group preserving a boundary charge $q$ is the centralizer
+
+\[
+H = C_G(q).
+\]
+
+The internal resolutions form a representation of $H$. Decomposing that representation into irreducible representations gives primitive quantum sectors. For $G = A_4$ and $q$ of order 3, $H \cong \mathbb{Z}_3$, and the sectors carry discrete phase labels $1, \omega, \omega^2$, where $\omega = e^{2\pi i/3}$. Interactions combine representation spaces by tensor product:
+
+\[
+\mathcal{H}_1 \otimes \mathcal{H}_2.
+\]
+
+Allowed outcomes are invariant couplings, or singlet sectors, of the combined representation.
+
+Measurement is not mystical. It is a physical constraint interaction between the system and a probe. The probe must couple to the system as a dual representation. If the system is in state $|\psi\rangle$, and $P_k$ projects onto outcome $k$, then the number of valid joint resolutions leading to outcome $k$ is
+
+\[
+N_k = \operatorname{Tr}(P_k |\psi\rangle \langle \psi|).
+\]
+
+This gives
+
+\[
+N_k = |\langle k | \psi \rangle|^2.
+\]
+
+After normalization,
+
+\[
+P(k) = |c_k|^2.
+\]
+
+Thus the Born rule is not a separate axiom. It is the normalized count of valid bilinear constraint resolutions between a system and a dual probe.
+
+Gravity emerges from event density. Spacetime is not a container populated by events. Spacetime is the event mesh. A massive object is a persistent knot of constraints with high internal event density. Near such an object, the mesh is literally finer. Let $\rho(x)$ be the local event or interaction density. Let $\rho_0$ be the baseline vacuum density. Then
+
+\[
+\rho(x) = \rho_0 + \Delta \rho(x).
+\]
+
+An observer who coarse-grains over microscopic events perceives this variable mesh density as geometry. Define an effective density factor
+
+\[
+n(x) = \frac{\rho(x)}{\rho_0}.
+\]
+
+Where $n(x)$ is larger, the mesh is finer, and signals require more microscopic reductions to traverse the same coarse-grained distance. This produces propagation delay, time dilation, and apparent curvature.
+
+Gravitational time dilation follows because a clock is a repeating cycle of events. In a finer mesh, one coarse clock tick requires more microscopic event steps. Relative to a distant coarse-mesh observer, the dense-mesh clock advances more slowly.
+
+Spatial curvature follows because density gradients distort coarse-grained geometric relations. Circumferences, radial distances, and path lengths measured in event counts no longer match flat-mesh expectations. In the weak limit this gives a Poisson-like relation,
+
+\[
+\nabla^2 \Phi = 4\pi G \rho,
+\]
+
+and covariantly,
+
+\[
+G_{\mu\nu} = 8\pi G T_{\mu\nu},
+\]
+
+where $G_{\mu\nu}$ describes coarse-grained mesh curvature and $T_{\mu\nu}$ describes the density and flux of persistent event-generating structure.
+
+Geodesic motion is the natural path of a persistent structure through a nonuniform event mesh. A free object follows a path that extremizes its proper event count. Because massive regions densify the mesh, the extremal path bends toward higher interaction density. The observer sees this as gravitational attraction.
+
+The capstone is therefore: binding directed implications generate causal order; constrained cyclic implications generate charge; tetrahedral closure selects 3D geometry; persistent topological closures become matter; reconfiguration cost becomes mass; hidden internal resolutions become quantum states; measurement as dual coupling yields the Born rule; massive persistent structures densify the event mesh; the observer coarse-grains that density as curved spacetime; gravity is the geometry of interaction density.
+
+Now the programming specification for a local agent to simulate 3D matter is as follows.
+
+The agent must not build a normal particle engine. It must not make continuous 3D space fundamental. It must build a discrete event-constraint-simplicial simulator. Coordinates are only for visualization. The fundamental dynamics must be relational and combinatorial.
+
+The first module is the group engine. The agent should implement a generic Group interface. The group must support identity, multiply, inverse, generators, conjugacy class, and equality.
+
+Snippet:
+
+class Group:
+    def identity():
+        pass
+
+    def multiply(a, b):
+        pass
+
+    def inverse(a):
+        pass
+
+    def generators():
+        pass
+
+    def conjugacyClass(a):
+        pass
+
+The agent should implement $\mathbb{Z}_3$ first for testing. Elements can be 0, 1, 2 with addition modulo 3. Then implement $A_4$ as even permutations of four objects. For $A_4$, the simulator must have exactly 12 elements and must identify the conjugacy classes: identity, order-2 elements, order-3 positive elements, order-3 negative elements.
+
+The second module is the simplicial complex. For 3D matter, a graph alone is insufficient. The simulator must represent vertices, oriented edges, triangular faces, and tetrahedra.
+
+Snippet:
+
+class Vertex:
+    id
+    metadata
+
+class Edge:
+    source
+    target
+    label
+    realized
+
+class Face:
+    edgeIJ
+    edgeJK
+    edgeKI
+
+class Tetrahedron:
+    faces
+    vertices
+
+class SimplicialComplex:
+    vertices
+    edges
+    faces
+    tetrahedra
+
+The edge labels are the constraint labels. For an edge between $i$ and $j$, the reverse orientation must be the inverse:
+
+\[
+A_{ji} = A_{ij}^{-1}.
+\]
+
+The simulator must enforce this consistency.
+
+The third module is holonomy. For each triangular face, compute
+
+\[
+\Phi_{ijk} = A_{ij} A_{jk} A_{ki}.
+\]
+
+Snippet:
+
+def faceHolonomy(face):
+    a = face.edgeIJ.label
+    b = face.edgeJK.label
+    c = face.edgeKI.label
+    return Group.multiply(Group.multiply(a, b), c)
+
+For a region boundary, compute the boundary holonomy by multiplying labels around the oriented boundary loop.
+
+Snippet:
+
+def boundaryHolonomy(region):
+    result = Group.identity()
+    for edge in orientedBoundaryEdges(region):
+        result = Group.multiply(result, edge.label)
+    return result
+
+The fourth module is gauge transformation and gauge fixing. A gauge transformation at vertices changes edge labels but must preserve holonomy conjugacy classes.
+
+Snippet:
+
+def gaugeTransformEdge(edge, gSource, gTarget):
+    old = edge.label
+    left = Group.inverse(gSource)
+    right = gTarget
+    edge.label = Group.multiply(Group.multiply(left, old), right)
+
+For the single tetrahedron, the agent should gauge-fix a spanning tree. For vertices 0, 1, 2, 3, fix
+
+\[
+A_{01} = A_{12} = A_{23} = 1.
+\]
+
+The remaining independent labels are $A_{02}, A_{03}, A_{13}$. For $G = A_4$, this gives
+
+\[
+12^3 = 1728
+\]
+
+raw gauge-fixed configurations. The agent should then quotient by residual global conjugation. The known benchmark is that these reduce to 178 gauge-inequivalent classes. This is a critical test.
+
+Snippet:
+
+def enumerateGaugeFixedTetrahedronConfigs():
+    configs = []
+    for a in Group.elements:
+        for b in Group.elements:
+            for c in Group.elements:
+                configs.append((a, b, c))
+    return configs
+
+def quotientByGlobalConjugation(configs):
+    orbits = []
+    for config in configs:
+        if not inExistingOrbit(config, orbits):
+            orbit = orbitUnderGlobalConjugation(config)
+            orbits.append(orbit)
+    return orbits
+
+The fifth module is local rewrite dynamics. The agent must not allow arbitrary rewrites. A move is physical only if the boundary holonomy class is preserved.
+
+Candidate elementary move:
+
+\[
+A_e \to A_e g
+\]
+
+where $g$ is drawn from the generator set of the group. More refined moves can use Pachner moves, but the first prototype can use edge-label generator moves.
+
+Snippet:
+
+def proposeMove(region):
+    edge = chooseEdge(region)
+    g = chooseGenerator()
+    old = edge.label
+    new = Group.multiply(old, g)
+    return Move(edge, old, new)
+
+def attemptMove(region):
+    before = boundaryHolonomy(region)
+    move = proposeMove(region)
+    applyMoveTemporarily(move)
+    after = boundaryHolonomy(region)
+    if sameConjugacyClass(before, after):
+        commitMove(move)
+        logEvent(move)
+    else:
+        revertMove(move)
+
+The same conjugacy class test is essential:
+
+Snippet:
+
+def sameConjugacyClass(a, b):
+    return Group.conjugacyClass(a) == Group.conjugacyClass(b)
+
+Every accepted move must have a cost. The simplest cost is the number of changed edge labels. A better cost is the minimum number of generator multiplications required to implement the move.
+
+Snippet:
+
+def moveCost(move):
+    return generatorDistance(move.oldLabel, move.newLabel)
+
+This cost becomes the prototype for mass and inertia.
+
+The sixth module is object detection. Matter candidates are localized regions with nontrivial boundary holonomy that persist under updates.
+
+Snippet:
+
+class PersistentObject:
+    subcomplex
+    boundary
+    chargeClass
+    invariants
+    age
+    costHistory
+    centroidVisual
+
+def detectObjects(complex):
+    objects = []
+    clusters = findNontrivialCurvatureClusters(complex)
+    for cluster in clusters:
+        boundary = computeBoundary(cluster)
+        charge = boundaryHolonomy(boundary)
+        if not isTrivial(charge):
+            obj = PersistentObject(cluster, boundary, Group.conjugacyClass(charge))
+            objects.append(obj)
+    return objects
+
+An object is persistent if its charge class and topological invariants remain stable over many accepted updates.
+
+Snippet:
+
+def isPersistent(obj, historyWindow):
+    return (
+        obj.chargeClassStable(historyWindow)
+        and obj.topologicalInvariantsStable(historyWindow)
+        and obj.clusterConnected(historyWindow)
+    )
+
+The seventh module is the cone-over-tetrahedron construction. A single tetrahedral boundary has no genuine internal degree of freedom. The smallest meaningful body with hidden internal state is a cone over the tetrahedral boundary:
+
+\[
+v * \partial \Delta^3.
+\]
+
+This adds one interior vertex connected to the four boundary vertices. The four internal edges are genuine internal variables.
+
+Snippet:
+
+def makeConeOverTetrahedron():
+    boundary = makeTetrahedronBoundary()
+    interior = addVertex()
+    for v in boundary.vertices:
+        addEdge(interior, v)
+    return boundary, interior
+
+The agent should enumerate internal resolutions for a fixed boundary. Let $B$ be the boundary. Let $\text{Ext}(B)$ be the set of internal resolutions $r$ such that $\partial r = B$. Then quotient by transformations invisible at the boundary.
+
+Snippet:
+
+def internalResolutionSpace(boundary):
+    resolutions = enumerateInternalResolutions(boundary)
+    classes = quotientByBoundaryInvisibleEquivalence(resolutions)
+    return classes
+
+The count
+
+\[
+|\mathcal{I}(B)|
+\]
+
+is the number of physically inequivalent hidden internal states compatible with the same boundary.
+
+If this count is 1, the object is direct or light-like. If this count is greater than 1, it has matter-like hidden internal ambiguity.
+
+The eighth module is 3D dynamics using local topology-preserving moves. For a more genuine 3D simulation, implement Pachner moves. These are local moves that change the internal triangulation while preserving the boundary.
+
+The 2-3 move replaces two tetrahedra sharing a face with three tetrahedra around a new edge. The 3-2 move is the inverse. These moves are excellent internal resolution moves because they can change the interior while preserving the external boundary.
+
+Snippet:
+
+def pachner23Move(complex, tetraA, tetraB):
+    if not shareFace(tetraA, tetraB):
+        reject()
+    boundaryBefore = boundaryOfPair(tetraA, tetraB)
+    newComplex = replaceTwoWithThree(complex, tetraA, tetraB)
+    boundaryAfter = boundaryOfNewRegion(newComplex)
+    if boundariesEquivalent(boundaryBefore, boundaryAfter):
+        accept(newComplex)
+    else:
+        revert()
+
+Boundary preservation must always be checked using holonomy class, not merely combinatorial shape.
+
+The ninth module is motion. Do not program motion as velocity in coordinates. Motion is a sequence of accepted local rewrites that transfers a persistent defect through the mesh.
+
+Snippet:
+
+def translateObject(obj, direction):
+    path = findLocalRewritePath(obj, direction)
+    totalCost = 0
+    for move in path:
+        if moveIsBoundaryPreserving(move):
+            applyMove(move)
+            totalCost += moveCost(move)
+        else:
+            abortTranslation()
+    return totalCost
+
+The cost to move the object one combinatorial cell is a mass proxy:
+
+\[
+m_{\text{proxy}}(O) = \text{minimum accepted rewrite cost to translate } O.
+\]
+
+The agent should measure cost to translate, rotate, deform, and interact.
+
+The tenth module is interaction. Interaction is gluing along shared boundary. If two objects share a face, their shared edge labels must be compatible, and total boundary charge must be conserved.
+
+Snippet:
+
+def glueObjects(objA, objB, sharedFace):
+    if not faceLabelsCompatible(objA, objB, sharedFace):
+        rejectInteraction()
+    chargeBefore = combinedBoundaryCharge(objA, objB)
+    combined = unionAlongFace(objA, objB, sharedFace)
+    chargeAfter = boundaryCharge(combined)
+    if sameConjugacyClass(chargeBefore, chargeAfter):
+        return combined
+    else:
+        rejectInteraction()
+
+The agent should also count joint internal resolutions. If two objects have internal resolution spaces $\mathcal{I}_1$ and $\mathcal{I}_2$, and they share a boundary face $F$, the joint space is a fiber product:
+
+\[
+\mathcal{I}_1 \times_F \mathcal{I}_2.
+\]
+
+If this space is empty, the interaction is forbidden. This is a primitive exclusion mechanism.
+
+Snippet:
+
+def jointResolutionCount(objA, objB, sharedFace):
+    count = 0
+    for rA in objA.internalResolutions:
+        for rB in objB.internalResolutions:
+            if compatibleOnSharedFace(rA, rB, sharedFace):
+                count += 1
+    return count
+
+The eleventh module is the observer layer. The observer does not see every microscopic event. It coarse-grains events into cells.
+
+Snippet:
+
+class ObserverGrid:
+    cellSize
+    density
+
+    def recordEvent(event):
+        cell = cellOf(event)
+        density[cell] += 1
+
+The observer builds an event density field $\rho(x)$. The density factor is
+
+\[
+n(x) = \frac{\rho(x)}{\rho_0}.
+\]
+
+Where $n(x)$ is larger, the mesh is finer. The agent should measure propagation delay by sending test implications through the mesh and counting the number of reduction steps required.
+
+Snippet:
+
+def propagationDelay(path):
+    steps = 0
+    for implication in path:
+        steps += reductionSteps(implication)
+    return steps
+
+Compare delay through vacuum-like regions and delay near persistent objects. If signals take longer near persistent high-density objects, the simulation has a gravity-like effect.
+
+A simple curvature proxy is:
+
+\[
+K(x) \approx \rho(x) - \rho_0
+\]
+
+for early prototypes. A better proxy is:
+
+\[
+K(x) \approx \nabla^2 \rho(x).
+\]
+
+But the agent should not impose differential geometry as fundamental. The curvature proxy is only an observer-level summary of event-density gradients.
+
+The twelfth module is visualization. Coordinates are for visualization only. The agent may use force-directed layout, spectral embedding, or explicit tetrahedral mesh rendering. Visual coordinates must not determine allowed dynamics.
+
+Snippet:
+
+def updateVisualization(complex, observerGrid):
+    positions = layout(complex)
+    drawVertices(positions)
+    drawEdges(complex.edges)
+    colorFacesByHolonomy(complex.faces)
+    drawDensityHeatmap(observerGrid.density)
+    highlightPersistentObjects(complex.persistentObjects)
+
+The main simulation loop should be as follows.
+
+Snippet:
+
+def mainLoop(maxSteps):
+    initializeComplex()
+    initializeGaugeLabels()
+    gaugeFix()
+    detectObjects()
+
+    step = 0
+    while step < maxSteps:
+        region = selectLocalRegion()
+
+        before = boundaryHolonomy(region)
+        move = proposeMove(region)
+
+        applyMoveTemporarily(move)
+        after = boundaryHolonomy(region)
+
+        if sameConjugacyClass(before, after):
+            commitMove(move)
+            logEvent(move)
+            observer.recordEvent(move)
+        else:
+            revertMove(move)
+
+        detectObjects()
+        trackPersistentObjects()
+        updateObserverDensity()
+        maybeVisualize()
+
+        step += 1
+
+The agent should implement strict tests.
+
+Test 1: group correctness. For $A_4$, there must be exactly 12 elements. Multiplication must be closed. Every element must have an inverse. The conjugacy classes must match $A_4$.
+
+Test 2: gauge invariance. Apply a gauge transformation. Edge labels change, but face holonomy conjugacy classes must not change.
+
+Snippet:
+
+before = faceHolonomy(face)
+gaugeTransformVertex(v, g)
+after = faceHolonomy(face)
+assert sameConjugacyClass(before, after)
+
+Test 3: tetrahedron enumeration. For $A_4$, gauge fixing a spanning tree must produce 1728 raw configurations. Quotienting by residual global conjugation must produce 178 classes.
+
+Test 4: boundary conservation. No accepted move may change the boundary holonomy conjugacy class.
+
+Snippet:
+
+before = boundaryHolonomy(region)
+attemptMove(region)
+after = boundaryHolonomy(region)
+assert sameConjugacyClass(before, after)
+
+Test 5: persistent defect conservation. A persistent object's charge class must remain stable under allowed evolution.
+
+Snippet:
+
+chargeAtStart = obj.chargeClass
+runSimulation(steps)
+chargeAtEnd = obj.chargeClass
+assert chargeAtStart == chargeAtEnd
+
+Test 6: no coordinate teleportation. Object movement must occur only through accepted local rewrites. The visual coordinate system must never directly move the object.
+
+Test 7: interaction conservation. When two objects glue, total boundary charge class must be conserved.
+
+Snippet:
+
+beforeCharge = combinedBoundaryCharge(objA, objB)
+combined = glueObjects(objA, objB, sharedFace)
+afterCharge = boundaryCharge(combined)
+assert sameConjugacyClass(beforeCharge, afterCharge)
+
+The minimal viable simulation should proceed in milestones.
+
+Milestone 1: finite tetrahedral seed. Implement $A_4$, tetrahedron, gauge fixing, holonomy, and enumeration. Reproduce 1728 raw gauge-fixed configurations and 178 gauge classes.
+
+Milestone 2: boundary-preserving dynamics. Implement elementary generator moves and accept only moves preserving boundary holonomy class. Log accepted and rejected moves. Measure transition graph connectivity.
+
+Milestone 3: cone internal resolution. Add an interior vertex to the tetrahedral boundary. Enumerate internal resolutions for fixed boundary data. Count inequivalent hidden internal states.
+
+Milestone 4: persistent defect. Seed a localized nontrivial holonomy defect. Run boundary-preserving updates. The defect should persist, conserve charge class, and remain identifiable.
+
+Milestone 5: motion cost. Move the defect one combinatorial cell using accepted local rewrites. Measure the rewrite cost. This is the first mass proxy.
+
+Milestone 6: interaction. Create two defects and glue them along a shared face. Check charge conservation. Count joint internal resolutions. Identify allowed and forbidden interactions.
+
+Milestone 7: observer density. Add a coarse grid. Count event density around persistent defects. Send test signals through the mesh. Measure increased traversal cost near dense persistent objects.
+
+Milestone 8: 3D visualization. Render the tetrahedral mesh, holonomy classes, persistent objects, and observer density field. Use coordinates only as a projection.
+
+The agent must avoid common mistakes.
+
+Do not make space fundamental. Do not let coordinates determine allowed moves. Do not allow arbitrary edge rewrites that change boundary holonomy. Do not count gauge-equivalent configurations as physically distinct. Do not insert particles by hand. Do not insert gravity by hand. Do not insert quantum amplitudes before counting valid resolutions. Do not use continuous wavefunctions in the first prototype. Do not attempt the full Standard Model before stable persistent defects exist in the finite model.
+
+The final success condition is that the simulator produces stable, conserved, reconfigurable 3D topological constraint objects whose behavior can be measured. Specifically, success means: a tetrahedral $A_4$ seed produces the expected finite state classes; boundary-preserving moves conserve charge; a localized nontrivial defect persists; moving it has a finite rewrite cost; two defects interact while conserving total boundary residue; coarse-grained event density rises around persistent defects; test signals experience greater traversal cost near those defects; visualization shows these objects as 3D persistent structures without coordinates being fundamental.
+
+In one sentence, the programming task is: build a discrete simplicial constraint-network engine where edge labels carry group constraints, legitimate local reductions preserve boundary holonomy, persistent topological defects become matter, rewrite cost becomes mass, interaction is boundary-compatible gluing, and an observer coarse-grains event density into effective 3D geometry and gravity-like propagation delay.
