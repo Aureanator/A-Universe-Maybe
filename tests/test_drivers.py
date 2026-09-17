@@ -18,13 +18,20 @@ from constraintnet.region import Region
 from constraintnet.seeds import make_tetrahedron_boundary
 
 KERNEL_MODULES = [
+    # pure relational mathematics: RNG must be unreachable here
     "complex.py",
     "groups.py",
     "holonomy.py",
     "gauge.py",
     "region.py",
     "resolutions.py",
+    "objects.py",
+    "interaction.py",
+    "observer.py",
 ]
+# PENDING MIGRATION (contain stochastic harnesses, to move behind drivers):
+# dynamics.py, persistence.py (run_persistence_experiment), seeds.py (randomize_labels),
+# moves.py (propose_edge_move takes rng).  DriverA's random in drivers.py is LEGAL.
 
 
 # ------------------------------------------------------------------ T2 kernel purity
