@@ -16,8 +16,15 @@ Three regimes are compared after forcing **one** illegal boundary relabelling (t
                the trial window at all.
 ``"metro"``    Metropolis acceptance on a gauge-invariant curvature action,
                E = Σ_faces w([Φ_f]),  w(class) = min word length over the class.
-               Violations accepted with probability e^{-β ΔE}: the finite-temperature
-               generalisation whose zero-temperature limit is the reject rule.
+               Violations accepted with probability e^{-β ΔE}.
+
+HONESTY NOTE ON "TEMPERATURE": β is NOT a physical temperature.  There is no bath, no
+kinetic energy, no derived fluctuation–dissipation theorem; β is the inverse width of
+the stationary distribution π ∝ e^{-βE} of the Markov chain *I chose*, over an action E
+*I chose* -- statistical "temperature" in the sense of a wider/narrower proposal
+weighting, doubly synthetic.  Likewise the uniform random proposals in ``"free"`` are a
+computational microscope over a deterministic object (the transition graph), not
+ontology: see :func:`exact_kick_proof` for the zero-probability formulation.
 
 Observables per trial (first restoration times; ``None`` = never inside the window):
 
@@ -69,7 +76,14 @@ from .region import Region
 from .seeds import kuhn_ball
 from .persistence import seed_charged_defect
 
-__all__ = ["curvature_energy", "force_kick", "KickTrial", "run_kick_trial", "run_kick_study"]
+__all__ = [
+    "curvature_energy",
+    "force_kick",
+    "KickTrial",
+    "run_kick_trial",
+    "run_kick_study",
+    "exact_kick_proof",
+]
 
 FaceKey = Tuple[int, int, int]
 
@@ -244,6 +258,171 @@ def run_kick_trial(
 
     trial.distinct_sectors_visited = len(sectors_seen)
     return trial
+
+
+# --------------------------------------------------------------------------- #
+# exact (zero-probability) version on a decidable instance
+# --------------------------------------------------------------------------- #
+def exact_kick_proof(group: str = "Z3") -> Dict:
+    r"""Exhaustive verification of the kick study's structural claims. No RNG anywhere.
+
+    State space: ALL labelings of $d(\Delta^3)$ (6 edges, $|G|^6$ states; 729 for Z₃).
+    Legal successors preserve the appearance signature; free successors are all single
+    generator relabellings.  Everything is BFS over the transition graph -- the
+    deterministic object the Markov chains were only sampling.
+
+    Proves exhaustively:
+
+    1. legal dynamics never crosses signature classes (superselection), and reports how
+       many connected components each signature class splits into;
+    2. from a kicked state, NO legal path reaches any state of the original signature
+       (the one-way door -- theorem, not sampling);
+    3. expected uniform-walk return time to the vacuum signature = |S|/N₀ exactly
+       (Kac), with N₀ counted, not estimated; and
+    4. the free-path graph distance back is tiny (1): reachability vs measure -- the
+       return *can* happen at once; that it *will* on observational times is a counting
+       fact, |G|^{E-V+1}, not a matter of luck.
+    """
+    from collections import deque
+    from .seeds import make_tetrahedron_boundary
+
+    cx = make_tetrahedron_boundary(group)
+    g = cx.group
+    edges = sorted(cx.edges())
+    faces = [tuple(sorted(f)) for f in cx.faces()]
+    region = Region(cx, [], "universe")
+    cycles = region.probe_cycles()
+    classes = list(g.conjugacy_classes())
+    ident = g.identity()
+
+    def class_id(value) -> int:
+        cls = frozenset(g.class_of(value))
+        for index, known in enumerate(classes):
+            if frozenset(known) == cls:
+                return index
+        raise AssertionError("class not found")
+
+    index = {edge: position for position, edge in enumerate(edges)}
+
+    def lab(state, u, v):
+        key = (u, v) if (u, v) in index else (v, u)
+        value = state[index[key]]
+        return value if (u, v) in index else g.inverse(value)
+
+    def signature(state):
+        face_cids = tuple(
+            (
+                face,
+                class_id(
+                    g.multiply(g.multiply(lab(state, face[0], face[1]), lab(state, face[1], face[2])), lab(state, face[2], face[0]))
+                ),
+            )
+            for face in faces
+        )
+        loop_cids = []
+        for loop in cycles:
+            product = ident
+            for a, b in zip(loop, loop[1:]):
+                product = g.multiply(product, lab(state, a, b))
+            loop_cids.append(class_id(product))
+        return (face_cids, tuple(loop_cids))
+
+    generators = list(g.move_generators())
+
+    def successors(state, legal_only: bool):
+        for position, edge in enumerate(edges):
+            old = state[position]
+            for gen in generators:
+                new_label = g.multiply(old, gen)
+                if new_label == old:
+                    continue
+                candidate = state[:position] + (new_label,) + state[position + 1 :]
+                if not legal_only or signature(candidate) == signature(state):
+                    yield candidate
+
+    # enumerate the full space |G|^6
+    from itertools import product as iproduct
+
+    states = list(iproduct(g.elements, repeat=len(edges)))
+    sig_of = {state: signature(state) for state in states}
+    vac_sig = sig_of[tuple(ident for _ in edges)]
+
+    # 1. legal components vs signature classes
+    visited: set = set()
+    components: List[set] = []
+    crossing = False
+    for start in states:
+        if start in visited:
+            continue
+        comp = {start}
+        queue = deque([start])
+        while queue:
+            current = queue.popleft()
+            for nxt in successors(current, legal_only=True):
+                if nxt not in comp:
+                    if sig_of[nxt] != sig_of[start]:
+                        crossing = True
+                    comp.add(nxt)
+                    queue.append(nxt)
+        visited |= comp
+        components.append(comp)
+
+    # 2. the kick: vacuum -> edge0 := first non-identity changing the signature
+    kicked = None
+    for candidate_element in g.elements:
+        if candidate_element == ident:
+            continue
+        trial_state = (candidate_element,) + tuple(ident for _ in edges[1:])
+        if sig_of[trial_state] != vac_sig:
+            kicked = trial_state
+            break
+    legal_reach: set = set()
+    queue = deque([kicked])
+    legal_reach.add(kicked)
+    while queue:
+        current = queue.popleft()
+        for nxt in successors(current, legal_only=True):
+            if nxt not in legal_reach:
+                legal_reach.add(nxt)
+                queue.append(nxt)
+    hits_vacuum_sector = any(sig_of[state] == vac_sig for state in legal_reach)
+
+    # 3. exact expected uniform-walk return (Kac): |S| / N0, N0 counted
+    n0 = sum(1 for state in states if sig_of[state] == vac_sig)
+
+    # 4. free-path graph distance kicked -> nearest vacuum-signature state
+    distance: Dict[tuple, int] = {kicked: 0}
+    queue = deque([kicked])
+    free_distance_back = None
+    while queue and free_distance_back is None:
+        current = queue.popleft()
+        for nxt in successors(current, legal_only=False):
+            if nxt in distance:
+                continue
+            distance[nxt] = distance[current] + 1
+            if sig_of[nxt] == vac_sig:
+                free_distance_back = distance[nxt]
+                break
+            queue.append(nxt)
+
+    signature_sizes: Dict = {}
+    for state in states:
+        key = sig_of[state]
+        signature_sizes[key] = signature_sizes.get(key, 0) + 1
+
+    return {
+        "group": g.name,
+        "n_states": len(states),
+        "n_signatures": len(signature_sizes),
+        "largest_signature_class": max(signature_sizes.values()),
+        "vacuum_sector_size_n0": n0,
+        "legal_components": len(components),
+        "legal_dynamics_crosses_signatures": crossing,
+        "kick_legal_reachable_states": len(legal_reach),
+        "kick_legally_reaches_vacuum_sector": hits_vacuum_sector,
+        "expected_return_uniform_walk": len(states) / n0,
+        "free_graph_distance_back": free_distance_back,
+    }
 
 
 def run_kick_study(steps: int = 3000, seeds=(1, 2), betas=(0.25, 1.0, 4.0)) -> List[KickTrial]:
