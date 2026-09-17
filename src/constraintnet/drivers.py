@@ -136,18 +136,18 @@ class DriverA(DynamicsDriver):
 # --------------------------------------------------------------------------- #
 # orbit helpers for triples of free labels (single-tetrahedron gauge slice)
 # --------------------------------------------------------------------------- #
-def conjugate_triple(group, triple, lam):
+def conjugate_triple(group, config, lam):
     """Global conjugation of a raw-slice config: a_i -> lam^-1 a_i lam."""
     inv = group.inverse(lam)
-    return tuple(group.multiply(group.multiply(inv, a), lam) for a in triple)
+    return tuple(group.multiply(group.multiply(inv, a), lam) for a in config)
 
 
-def canonical_orbit_of_triple(group, triple) -> Tuple:
+def canonical_orbit_of_triple(group, config) -> Tuple:
     """Canonical representative of the residual-conjugation orbit (observable only!)."""
-    return min(conjugate_triple(group, triple, lam) for lam in group.elements)
+    return min(conjugate_triple(group, config, lam) for lam in group.elements)
 
 
-def orbit_sigma_well_definedness(group, free_edges_count: int = 3, gen_index: int = 0):
+def orbit_sigma_well_definedness(group, free_edges_count: int = 3, gen_index: int = 0):  # orbits of G^k under global conjugation
     """Does 'multiply coordinate k by g, then re-canonicalize' descend to orbits?
 
     Returns a dict with the verdict.  Expected (and asserted by tests): NOT well
@@ -202,18 +202,46 @@ class DriverB(DynamicsDriver):
     * observables (orbit ids) are canonicalized projections only.
     """
 
-    def __init__(self, group, coordinate: int = 0, generator=None):
+    def __init__(self, group, k: int = 3, coordinate: int = 0, generator=None, mode: str = "churn"):
+        if not 0 <= coordinate < k:
+            raise ValueError("coordinate must index one of the k slice coordinates")
         self.group = group
+        self.k = k
         gens = list(group.move_generators())
         self.generator = generator if generator is not None else gens[0]
         self.coordinate = coordinate
+        self.mode = mode
         elements = list(group.elements)
-        self.states = tuple(itertools.product(elements, repeat=3))  # single tetra: k = 3
-        self._sigma_map = {s: self._apply(s, self.generator) for s in self.states}
+        self.states = tuple(itertools.product(elements, repeat=k))
+        if mode == "churn":
+            self._sigma_map = {s: self._apply(s, self.generator) for s in self.states}
+        elif mode == "odometer":
+            # scheduler choice, NOT physics: mixed-radix increment over element indices,
+            # ONE cycle of length |G|^k (equidistributed phases).  The clock spectrum
+            # depends on this choice -- D1 diagnostics probe exactly that dependence.
+            position = {element: i for i, element in enumerate(elements)}
+            n = len(elements)
+
+            def increment(state):
+                digits = [position[v] for v in state]
+                slot = 0
+                while True:
+                    digits[slot] += 1
+                    if digits[slot] < n:
+                        break
+                    digits[slot] = 0
+                    slot += 1
+                    if slot == k:
+                        break
+                return tuple(elements[d] for d in digits)
+
+            self._sigma_map = {s: increment(s) for s in self.states}
+        else:
+            raise ValueError(f"unknown mode {mode!r}")
         if len(set(self._sigma_map.values())) != len(self.states):
             raise AssertionError("sigma is not bijective on the raw gauge slice")
         self.inverse_generator = group.inverse(self.generator)
-        self._inverse_map = {s: self._apply(s, self.inverse_generator) for s in self.states}
+        self._inverse_map = {v: s for s, v in self._sigma_map.items()}
         self.cycles = self._decompose()
         self.state = self.states[0]
         self.history: List[Tuple] = []
