@@ -46,6 +46,7 @@ __all__ = [
     "DriverRecord",
     "DriverA",
     "DriverB",
+    "odometer_state",
     "conjugate_triple",
     "canonical_orbit_of_triple",
     "orbit_sigma_well_definedness",
@@ -136,6 +137,22 @@ class DriverA(DynamicsDriver):
 # --------------------------------------------------------------------------- #
 # orbit helpers for triples of free labels (single-tetrahedron gauge slice)
 # --------------------------------------------------------------------------- #
+def odometer_state(group, k: int, phase: int):
+    """O(1) mixed-radix decode of an odometer phase -> slice state.
+
+    Matches DriverB(mode="odometer"): slot 0 is the fastest digit.  Lets scans jump to
+    arbitrary phases without walking the cycle.
+    """
+    elements = list(group.elements)
+    n = len(elements)
+    digits = []
+    rem = int(phase)
+    for _ in range(k):
+        rem, d = divmod(rem, n)
+        digits.append(elements[d])
+    return tuple(digits)
+
+
 def conjugate_triple(group, config, lam):
     """Global conjugation of a raw-slice config: a_i -> lam^-1 a_i lam."""
     inv = group.inverse(lam)

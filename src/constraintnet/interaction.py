@@ -101,6 +101,92 @@ def meshable_phases(
     ]
 
 
+def phase_locked_outcomes(
+    group: Group,
+    cycle_a: Sequence[Sequence],
+    cycle_b: Sequence[Sequence],
+    shared_edges: Sequence[Tuple[EdgeKey, object]],
+    index_x: Dict[int, int],
+    index_y: Dict[int, int],
+    cap_K: int = 8,
+) -> Dict:
+    """Phase-locked interaction protocol (Section 4), evaluated over ALL phase pairs.
+
+    Probe sits fixed at b; the object free-runs its clock from phase i.  Outcomes:
+
+    * ``meshed``   joint non-empty on arrival (wait 0) -- actualize deterministically;
+    * ``deferred`` force_advance steps sigma w <= K times until the joint opens (wait w);
+    * ``scatter``  cap reached, joint never opened -- elastic bounce, no internal change.
+
+    Returns per-(phaseA, phaseB) fates, duty cycle (immediate-mesh fraction), and the
+    wait histogram -- the object's duty-cycle / absorption-cross-section profile.  This
+    is pure kernel: a deterministic scan, no RNG, no sampling.
+    """
+    la, lb = len(cycle_a), len(cycle_b)
+    fates: List[List[Tuple[str, Optional[int]]]] = []
+    waits: Dict[int, int] = {}
+    immediate = deferred = scatter = 0
+    for i in range(la):
+        row: List[Tuple[str, Optional[int]]] = []
+        for j in range(lb):
+            b = cycle_b[j]
+            outcome = None
+            for w in range(cap_K + 1):
+                a = cycle_a[(i + w) % la]
+                if compatible_on_shared_face(group, a, b, shared_edges, index_x, index_y):
+                    outcome = ("meshed" if w == 0 else "deferred", w)
+                    break
+            if outcome is None:
+                outcome = ("scatter", None)
+            row.append(outcome)
+            waits[outcome[1]] = waits.get(outcome[1], 0) + 1
+            immediate += outcome[0] == "meshed"
+            deferred += outcome[0] == "deferred"
+            scatter += outcome[0] == "scatter"
+        fates.append(row)
+    total = la * lb
+    return {
+        "fates": fates,
+        "duty_cycle": immediate / total,
+        "deferred_fraction": deferred / total,
+        "scatter_fraction": scatter / total,
+        "wait_histogram": waits,
+    }
+
+
+def stride_scan(
+    group: Group,
+    state_at,
+    cycle_length: int,
+    probe_states: Sequence[Sequence],
+    shared_edges: Sequence[Tuple[EdgeKey, object]],
+    index_x: Dict[int, int],
+    index_y: Dict[int, int],
+    periods: Sequence[int],
+    hits: int = 400,
+) -> Dict[int, float]:
+    """D1 aliasing scan: probe arrives every ``p`` ticks of the object clock.
+
+    The visited phase set is the coset <p> of length L/gcd(p,L); mesh rate therefore
+    depends on gcd(p, L), NOT on p -- resonances appear as structure against gcd, and
+    equidistributed drivers (full-cycle sweeps) hide it.  ``state_at(phase)`` must be
+    O(1) (e.g. odometer mixed-radix decoding).  Deterministic; no RNG.
+    """
+    out: Dict[int, float] = {}
+    for p in periods:
+        meshed = 0
+        for h in range(hits):
+            phase = (h * p) % cycle_length
+            a = state_at(phase)
+            if any(
+                compatible_on_shared_face(group, a, b, shared_edges, index_x, index_y)
+                for b in probe_states
+            ):
+                meshed += 1
+        out[p] = meshed / hits
+    return out
+
+
 def actualize_min_cost(
     group: Group,
     current: Sequence,
