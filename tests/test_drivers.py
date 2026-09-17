@@ -31,6 +31,7 @@ KERNEL_MODULES = [
     "reps.py",
     "fringe.py",
     "sectors.py",
+    "sheaf.py",
 ]
 # PENDING MIGRATION (contain stochastic harnesses, to move behind drivers):
 # dynamics.py, persistence.py (run_persistence_experiment), seeds.py (randomize_labels),
