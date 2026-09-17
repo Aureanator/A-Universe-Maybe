@@ -104,12 +104,14 @@ src/constraintnet/
   objects.py     curvature clusters as matter candidates
   observer.py    relational coarse-graining, mesh fineness n, propagation delay
   viz/           animated interactive viewer (projection only; matplotlib)
-tests/           the specification's strict tests + integrity guards (95 passing)
+tests/           the specification's strict tests + integrity guards (114 passing)
 examples/        one runnable script per milestone
 docs/            theory notes, conventions, architecture, findings
 docs/figures/    pachner_2_3.svg -- both triangulations of the bipyramid
 ```
 
-See [docs/SPEC.md](<docs/SPEC.md>) for the basement-to-capstone derivation,
-[docs/PHYSICS_NOTES.md](<docs/PHYSICS_NOTES.md>) for what we verified and where the
-specification had to be corrected, and [CHANGELOG.md](<CHANGELOG.md>) for progress.
+See [docs/SPEC.md](<docs/SPEC.md>) for the basement-to-capstone derivation and the
+spec-to-code map, [docs/PHYSICS_NOTES.md](<docs/PHYSICS_NOTES.md>) for what we verified
+and where the specification had to be corrected,
+[docs/CONVENTIONS.md](<docs/CONVENTIONS.md>) for orders/orientations/class indices, and
+[CHANGELOG.md](<CHANGELOG.md>) for progress.
