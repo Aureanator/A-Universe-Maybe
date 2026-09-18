@@ -34,7 +34,8 @@ from .region import Region, region_from_tets
 
 __all__ = [
     "RegionResolutionSpace", "interior_vertices", "enumerate_region_resolutions",
-    "region_resolution_space", "metric_ball_tets", "area_law_study",
+    "enumerate_region_resolutions_slice", "region_resolution_space",
+    "metric_ball_tets", "area_law_study",
 ]
 
 
@@ -116,8 +117,16 @@ def region_resolution_space(
     region: Region,
     flux_classes: Optional[Dict[Tuple[int, int, int], frozenset]] = None,
     max_internal_edges: int = 10,
+    method: str = "brute",
+    node_budget: int = 4_000_000,
 ) -> RegionResolutionSpace:
-    """|I(dR)| for region R with current boundary data; gauge quotient at interior vertices."""
+    """|I(dR)| for region R with current boundary data; gauge quotient at interior vertices.
+
+    ``method="brute"`` enumerates |G|^|E_int| (exact, small regions).
+    ``method="slice"`` runs the constraint-propagation solver: same solution set,
+    cost driven by class sizes and constraint density instead of |G|^k -- this is what
+    makes A4 core regions (14+ interior edges) tractable.
+    """
     group = cx.group
     stats = dict(
         n_boundary_faces=len(region.boundary_faces()),
@@ -125,7 +134,12 @@ def region_resolution_space(
         n_interior_edges=len(region.interior_edges()),
     )
     try:
-        solutions = enumerate_region_resolutions(cx, region, flux_classes, max_internal_edges)
+        if method == "slice":
+            solutions = enumerate_region_resolutions_slice(
+                cx, region, flux_classes, node_budget=node_budget
+            )
+        else:
+            solutions = enumerate_region_resolutions(cx, region, flux_classes, max_internal_edges)
     except ValueError as exc:
         return RegionResolutionSpace(0, 0, skipped_reason=str(exc), **stats)
 
@@ -155,6 +169,143 @@ def region_resolution_space(
     return RegionResolutionSpace(
         count_raw=len(solutions), count_physical=len(canonical), **stats
     )
+
+
+# --------------------------------------------------------------------------- slice solver
+
+def enumerate_region_resolutions_slice(
+    cx: SimplicialComplex,
+    region: Region,
+    flux_classes: Optional[Dict[Tuple[int, int, int], frozenset]] = None,
+    node_budget: int = 4_000_000,
+) -> List[Tuple]:
+    """Exact solution enumeration by MRV backtracking with class propagation.
+
+    Same conventions and same solution set as :func:`enumerate_region_resolutions`
+    (cross-validated in tests), but cost scales with conjugacy-class sizes and
+    constraint density rather than |G|^|E_int|: a face whose two other edges are
+    known restricts the third to at most |C| values, so curved faces of class size 4
+    branch by 4 (or collapse to 1 when flat), not by |G|=12.
+
+    Raises ValueError when ``node_budget`` is exhausted (reported as skipped upstream,
+    never silently truncated).
+    """
+    group = cx.group
+    int_edges = region.interior_edges()
+    k = len(int_edges)
+    pos: Dict[Tuple[int, int], int] = {e: idx for idx, e in enumerate(int_edges)}
+
+    identity_class = group.class_of(group.identity())
+    required: Dict[Tuple[int, int, int], object] = {}
+    for face in region.interior_faces():
+        key = tuple(sorted(face))
+        required[key] = (
+            identity_class if flux_classes is None else flux_classes.get(key, identity_class)
+        )
+
+    snapshot = cx.labels_snapshot()
+
+    def const_term(u: int, v: int):
+        e = (min(u, v), max(u, v))
+        value = snapshot[e]
+        return value if u < v else group.inverse(value)
+
+    # constraints: (terms, cls) with terms = [(edge_pos | None, sign, constant)] in face order
+    constraints: List[Tuple[List[Tuple[Optional[int], int, object]], frozenset]] = []
+    for face in region.interior_faces():
+        cls = required[tuple(sorted(face))]
+        if cls is None:
+            continue  # unconstrained face imposes nothing
+        i, j, kk = sorted(face)
+        terms = []
+        for (u, v) in ((i, j), (j, kk), (kk, i)):
+            e = (min(u, v), max(u, v))
+            if e in pos:
+                p = pos[e]
+                sign = 1 if u < v else -1
+                terms.append((p, sign, None))
+            else:
+                terms.append((None, 1, const_term(u, v)))
+        constraints.append((terms, cls))
+
+    all_elements = tuple(group.elements)
+    full_domain = frozenset(all_elements)
+    assigned: List[Optional[object]] = [None] * k
+    domains: List[frozenset] = [full_domain] * k
+    solutions: List[Tuple] = []
+    nodes = 0
+
+    def term_value(term, index: int):
+        p, sign, const = term
+        value = const if p is None else assigned[index]
+        if value is None:
+            raise AssertionError("term_value on unassigned variable")
+        return value if sign == 1 else group.inverse(value)
+
+    def propagate() -> bool:
+        """Forward-check: restrict domains from constraints; False on wipeout."""
+        changed = True
+        while changed:
+            changed = False
+            for terms, cls in constraints:
+                unknowns = [idx for idx, (p, _, _) in enumerate(terms) if p is not None and assigned[p] is None]
+                if len(unknowns) == 0:
+                    prod = group.identity()
+                    for term in terms:
+                        prod = group.multiply(prod, term_value(term, term[0]))
+                    if prod not in cls:
+                        return False
+                elif len(unknowns) == 1:
+                    m = unknowns[0]
+                    p_m, sign_m, _ = terms[m]
+                    left = group.identity()
+                    for term in terms[:m]:
+                        if term[0] is None or assigned[term[0]] is not None:
+                            left = group.multiply(left, term_value(term, term[0]))
+                        else:  # earlier unknown -- cannot isolate; skip (MRV will assign it)
+                            break
+                    else:
+                        right = group.identity()
+                        for term in terms[m + 1:]:
+                            if term[0] is None or assigned[term[0]] is not None:
+                                right = group.multiply(right, term_value(term, term[0]))
+                            else:
+                                break
+                        else:
+                            # left * f(x) * right ∈ cls with f = id or inverse  =>  allowed set
+                            allowed = set()
+                            for c in cls:
+                                target = group.multiply(group.inverse(left), group.multiply(c, group.inverse(right)))
+                                allowed.add(target if sign_m == 1 else group.inverse(target))
+                            new_domain = domains[p_m] & frozenset(allowed)
+                            if not new_domain:
+                                return False
+                            if new_domain != domains[p_m]:
+                                domains[p_m] = new_domain
+                                changed = True
+        return True
+
+    def backtrack():
+        nonlocal nodes
+        nodes += 1
+        if nodes > node_budget:
+            raise ValueError(f"slice solver exceeded node budget {node_budget}")
+        unassigned = [p for p in range(k) if assigned[p] is None]
+        if not unassigned:
+            solutions.append(tuple(assigned))
+            return
+        p = min(unassigned, key=lambda q: (len(domains[q]), q))  # MRV, deterministic tie-break
+        for value in sorted(domains[p], key=repr):
+            assigned[p] = value
+            saved = list(domains)
+            if propagate():
+                backtrack()
+            domains[:] = saved
+            assigned[p] = None
+
+    if propagate():
+        backtrack()
+    return solutions
 
 
 # --------------------------------------------------------------------------- region families

@@ -87,3 +87,78 @@ def test_area_law_study_smoke_z3():
     assert names == {"flat", "defect", "free"}
     measured = [r for r in rows if not r["skipped"]]
     assert measured                                # at least the small radii complete
+
+
+# ---------------------------------------------------------- slice solver (E029 method)
+
+def test_slice_matches_brute_on_cone_controls(cone_a4):
+    from constraintnet.entropy import (enumerate_region_resolutions,
+                                       enumerate_region_resolutions_slice)
+    cx, apex, boundary = cone_a4
+    region = _as_region(cx)
+    brute = enumerate_region_resolutions(cx, region)
+    slice_ = enumerate_region_resolutions_slice(cx, region)
+    assert sorted(map(repr, brute)) == sorted(map(repr, slice_))
+    group = cx.group
+    order_two = next(c for c in group.conjugacy_classes() if len(c) == 3)
+    flux = {tuple(sorted((apex, i, j))): order_two
+            for i, j in itertools.combinations(boundary, 2)}
+    brute_f = enumerate_region_resolutions(cx, region, flux)
+    slice_f = enumerate_region_resolutions_slice(cx, region, flux)
+    assert sorted(map(repr, brute_f)) == sorted(map(repr, slice_f))
+    assert len(slice_f) == 72                      # raw; physical 6 via quotient below
+
+
+def test_slice_matches_brute_random_regions():
+    """Deterministic pseudo-random regions/declarations: the two solvers agree exactly.
+
+    Test-side seeded RNG explores CONFIGURATION space only; KERNEL stays RNG-free.
+    Covers both groups, unconstrained (None) classes, curved and flat declarations.
+    """
+    import random
+    from constraintnet.seeds import (make_single_tetrahedron, make_bipyramid,
+                                     make_cone_over_tetrahedron)
+    from constraintnet.entropy import (enumerate_region_resolutions,
+                                       enumerate_region_resolutions_slice)
+    rng = random.Random(20260918)
+    compared = 0
+
+    def build(fn, gname):
+        out = fn(gname)
+        return out[0] if isinstance(out, tuple) else out
+
+    for builder in (make_single_tetrahedron, make_bipyramid,
+                    make_cone_over_tetrahedron, lambda G: kuhn_ball(G, n=1)):
+        for gname in ("Z3", "A4"):
+            for _ in range(8):
+                cx = build(builder, gname)
+                group = cx.group
+                classes = list(group.conjugacy_classes())
+                for e in sorted(cx.edges()):
+                    cx.set_label(e[0], e[1], rng.choice(list(group.elements)))
+                tets = list(cx.tetrahedra())
+                if not tets:
+                    continue
+                region = region_from_tets(cx, rng.sample(tets, rng.randint(1, min(len(tets), 3))))
+                if len(region.interior_edges()) > 6 or not region.interior_faces():
+                    continue
+                fc = {}
+                for f in region.interior_faces():
+                    key = tuple(sorted(f))
+                    cls = rng.choice(classes + [classes[0], classes[0]])   # bias flat
+                    fc[key] = frozenset(cls) if rng.random() < 0.8 else None
+                brute = enumerate_region_resolutions(cx, region, fc, max_internal_edges=10)
+                slice_ = enumerate_region_resolutions_slice(cx, region, fc)
+                assert sorted(map(repr, brute)) == sorted(map(repr, slice_)), \
+                    f"solver disagreement on {gname} region"
+                compared += 1
+    assert compared >= 20                          # the loop really exercised both solvers
+
+
+def test_slice_budget_exhaustion_is_reported_not_truncated():
+    cx = kuhn_ball("A4", n=2)
+    group = cx.group
+    region = region_from_tets(cx, [t for t in cx.tetrahedra() if 13 in t], name="star13")
+    space = region_resolution_space(cx, region, method="slice", node_budget=5)
+    assert space.skipped_reason is not None and "budget" in space.skipped_reason
+    assert space.count_physical == 0               # nothing silently half-counted
