@@ -30,10 +30,11 @@ from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 
-from .category import AnyonType, double_sectors
+from .category import AnyonType, double_sectors, fusion_coefficients, s_matrix
 from .groups import AlternatingGroup4, Group
 
-__all__ = ["DModule", "module_for_sector", "vacuum_braiding_eigenvalues", "fermion_report"]
+__all__ = ["DModule", "module_for_sector", "vacuum_braiding_eigenvalues", "fermion_report",
+         "pair_channel_report", "channel_intertwiners", "double_braid_matrix"]
 
 CPLX = complex
 
@@ -53,11 +54,16 @@ class DModule:
         return len(self.fluxes) * self.dim_rho
 
 
-def _transversal(g: Group, rep, class_elems: List):
-    """Canonical t_x for each x in cl(rep): first sorted group element with x = t rep t^-1."""
+def _transversal(g: Group, rep, class_elems: List, scan_order=None):
+    """Canonical t_x for each x in cl(rep): first group element (scan order) with x = t rep t^-1.
+
+    ``scan_order`` lets tests build ALTERNATE transversals (e.g. reversed scan) to verify
+    that physical eigenvalues are independent of the transversal choice (E028 caveat iii).
+    """
+    order = tuple(g.elements) if scan_order is None else tuple(scan_order)
     t_of = {}
     for x in class_elems:
-        for t in g.elements:                     # deterministic order
+        for t in order:
             if g.multiply(g.multiply(t, rep), g.inverse(t)) == x:
                 t_of[x] = t
                 break
@@ -66,12 +72,13 @@ def _transversal(g: Group, rep, class_elems: List):
     return t_of
 
 
-def module_for_sector(sector: AnyonType, group: Optional[Group] = None) -> DModule:
+def module_for_sector(sector: AnyonType, group: Optional[Group] = None,
+                      transversal_scan=None) -> DModule:
     """Build M([g], rho) with explicit actions; verifies representation axioms."""
     g = group or AlternatingGroup4()
     rep = sector.representative
     class_elems = sorted(sector.flux_class)
-    t_of = _transversal(g, rep, class_elems)
+    t_of = _transversal(g, rep, class_elems, scan_order=transversal_scan)
     cent = sector.centralizer
 
     # rho on centralizer elements as matrices: reconstruct from character values is not enough;
@@ -258,3 +265,116 @@ def fermion_report():
     lines = [f"{r['sector']:>22}  theta={r['theta']:.3f}  R={r['R_vacuum_channel']:+d}  {r['verdict']}"
              for r in rows]
     return "\n".join(lines) if lines else "no vacuum channels found"
+
+
+# --------------------------------------------------------- pair channels: monodromy vs category
+
+def _braiding_matrix(mod1: DModule, mod2: DModule) -> np.ndarray:
+    """Matrix of the braiding c_{1,2}: M1 (x) M2 -> M2 (x) M1 = flip o Rhat (row-major vec)."""
+    n1, n2 = mod1.dimension, mod2.dimension
+    grade1 = [x for x in mod1.fluxes for _ in range(mod1.dim_rho)]
+    C = np.zeros((n2 * n1, n1 * n2), dtype=complex)
+    for a in range(n1):
+        Kx = mod2.k_actions[grade1[a]]           # degree of first factor acts on second
+        for j in range(n2):
+            for jp in range(n2):
+                if Kx[jp, j] != 0:
+                    C[jp * n1 + a, a * n2 + j] = Kx[jp, j]
+    return C
+
+
+def double_braid_matrix(modA: DModule, modB: DModule) -> np.ndarray:
+    """Monodromy M = c_{B,A} o c_{A,B}: endomorphism of M_A (x) M_B.
+
+    Physically this is the full loop-through-loop braid: what an interferometer measures
+    when one flux string passes through the spanning surface of the other.
+    """
+    C_ab = _braiding_matrix(modA, modB)
+    C_ba = _braiding_matrix(modB, modA)
+    return C_ba @ C_ab
+
+
+def channel_intertwiners(modA: DModule, modB: DModule, mod_c: DModule) -> List[np.ndarray]:
+    """Basis of Hom_D(M_c, M_A (x) M_B) as matrices T (nAB x nc).
+
+    Intertwining the FULL double means commuting with BOTH structures:
+      * k-equivariance:   A_k T == T C_k            (group part), and
+      * grade preservation: p_h^{A(x)B} T == T p_h^C for every h  (algebra part).
+    Dropping the grade constraints inflates Hom (spurious grade-mixing maps; Schur fails)
+    -- caught by the Verlinde cross-check below.
+
+    Column count is the concrete fusion multiplicity; tests cross-check it against the
+    Verlinde coefficients computed independently from the S-matrix.
+    """
+    g = AlternatingGroup4()
+    n1, n2 = modA.dimension, modB.dimension
+    na, nc = n1 * n2, mod_c.dimension
+    grade_a = [x for x in modA.fluxes for _ in range(modA.dim_rho)]
+    grade_b = [y for y in modB.fluxes for _ in range(modB.dim_rho)]
+    grade_ab = [g.multiply(x, y) for x in grade_a for y in grade_b]     # row-major (i*n2+j)
+    grade_c = [x for x in mod_c.fluxes for _ in range(mod_c.dim_rho)]
+    rows = []
+    # ROW-MAJOR vec of T (na x nc):  vec(A T) = (A kron I_nc) v ;  vec(T C) = (I_na kron C^T) v
+    for k in modA.k_actions:
+        A_k = np.kron(modA.k_actions[k], modB.k_actions[k])
+        C_k = mod_c.k_actions[k]
+        rows.append(np.kron(A_k, np.eye(nc)) - np.kron(np.eye(na), C_k.T))
+    for h in g.elements:
+        pa = np.diag([1.0 + 0j if x == h else 0j for x in grade_ab])
+        pc = np.diag([1.0 + 0j if x == h else 0j for x in grade_c])
+        rows.append(np.kron(pa, np.eye(nc)) - np.kron(np.eye(na), pc.T))
+    M = np.vstack(rows)
+    _, s, vh = np.linalg.svd(M)
+    tol = 1e-8 * max(1.0, s[0] if len(s) else 1.0)
+    rank = int(sum(1 for x in s if x > tol))
+    return [vh[i].conj().reshape(na, nc) for i in range(rank, len(vh))]
+
+
+def pair_channel_report(group: Optional[Group] = None):
+    """Measure monodromy per fusion channel concretely; verify against theta-ratio prediction.
+
+    For every sector pair (a, b) and every simple c appearing in a (x) b:
+      * concrete Hom dimension == Verlinde N^c_{ab}  (category layer cross-check),
+      * the double braid acts on the channel as the scalar theta_c / (theta_a theta_b)
+        (ribbon prediction from modular data, measured from the universal R-matrix).
+
+    Returns list of row dicts; also asserts internally -- failures raise, never whisper.
+    """
+    g = group or AlternatingGroup4()
+    sectors = double_sectors(g)
+    S = s_matrix(sectors, g)
+    N = fusion_coefficients(S)
+
+    def theta(s):
+        return s.character[s.representative] / s.dimension
+
+    mods = [module_for_sector(s, g) for s in sectors]
+    rows = []
+    max_err = 0.0
+    channels_checked = 0
+    for ia, a in enumerate(sectors):
+        for ib, b in enumerate(sectors):
+            if not any(N[ic][ia][ib] for ic in range(len(sectors))):
+                continue
+            D = double_braid_matrix(mods[ia], mods[ib])
+            for ic, c in enumerate(sectors):
+                mult = N[ic][ia][ib]
+                if mult == 0:
+                    continue
+                Ts = channel_intertwiners(mods[ia], mods[ib], mods[ic])
+                assert len(Ts) == mult, (
+                    f"Hom dimension {len(Ts)} != Verlinde N[{ic}][{ia}][{ib}] = {mult}")
+                predicted = theta(c) / (theta(a) * theta(b))
+                for T in Ts:
+                    DT = D @ T                     # acts on each column (channel vector)
+                    lam = np.vdot(T, DT) / np.vdot(T, T)
+                    err_col = np.max(np.abs(DT - lam * T))
+                    assert err_col < 1e-8, f"monodromy not scalar on channel {c}"
+                    err = abs(lam - predicted)
+                    max_err = max(max_err, err)
+                    channels_checked += 1
+                    rows.append({"a": str(a), "b": str(b), "c": str(c), "multiplicity": mult,
+                                 "monodromy_measured": lam, "theta_ratio_predicted": predicted,
+                                 "abs_error": float(err)})
+    assert max_err < 1e-8, f"monodromy disagrees with theta-ratio prediction: {max_err}"
+    return rows, channels_checked, max_err

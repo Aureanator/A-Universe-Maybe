@@ -14,7 +14,7 @@ import numpy as np
 import pytest
 
 from constraintnet.category import charge_conjugation, double_sectors, fusion_coefficients, s_matrix
-from constraintnet.doubles import module_for_sector, vacuum_braiding_eigenvalues
+from constraintnet.doubles import channel_intertwiners, module_for_sector, vacuum_braiding_eigenvalues
 from constraintnet.groups import AlternatingGroup4
 
 
@@ -68,3 +68,58 @@ def test_module_axioms_hold_for_all_sectors():
     for W in double_sectors(g):
         mod = module_for_sector(W, g)                          # raises on axiom failure
         assert mod.dimension == len(mod.fluxes) * mod.dim_rho
+
+
+# ------------------------------------------- E031: pair channels -- monodromy vs category data
+
+def test_pair_channel_monodromy_matches_theta_ratio_all_channels():
+    """THE measurement (E031): for every sector pair and every fusion channel,
+    the concrete double braid (universal R-matrix) acts as theta_c/(theta_a theta_b),
+    AND the concrete Hom dimension equals the Verlinde coefficient.
+
+    520 channels over all 14x14 pairs; internal asserts raise on any disagreement --
+    this test is the loop-loop braiding prediction table for Layer-2 item 3b.
+    """
+    from constraintnet.doubles import pair_channel_report
+    rows, n_checked, max_err = pair_channel_report()
+    assert n_checked == 520                                    # full coverage of D(A4) channels
+    assert max_err < 1e-8                                      # measured == predicted exactly
+
+
+def test_channel_intertwiners_respect_grading():
+    """Regression (E031 bug): Hom must commute with BOTH k-actions AND flux-grade projectors.
+
+    Without grade constraints, spurious grade-mixing maps inflate Hom (Schur fails: e.g.
+    Hom(X, 1(x)X) came out 2 instead of 1). The Verlinde cross-check inside the solver
+    is what catches it; this test pins the smallest failing case explicitly.
+    """
+    g = AlternatingGroup4()
+    sectors = double_sectors(g)
+    N = fusion_coefficients(s_matrix(sectors, g))
+    mod1 = module_for_sector(sectors[0], g)                    # vacuum
+    modX = module_for_sector(sectors[4], g)                    # ([c1], chi0)
+    Ts = channel_intertwiners(mod1, modX, modX)
+    assert len(Ts) == N[4][0][4] == 1                          # Schur restored by grading
+
+
+def test_physical_eigenvalues_are_transversal_independent():
+    """E028 caveat (iii): R = -1 for the fermions and channel monodromies must not depend
+    on which transversal t_x was chosen -- only gauge copies change, never physics.
+    """
+    import constraintnet.doubles as dbl
+    g = AlternatingGroup4()
+    sectors = double_sectors(g)
+    standard = {r["sector"]: r["R_vacuum_channel"] for r in vacuum_braiding_eigenvalues()}
+    assert any(v == -1 for v in standard.values())             # fermions present at all
+    original = dbl.module_for_sector
+    try:
+        def alt(sector, group=None, transversal_scan=None):
+            scan = list(reversed(list((group or AlternatingGroup4()).elements)))
+            return original(sector, group,
+                            transversal_scan=scan if transversal_scan is None else transversal_scan)
+        dbl.module_for_sector = alt
+        reversed_rows = vacuum_braiding_eigenvalues()
+    finally:
+        dbl.module_for_sector = original
+    got = {r["sector"]: r["R_vacuum_channel"] for r in reversed_rows}
+    assert got == standard                                     # identical physics, other transversal

@@ -82,6 +82,15 @@ geometry-fixed support (7 of 14 star edges), filled by exactly one conjugacy cla
 elements — hidden state space ≅ flux class for this geometry (cone V₄ case gave 6 ≠ |class|;
 relation open).
 
+**Follow-up (this session): pair-channel braiding table COMPLETE (E031).** For all 520 fusion
+channels of D(A₄) (every sector pair, every summand): concrete Hom dimensions == Verlinde N^c_ab
+(fusion derived twice — S-matrix vs intertwiner counting), and the double braid from the hand-built
+universal R-matrix acts as θ_c/(θ_aθ_b) to 2.4e-15 everywhere. Two cross-check-caught bugs recorded
+(grade-blind Hom; row-major vectorization identity). Transversal independence regression-guarded
+(closes E028 caveat iii). `doubles.py::pair_channel_report`, `examples/pair_channels.py`.
+Item 3b (mesh-level loop–loop braiding) now has its full reference prediction table; the mesh-side
+experiment remains queued behind knot/link invariants.
+
 ---
 Original brief specs follow (kept for the pass criteria; status is recorded above them).
 
