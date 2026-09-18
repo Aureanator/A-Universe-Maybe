@@ -34,7 +34,8 @@ from .category import AnyonType, double_sectors, fusion_coefficients, s_matrix
 from .groups import AlternatingGroup4, Group
 
 __all__ = ["DModule", "module_for_sector", "vacuum_braiding_eigenvalues", "fermion_report",
-         "pair_channel_report", "channel_intertwiners", "double_braid_matrix"]
+         "pair_channel_report", "channel_intertwiners", "double_braid_matrix",
+         "pair_state", "envariance_check"]
 
 CPLX = complex
 
@@ -328,6 +329,97 @@ def channel_intertwiners(modA: DModule, modB: DModule, mod_c: DModule) -> List[n
     tol = 1e-8 * max(1.0, s[0] if len(s) else 1.0)
     rank = int(sum(1 for x in s if x > tol))
     return [vh[i].conj().reshape(na, nc) for i in range(rank, len(vh))]
+
+
+# ------------------------------------------------- envariance prerequisite: glued pair states
+
+def pair_state(sector_index: int, group: Optional[Group] = None):
+    """Glued flux-antiflux pair state |Psi> in M_a (x) M_anti(a): the vacuum channel.
+
+    The unique (multiplicity-one -- guaranteed for a x anti-a) invariant line of
+    Hom_D(1, M_a (x) M_anti(a)) is the categorical Bell pair: created by a string that
+    nucleates flux g next to flux g^-1 with conjugate charges, total charge vacuum.
+
+    Returns dict with the normalized state vector psi (length dA*dB), reduced density
+    matrix rho_A, effective Schmidt rank, and entanglement entropy log(rank) when flat.
+    """
+    g = group or AlternatingGroup4()
+    sectors = double_sectors(g)
+    a = sectors[sector_index]
+    from .category import charge_conjugation
+    ibar = charge_conjugation(sectors, g)[sector_index]
+    modA = module_for_sector(a, g)
+    modB = module_for_sector(sectors[ibar], g)
+    vacuum_mod = module_for_sector(sectors[0], g)
+    Ts = channel_intertwiners(modA, modB, vacuum_mod)
+    assert len(Ts) == 1, f"vacuum channel of a x anti-a must be multiplicity one, got {len(Ts)}"
+    T = Ts[0]                                        # (dA*dB) x 1
+    psi = T.reshape(-1)
+    psi = psi / np.linalg.norm(psi)
+    dA, dB = modA.dimension, modB.dimension
+    Psi = psi.reshape(dA, dB)
+    rho_A = Psi @ Psi.conj().T
+    # Schmidt structure
+    sv = np.linalg.svd(Psi, compute_uv=False)
+    sv2 = sv ** 2
+    sv2 = sv2[sv2 > 1e-12]
+    flat = np.allclose(sv2, sv2[0], atol=1e-9)       # maximally entangled on its support?
+    rank = len(sv2)
+    entropy = float(-np.sum(sv2 * np.log(sv2)))
+    return {"sector": str(a), "antiparticle": str(sectors[ibar]), "psi": psi,
+            "rho_A": rho_A, "schmidt_squared": sv2, "maximally_entangled_on_support": bool(flat),
+            "effective_rank": int(rank), "entropy_log": entropy,
+            "support_projector_proportional": bool(np.allclose(
+                rho_A, (1.0 / rank) * np.eye(dA)[:rank, :rank], atol=1e-9)) or
+            bool(np.allclose(rho_A @ rho_A, rho_A) and abs(np.trace(rho_A) - 1.0) < 1e-9)}
+
+
+def envariance_check(sector_index: int, group: Optional[Group] = None):
+    """Zurek envariance of the glued pair state: swaps of equal-amplitude Schmidt partners
+    on side A are undone by an operator on side B ALONE.
+
+    Concretely, for each transposition tau of computational basis vectors inside the support
+    (equal Schmidt weights -- verified flat beforehand), solve (tau_A tensor I)|Psi> =
+    (I tensor V_B)|Psi> for V_B and check V_B is unitary on the support. This is the swap
+    symmetry the envariance route to the Born rule needs; the measure itself remains a
+    declared postulate (Memo patch P5) -- this constructor supplies the structure, not the step.
+    """
+    info = pair_state(sector_index, group)
+    if not info["maximally_entangled_on_support"]:
+        return {"sector": info["sector"], "envariant": False,
+                "reason": "Schmidt weights not flat -- equal-amplitude swaps undefined"}
+    g = group or AlternatingGroup4()
+    sectors = double_sectors(g)
+    from .category import charge_conjugation
+    ibar = charge_conjugation(sectors, group)[sector_index]
+    modA = module_for_sector(sectors[sector_index], g)
+    modB = module_for_sector(sectors[ibar], g)
+    dA, dB = modA.dimension, modB.dimension
+    psi = info["psi"]
+    rank = info["effective_rank"]
+    results = []
+    for i in range(rank):
+        for j in range(i + 1, rank):
+            tau = np.eye(dA, dtype=complex)
+            tau[i, i] = tau[j, j] = 0.0
+            tau[i, j], tau[j, i] = 1.0, 1.0          # swap basis vectors i <-> j on A
+            lhs = np.kron(tau, np.eye(dB)) @ psi     # (tau_A tensor I)|Psi>
+            # solve for V_B: (I tensor V_B)|Psi> = lhs with row-major Psi (dA x dB):
+            # (I tensor V) acts as Psi -> Psi V^T ; need Psi V^T = Lmat
+            Lmat = lhs.reshape(dA, dB)
+            Pm = psi.reshape(dA, dB)
+            # least squares for V^T: Pm X = Lmat  (X = V^T), restricted to support rows/cols
+            X, residuals, rcond, _ = np.linalg.lstsq(Pm[:rank], Lmat[:rank], rcond=None)
+            Vt = X
+            V = Vt.T
+            residual = np.max(np.abs(Pm @ Vt - Lmat))
+            unitary_support = np.allclose(V.conj().T @ V, np.eye(rank), atol=1e-8) \
+                or np.allclose(V @ V.conj().T, np.eye(V.shape[0]), atol=1e-8)
+            results.append({"swap": (i, j), "residual": float(residual),
+                            "V_unitary_on_support": bool(unitary_support)})
+    ok = all(r["residual"] < 1e-8 and r["V_unitary_on_support"] for r in results)
+    return {"sector": info["sector"], "envariant": bool(ok), "swaps": results,
+            "effective_rank": rank}
 
 
 def pair_channel_report(group: Optional[Group] = None):

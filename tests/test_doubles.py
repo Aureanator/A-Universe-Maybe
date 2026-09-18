@@ -102,6 +102,49 @@ def test_channel_intertwiners_respect_grading():
     assert len(Ts) == N[4][0][4] == 1                          # Schur restored by grading
 
 
+# ------------------------------------- envariance prerequisite: glued flux-antiflux pairs
+
+def test_pair_states_maximally_entangled_with_vacuum_total_charge():
+    """Layer-2 item 4 constructor: a x anti-a vacuum channel = categorical Bell pair.
+
+    Multiplicity one (asserted inside), maximally entangled on its support, reduced state
+    of either side proportional to the support projector -- for pure charges AND flux loops,
+    including the fermion W10 x W10.
+    """
+    from constraintnet.doubles import pair_state
+    for idx in (0, 3, 4, 6, 9, 12, 13):
+        ps = pair_state(idx)
+        assert ps["maximally_entangled_on_support"], ps["sector"]
+        assert abs(ps["entropy_log"] - np.log(ps["effective_rank"])) < 1e-9
+        rho = ps["rho_A"]
+        assert abs(np.trace(rho) - 1.0) < 1e-9                       # normalized
+        # maximally mixed on support: rho = P/rank  <=>  rho^2 = rho/rank
+        assert np.allclose(rho @ rho * ps["effective_rank"], rho, atol=1e-9)
+    # ranks are the module dimensions: charges give dim(rho), flux loops |class| x dim
+    from constraintnet.doubles import pair_state as pstate
+    assert pstate(3)["effective_rank"] == 3      # charge 3
+    assert pstate(4)["effective_rank"] == 4      # order-3 flux loop
+    assert pstate(12)["effective_rank"] == 3     # fermion dyon (V4 flux)
+
+
+def test_envariance_swaps_undone_by_environment_alone():
+    """Every equal-amplitude Schmidt swap on side A is reproduced by a unitary on B alone.
+
+    This supplies exactly the swap symmetry Zurek's envariance route to the Born rule needs
+    (Layer-2 item 4). It does NOT derive the measure -- that remains one declared postulate
+    (Memo patch P5); this test pins the STRUCTURE, so any future measurement argument can be
+    checked against real pair states rather than hand-waving.
+    """
+    from constraintnet.doubles import envariance_check
+    for idx in (3, 4, 6, 12):
+        ec = envariance_check(idx)
+        assert ec["envariant"], f"{ec}"
+        n_swaps = ec["effective_rank"] * (ec["effective_rank"] - 1) // 2
+        assert len(ec["swaps"]) == n_swaps
+        for r in ec["swaps"]:
+            assert r["residual"] < 1e-8 and r["V_unitary_on_support"]
+
+
 def test_physical_eigenvalues_are_transversal_independent():
     """E028 caveat (iii): R = -1 for the fermions and channel monodromies must not depend
     on which transversal t_x was chosen -- only gauge copies change, never physics.
