@@ -178,3 +178,29 @@ Two measurements on balls enclosing the seeded loops:
 
 **Synthesis.** Hidden-resolution entropy (E022's defect-carried entropy) does **not** live in the field around a flux loop — it lives in the **core**: E010's |I| = 6 arises precisely at the cone apex where internal edges close the curved boundary from *inside*. A loop plus its core structure is matter; a loop alone is a rigid string with measurable charge and zero entropy. This sharpens open problem 3: the defect-ensemble entropy experiment must target **core-containing regions** (all edges of a deep vertex interior), which requires gauge-slice enumeration to beat brute force at A₄ sizes — concrete plan recorded in the queue.
 *Evidence:* `tests/test_flux_loops.py::test_boundary_memory_no_vacuum_filling`, `::test_enclosed_loop_rigid_under_class_declaration`; measurement log 2026-09-18 (Kuhn n=1 r=1; Kuhn n=2 r=2, |dR| = 24, E_int = 2, declared = 4).
+
+---
+
+## Part IV (continued) — the fermion verdict
+
+### E028. Two dyons of D(A₄) are TRUE FERMIONS: exchange sign R = −1 computed from the universal R-matrix (VERIFIED; open problem 2 closed)
+
+**Method, per the E018 convention-discipline.** No remembered F-symbol formulas. Simple D(A₄)-modules built concretely: basis {(x, v)} over the flux class with transversal-corrected action k·(x,v) = (kxk⁻¹, ρ(t⁻¹kt)v), representation law and unitarity asserted at construction for all 14 sectors. The universal R-matrix of the double, 𝓡 = Σ_h e_h ⊗ h, acts concretely; braiding c = flip ∘ R̂. Vacuum lines of W⊗W sought in the **grade-e subspace** (pairs whose grade product is e — k-invariant because products conjugate), found by nullspace, with monodromy c² = +1 asserted on every line before reading any sign.
+
+**Methodological catch (recorded because it bit first):** solving k-invariance on the full tensor space and filtering grades per-vector afterwards is **wrong** — SVD bases mix grades arbitrarily; it silently dropped W₀₀'s vacuum line while admitting suspicious survivors. Project-first, then solve. The corrected computation finds exactly the six vacuum channels predicted by Verlinde (N[0][i][i] = 1 for 1, 3, W₀₀…W₁₁), sector-by-sector agreement between two independent machineries.
+
+**Result.**
+
+| sector | θ | R (vacuum channel) | verdict |
+| --- | --- | --- | --- |
+| ([c₃], W₁₀) | −1 | **−1** | **true fermion (odd exchange)** |
+| ([c₃], W₁₁) | −1 | **−1** | **true fermion (odd exchange)** |
+| ([c₃], W₀₀), ([c₃], W₀₁) | +1 | +1 | bosonic |
+| ([c₀], 1), ([c₀], 3) | +1 | +1 | bosonic (Tannakian consistency of Rep(A₄) ⊂ D(A₄)) |
+
+Across every channel found, **sign(R) = sign(θ)** — twist and statistics agree throughout this model; now a test-guarded theorem of the framework, not an assumption imported from continuum spin-statistics.
+
+**Physical reading.** Fermions in Event-Constraint Dynamics are neither postulated nor bolted on: they are the self-dual V₄-flux dyons whose centralizer character is odd on its own flux. "Statistics is a charge evaluated on its own flux" (E020 preview) is now exact — θ and R both compute to −1 for the same two sectors, from combinatorial data alone.
+
+**Standing caveats.** (i) Dimensional audit unchanged: in 3+1D these are fermionic **loops**; point-fermion-in-bulk still requires a twist/spin-structure analysis (H³(A₄,U(1)) menu). (ii) The R computation covers vacuum channels of W⊗W; general pair-channel R/F data remain to be tabulated for full braiding calculations (loop–loop braiding, item 3b). (iii) Transversal-independence of the eigenvalues is expected (gauge) and worth an explicit regression test.
+*Evidence:* `doubles.py` (`vacuum_braiding_eigenvalues`, construction asserts), `tests/test_doubles.py` (5 tests incl. Verlinde cross-match and sign agreement); commit 7cd41e4.
