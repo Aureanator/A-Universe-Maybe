@@ -41,12 +41,16 @@ def build_driver(args: argparse.Namespace):
             interior_moves=args.interior_moves,
             signal_every=max(0, args.signal_every),
         )
+    if args.demo == "core":
+        from .core_driver import CoreDriver
+
+        return CoreDriver(dwell=max(1, args.dwell), seed=args.seed)
     raise SystemExit(f"unknown demo {args.demo!r}")
 
 
 def main(argv: Optional[list] = None) -> int:
     parser = argparse.ArgumentParser(description="Animated viewer for the constraint-network simulator")
-    parser.add_argument("--demo", choices=("tetra", "orbit", "lattice"), default="lattice")
+    parser.add_argument("--demo", choices=("tetra", "orbit", "lattice", "core"), default="lattice")
     parser.add_argument("--group", default="A4", help="A4 (default), Z3, Z2, ...")
     parser.add_argument("--n", type=int, default=2, help="lattice resolution for the lattice demo")
     parser.add_argument("--seed", type=int, default=0)

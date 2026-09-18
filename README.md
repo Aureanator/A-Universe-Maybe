@@ -39,6 +39,7 @@ PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo lattice --gr
 PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo tetra    # d(Delta^3), conservation bites
 PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo orbit    # tour the 178 gauge classes
 PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo lattice --gif out/buzz.gif --frames 200
+PYTHONPATH=src .venv/Scripts/python.exe -m constraintnet.viz --demo core     # E030: four hidden interiors, one exterior (animated)
 ```
 
 Edges coloured by constraint conjugacy class, triangles by curvature, **green ▲ accepted /
@@ -172,7 +173,8 @@ examples/        one runnable script per milestone
 docs/            RESEARCH_DIARY (E001-E025, the scientific record) · SPEC · PHYSICS_NOTES
                  R_TRACK · LAYER2 · MEMO_PATCHES · CONVENTIONS · figures/
 reference/       external audit material (opus_audit/) — not part of the package
-out/             regenerable GIFs: lattice_conservation.gif, orbit_tour_178.gif, ...
+out/             regenerable GIFs: lattice_conservation.gif, orbit_tour_178.gif,
+                 core_entropy_states.gif (E030: |I|=4 interior cycling, exterior FIXED), ...
 ```
 
 ## Versioning

@@ -91,6 +91,22 @@ class TestFrames:
             seen.add(tuple(map(repr, driver.orbits[driver.index])))
         assert len(seen) > 1
 
+    def test_core_driver_cycles_four_states_one_exterior(self):
+        """E030 animation: four hidden interiors, boundary appearance FIXED throughout."""
+        from constraintnet.viz.core_driver import CoreDriver
+
+        driver = CoreDriver(dwell=2)
+        assert len(driver.states) == 4 and driver.raw_count == 48
+        hashes = set()
+        states_seen = set()
+        for _ in range(16):                      # two full cycles of the four states
+            frame = driver.frame()
+            hashes.add(frame.counters["boundary appearance"])
+            states_seen.add(frame.counters["current state"])
+            driver.advance()
+        assert hashes == {"FIXED"}               # exterior never changes -- the E030 claim
+        assert len(states_seen) == 4             # all four interiors animated
+
 
 class TestRendererHeadless:
     def test_viewer_draws_and_saves(self, tmp_path):
