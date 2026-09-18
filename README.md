@@ -135,11 +135,23 @@ Keys: `space` play/pause, `right` step, `e/f/o/d` layers, `r` rotate, `s` PNG, `
 
 ## Known issues / queued
 
+0. **External referee audit (frontier-model synthesis) answered item-by-item** in
+   [docs/CRITIQUE_TRIAGE.md](<docs/CRITIQUE_TRIAGE.md>): 4 bugs/hazards fixed (Pachner 2→3 was
+   broken at HEAD; gauge-variant proposals 29.4% equivariance failure -> class-closed arm;
+   basis-dependent appearance -> `gauge_invariant_state`; population-blind density),
+   2 negative results logged (Driver A event density is label-blind — gravity claim parked;
+   d_s=3 unreachable at toy scale even for Z³ — matched-control statement pinned), pre-registration
+   live in [docs/PREDICTIONS.md](<docs/PREDICTIONS.md>). Literature positioning:
+   [docs/RELATED_WORK.md](<docs/RELATED_WORK.md>).
 1. Viz: accepted-move green ▲ effectively invisible in lattice GIFs (flash dies in ~1 frame;
    interior markers occluded). Planned: proposed→accepted/rejected lifecycle animation.
 2. RNG migration out of `dynamics/persistence/seeds/moves` to widen the kernel purity fence.
 3. Physics M5–M8 and R4–R5 as per Status table; Layer-2 brief items tracked in
    [docs/R_TRACK.md](<docs/R_TRACK.md>) queue + commit messages until a dedicated doc lands.
+4. Triage standing queue: softened-predicate confinement pilot (P7, first real physics target),
+   independent persistence criteria, weighted dynamics + conserved ledger, dynamic delay
+   (gate for gravity language), internal-observer agreement test, S₃/Q₈/D₄ universality matrix,
+   heat-kernel d_s extrapolation, arrow-of-time open problem (named).
 
 ## Layout
 
@@ -151,7 +163,8 @@ src/constraintnet/
   region.py      regions, signed boundaries, gauge-invariant Appearance (the sector label)
   gauge.py       gauge transforms, spanning-tree fixing, moduli enumeration, little groups
   seeds.py       d(Delta^3), bipyramid (both Pachner sides), Kuhn balls, stacked balls
-  moves.py       elementary relabellings + Pachner 2<->3 with legality checks
+  moves.py       elementary relabellings + Pachner 2<->3 (fixed + round-trip tested) + class-closed proposals
+  spectral.py    exact diffusion return probabilities -> matched-control spectral dimension
   dynamics.py    the main loop: propose -> test boundary -> commit or revert
   states.py      canonical state ids and transition graphs over physical states
   resolutions.py cone over d(Delta^3): hidden internal states, |I(B)| flux census

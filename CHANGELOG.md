@@ -3,6 +3,34 @@
 All notable changes to `constraintnet`. Versions follow the milestone numbering of the
 programming specification; `[Unreleased]` holds work in progress.
 
+## [Unreleased] — Referee-audit response (wound-licking arc)
+
+### Fixed
+- **Pachner 2→3 built degenerate 3-vertex replacement tuples** and corrupted the complex when
+  crashing mid-mutation; corrected to new-edge × face-edge tetrahedra + transactional guard;
+  `tests/test_pachner.py` (12 tests) closes a coverage hole (the move had never been tested).
+- **Observer density was population-blind**: shells of unequal size confounded activity with
+  cell count; all fineness/delay readouts now use per-vertex density with baseline
+  events/vertices.
+### Added
+- `moves.class_closed_generators` + `propose_edge_move(class_closed=True)`: conjugation-closed
+  proposals make the Markov chain descend to gauge orbits (29.4% equivariance violations → 0).
+- `Region.gauge_invariant_state()`: raw based-loop holonomies, basepoint-transported and
+  simultaneous-conjugacy canonicalized — exact gauge invariant, strictly finer than appearance.
+- `resolutions.pooled_resolution_orbits` + convention warning (rigid vs pooled |I|; referee's
+  exact 6→2 reproduced on the 5-flux-face declaration).
+- `spectral.py`: exact diffusion return probabilities and spectral-dimension estimates
+  (kernel-pure, no RNG); matched-control finding: Kuhn diffusion ≍ cubic-lattice box.
+### Documentation
+- `docs/PREDICTIONS.md` (pre-registration log, live), `docs/CRITIQUE_TRIAGE.md` (all 17 audit
+  items answered with evidence), `docs/RELATED_WORK.md` (literature map + do-not-contradict
+  checklist); diary E033–E035.
+### Negative results logged (no claim deleted silently — claims parked with reasons)
+- Driver A event density is label-blind (vacuum = charged = neutral profiles bit-for-bit);
+  M7 gravity content parked pending curvature-coupled event placement.
+- Absolute d_s → 3 unmeasurable at toy scale (Z³ control reads ~2 too); matched-consistency
+  statement pinned instead.
+
 ## [0.1.0] — Milestone 1 (finite tetrahedral seed)
 
 ### Added
