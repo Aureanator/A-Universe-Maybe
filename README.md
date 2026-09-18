@@ -167,7 +167,8 @@ src/constraintnet/
   viz/           animated interactive viewer (projection only; matplotlib)
 tests/           spec tests + integrity guards + Layer-2 pass criteria (197 passing)
 examples/        one runnable script per milestone
-docs/            SPEC · PHYSICS_NOTES · R_TRACK · LAYER2 · MEMO_PATCHES · CONVENTIONS · figures/
+docs/            RESEARCH_DIARY (E001-E025, the scientific record) · SPEC · PHYSICS_NOTES
+                 R_TRACK · LAYER2 · MEMO_PATCHES · CONVENTIONS · figures/
 reference/       external audit material (opus_audit/) — not part of the package
 out/             regenerable GIFs: lattice_conservation.gif, orbit_tour_178.gif, ...
 ```
