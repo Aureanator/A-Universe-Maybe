@@ -252,6 +252,79 @@ class Region:
             report[str(list(loop))] = _describe(group, value)
         return report
 
+    # ------------------------------------------------- gauge-invariant relational state
+    def _surface_paths(self, root: int) -> Dict[int, Tuple[int, ...]]:
+        """BFS vertex paths from ``root`` along the observable surface 1-skeleton."""
+        from collections import deque
+
+        adj: Dict[int, set] = {}
+        for (u, v) in self.surface_edges():
+            adj.setdefault(u, set()).add(v)
+            adj.setdefault(v, set()).add(u)
+        paths = {root: (root,)}
+        q = deque([root])
+        while q:
+            u = q.popleft()
+            for w in sorted(adj.get(u, ())):
+                if w not in paths:
+                    paths[w] = paths[u] + (w,)
+                    q.append(w)
+        return paths
+
+    def gauge_invariant_state(self) -> Tuple[int, ...]:
+        r"""Relational state up to gauge: RAW holonomies based at one point, canonicalized
+        under simultaneous conjugation.
+
+        ``appearance()`` stores per-loop CONJUGACY CLASSES.  That is lossy (178 physical
+        tetrahedron classes collapse to 82 class-tuples) and its cycle part is basis-dependent
+        (referee audit P2: 17% of verdicts flip across spanning-tree roots).  Here we instead:
+
+        1. transport every observed closed-loop holonomy (face curvatures + probe cycles) to a
+           single basepoint along fixed BFS surface paths, so vertex gauge acts on ALL of them
+           by the SAME conjugation ``W -> lambda_root^-1 W lambda_root``;
+        2. take the lexicographic minimum over that simultaneous conjugation.
+
+        Two configurations related by any vertex gauge transformation get IDENTICAL canonical
+        forms (exact, tested) and no relational data is discarded.  The loop SET still depends
+        on region construction and BFS paths -- compare only between runs sharing one region;
+        what is guaranteed is gauge invariance and completeness of the retained data.
+        """
+        from .holonomy import path_holonomy
+
+        group = self.cx.group
+        elements = list(group.elements)
+        index = {e: i for i, e in enumerate(elements)}
+        surface = self.surface_edges()
+        if not surface:
+            return ()
+        root = min(v for e in surface for v in e)
+        paths = self._surface_paths(root)
+
+        raw = []
+        def based(loop, start):
+            w = loop_holonomy(self.cx, tuple(loop))
+            if start == root:
+                return w
+            t_in = path_holonomy(self.cx, paths[start])   # root -> start
+            t_out = group.inverse(t_in)                   # start -> root: same edges reversed
+            return group.multiply(group.multiply(t_in, w), t_out)
+
+        for face in sorted(self.observed_faces()):
+            a, b, c = face
+            if a in paths:
+                raw.append(based((a, b, c), a))
+        for loop in self.probe_cycles():
+            s = int(loop[0])
+            if s in paths:
+                raw.append(based(tuple(loop), s))
+
+        best = None
+        for mu in elements:
+            cand = tuple(index[group.conjugate(mu, w)] for w in raw)
+            if best is None or cand < best:
+                best = cand
+        return best
+
     def __repr__(self) -> str:  # pragma: no cover - cosmetic
         return (
             f"<Region '{self.name}' tets={len(self.tets)} V={len(self.vertices())} "

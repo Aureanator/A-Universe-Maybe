@@ -51,14 +51,34 @@ def test_dense_cells_cost_more_to_traverse():
     assert delay_dense > delay_vacuum, "signals must cost more where the mesh is denser"
 
 
-def test_baseline_is_the_uniform_expectation():
+def test_baseline_is_the_population_aware_uniform_expectation():
     cx = kuhn_ball("Z3", n=1)
     observer = Observer(cx, centre=min(cx.vertices()))
     observer.record_vertices(sorted(observer.cells["shell1"]), weight=4.0)
-    assert observer.rho0 == pytest.approx(observer.total_events / len(observer.cells))
+    total_vertices = sum(len(m) for m in observer.cells.values())
+    assert observer.rho0 == pytest.approx(observer.total_events / total_vertices)
     # concentration means some cells sit above the baseline and the rest below it
     values = [n for _, n in observer.density_field().values()]
     assert max(values) > 1.0 >= min(values)
+
+
+def test_equal_activity_reads_equal_density_regardless_of_cell_size():
+    """Referee audit item 13 regression: raw per-cell counts confound activity with shell
+    population; the fineness factor must not."""
+    cx = kuhn_ball("Z3", n=2)
+    observer = Observer(cx, centre=min(cx.vertices()))
+    small = min(observer.cells, key=lambda c: len(observer.cells[c]))
+    large = max(observer.cells, key=lambda c: len(observer.cells[c]))
+    assert len(observer.cells[small]) < len(observer.cells[large])
+    # identical activity PER VERTEX in both cells
+    for v in observer.cells[small]:
+        observer.record_vertices([v], weight=2.0)
+    for v in observer.cells[large]:
+        observer.record_vertices([v], weight=2.0)
+    assert observer.n_factor(small) == pytest.approx(observer.n_factor(large))
+    # while the raw counts differ by population -- that was the artifact
+    ratio = observer.rho(large) / observer.rho(small)
+    assert ratio == pytest.approx(len(observer.cells[large]) / len(observer.cells[small]))
 
 
 def test_delay_report_is_human_readable():
