@@ -71,6 +71,17 @@ fillings rel boundary unique); **S_free = E_int·log 3 = 0, 2.197, 7.690** vs |�
 defect-carried; horizon entropy must come from defect resolution degeneracy. The defect
 ensemble awaits seeded flux loops (strings.py constructions) — honest dependency, recorded.
 
+**Follow-up (this session): CORE ENTROPY MEASURED — prediction confirmed.** E027 sharpened
+the question to core-containing regions; the slice solver (`enumerate_region_resolutions_slice`,
+E029: MRV backtracking with conjugacy-class propagation, exact vs brute force on cone controls
++ 24 random regions) makes Kuhn n=2 A₄ cores tractable (12¹⁴ → ~0.1 s). Measurement (E030,
+`examples/core_entropy.py`, `tests/test_core_entropy.py`): order-3 core star(13) raw |Sol| = 48
+→ **|I| = 4**; field balls rigid |I| = 1; full ball (E_int 26) identical — entropy localizes at
+the core; involution control raw = |G| pure gauge; Z₃ twin |I| = 1. State structure: one
+geometry-fixed support (7 of 14 star edges), filled by exactly one conjugacy class's four
+elements — hidden state space ≅ flux class for this geometry (cone V₄ case gave 6 ≠ |class|;
+relation open).
+
 ---
 Original brief specs follow (kept for the pass criteria; status is recorded above them).
 

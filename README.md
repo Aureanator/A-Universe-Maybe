@@ -26,6 +26,7 @@ PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 197 tests, ~
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 1728 -> 178
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone3.py    # hidden internal states |I(B)|
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone4.py    # persistent defect + confinement
+PYTHONPATH=src .venv/Scripts/python.exe examples/core_entropy.py  # E030: core entropy |I|=4, exact at 12^14 scale
 ```
 
 ## Watch it buzz
@@ -70,7 +71,7 @@ Keys: `space` play/pause, `right` step, `e/f/o/d` layers, `r` rotate, `s` PNG, `
 | Physics spec M1–M8 | **M1** 1728→178 ✅ · **M2** boundary-preserving dynamics ✅ · **M3** cone hidden states \|I(B)\| ✅ · **M4** persistent defect, confinement exact, spec Test 5 ✅ | M5 motion cost · M6 interaction gluing (kernel exists; sim-level runs pending) · M7 observer density → delay · M8 full 3D viz |
 | R-track (kernel/drivers) | **R1** driver interface + both drivers ✅ · **R2/R3-lite** fiber products + phase-sweep harness ✅ · **R3** phase-locked absorption invariants ✅ | R4 D1–D4 diagnostics report · R5 Bell/CHSH glued-pair referee experiment |
 | Extras shipped along the way | reps.py (A₄ irreps/fusion/singlets) · fringe.py (discrete Aharonov–Bohm) · sectors.py (centralizer charge-knot sectors) · sheaf.py (gluing-defect theorem ≙ Bianchi) · backlog assertion suite ✅ | — |
-| Layer 2 (category/knots/measurement) | **D(A₄) modular data complete** — 14 sectors, S/T/Verlinde, every brief pass criterion green incl. (ST)³=(τ/D)S² with τ/D=1; class algebra exact (C₂²=3C₁+2C₂, C₃·C₄=4C₁+4C₂). **Flux-string detector v1** + GF(3) solvability (Bianchi as rank theorem: isolated flux unrealizable). **Entropy S(R)=log\|I(∂R)\|**: vacuum S≡0 at every radius; free baseline volume-like. **Memo patches P1–P10** (`docs/MEMO_PATCHES.md`) | knot/link invariants (PL embedding recipe specced); interferometry; loop–loop braiding vs R-eigenvalues; defect-ensemble entropy (needs seeded loops); pair-state constructor; move-set reachability assertions |
+| Layer 2 (category/knots/measurement) | **D(A₄) modular data complete** — 14 sectors, S/T/Verlinde, every brief pass criterion green incl. (ST)³=(τ/D)S² with τ/D=1; class algebra exact (C₂²=3C₁+2C₂, C₃·C₄=4C₁+4C₂). **Fermion verdict: W₁₀,W₁₁ true fermions** (R = −1 from the universal R-matrix, `doubles.py`). **Flux-string detector v1** + GF(3) solvability (Bianchi as rank theorem: isolated flux unrealizable). **Entropy S(R)=log\|I(∂R)\|**: vacuum S≡0 at every radius; free baseline volume-like; gauge-slice CSP solver makes A₄ cores exact (12¹⁴ → 0.1 s); **CORE ENTROPY MEASURED: \|I(core)\|=4, field rigid, entropy localizes at core**. Reachability assertions codified (27/1728/64). **Memo patches P1–P10** (`docs/MEMO_PATCHES.md`) | knot/link invariants (PL embedding recipe specced); interferometry; loop–loop braiding vs R-eigenvalues; pair-state constructor; general pair-channel R/F tabulation |
 
 ## Verified findings (measured or derived; tests are the authoritative record)
 
@@ -92,6 +93,7 @@ Keys: `space` play/pause, `right` step, `e/f/o/d` layers, `r` rotate, `s` PNG, `
 | Neutral interior lump | trivial external signature → *virtual fluctuation, not matter* (definition: matter := nontrivial conserved external residue) |
 | Interior heating | unconditionally-accepted interior moves diffuse curvature (curved faces 3→72); localization anchored by frozen core only — honest limitation |
 | Cone v∗∂Δ³ hidden interiors | flat B, no flux → \|I\|=1 light-like; curved B → \|I\|=0 (one vertex can't cap curvature); uniform Klein-four flux → **\|I\|=6**; vacuum is the *unique* light-like pattern out of 103 realisable; Z₃ control: all 27 patterns \|I\|=1 — **hidden state requires non-abelian-ness** |
+| **Core entropy (E030)** | Kuhn n=2 A₄ order-3 core: raw 48 → **\|I\|=4 = \|flux class\|**; field balls rigid \|I\|=1; full ball (E_int 26) same 4 — **entropy localizes at the core**; involution control raw=\|G\| pure gauge; Z₃ twin \|I\|=1. Four states = one support (7/14 edges, geometry-fixed) filled by one of four class elements |
 | Kick study (branch `bionic/kick-test`) | reject-rule can never restore a violated constraint (one-way door, exhaustive BFS proof on Z₃ tetra, 729 states); genuine restoration only for energy-raising kick + low Metropolis β. "Temperature" there = statistical parameter over a chosen action, **not physical T** |
 
 ### Quantum-structural
@@ -165,7 +167,7 @@ src/constraintnet/
   entropy.py     holographic S(R)=log|I(dR)| for general regions; area-law study
   observer.py    relational coarse-graining, mesh fineness n, propagation delay
   viz/           animated interactive viewer (projection only; matplotlib)
-tests/           spec tests + integrity guards + Layer-2 pass criteria (197 passing)
+tests/           spec tests + integrity guards + Layer-2 pass criteria (222 passing)
 examples/        one runnable script per milestone
 docs/            RESEARCH_DIARY (E001-E025, the scientific record) · SPEC · PHYSICS_NOTES
                  R_TRACK · LAYER2 · MEMO_PATCHES · CONVENTIONS · figures/

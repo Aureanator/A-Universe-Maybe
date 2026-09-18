@@ -204,3 +204,38 @@ Across every channel found, **sign(R) = sign(θ)** — twist and statistics agre
 
 **Standing caveats.** (i) Dimensional audit unchanged: in 3+1D these are fermionic **loops**; point-fermion-in-bulk still requires a twist/spin-structure analysis (H³(A₄,U(1)) menu). (ii) The R computation covers vacuum channels of W⊗W; general pair-channel R/F data remain to be tabulated for full braiding calculations (loop–loop braiding, item 3b). (iii) Transversal-independence of the eigenvalues is expected (gauge) and worth an explicit regression test.
 *Evidence:* `doubles.py` (`vacuum_braiding_eigenvalues`, construction asserts), `tests/test_doubles.py` (5 tests incl. Verlinde cross-match and sign agreement); commit 7cd41e4.
+
+---
+
+## Part V (continued) — the core entropy measurement
+
+### E029. Gauge-slice CSP solver: exact |I(∂R)| at A₄ core scale, cross-validated against brute force (VERIFIED; method)
+
+**Method.** The brute-force resolution enumerator costs |G|^|E_int| — dead on arrival at the one interesting geometry (Kuhn n=2 central star: 14 interior edges → 12¹⁴ ≈ 1.3e15). Replacement: treat fixed-boundary filling as a constraint-satisfaction problem — variables = interior edge labels, one constraint per interior face (holonomy ∈ declared class) — solved by MRV backtracking with forward checking. The physics that makes it fast: **conjugacy-class constraints propagate.** A face whose other two edges are known restricts the third label to at most |C| values (4 for order-3 flux in A₄, 1 for flat), so branching follows class size and constraint density, not |G|. Deterministic tie-breaks; budget exhaustion raises and is reported as *skipped*, never silently truncated.
+
+**Validation.** Exact solution-set equality against brute force on: the cone vacuum (|I|=1) and uniform V₄-flux controls (72 raw / 6 physical), plus 24 pseudo-random regions across Z₃/A₄ × {tetra, bipyramid, cone, Kuhn-1} with mixed declared/flat/unconstrained face classes. Zero mismatches.
+
+**Methodological note (the one bug worth recording).** A first characterization pass assumed the free gauge acts as uniform left multiplication x → λ⁻¹x on all interior edges. It does not: for an edge stored as (w, v*) with w < v*, the free endpoint is the *target* and the action is x → xλ. Mixed orientation. The library quotient (`gauge_image`) was always right; the hand-rolled probe was wrong and produced 12 "states" instead of 4. Lesson generalizes E018: verify the group action you think you're quotienting by, in code, before interpreting orbit counts.
+*Evidence:* `entropy.py::enumerate_region_resolutions_slice`; `tests/test_entropy.py::test_slice_matches_brute_on_cone_controls`, `::test_slice_matches_brute_random_regions`, `::test_slice_budget_exhaustion_is_reported_not_truncated`; commit 4f918a5.
+
+### E030. CORE ENTROPY CONFIRMED: hidden-resolution entropy localizes at the defect core; |I(core)| = 4 = |flux class| (MEASURED; E027 prediction resolved)
+
+**Setup.** Kuhn n=2, G = A₄, order-3 star seed at central vertex 13 — the only fully interior vertex of its closed star (E_int = 14, V_free = {13}; all 14 interior edges pass through it, so the gauge action is free and |I| = |Sol|/12 exactly). Curvature classes declared on interior faces from the seeded configuration: 12 curved ([c₃]), 24 flat; boundary faces all flat (the enclosed string is visible only in cycle charges — E026 geometry).
+
+**Result.**
+
+| region | E_int | raw \|Sol\| | physical \|I\| |
+| --- | --- | --- | --- |
+| core star(13) | 14 | 48 | **4** (S = log 4 ≈ 1.386) |
+| field balls r=1,2 (core excluded) | 0, 2 | 1 | 1 — rigid, E027 reproduced |
+| full ball | 26 | 48 | **4** — identical to core |
+| involution seed control (flat) | 14 | 12 = \|G\| | 1 — flat star connections are pure gauge |
+| Z₃ twin of the same core | 14 | 3 | 1 — abelian cores carry no hidden state |
+
+**Three claims, each measured.** (1) **E027's prediction confirmed:** hidden-resolution entropy lives in the core, not the field — the field around a flux loop is rigid (|I|=1), the core carrying it has |I| = 4. (2) **Localization:** enlarging from the core star to the full ball (14 → 26 interior edges) adds *zero* entropy — every added edge is determined by propagation from the core; S(full ball) = S(core). The entropy of this piece of matter is exactly its core's, a sharp form of "matter is a topological knot with finite internal state." (3) **Non-abelian necessity survives generalization:** the Z₃ twin core has |I| = 1 — E010's "hidden state requires non-abelian-ness" holds at cores, not just cones.
+
+**State structure.** All four physical states share ONE support: exactly 7 of the 14 star edges are active (non-identity), 7 identity — a polarization fixed by the link geometry, not by the state. States differ only in *which* order-3 element fills the support, and those four elements form exactly one conjugacy class. For this seed geometry the core's hidden internal state space is in bijection with its own flux class: **the knot's hidden degrees of freedom are the possible orientations of its charge.** (Cone counterpoint: uniform V₄-flux gave |I| = 6 ≠ |class| — the bijection is data for this geometry, not a theorem; relation to seed order and link structure open.)
+
+**Physical reading.** A flux string with this core presents identical external data in all four internal states (same boundary appearance by construction) — an outside observer cannot distinguish them, yet they are not gauge copies. This is the framework's *hidden matter state* made concrete at ball scale: a conserved external residue plus a finite, exactly-counted interior multiplicity that no measurement through the boundary can resolve. The E010 cone count was the seed; this is the same phenomenon in a genuine 3-ball with a degree-14 core.
+*Evidence:* `tests/test_core_entropy.py` (8 tests: core |I|=4, field rigidity, localization at 26 edges, involution & Z₃ controls, state/support/class structure); `examples/core_entropy.py`; commit (this session).
+
