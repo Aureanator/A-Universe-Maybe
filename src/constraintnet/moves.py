@@ -216,7 +216,17 @@ def apply_pachner_2_3(
 
     label = cx.group.identity() if new_edge_label is None else new_edge_label
     a, b, c = face
-    added = (tuple(sorted((u, w, a))), tuple(sorted((u, w, b))), tuple(sorted((u, w, c))))
+    # The three replacement tetrahedra are (new edge) x (edge of the shared face):
+    # {u,w,a,b}, {u,w,b,c}, {u,w,c,a}.  (Historical bug, referee audit: this line once
+    # built the 3-vertex tuples (u,w,a),(u,w,b),(u,w,c), crashing mid-mutation.)
+    added = (
+        tuple(sorted((u, w, a, b))),
+        tuple(sorted((u, w, b, c))),
+        tuple(sorted((u, w, c, a))),
+    )
+    for tet in added:  # transactional guard: validate BEFORE any mutation
+        if len(set(tet)) != 4:
+            raise MoveError(f"replacement tetrahedron {tet} is degenerate; complex untouched")
     removed = (tuple(sorted(tets[0])), tuple(sorted(tets[1])))
 
     for tet in removed:
