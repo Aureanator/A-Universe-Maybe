@@ -160,3 +160,21 @@ Sorting simplex vertices discards which side is "out"; interior faces then fail 
 | S_flat ≡ 0 | vacuum entropy zero ×3 radii | commit 168f46d (entropy) |
 
 *Diary opened 2026-09-17/18 by the resident agent at Satish Mallya's request, entries E001–E025 distilled from commits d122273 → d2f72df and session measurement logs. Append new entries at the end; never edit old ones except to append a dated correction.*
+
+---
+
+## Part V (continued) — seeded flux loops: existence, boundary memory, and where entropy lives
+
+### E026. Closed flux loops exist end-to-end in A₄ Kuhn balls; seed existence is order-parity-selected (MEASURED, exhaustive over seeds)
+Labeling every edge incident to a vertex v by a fixed order-3 element of A₄ produces curvature supported on a **closed dual loop** — detected as kind="loop" (enter-and-exit at every touched tetrahedron) by the E019-era detector: 3-face loops at 6 of 8 vertices in Kuhn n=1, and a **12-face loop around the central vertex of Kuhn n=2**. The same construction with an involution seed is flat everywhere (t² = e annihilates both orientation-parity cases), while Z₃ seeds of value 1 survive only where traversal signs agree. Existence of seeded loops therefore depends on the **order of the seed element relative to face-orientation parity** — a selection rule discovered during construction, not assumed.
+*Evidence:* `tests/test_flux_loops.py` (all three facts asserted); seeding helper `seed_star_loop`; detector from E019.
+
+### E027. Boundary memory and rigidity: enclosed flux forbids vacuum filling, but carries zero hidden entropy — matter-entropy is CORE-localized (MEASURED; positive + negative result)
+Two measurements on balls enclosing the seeded loops:
+
+**(a) Boundary memory (positive).** Any ball whose boundary encloses loop flux admits **no flat-interior resolution: |I| = 0**. The boundary appearance cannot be vacuum — charge is measurable from outside purely as a filling obstruction. This generalizes the cone theorem E010 ("curved boundaries cannot be capped by one vertex") to arbitrary enclosing regions, and strengthens E006/E007 conservation claims: the exterior does not merely see a conserved class, it sees an **unsatisfiability** of the vacuum hypothesis.
+
+**(b) Rigidity (negative result with teeth).** Declaring the loop's curvature by full conjugacy class (size 4 — maximal non-abelian slack) on interior faces yields a **unique filling: |I| = 1**, even when the region has genuine interior edges. Conjugacy-class ambiguity is over-constrained by flatness-plus-closure: representative choices that survive are pinned by the surrounding flat sea.
+
+**Synthesis.** Hidden-resolution entropy (E022's defect-carried entropy) does **not** live in the field around a flux loop — it lives in the **core**: E010's |I| = 6 arises precisely at the cone apex where internal edges close the curved boundary from *inside*. A loop plus its core structure is matter; a loop alone is a rigid string with measurable charge and zero entropy. This sharpens open problem 3: the defect-ensemble entropy experiment must target **core-containing regions** (all edges of a deep vertex interior), which requires gauge-slice enumeration to beat brute force at A₄ sizes — concrete plan recorded in the queue.
+*Evidence:* `tests/test_flux_loops.py::test_boundary_memory_no_vacuum_filling`, `::test_enclosed_loop_rigid_under_class_declaration`; measurement log 2026-09-18 (Kuhn n=1 r=1; Kuhn n=2 r=2, |dR| = 24, E_int = 2, declared = 4).
