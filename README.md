@@ -22,7 +22,7 @@ Coordinates exist only in the visualization layer. They never determine dynamics
 ```bash
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install pytest matplotlib numpy   # Windows
-PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 173 tests, ~25 s
+PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 197 tests, ~30 s
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 1728 -> 178
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone3.py    # hidden internal states |I(B)|
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone4.py    # persistent defect + confinement
@@ -70,7 +70,7 @@ Keys: `space` play/pause, `right` step, `e/f/o/d` layers, `r` rotate, `s` PNG, `
 | Physics spec M1–M8 | **M1** 1728→178 ✅ · **M2** boundary-preserving dynamics ✅ · **M3** cone hidden states \|I(B)\| ✅ · **M4** persistent defect, confinement exact, spec Test 5 ✅ | M5 motion cost · M6 interaction gluing (kernel exists; sim-level runs pending) · M7 observer density → delay · M8 full 3D viz |
 | R-track (kernel/drivers) | **R1** driver interface + both drivers ✅ · **R2/R3-lite** fiber products + phase-sweep harness ✅ · **R3** phase-locked absorption invariants ✅ | R4 D1–D4 diagnostics report · R5 Bell/CHSH glued-pair referee experiment |
 | Extras shipped along the way | reps.py (A₄ irreps/fusion/singlets) · fringe.py (discrete Aharonov–Bohm) · sectors.py (centralizer charge-knot sectors) · sheaf.py (gluing-defect theorem ≙ Bianchi) · backlog assertion suite ✅ | — |
-| Layer 2 (next major track) | — | D(A₄) modular data (S, T, Verlinde); flux-**string** detection + knot/link invariants; interferometric sector ID; loop–loop braiding vs category R-eigenvalues; entropy S(R)=log\|I(∂R)\| area-law test; measurement pair-state constructor |
+| Layer 2 (category/knots/measurement) | **D(A₄) modular data complete** — 14 sectors, S/T/Verlinde, every brief pass criterion green incl. (ST)³=(τ/D)S² with τ/D=1; class algebra exact (C₂²=3C₁+2C₂, C₃·C₄=4C₁+4C₂). **Flux-string detector v1** + GF(3) solvability (Bianchi as rank theorem: isolated flux unrealizable). **Entropy S(R)=log\|I(∂R)\|**: vacuum S≡0 at every radius; free baseline volume-like. **Memo patches P1–P10** (`docs/MEMO_PATCHES.md`) | knot/link invariants (PL embedding recipe specced); interferometry; loop–loop braiding vs R-eigenvalues; defect-ensemble entropy (needs seeded loops); pair-state constructor; move-set reachability assertions |
 
 ## Verified findings (measured or derived; tests are the authoritative record)
 
@@ -160,11 +160,14 @@ src/constraintnet/
   fringe.py      two-path probes: discrete Aharonov-Bohm visibility
   sectors.py     centralizer charge-knot sector multiplicities (spec's H = C_G(q))
   sheaf.py       gluing axiom as counting theorem; Bianchi re-derived as sheaf defect
+  category.py    D(A4) modular data: S/T/Verlinde fusion, class algebra (Layer-2)
+  strings.py     flux-string detector + GF(3) solvability engine (Bianchi-as-rank)
+  entropy.py     holographic S(R)=log|I(dR)| for general regions; area-law study
   observer.py    relational coarse-graining, mesh fineness n, propagation delay
   viz/           animated interactive viewer (projection only; matplotlib)
-tests/           spec tests + integrity guards + backlog PASS criteria (173 passing)
+tests/           spec tests + integrity guards + Layer-2 pass criteria (197 passing)
 examples/        one runnable script per milestone
-docs/            SPEC · PHYSICS_NOTES · R_TRACK · CONVENTIONS · figures/
+docs/            SPEC · PHYSICS_NOTES · R_TRACK · LAYER2 · MEMO_PATCHES · CONVENTIONS · figures/
 reference/       external audit material (opus_audit/) — not part of the package
 out/             regenerable GIFs: lattice_conservation.gif, orbit_tour_178.gif, ...
 ```
