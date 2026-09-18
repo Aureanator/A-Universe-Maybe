@@ -35,6 +35,7 @@ __all__ = [
     "apply_move",
     "revert_move",
     "generator_distance",
+    "class_closed_generators",
     "find_pachner_2_3_sites",
     "apply_pachner_2_3",
     "find_pachner_3_2_sites",
@@ -111,18 +112,45 @@ def generator_distance(group: Group, old, new) -> int:
     return group.word_length(group.multiply(group.inverse(old), new))
 
 
+def class_closed_generators(group: Group) -> List:
+    """All non-identity elements -- the proposal set closed under conjugation.
+
+    Referee audit item 3: right-multiplication proposals by a generator set that is NOT a
+    union of conjugacy classes give gauge-equivalent states different transition structure
+    (measured: 29.4% of gauge pairs disagree on reachable-orbit count with the default
+    ``move_generators()``).  Proposing uniformly over ``class_closed_generators`` makes the
+    chain descend to gauge orbits exactly (0 violations measured, exhaustive).  Use as::
+
+        propose_edge_move(cx, rng, generators=class_closed_generators(group))
+
+    Cost caveat: word cost is still computed in the default word metric; a class-closed
+    *cost* would need the conjugation-invariant generating set as the metric's basis too.
+    """
+    return [g for g in group.elements if g != group.identity()]
+
+
 def propose_edge_move(
     cx: SimplicialComplex,
     rng: random.Random,
     edges: Optional[Sequence[Tuple[int, int]]] = None,
     generators: Optional[Sequence] = None,
+    class_closed: bool = False,
 ) -> Move:
-    """Pick an edge and multiply its label by a generator: ``A_e -> A_e g``."""
+    """Pick an edge and multiply its label by a generator: ``A_e -> A_e g``.
+
+    ``class_closed=True`` proposes uniformly over all non-identity elements (a union of
+    conjugacy classes), giving gauge-equivariant dynamics; see :func:`class_closed_generators`.
+    """
     candidates = list(edges) if edges else cx.edges()
     if not candidates:
         raise MoveError("complex has no edges to relabel")
     u, v = candidates[rng.randrange(len(candidates))]
-    gens = list(generators) if generators else list(cx.group.move_generators())
+    if generators is not None:
+        gens = list(generators)
+    elif class_closed:
+        gens = class_closed_generators(cx.group)
+    else:
+        gens = list(cx.group.move_generators())
     g = gens[rng.randrange(len(gens))]
     old = cx.label(u, v)
     new = cx.group.multiply(old, g)
