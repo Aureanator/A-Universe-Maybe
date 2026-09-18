@@ -34,6 +34,7 @@ KERNEL_MODULES = [
     "sheaf.py",
     "category.py",
     "entropy.py",
+    "strings.py",
 ]
 # PENDING MIGRATION (contain stochastic harnesses, to move behind drivers):
 # dynamics.py, persistence.py (run_persistence_experiment), seeds.py (randomize_labels),
