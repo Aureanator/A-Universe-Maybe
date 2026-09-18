@@ -11,6 +11,15 @@ face's curvature lies in its prescribed flux class:
 
 .. math::  \Phi_{(*ij)} = x_i\, A_{ij}\, x_j^{-1} \in c_{ij}
 
+.. warning::
+   **Convention (referee audit P1).** This module computes the RIGID count: boundary labels
+   are held POINTWISE (a fixed apparatus in a definite gauge).  If instead only the
+   boundary's gauge-invariant content is fixed, interiors merge across gauge copies of the
+   boundary and counts collapse hard -- measured on A4 cone patterns: rigid 6 -> pooled 1,
+   rigid 12 -> pooled 2, and every seeded pattern |I|=4 -> pooled 1.  Quote which convention
+   you mean; ``pooled_resolution_orbits`` below computes the alternative.  The Z3 control is
+   blind to the difference by construction (abelian conjugation is trivial).
+
 Two resolutions are physically the same if a gauge transformation that is invisible at the
 boundary relates them -- only the apex carries freedom, ``lambda_* = nu``, ``lambda_i = e``:
 
@@ -49,6 +58,7 @@ __all__ = [
     "resolution_space",
     "resolution_table",
     "materialise_resolution",
+    "pooled_resolution_orbits",
 ]
 
 EdgeKey = Tuple[int, int]
@@ -215,3 +225,94 @@ def materialise_resolution(
     """Write a resolution's internal labels into ``cx`` (boundary data untouched)."""
     for vertex, value in zip(boundary, x):
         cx.set_label(apex, vertex, value)
+
+
+def pooled_resolution_orbits(
+    cx: SimplicialComplex,
+    apex: int,
+    boundary: Sequence[int],
+    flux_classes: Optional[Dict[Tuple[int, int], frozenset]] = None,
+    budget: int = 40_000_000,
+) -> int:
+    r"""Number of FULL-gauge orbits of admissible pairs ``(B, x)``, boundary vertices included.
+
+    This is the pooled (appearance-relative) count: two resolutions count as the same physical
+    interior when ANY vertex gauge transformation -- including at the four boundary vertices --
+    carries one labelled cone to the other.  Merging happens across gauge copies of the
+    boundary, never within a fixed fibre; for A4 cone patterns this collapses rigid counts by
+    up to a full factor (6 -> 1, 12 -> 2, seeded 4 -> 1).  See the module-level convention
+    warning before quoting either number.
+
+    Cost is ``|solutions| * |G|^5`` worst case; raises ``ValueError`` past ``budget``.
+    """
+    group = cx.group
+    elements = list(group.elements)
+    n = len(elements)
+    index = {g: i for i, g in enumerate(elements)}
+    mul = [[index[group.multiply(a, b)] for b in elements] for a in elements]
+    inv = [index[group.inverse(a)] for a in elements]
+
+    boundary_edges = [tuple(sorted(pair)) for pair in itertools.combinations(boundary, 2)]
+    b0 = tuple(index[cx.label(i, j)] for (i, j) in boundary_edges)
+    pos = {e: k for k, e in enumerate(boundary_edges)}
+
+    def oriented(bt: Tuple[int, ...], i: int, j: int) -> int:
+        # boundary vertices are compared by their position in `boundary` order (orientation)
+        ki, kj = boundary.index(i), boundary.index(j)
+        key = tuple(sorted((i, j)))
+        g = bt[pos[key]]
+        return g if ki < kj else inv[g]
+
+    def curvature_classes_of(bt, xt) -> Tuple[int, ...]:
+        out = []
+        for (i, j) in boundary_edges:
+            xi = xt[boundary.index(i)]
+            xj = xt[boundary.index(j)]
+            a_ij = oriented(bt, i, j)
+            c = mul[mul[xi][a_ij]][inv[xj]]
+            out.append(c)
+        return tuple(out)
+
+    identity_class = group.class_of(group.identity())
+    required: Dict[Tuple[int, int], frozenset] = {}
+    for edge in boundary_edges:
+        required[edge] = (flux_classes or {}).get(edge, identity_class)
+
+    sols = []
+    elems = elements
+    for x in itertools.product(elems, repeat=len(boundary)):
+        curvatures = interior_face_curvatures(group, {
+            edge: cx.label(*edge) for edge in boundary_edges
+        }, boundary, x)
+        if all(curvatures[edge] in required[edge] for edge in required):
+            sols.append(tuple(index[v] for v in x))
+
+    total_cost = len(sols) * (n ** 5)
+    if total_cost > budget:
+        raise ValueError(
+            f"pooled orbit count too expensive ({total_cost} ops > budget {budget}); "
+            f"restrict the declaration or sample externally"
+        )
+
+    vertex_order = list(boundary) + [apex]
+    reps = set()
+    for xt in sols:
+        best = None
+        for lam in itertools.product(range(n), repeat=5):
+            lam_map = {v: lam[k] for k, v in enumerate(vertex_order)}
+            bt = []
+            for (i, j) in boundary_edges:
+                a = oriented(b0, i, j)
+                g = mul[mul[inv[lam_map[i]]][a]][lam_map[j]]
+                ki, kj = boundary.index(i), boundary.index(j)
+                bt.append(g if ki < kj else inv[g])
+            xt2 = []
+            for v in boundary:
+                a = xt[boundary.index(v)]  # A_{*v} stored apex->v
+                g = mul[mul[inv[lam_map[apex]]][a]][lam_map[v]]
+                xt2.append(g)
+            cand = (tuple(bt), tuple(xt2))
+            if best is None or cand < best:
+                best = cand
+        reps.add(best)
+    return len(reps)

@@ -29,16 +29,21 @@ Two equivalence relations on admissible interiors `x = (x_0..x_3)`:
 
 **Outcome (run 2025-01-xx, `examples/critique/p1_mu_quotient.py`, 357 s):**
 
-| declaration (flat boundary) | raw | rigid \|I\| | full-gauge pooled |
+| declaration (flat boundary) | raw | rigid \|I\| (library, corrected) | full-gauge pooled |
 |---|---|---|---|
-| 3 interior faces V4 / rest flat | 36 | **6** | **1** |
-| 5 interior faces V4 / rest flat | 72 | **12** | **2** |
-| all 6 faces V4 | 72 | **12** | **2** |
+| 3 interior faces V4 / rest flat (star) | 36 | **3** | **1** |
+| 5 interior faces V4 / rest flat | 72 | **6** | **2** |
+| all 6 faces V4 | 72 | **6** | **2** |
 | seeded declaration, all 1728 tree-gauge boundaries | — | **4 (all)** | **1 (sample 40/40)** |
 
-- Prediction 1 **half-hit**: rigid = 6 reproduced exactly on the 3-face declaration; that family's pooled count is 1, not 2. The referee's exact "6→2" did not appear in one declaration,
-  but their *mechanism* is fully confirmed: pooled full-gauge counts collapse far below rigid
-  (12→2 exactly as quoted on the 5/6-face family).
+> **Correction during review:** the probe's first rigid column used CONJUGATION (μ⁻¹xμ) for the
+> apex action instead of left multiplication (ν⁻¹x); cross-checking against `resolution_space`
+> caught it. Corrected values above come from the library itself. With correct semantics the
+> referee's exact pair **6 → 2 reproduces verbatim** on the 5-flux-face declaration.
+
+- Prediction 1 **hit after correction**: with library-correct apex gauge, the referee's exact
+  "6 → 2" reproduces verbatim on the 5-flux-face declaration; star-3 gives 3 → 1. Mechanism and
+  magnitudes both confirmed.
 - Prediction 2 **hit**: direction universal (full ≤ rigid everywhere sampled, 40/40 collapses of
   seeded patterns to a single orbit), magnitudes differ per declaration.
 - Prediction 3 **hit**: Z₃ control blind by construction (singleton classes).
@@ -142,6 +147,20 @@ n = 1..4; return probability P(n_steps); d_s(t) = −2·dlogP/dlogt estimated lo
 2. Short-time d_s deviates strongly (lattice effects); we record the full curve rather than one number.
 3. Vertex-1-skeleton diffusion gives d_s ≈ 3 as well; if it doesn't, that is a real finding about
    the walk structure and gets its own diary entry.
+
+**Outcome (run, `examples/critique/p5_spectral_dimension.py` + tests/test_spectral.py):**
+
+- Prediction 1 **MISSED at accessible sizes — and so would ANY lattice claim**: the matched
+  control Z³ box (6³) reads d_s ≈ 2.0 over t∈[2,8], not 3. Finite-size/backtracking dominance,
+  not fractality. Kuhn balls: n=1 → 0.59, n=2 → 1.56, n=3 → 1.76 (tetra graph), rising with
+  size as expected for ordinary 3D lattices.
+- The defensible statement is the MATCHED-CONTROL one, now pinned by test: Kuhn-ball diffusion
+  agrees with a comparable cubic-lattice box within tolerance; no anomalous dimensional
+  collapse. Absolute d_s → 3 needs larger meshes or heat-kernel extrapolation (follow-up).
+- Prediction 2 hit in spirit: full P(t) curves recorded; odd-time zeros from bipartite structure
+  are physics, handled explicitly.
+- Methodological note for the referee: their demand "show it returns 3" was itself naive about
+  finite-size effects — we return the honest version instead.
 
 ---
 
