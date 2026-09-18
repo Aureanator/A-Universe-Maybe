@@ -74,6 +74,17 @@ Apply single-edge right-multiplications; record accept/reject verdict under diff
    simultaneous-conjugacy canonical form of raw based-loop holonomies (complete invariant for
    based loops under vertex gauge).
 
+**Outcome (run, `examples/critique/p2_root_dependence.py`, Kuhn n=2 seed 3):**
+
+- **Prediction 1 MISSED.** Verdict flips across tree roots: **50/294 = 17.0%** — the referee's
+  12.4% mechanism reproduces (their number, our sign).
+- Attribution exact: all 50 flips are moves where the FACE-only verdict and some bases' full
+  verdict disagree; face curvatures behave as predicted (basis-free), the cycle-charge part of
+  `Appearance` is basis-dependent and has teeth.
+- Within one run (fixed root) Driver A remains self-consistent; cross-basis / cross-region
+  signature comparisons are unsound. Fix shipped: `Region.gauge_invariant_state()` =
+  simultaneous-conjugacy canonical form of RAW based-loop + face holonomies.
+
 ---
 
 ## P3 — Gauge equivariance of the proposal dynamics (referee item 3)
@@ -90,6 +101,15 @@ maps a config to a gauge-equivalent one. For each arm, compute exact accept frac
 3. Word cost: with a class-closed generating set, `generator_distance` is invariant under
    conjugation of both endpoints; with the current set it is not (referee's 1 vs 3 example).
 
+**Outcome (run, exhaustive over 1728 triples x 12 conjugators):**
+
+- Predictions 1+2 **HIT hard**. Arm "current" (`move_generators()`, not class-closed):
+  **5472/18600 = 29.4%** of gauge-equivalent pairs have DIFFERENT reachable-orbit counts — the
+  chain does not descend to orbits; referee item 3 fully confirmed, larger than their example.
+- Arm "classes" (all non-identity elements): **0 violations**, exact reachable-orbit-SET
+  equality on all sampled pairs. Class-closed proposals make the chain orbit-respecting by
+  construction. Shipped as `class_closed_generators()` + equivariance regression test.
+
 ---
 
 ## P4 — Pachner 2→3 degeneracy claim (referee item 4)
@@ -100,6 +120,14 @@ maps a config to a gauge-equivalent one. For each arm, compute exact accept frac
    harness outside it). Round-trip 2→3→2 restores the complex exactly on Kuhn n=2 sites.
 2. Boundary (vertices, edges, faces and their labels) is unchanged by the round trip; only the
    interior changes — including the created edge's label surviving as an internal degree of freedom.
+
+**Outcome: PREDICTION 1 WRONG — referee right, we wrong; pre-registration earned its keep.**
+HEAD literally built `((u,w,a),(u,w,b),(u,w,c))` — three **3-vertex** tuples — crashing
+`add_tetra` mid-mutation (after 2 tets removed + edge added), corrupting the complex; every
+later site then failed with cascading MoveErrors. No test had ever exercised the move. Fixed to
+`(u,w,a,b),(u,w,b,c),(u,w,c,a)` (new edge x face EDGES) + transactional guard;
+`tests/test_pachner.py` pins legality, boundary preservation, exact revert, sequential
+stability; 72/72 Kuhn n=2 sites round-trip clean. Commit `1434a1c`.
 
 ---
 
@@ -128,6 +156,20 @@ n = 1..4; return probability P(n_steps); d_s(t) = −2·dlogP/dlogt estimated lo
 2. Per-vertex normalization flattens the vacuum profile; defect-core excess survives and remains
    positive — i.e. the qualitative gravity-like signal is not an artifact, but its magnitude in
    the old plots was basis-confounded and gets re-measured.
+
+**Outcome (run, 4000 accepted events per arm):**
+
+- Prediction 1 **HIT**: corr(raw rho, shell population) = **+0.41**; raw profile partly census artifact.
+- Prediction 2 **MISSED — worse than expected**. Vacuum / charged / neutral arms produce
+  **bit-for-bit identical** profiles (20.5 / 637.0 / 376.5 in all three). Under Driver A with
+  appearance-only conservation, acceptance depends only on interior-vs-surface edge membership,
+  not on labels or defects: **event density carries zero matter information** in this setup.
+- Referee item 13 upgraded from "normalize the histogram" to: the M7 gravity claim currently has
+  no empirical content beyond acceptance-region geometry (delay was already formula-prescribed,
+  backlog item 4). Honest status: awaiting a driver whose event placement depends on curvature
+  (Driver B churn does — residue cleanup concentrates events near flux). Nothing tuned, nothing deleted.
+- Fix shipped regardless: population-aware `rho_per_vertex`, baseline = total_events /
+  total_vertices; regression test pins equal-per-vertex activity -> equal n across shell sizes.
 
 ---
 

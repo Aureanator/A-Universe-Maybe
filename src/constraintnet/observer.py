@@ -8,8 +8,12 @@ a lattice may be used afterwards to *draw* those cells -- never to define them.
 
 Quantities produced here are the prototype versions of the specification's module 11:
 
-``rho(cell)``   accepted rewrites recorded in a cell (event density)
-``n(cell)``     ``rho / rho0``, the local mesh-fineness factor
+``rho(cell)``           accepted rewrites recorded in a cell (raw event count)
+``rho_per_vertex(cell)`` raw count divided by cell population -- the honest density
+``n(cell)``             ``rho_per_vertex / rho0``, the local mesh-fineness factor.
+                        Population-aware since the referee audit: cells are graph-distance
+                        shells of UNEQUAL size, and raw per-cell counts confound activity with
+                        shell population (outer shells look dense merely by having more vertices).
 ``delay(path)`` microscopic reduction steps needed to traverse a path, inflated where the
                 mesh is fine -- this is the gravity-like propagation delay
 """
@@ -52,8 +56,8 @@ class Observer:
         Optional explicit mapping ``cell_name -> set of vertices``.  When omitted, shells
         around ``centre`` are used (graph distance), which is coordinate-free by construction.
     baseline:
-        Vacuum density ``rho0``.  Defaults to the smallest nonzero cell count so that
-        ``n >= 1`` everywhere and ``n == 1`` in the emptiest active cell.
+        Vacuum density ``rho0`` (per-vertex).  Default is the population-aware uniform
+        expectation ``total_events / total_vertices``; cells above average are finer.
     """
 
     def __init__(
@@ -102,24 +106,32 @@ class Observer:
     def rho(self, cell: str) -> float:
         return self.counts.get(cell, 0.0)
 
+    def rho_per_vertex(self, cell: str) -> float:
+        """Event count per vertex in ``cell`` -- density without the population confound.
+
+        Referee audit item 13: shells have unequal populations; raw counts made activity and
+        cell size indistinguishable.  All fineness/delay readouts use this quantity now.
+        """
+        members = self.cells.get(cell) or set()
+        return self.counts.get(cell, 0.0) / max(1, len(members))
+
     @property
     def rho0(self) -> float:
-        """Baseline vacuum density ``rho0``: the uniform expectation.
+        """Baseline vacuum density ``rho0``: the population-aware uniform expectation,
+        ``total_events / total_vertices`` -- events per vertex if activity were spread evenly.
 
-        Taking the *emptiest active cell* as the reference is degenerate early in a run --
-        while only one cell holds events it becomes its own baseline and every reading says
-        ``n == 1``, so no signal ever looks delayed.  The uniform expectation
-        ``total_events / n_cells`` is well defined from the first event onwards: cells above
-        average are finer (``n > 1``), below average coarser (``n < 1``).
+        The earlier cell-count baseline (``total_events / n_cells``) was wrong for unequal
+        shells; the earlier *emptiest-cell* baseline was degenerate early in a run. This one
+        is well defined from the first event and population-blind by construction.
         """
         if self._baseline_override is not None:
             return max(1e-12, float(self._baseline_override))
-        cells = len(self.cells) or 1
-        return max(1e-12, self.total_events / cells)
+        vertices = sum(max(1, len(members)) for members in self.cells.values())
+        return max(1e-12, self.total_events / (vertices or 1))
 
     def n_factor(self, cell: str) -> float:
-        """Local mesh-fineness factor ``n(x) = rho(x) / rho0``; > 1 means a finer mesh."""
-        return self.rho(cell) / self.rho0
+        """Local mesh-fineness factor ``n(x) = rho_per_vertex(x) / rho0``; > 1 means finer."""
+        return self.rho_per_vertex(cell) / self.rho0
 
     def n_at_vertex(self, vertex: int) -> float:
         cell = self.cell_of_vertex(vertex)
@@ -130,9 +142,9 @@ class Observer:
         return {name: (self.rho(name), self.n_factor(name)) for name in sorted(self.cells)}
 
     def curvature_proxy(self) -> Dict[str, float]:
-        """The early-prototype curvature summary ``K(x) ~ rho(x) - rho0``."""
+        """The early-prototype curvature summary ``K(x) ~ rho_per_vertex(x) - rho0``."""
         base = self.rho0
-        return {name: self.rho(name) - base for name in sorted(self.cells)}
+        return {name: self.rho_per_vertex(name) - base for name in sorted(self.cells)}
 
     # ------------------------------------------------------------------ traversal
     def edge_cost(self, u: int, v: int) -> float:
