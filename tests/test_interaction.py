@@ -110,43 +110,98 @@ def _shared(g, boundary):
 IDX = {0: 0, 1: 1, 2: 2}
 
 
-def test_full_ensemble_absorption_is_phase_invariant():
+# R3 F4 regression coverage lives in tests/test_interaction_frames.py: the honest apex
+# gauge action is LEFT MULTIPLICATION x_i -> nu^-1 x_i (Astra's note); an earlier version
+# of this file tested per-spoke CONJUGATION, which is not a gauge action at all -- it
+# conjugates flux AND boundary label jointly and its verdict-preservation was incidental.
+# The frames suite exhaustively verifies independent apex frames under the true action.
+
+
+def test_legacy_raw_full_ensemble_absorption_is_phase_invariant():
+    """LEGACY CONTROL (matching='raw'): raw-equality absorption is phase-invariant.
+    This pin encodes the fixed-frame convention, NOT a physical statement -- under
+    gauge-invariant conventions absorption IS phase-modulated (see next test)."""
     g, e, o2, o3 = _a4_pieces()
     from constraintnet.drivers import odometer_state
 
     n_y = 12**3
-    counts_seen = set()
+    counts_seen = {}
     for boundary in [(e, e, e), (o2, o3, e)]:
         edges = _shared(g, boundary)
-        for phi in range(0, 12**3, 96):
+        for phi in range(0, n_y, 96):
             x = odometer_state(g, 3, phi)
             c = sum(
-                compatible_on_shared_face(g, x, odometer_state(g, 3, j), edges, IDX, IDX)
+                compatible_on_shared_face(g, x, odometer_state(g, 3, j), edges, IDX, IDX,
+                                          matching="raw")
                 for j in range(n_y)
             )
-            counts_seen.add((str(boundary[0]), str(boundary[1]), c))
-    # one count per boundary type across all sampled phases
-    by_boundary = {}
-    for b0, b1, c in counts_seen:
-        by_boundary.setdefault((b0, b1), set()).add(c)
-    assert all(len(v) == 1 for v in by_boundary.values())
+            counts_seen.setdefault(str(boundary[1]), set()).add(c)
+    assert all(len(v) == 1 for v in counts_seen.values())  # one count per boundary type
 
 
-def test_curvature_suppresses_cross_section_x4():
+def test_absorption_phase_structure_is_convention_dependent():
+    """R3 F4 supersession, measured exactly (deterministic 18-phase grid, no RNG).
+
+    The old 'phase-invariant absorption' pin was a RAW-equality artifact. Under the
+    gauge-invariant conventions the phase structure of the absorption cross-section is
+    ITSELF convention-dependent -- measured distinct counts over phases 0,96,...,1632:
+
+      boundary (e,e,e):   classes {12,36,48,144,192}   relational {12,36,48,144}
+      boundary (o2,o3,e): classes {36,108,144,192}     relational {36}
+
+    Under honest simultaneous-frame matching a CURVED-boundary probe ensemble absorbs at
+    exactly 36 for every internal phase (trivial stabilizer of the flux tuple saturates
+    the orbit), while flat-boundary absorption stays phase-modulated. Duty-cycle physics
+    survives, but its shape is part of the declared interaction model, not free data.
+    """
+    g, e, o2, o3 = _a4_pieces()
+    from constraintnet.drivers import odometer_state
+
+    n_y = 12**3
+    expected = {
+        ((e, e, e), "classes"): {12, 36, 48, 144, 192},
+        ((e, e, e), "relational"): {12, 36, 48, 144},
+        ((o2, o3, e), "classes"): {36, 108, 144, 192},
+        ((o2, o3, e), "relational"): {36},
+    }
+    for (boundary, mode), want in expected.items():
+        edges = _shared(g, boundary)
+        counts = set()
+        for phi in range(0, n_y, 96):
+            x = odometer_state(g, 3, phi)
+            c = sum(
+                compatible_on_shared_face(g, x, odometer_state(g, 3, j), edges, IDX, IDX,
+                                          matching=mode)
+                for j in range(n_y)
+            )
+            counts.add(c)
+        assert counts == want, f"{boundary[1]} / {mode}: got {sorted(counts)}, want {sorted(want)}"
+
+
+def test_cross_section_ratio_all_three_conventions():
+    """R3 F4: the same probe (x = slice phase 0) against flat vs curved shared boundaries,
+    measured under every declared convention. The old '12 vs 3 = x4 suppression' is a
+    RAW-equality artifact; gauge-invariant conventions measure flat 12 : curved 36 --
+    curvature ENHANCES joint-resolvable frames x3 for this state, not suppresses.
+    Relational happens to agree numerically with classes on these two flux tuples
+    (trivial stabilizer / identity flux); the frames suite shows they differ elsewhere."""
     g, e, o2, o3 = _a4_pieces()
     from constraintnet.drivers import odometer_state
 
     x = odometer_state(g, 3, 0)
     n_y = 12**3
 
-    def count(boundary):
+    def count(boundary, mode):
         edges = _shared(g, boundary)
         return sum(
-            compatible_on_shared_face(g, x, odometer_state(g, 3, j), edges, IDX, IDX)
+            compatible_on_shared_face(g, x, odometer_state(g, 3, j), edges, IDX, IDX,
+                                      matching=mode)
             for j in range(n_y)
         )
 
-    assert count((e, e, e)) == 4 * count((o2, o3, e))  # measured: 12 vs 3
+    assert count((e, e, e), "raw") == 12 and count((o2, o3, e), "raw") == 3   # legacy x4
+    assert count((e, e, e), "classes") == 12 and count((o2, o3, e), "classes") == 36
+    assert count((e, e, e), "relational") == 12 and count((o2, o3, e), "relational") == 36
 
 
 def test_abelian_blind_to_curvature():

@@ -65,6 +65,7 @@ class DriverRecord:
     counts_toward_rho: bool
     detail: str = ""
     phase: Optional[Tuple[int, int]] = None   # (cycle index, cycle length) for DriverB
+    model: str = ""
 
 
 class DynamicsDriver(ABC):
@@ -96,31 +97,42 @@ class DynamicsDriver(ABC):
 # Driver A -- stochastic proposal with veto (baseline, unchanged physics)
 # --------------------------------------------------------------------------- #
 class DriverA(DynamicsDriver):
-    """The v0.x dynamics: propose a random generator relabelling; commit iff the watched
-    appearance is preserved.  Randomness lives only in this driver."""
+    """Boundary-preserving proposals with explicit model provenance.
+
+    Default ``relational`` uses all nonidentity group elements uniformly and
+    preserves the complete retained boundary state. ``legacy`` reproduces the
+    v0.x generator/appearance arm. These are distinct dynamical hypotheses.
+    """
 
     def __init__(
         self,
         cx: SimplicialComplex,
         region: Optional[Region] = None,
         rng_seed: int = 0,
+        model: str = "relational",
     ):
+        if model not in {"relational", "legacy"}:
+            raise ValueError(f"unknown DriverA model: {model!r}")
+        self.model = model
         self.cx = cx
         self.region = region if region is not None else Region(cx, cx.tetrahedra(), "whole")
         self.rng = random.Random(rng_seed)
         self.step_index = 0
 
     def advance(self) -> DriverRecord:
-        before = self.region.appearance()
-        move = propose_edge_move(self.cx, self.rng)
+        observe = (self.region.gauge_invariant_state if self.model == "relational"
+                   else self.region.appearance)
+        before = observe()
+        move = propose_edge_move(self.cx, self.rng, class_closed=self.model == "relational")
         apply_move(self.cx, move)
-        if self.region.appearance() == before:
+        if observe() == before:
             fate, counts = "accepted", True
         else:
             revert_move(self.cx, move)
             fate, counts = "vetoed", False
         record = DriverRecord(
-            driver="A", fate=fate, counts_toward_rho=counts, detail=move.describe(self.cx.group)
+            driver="A", fate=fate, counts_toward_rho=counts, detail=move.describe(self.cx.group),
+            model=self.model,
         )
         self.step_index += 1
         return record
@@ -217,6 +229,12 @@ class DriverB(DynamicsDriver):
     * the cycle decomposition of sigma is computed once: its lengths are the object's
       internal clock spectrum, and phase = position within the current cycle;
     * observables (orbit ids) are canonicalized projections only.
+
+    R3 F7 labelling: sigma is bijective on the RAW slice but NOT gauge-equivariant --
+    gauge-equivalent starts can reach different physical orbits. The cycle decomposition
+    (e.g. 864 cycles of length 2 vs one of length 1728) is therefore SCHEDULER DIAGNOSTICS
+    for a chosen slice coordinate system, not a gauge-invariant observable of the object.
+    Label it as such in every report; physics claims from sigma must be orbit-canonicalised.
     """
 
     def __init__(self, group, k: int = 3, coordinate: int = 0, generator=None, mode: str = "churn"):

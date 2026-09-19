@@ -123,8 +123,8 @@ def class_closed_generators(group: Group) -> List:
 
         propose_edge_move(cx, rng, generators=class_closed_generators(group))
 
-    Cost caveat: word cost is still computed in the default word metric; a class-closed
-    *cost* would need the conjugation-invariant generating set as the metric's basis too.
+    In this all-nonidentity arm each nontrivial relabelling costs one step, which
+    is conjugation invariant. Legacy/custom-generator arms keep their word metric.
     """
     return [g for g in group.elements if g != group.identity()]
 
@@ -160,7 +160,7 @@ def propose_edge_move(
         old_label=old,
         new_label=new,
         generator=g,
-        cost=generator_distance(cx.group, old, new),
+        cost=(1 if class_closed and generators is None else generator_distance(cx.group, old, new)),
     )
 
 
@@ -181,13 +181,15 @@ def revert_move(cx: SimplicialComplex, move: Move) -> None:
     if move.kind == "pachner23":
         new_edge = tuple(move.payload["new_edge"])
         apply_pachner_3_2(cx, new_edge, restore_label=None)
+        cx._tet_orders = dict(move.payload["prior_orders"])
         return
     if move.kind == "pachner32":
-        removed = [tuple(t) for t in move.removed]
         # the two surviving tetrahedra share face (a,b,c); rebuild around the dropped edge
         dropped = tuple(move.payload["dropped_edge"])
         label = move.payload.get("dropped_label")
-        apply_pachner_2_3(cx, removed[0], removed[1], new_edge_label=label)
+        apply_pachner_2_3(cx, move.added[0], move.added[1], new_edge_label=label)
+        cx._realized[tuple(sorted(dropped))] = move.payload["dropped_realized"]
+        cx._tet_orders = dict(move.payload["prior_orders"])
         return
     raise MoveError(f"cannot revert move kind {move.kind!r}")
 
@@ -229,6 +231,8 @@ def apply_pachner_2_3(
     freedom -- and defaults to the identity.  It is recorded in ``Move.payload`` so that
     :func:`revert_move` can undo everything exactly.
     """
+    if not cx.has_tetra(tet_a) or not cx.has_tetra(tet_b):
+        raise MoveError("both source tetrahedra must exist")
     face = cx.shared_face(tet_a, tet_b)
     if face is None:
         raise MoveError(f"{list(tet_a)} and {list(tet_b)} do not share a face")
@@ -243,6 +247,8 @@ def apply_pachner_2_3(
         raise MoveError(f"edge ({u},{w}) already exists; a 2->3 move would break the complex")
 
     label = cx.group.identity() if new_edge_label is None else new_edge_label
+    if label not in cx.group.elements:
+        raise MoveError("new edge label must belong to the complex's group")
     a, b, c = face
     # The three replacement tetrahedra are (new edge) x (edge of the shared face):
     # {u,w,a,b}, {u,w,b,c}, {u,w,c,a}.  (Historical bug, referee audit: this line once
@@ -257,8 +263,10 @@ def apply_pachner_2_3(
             raise MoveError(f"replacement tetrahedron {tet} is degenerate; complex untouched")
     removed = (tuple(sorted(tets[0])), tuple(sorted(tets[1])))
 
+    prior_orders = dict(cx._tet_orders)
     for tet in removed:
         cx.remove_tetra(tet, prune=False)
+    cx.remove_face(face, prune=False)
     cx.add_edge(u, w, label=label)
     for tet in added:
         cx.add_tetra(tet)
@@ -270,7 +278,8 @@ def apply_pachner_2_3(
         removed=removed,
         added=added,
         cost=1,
-        payload={"new_edge": (u, w), "new_label": label, "shared_face": face},
+        payload={"new_edge": (u, w), "new_label": label, "shared_face": face,
+                 "prior_orders": prior_orders},
     )
 
 
@@ -294,6 +303,10 @@ def find_pachner_3_2_sites(cx: SimplicialComplex) -> List[Tuple[int, int]]:
             continue
         a, b, c = equator
         if not (cx.has_edge(a, b) and cx.has_edge(b, c) and cx.has_edge(a, c)):
+            continue
+        if cx.has_face((a, b, c)):
+            continue
+        if any(set((u, w)).issubset(f) and not cx.tets_around_face(f) for f in cx.faces()):
             continue
         sites.append((u, w))
     return sites
@@ -320,17 +333,26 @@ def apply_pachner_3_2(
     if len(equator) != 3:
         raise MoveError("3->2 needs exactly three equatorial vertices")
     a, b, c = equator
+    if cx.has_face((a, b, c)):
+        raise MoveError("equatorial face already exists; collapse violates the link condition")
+    incident_faces = [f for f in cx.faces() if {u, w}.issubset(f)]
+    if any(not cx.tets_around_face(f) for f in incident_faces):
+        raise MoveError("edge has faces outside the collapsing tetrahedra")
     dropped_label = cx.label(u, w)
+    dropped_realized = cx._realized[tuple(sorted(edge))]
+    prior_orders = dict(cx._tet_orders)
 
     removed = tuple(tets)
     added = (tuple(sorted((a, b, c, u))), tuple(sorted((a, b, c, w))))
     for tet in removed:
         cx.remove_tetra(tet, prune=False)
+    for face in incident_faces:
+        cx.remove_face(face, prune=False)
     cx.add_face((a, b, c))
     for tet in added:
         cx.add_tetra(tet)
     if not cx.tets_around_edge(u, w):
-        cx.remove_edge(u, w)
+        cx.remove_edge(u, w, prune=False)
     cx.orient_consistently()
     cx.validate()
 
@@ -339,5 +361,7 @@ def apply_pachner_3_2(
         removed=removed,
         added=added,
         cost=1,
-        payload={"dropped_edge": (u, w), "dropped_label": dropped_label, "new_face": (a, b, c)},
+        payload={"dropped_edge": (u, w), "dropped_label": dropped_label,
+                 "dropped_realized": dropped_realized, "prior_orders": prior_orders,
+                 "new_face": (a, b, c)},
     )

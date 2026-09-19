@@ -36,6 +36,8 @@ KERNEL_MODULES = [
     "entropy.py",
     "strings.py",
     "doubles.py",
+    "curvature.py",
+    "landscape.py",
 ]
 # PENDING MIGRATION (contain stochastic harnesses, to move behind drivers):
 # dynamics.py, persistence.py (run_persistence_experiment), seeds.py (randomize_labels),
@@ -56,6 +58,24 @@ def test_kernel_module_has_no_rng(module_name):
 
 
 # ------------------------------------------------------------------ T1 DriverB reversibility
+def test_driver_a_relational_default_and_legacy_provenance():
+    from constraintnet.seeds import kuhn_ball, randomize_labels
+
+    for model in ("relational", "legacy"):
+        cx = kuhn_ball("A4", n=1)
+        randomize_labels(cx, seed=0)
+        driver = DriverA(cx, rng_seed=0, model=model)
+        before = driver.region.gauge_invariant_state()
+        for _ in range(30):
+            record = driver.advance()
+            assert record.model == model
+            if model == "relational":
+                assert driver.region.gauge_invariant_state() == before
+    assert DriverA(make_tetrahedron_boundary("A4")).model == "relational"
+    with pytest.raises(ValueError):
+        DriverA(make_tetrahedron_boundary("A4"), model="unknown")
+
+
 def test_driver_b_bijective_and_clock_spectrum():
     driver = DriverB(AlternatingGroup4())
     total = sum(count * length for length, count in driver.clock_spectrum().items())

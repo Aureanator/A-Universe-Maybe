@@ -12,16 +12,32 @@ face's curvature lies in its prescribed flux class:
 .. math::  \Phi_{(*ij)} = x_i\, A_{ij}\, x_j^{-1} \in c_{ij}
 
 .. warning::
-   **Convention (referee audit P1).** This module computes the RIGID count: boundary labels
-   are held POINTWISE (a fixed apparatus in a definite gauge).  If instead only the
-   boundary's gauge-invariant content is fixed, interiors merge across gauge copies of the
-   boundary and counts collapse hard -- measured on A4 cone patterns: rigid 6 -> pooled 1,
-   rigid 12 -> pooled 2, and every seeded pattern |I|=4 -> pooled 1.  Quote which convention
-   you mean; ``pooled_resolution_orbits`` below computes the alternative.  The Z3 control is
-   blind to the difference by construction (abelian conjugation is trivial).
+   **Convention (referee audit P1, corrected in Round 3 after finding F1).** There are THREE
+   gauge-quotient conventions for interiors over a fixed boundary, and they differ:
 
-Two resolutions are physically the same if a gauge transformation that is invisible at the
-boundary relates them -- only the apex carries freedom, ``lambda_* = nu``, ``lambda_i = e``:
+   1. **rigid** (this module's default): quotient by apex-only gauge ``x_i -> nu^-1 x_i``.
+      This is an APPARATUS convention: the boundary frame is treated as physical data and
+      boundary-vertex gauge transforms are forbidden by fiat.  It is NOT justified by "any
+      gauge preserving B pointwise acts through the apex" -- that sentence was FALSE (R3 F1):
+      for symmetric boundaries, e.g. flat B, constant ``lambda_i = mu`` fixes every boundary
+      label pointwise (``mu^-1 e mu = e``) yet acts on interiors as ``x_i -> nu^-1 x_i mu``.
+   2. **within-fibre** (``within_fibre_resolution_orbits``): quotient additionally by the
+      POINTWISE STABILIZER of B -- all boundary gauges fixing B label-by-label (flat B: the 12
+      constant transforms; with apex freedom a 144-element group).  The honest gauge count at
+      a fixed boundary.
+   3. **pooled** (``pooled_resolution_orbits``): full vertex-gauge orbits of labelled
+      pairs (B,x), including gauge copies of B. Equality of appearance alone is not
+      sufficient for gauge equivalence. Intersections with a fixed-B fibre are
+      exactly its stabilizer orbits, so within-fibre and pooled counts agree.
+
+   Measured on A4 cone patterns, five-face declaration: raw 72 -> rigid 6 -> within-fibre **2**
+   (the stabilizer collapse happens INSIDE the fibre) -> pooled 2.  Star-3: raw 36 -> rigid 3
+   -> within-fibre/pooled 1.  Seeded patterns over all 1728 tree-gauge boundaries: rigid |I|=4,
+   pooled 1.  Quote which convention you mean.  The Z3 control is blind to every difference by
+   construction (abelian conjugation is trivial).
+
+Under the rigid apparatus convention, boundary frames are held fixed and only
+the apex carries freedom, ``lambda_* = nu``, ``lambda_i = e``:
 
 .. math::  x_i \mapsto nu^{-1} x_i
 
@@ -58,6 +74,8 @@ __all__ = [
     "resolution_space",
     "resolution_table",
     "materialise_resolution",
+    "pointwise_stabilizer",
+    "within_fibre_resolution_orbits",
     "pooled_resolution_orbits",
 ]
 
@@ -227,6 +245,72 @@ def materialise_resolution(
         cx.set_label(apex, vertex, value)
 
 
+def pointwise_stabilizer(
+    group: Group, boundary: Sequence[int], label_of
+) -> List[Tuple]:
+    """All boundary-vertex gauges ``(lambda_i)`` with ``lambda_i^-1 A_ij lambda_j == A_ij``
+    for every boundary edge -- the gauge symmetries that fix B LABEL-BY-LABEL.
+
+    For flat B these are exactly the 12 constant tuples (R3 finding F1); for generic B they
+    shrink to the centralizer data and often to the identity alone.
+    """
+    elements = list(group.elements)
+    edges = list(itertools.combinations(boundary, 2))
+    stab: List[Tuple] = []
+    for lams in itertools.product(elements, repeat=len(boundary)):
+        ok = True
+        for (i, j) in edges:
+            li = lams[boundary.index(i)]
+            lj = lams[boundary.index(j)]
+            a = label_of(i, j)
+            if group.multiply(group.multiply(group.inverse(li), a), lj) != a:
+                ok = False
+                break
+        if ok:
+            stab.append(tuple(lams))
+    return stab
+
+
+def within_fibre_resolution_orbits(
+    cx: SimplicialComplex,
+    apex: int,
+    boundary: Sequence[int],
+    flux_classes: Optional[Dict[Tuple[int, int], frozenset]] = None,
+    budget: int = 20_000_000,
+) -> int:
+    r"""Gauge orbits of admissible interiors AT A FIXED BOUNDARY, quotienting by the honest
+    in-fibre gauge group: apex freedom ``nu`` AND the pointwise stabilizer of B.
+
+    Action: ``(nu, lambda) . x_i = nu^-1 x_i lambda_i``.  The rigid count (apex-only) is a
+    sub-quotion of this one; they differ exactly when B has symmetry -- flat B over A4:
+    raw 72 -> rigid 6 -> within-fibre **2** on the five-face declaration (R3 F1: the collapse
+    happens inside the fibre, no boundary copies involved).  For asymmetric B the stabilizer
+    is trivial and within-fibre == rigid.
+    """
+    group = cx.group
+    elements = list(group.elements)
+    index = {g: i for i, g in enumerate(elements)}
+    sols = enumerate_internal_resolutions(cx, apex, boundary, flux_classes)
+    stab = pointwise_stabilizer(group, boundary, lambda i, j: cx.label(i, j))
+    cost = len(sols) * len(elements) * len(stab)
+    if cost > budget:
+        raise ValueError(f"within-fibre orbit count too expensive ({cost} ops > {budget})")
+    reps = set()
+    for x in sols:
+        best = None
+        for nu in elements:
+            nu_inv = group.inverse(nu)
+            for lams in stab:
+                cand = tuple(
+                    index[group.multiply(group.multiply(nu_inv, x[k]), lams[k])]
+                    for k in range(len(boundary))
+                )
+                if best is None or cand < best:
+                    best = cand
+        reps.add(best)
+    return len(reps)
+
+
 def pooled_resolution_orbits(
     cx: SimplicialComplex,
     apex: int,
@@ -239,9 +323,10 @@ def pooled_resolution_orbits(
     This is the pooled (appearance-relative) count: two resolutions count as the same physical
     interior when ANY vertex gauge transformation -- including at the four boundary vertices --
     carries one labelled cone to the other.  Merging happens across gauge copies of the
-    boundary, never within a fixed fibre; for A4 cone patterns this collapses rigid counts by
-    up to a full factor (6 -> 1, 12 -> 2, seeded 4 -> 1).  See the module-level convention
-    warning before quoting either number.
+    boundary, and separately INSIDE a fixed fibre via the pointwise stabilizer of B (see
+    :func:`within_fibre_resolution_orbits` and R3 finding F1); for A4 cone patterns this
+    collapses rigid counts hard (star-3: 3 -> 1; five-face: 6 -> 2; seeded 4 -> 1).  See the
+    module-level convention warning before quoting either number.
 
     Cost is ``|solutions| * |G|^5`` worst case; raises ``ValueError`` past ``budget``.
     """

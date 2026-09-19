@@ -4,9 +4,11 @@ Two objects sharing a boundary face F must agree on the constraint flux threadin
 edge of F.  For cones with apex labels ``x`` (object A) and ``y`` (probe B), glued along
 triangle F with shared boundary labels ``A_vw``, the compatibility condition is
 
-    x_v · A_vw · x_w⁻¹  ==  y_v · A_vw · y_w⁻¹      for each edge (v,w) of F
+    mu⁻¹ (x_v · A_vw · x_w⁻¹) mu == y_v · A_vw · y_w⁻¹
 
--- both sides must present the SAME transported curvature through the shared face.
+for ONE relative frame mu and EVERY shared edge. Each apex has its own gauge
+frame; matching individual conjugacy classes loses correlations between edges.
+This is a specified compatibility convention, not a derived collision dynamics.
 The joint internal state space is the fiber product I_A ×_F I_B; when it is EMPTY the
 interaction is forbidden: this is the primitive exclusion mechanism, counting-based and
 deterministic -- no force, no potential, just incompatible bookkeeping.
@@ -47,17 +49,36 @@ def compatible_on_shared_face(
     shared_edges: Sequence[Tuple[EdgeKey, object]],
     index_x: Dict[int, int],
     index_y: Dict[int, int],
+    *,
+    matching: str = "relational",
 ) -> bool:
-    """Do internal states x and y agree on the flux through every edge of the shared face?
+    """Match the ordered flux tuples in one common relative apex frame.
 
     ``shared_edges`` lists ((v,w), A_vw); ``index_*`` map boundary vertex -> slot in x/y.
+
+    ``relational`` requires simultaneous conjugacy (the default). ``raw`` retains
+    the historical fixed-frame equality control. ``classes`` is the deliberately
+    coarser per-edge observable. Only the latter two gauge-invariant conventions
+    (relational and classes) survive independent apex gauge transformations.
+    Existence of an alignment counts once; alignment multiplicity is not a weight.
     """
+    if matching not in {"relational", "raw", "classes"}:
+        raise ValueError(f"unknown matching convention: {matching!r}")
+    fluxes = []
     for (v, w), a_vw in shared_edges:
-        if face_flux(group, x[index_x[v]], a_vw, x[index_x[w]]) != face_flux(
-            group, y[index_y[v]], a_vw, y[index_y[w]]
-        ):
+        fx = face_flux(group, x[index_x[v]], a_vw, x[index_x[w]])
+        fy = face_flux(group, y[index_y[v]], a_vw, y[index_y[w]])
+        if matching == "raw":
+            if fx != fy:
+                return False
+            continue
+        if group.class_of(fx) != group.class_of(fy):
             return False
-    return True
+        fluxes.append((fx, fy))
+    if matching in {"raw", "classes"}:
+        return True
+    return any(all(group.conjugate(mu, fx) == fy for fx, fy in fluxes)
+               for mu in group.elements)
 
 
 def fiber_product(

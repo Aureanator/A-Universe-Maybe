@@ -1,4 +1,4 @@
-"""Spectral geometry probes: diffusion-based dimension of the mesh (referee audit item 9).
+r"""Spectral geometry probes: diffusion-based dimension of the mesh (referee audit item 9).
 
 The complex is 3-dimensional BY CONSTRUCTION (3-simplices); what nobody has measured is that
 its *diffusion behaviour* is consistent with that input.  The spectral dimension d_s(t) of a
