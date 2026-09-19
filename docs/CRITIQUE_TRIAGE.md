@@ -185,6 +185,22 @@ no-signalling).
 
 ---
 
+## Round 3 — panel memorandum F1–F8 (full disposition in diary E036)
+
+| Finding | Verdict | Disposition |
+|---|---|---|
+| **F1** μ-justification false; stabilizers act inside the fibre | CONFIRMED, two-referee | `pointwise_stabilizer()` + `within_fibre_resolution_orbits()`; three-convention warning; E034 erratum appended; pins: flat-B stab 12 (144 w/ apex), five-face 72→6→**2**, star-3 →1 |
+| **F2** convention-warning numbers transposed | **RETRACTED by synthesis author** ("bad compression of Opus's table") | No contradiction existed; numeric quote removed from the warning anyway during the F1 rewrite — warnings now point at pinned tests, not prose tables |
+| **F3** Driver A shadow-fix wiring | FIXED | `DriverA(model="relational"\|"legacy")`; relational (class-closed + canonical-state) is the DEFAULT; every record carries provenance; legacy reproduces v0.x bit-for-bit as control |
+| **F4** gluing gauge-variance | FIXED, then ESCALATED by Astra's counterexample | Three named conventions (`raw`/`classes`/`relational`, default relational = one simultaneous frame); frames suite incl. counting identity physical = raw×\|orbit\|; NEW: absorption phase structure is convention-dependent (curved ensemble phase-invariant at 36 under relational) |
+| **F5** Pachner orphan face + reverse-revert raise | FIXED + hardened | Drop uncarried face; revert via `move.added`; Astra guards: link conditions, `_realized`/`_tet_orders` snapshot-restore, exact-snapshot undo test |
+| **F6** cavity blindness in canonical state | FIXED (Astra caught a bug IN the first fix — shell-swapping sort) | Per-component independent canonicalization in min-vertex order; `test_curvature_cannot_swap_surface_components`; completeness claim domain stated exactly |
+| **F7** Driver B not gauge-equivariant | ACCEPTED as labelling | Cycle spectrum labelled SCHEDULER DIAGNOSTICS in class docstring; physics claims from sigma must be orbit-canonicalised |
+| **F8** word-cost gauge dependence; property-suite coverage | PARTIALLY ADDRESSED | Class-closed arm cost = 1 per nontrivial relabelling (conjugation-invariant); legacy keeps word metric. Property-based invariant suite + scaling study remain in queue |
+| P7 design note | ADOPTED | Start-configuration control required alongside λ sweep (near-flat start is an independent forcing reason) — recorded in `PREDICTIONS.md` before any run |
+
+---
+
 ## What the referee got wrong (for completeness)
 
 1. Item 4's location was right but our pre-run prediction that it wouldn't reproduce was wrong —
@@ -195,7 +211,7 @@ no-signalling).
 4. Item 1's "inflated by up to 12×" is convention-relative, not an error in the rigid count — but
    the pooled numbers (6→2 verbatim) show their instinct was pointing at something real.
 
-## Standing queue created by this triage
+## Standing queue created by this triage (+ Round 3 additions)
 
 - P7 softened-predicate confinement pilot (area-law test) — first real physics target.
 - Independent persistence criteria (extent, similarity, lifetime, mobility).
@@ -205,3 +221,5 @@ no-signalling).
 - Universality matrix S₃/Q₈/D₄.
 - Heat-kernel extrapolation or larger meshes for absolute d_s.
 - Arrow-of-time: Lyapunov candidate or formal renaming decision (open problem, named).
+- F8 remainder: property-based invariant suite (hypothesis-style over random complexes/moves) + scaling study.
+- Particle program gates 1–4 (`docs/PARTICLE_PROGRAM.md`): unpinned persistent-structure search with negative controls; fusion/fission trajectory replay; bound-composite barrier; chemistry. Astra's audit queue items 1–4 closed this round; gate 2 onward is next.

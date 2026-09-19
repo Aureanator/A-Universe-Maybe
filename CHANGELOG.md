@@ -3,7 +3,53 @@
 All notable changes to `constraintnet`. Versions follow the milestone numbering of the
 programming specification; `[Unreleased]` holds work in progress.
 
-## [Unreleased] — Referee-audit response (wound-licking arc)
+## [Unreleased] — Round 3 panel response + Astra merge
+
+### Fixed
+- **F1 justification drift**: false "never within a fixed fibre" sentence corrected; `pointwise_stabilizer()`
+  + `within_fibre_resolution_orbits()` shipped; three-convention warning (rigid/within-fibre/pooled);
+  pins: flat-B stabilizer 12 constants, five-face raw 72→rigid 6→within-fibre 2, star-3 →1.
+  E034 marked with erratum (amended, not rewritten).
+- **F4 gluing gauge-variance**, escalated by Astra's counterexample: per-edge class equality was too
+  coarse; `compatible_on_shared_face` now offers three named conventions — `raw` (historical control),
+  `classes` (coarse observable), **`relational`** (default: one simultaneous frame alignment for all
+  shared-edge fluxes). Absorption phase structure measured per convention (curved ensemble is
+  phase-invariant at 36 under relational; flat stays modulated).
+- **F5 Pachner bookkeeping**: orphan face after 2→3 dropped; revert(3→2) undoes via `move.added`;
+  Astra hardening — link-condition guards, `_realized`/`_tet_orders` snapshot-restore, exact-snapshot undo.
+- **F6 cavity blindness**: per-component canonicalization; Astra-caught shell-swap bug fixed (components
+  keep min-vertex order; vertex gauge cannot move curvature between labelled shells).
+- `spectral.py` invalid-escape warning (raw docstring); README memo link after file relocation.
+
+### Changed
+- **Driver A model provenance**: `DriverA(model="relational"|"legacy")`; relational (class-closed proposals
+  + full canonical-state preservation) is the DEFAULT; legacy reproduces v0.x bit-for-bit as control arm;
+  every record carries provenance. Historical numbers (accept ≈0.325, E035 negative) stand as LEGACY-model results.
+- Class-closed arm move cost = 1 per nontrivial relabelling (conjugation-invariant); legacy keeps word metric.
+- Driver B cycle spectrum explicitly labelled SCHEDULER DIAGNOSTICS (F7).
+
+### Added (Astra import, reviewed and suite-verified)
+- `curvature.py` (CurvatureState indexed arithmetic over declared action H = curved-face count;
+  SupportLineage birth/death/merge/split tracking), `kinetics.py` (Metropolis curvature driver vs external
+  bath; ledger bookkeeping), `landscape.py` (exact small-system landscapes: plateaus, downhill exits,
+  nonincreasing-path distances).
+- `tests/test_interaction_frames.py` (convention counterexamples, true apex-action invariance, counting
+  identity physical = raw×|orbit|), `tests/test_curvature.py`, `tests/test_landscape.py`.
+- `examples/critique/gluing_frame_counterexample.py`; particle search examples ×4;
+  `docs/PARTICLE_PROGRAM.md` (four demonstration gates: candidate / fusion-fission / bound composite /
+  chemistry — no catalogues, forces, or valences in the microscopic state).
+
+### Documentation
+- Diary **E036** (full R3 disposition incl. F2 retraction by synthesis author) + E034 erratum;
+  `docs/CRITIQUE_TRIAGE.md` Round-3 table; **`docs/CLAIMS.md`** claims register (measured/derived/
+  postulated/scheduler-artifact/parked × producing model) + protections list (R3 §4);
+  P7 start-configuration controls recorded in `PREDICTIONS.md` before any run;
+  `reference/astra_session/Astra_WORKING_STATE_2026-09-18.md` (provenance).
+
+### Suite
+- 285 collected, 284 passed + 1 skipped (Hopf linking, documented), zero warnings.
+
+## [Unreleased, earlier] — Round 2 referee-audit response (wound-licking arc)
 
 ### Fixed
 - **Pachner 2→3 built degenerate 3-vertex replacement tuples** and corrupted the complex when
