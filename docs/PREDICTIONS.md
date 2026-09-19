@@ -6,6 +6,516 @@ after the run, never edited into the predictions. If we are wrong, the wrongness
 
 This file is the epistemic shield for the critique-response work (`docs/CRITIQUE_TRIAGE.md`).
 
+## P19 — First tests of the v4 dynamics (2026-09-19, Opus; registered, NOT run)
+
+Design: `docs/DYNAMICS_DESIGN.md` (v4.0).
+- **The walk:** a gauge-covariant weighted-reflection (Szegedy) walk on arcs,
+  with ring-size weights 1 : ½, transport by labels in a representation ρ of A4
+  (trivial or the 3-dim irrep), one hop per tick.
+- **Labels:** a fixed, prepared record.
+- **Reporting:** relational observables only.
+
+The unit-weight walk and the pre-v4 engine are control arms.
+
+- **P19a (identities):** unitarity, gauge covariance and the Szegedy spectrum
+  identity hold exactly on finite Kuhn balls with boundary, not just on the torus.
+  Prediction: all hold to round-off.
+- **P19b (dispersion and flat bands):** on tori of increasing size,
+  θ(k)/|k|_emergent → one constant. The direction dependence scales as k^2
+  (unit weights) or k^4 (ring weights). The flat-band multiplicity equals
+  arcs − 2V (plus corrections at λ = ±1). Prediction: flat-band eigenvectors
+  can be chosen supported on bounded cycles (bounded participation as the torus
+  grows), i.e. strictly non-propagating.
+- **P19c (relational light cone):** the source is a small ball; detectors are
+  combinatorially defined shells. Predictions:
+  - the median arrival delay grows linearly with emergent distance, with the
+    same speed in every direction within 2% at the largest size run;
+  - the amplitude outside the emergent cone falls exponentially with distance
+    from it;
+  - the strict support is the hop cone.
+- **P19d (holonomy):** around a prepared single flux loop, with ρ = 3-dim
+  irrep, two-route interference contrast equals |χ₃(flux)|/3, as in E015 but
+  now inside the walk.
+- **P19e (first physics: does a record trap implication?):** fixtures are a
+  single A4 flux loop, the P13 linked loops and the P15 tethered link. Start a
+  packet on the flux support and measure the long-time weight retained in a
+  neighbourhood, minus the vacuum control (same packet, flat labels). Trapping
+  counts only if it:
+  1. exceeds the vacuum control;
+  2. is not carried by the vacuum flat bands (the flat-band projection is
+     removed from both runs);
+  3. is gauge-invariant.
+
+  **No directional prediction is registered.** Positive and negative outcomes
+  are both informative: a negative sends the design to v4.1 (dynamical labels);
+  a positive is the first "defect plus trapped light" candidate. It must then
+  face M1 = M2 before any matter language is used.
+
+## P18 — Round, sharp light fronts on the project's mesh? (2026-09-19, Opus; derived before execution)
+
+Context: `WORKING_STATEMENT.md` clause 3 (reading 1: influence spreads
+isotropically at one speed; sharp fronts in 3D; mass makes a wake). The
+derivations D1–D7 are in `docs/PROPAGATION.md` and were written before any
+simulation. Wave rule: u_tt = -(L + m^2) u on the mesh graph, leapfrog in time.
+Coordinates are used only to prepare pulses and to measure. No constraintnet
+dynamics is changed.
+
+**Predictions:**
+
+- **N1 (D4):** Ã^(-1/2) maps the actual Kuhn star onto a BCC star. The 8 short
+  vectors (ring 6) have pairwise cosines ±1/3; the 6 long vectors (ring 4) are
+  orthogonal and 2/√3 longer.
+- **N2 (D2, D4):** front speeds for uniform weights differ by a factor 2 in grid
+  coordinates (along (1,1,1) versus perpendicular to it) and by a factor that
+  tends to 1 in the emergent metric.
+- **N3 (D5):** in the emergent metric, the leftover anisotropy of the front
+  radius shrinks as the pulse widens. With ring-size weights 1 : 1/2 it is
+  smaller than with unit weights at every width, and it shrinks faster (the
+  O(k^4) term is removed). Also measured directly from the dispersion symbol.
+- **N4 (D6):** in 3D (Kuhn, massless), the fraction of sum u^2 lying well inside
+  the cone (r < t - 4σ at t = 12σ) falls toward the continuum value, which is
+  about 0, as the pulse width σ grows. A 2D control (square lattice) keeps a
+  finite interior fraction that matches its continuum value.
+- **N5 (D6):** with mass (mσ = 0.5, 1), the 3D interior fraction becomes clearly
+  nonzero. It converges with σ to a spectral continuum reference (exact
+  Klein–Gordon dispersion on a periodic box).
+- **N6 (D7):** on Sierpinski level 3 with exit damping, the classical damped
+  wave keeps exactly the energy that its initial data put in the dark modes.
+
+A failure of N2–N5 would mean the mesh cannot support round, sharp light
+fronts under nearest-neighbour waves. That would be recorded as a strike
+against clause 3 on this mesh, not repaired by retuning.
+
+**P18 outcome (2026-09-19, Opus).**
+
+- **N1 HIT (exact).** Ã = 2I + 2J. Under Ã^(-1/2) the 8 ring-6 edges become
+  equal-length cube diagonals (cosines ±1/3, −1), and the 6 ring-4 edges become
+  cube axes, 2/√3 longer. That is the BCC tetrahedral honeycomb star.
+- **N2 HIT.** The grid-coordinate front speed ratio along (1,1,1) versus
+  (1,-1,0) is 1.985 at σ = 1.5 and 2.005 at σ = 3 (predicted 2). An
+  unregistered readout along the grid axis gave 1.60–1.63. That matches the
+  front (ray) speed 1/sqrt(n^T Ã^(-1) n) = 1.633, not the plane-wave speed 2;
+  D1's wording was amended accordingly (both coincide on the registered
+  eigen-directions).
+- **N3 HIT for the exact test, NOT RESOLVED for the front test.**
+  - *Exact symbol test:* the direction spread of ω²/k² scales as k^2.00 with
+    unit weights and k^4.00 with ring-4 edges at weight ½, as D5 requires.
+  - *Front-radius test:* measured anisotropy was smaller with ring weights at
+    every width, 0.0019–0.0014 against 0.0045–0.0016 for unit weights. But the
+    measurement floor, set by the continuum control, is about 0.001. So the
+    faster decrease with width is below resolution and is not claimed.
+- **N4 HIT.** In 3D on the project mesh the massless interior fraction is at or
+  below 3e-7 for σ = 1.5–4, the same as the continuum, whose Gaussian tails are
+  the floor. The 2D control keeps 0.016–0.018, converging to its continuum value
+  (0.0180 against 0.0181 at σ = 6).
+- **N5 HIT.** With mass, the interior fraction converges to the continuum:
+  - mσ = 0.5: 0.0306 → 0.0318 against 0.0321
+  - mσ = 1: 0.408 → 0.391 against 0.386
+
+  Mass makes a wake inside the cone; massless 3D fronts do not.
+- **N6 HIT.** The classical damped wave on Sierpinski level 3 keeps exactly
+  the dark-mode energy for all four starts. The residual difference is 7e-10
+  at T = 8e4; T = 4e3 had not yet converged, so the longer run is reported.
+
+**Consequence:** with its own emergent metric, the project mesh supports round
+(cubic-symmetric, quartic-isotropic with ring weighting) and sharp light fronts
+under nearest-neighbour waves, and mass produces a trailing wake. Trapping needs
+signed waves; complex amplitudes are not specifically required.
+Data: `reference/opus_session/data/propagation_test.json`; figure
+`out/p18_propagation.png`; tests `tests/test_propagation.py`; derivations
+`docs/PROPAGATION.md`.
+
+## P17 — Can amplitudes trap where probabilities cannot? (2026-09-19, Opus; derived before execution)
+
+Motivation (user discussion, `docs/BAG_PICTURE.md` §8 and the conversation that
+followed): a particle might be a region in which an implication wanders forever
+because every outgoing route cancels. This test uses NO model change; it
+compares two walks on fixed graphs with a declared exit. Both use the SAME
+generator, the graph Laplacian L of the region, and the exit is a set B of
+vertices with leak rate Gamma > 0 (P_B = projector onto B):
+
+* classical (probabilities): p(t) = exp(-(L + Gamma P_B) t) p0, survival sum(p)
+* amplitude walk: psi(t) = exp(-i K t) psi0 with K = L - i Gamma P_B,
+  survival ||psi||^2. (Wide-band exit model: the standard effective description
+  of a region coupled to an outgoing channel.)
+
+The only difference between the two is the factor i.
+
+**Derived statements (proofs in `docs/TRAPPING.md`; checked numerically afterwards):**
+
+- **T1 (classical always escapes).** On a connected region,
+  x^T (L + Gamma P_B) x = sum over edges (x_i - x_j)^2 + Gamma sum_B x_b^2 > 0,
+  so the matrix is positive definite and survival -> 0, at least as fast as
+  exp(-lambda_min t), from EVERY start.
+- **T2 (leak = flux).** d||psi||^2/dt = -2 Gamma sum_B |psi_b|^2. Every eigenvalue
+  of K has Im E = -Gamma sum_B |v_b|^2 / ||v||^2.
+- **T3 (exact long-time survival).** Let D be the span of the eigenvectors of L
+  that vanish on B (the dark subspace). Then survival -> ||P_D psi0||^2 exactly.
+  D and its orthogonal complement are both invariant under K; K has no real
+  eigenvalue on the complement. Averaged over starts at single vertices, the
+  trapped fraction is exactly dim D / N.
+- **T4 (degeneracy bound).** dim D = sum_E (m_E - rank of P_B on eigenspace E)
+  >= sum_E max(0, m_E - |B|). Repeated eigenvalues force dark states.
+- **T5 (symmetry bound).** If a group of graph automorphisms fixes every exit
+  vertex, the vectors orthogonal to all its invariant vectors vanish on B and
+  form an L-invariant space. So dim D >= N - (number of orbits of that group).
+- **T6 (symmetry breaking; perturbative, not a theorem).** A perturbation of
+  size eps that breaks the protecting symmetry gives formerly dark states a
+  decay rate proportional to eps^2 (finite lifetime, i.e. decay).
+
+**Predictions per geometry (exit = one vertex unless stated):**
+
+- **path, exit at an end:** trivial stabilizer, simple spectrum; dim D = 0, so
+  the amplitude walk escapes completely too. This is the control: amplitudes do
+  not ALWAYS trap.
+- **cycle C_n:** reflection fixing b, dim D = floor((n-1)/2).
+- **complete graph K_n:** dim D = n - 2 exactly.
+- **Sierpinski gasket, levels 1-6, exit at a corner:** dim D >= (N - fixed)/2
+  from the corner reflection (T5), possibly more from degeneracy (T4). I expect
+  a large dark fraction that does not vanish with depth. I make NO prediction for
+  how the slowest non-dark decay rate scales with depth; that is measured only.
+- **Kuhn ball 1-skeleton (n = 2, 3), exit at the corner (0,0,0):** bound from
+  the coordinate permutations that are automorphisms; exact value computed.
+- **Symmetry-broken gasket** (random edge weights 1 + eps u): D collapses to
+  its accidental part (expected 0), and former dark states decay at rate ~ eps^2.
+
+**Cross-checks:** simulated survival at long times must equal ||P_D psi0||^2.
+The explicit-lead control (a 1-D chain of 4,000 sites attached at b in place of
+Gamma P_B) must keep dark states exactly stationary. The classical survival must
+go to 0 in every case.
+
+**Scope.** This tests whether interference CAN trap on a fixed geometry. It does
+not show that the model's own record builds such geometry, and it is not a
+particle. If the gasket traps, the cause is symmetry and degeneracy (T4/T5),
+not fractality as such. The fractal only supplies a great deal of both.
+
+**P17 outcome (2026-09-19, Opus).** Every derived statement was verified and
+every per-geometry prediction HIT.
+*T1:* classical survival -> 0 on all 12 graphs; the largest remaining value is 6e-17.
+*T3:* simulated amplitude survival equals ||P_D e_j||^2 for every single-vertex
+start. Worst error is 1e-9 at long times (4e-6 for gasket level 4 at T = 6.3e8,
+from round-off in repeated squaring). Mean trapped fraction = dim D / N exactly.
+*Exact dim D* (modular Krylov rank over three primes, confirmed by a 400-digit
+Lanczos run):
+
+- path 0 (control: amplitudes escape too)
+- C_40 19, C_41 20
+- K_12 10
+- gasket levels 1–6: 2, 8, 29, 98, 317, 998 of N = 6, 15, 42, 123, 366, 1095 (dark 33% -> 91%)
+- Kuhn 1-skeleton n=2: 18/27; n=3: 44/64
+
+T4/T5 bounds hold everywhere; T5 is tight for cycles, K_n and Kuhn n=3.
+*Explicit lead control* (6,000-site chain, t = 1,500): the dark state keeps
+region norm 0.99999999999999; a bright state falls to 0.37.
+*T6:* breaking the gasket symmetry with integer weights 1000 +/- 1 leaves exact
+dim D = 0 (from 98). With weights 1 + eps u, the former dark states' median decay
+rate scales with log-log slope 1.92 over eps = 1e-3..1e-2 (1.70 including 0.1).
+That matches eps^2 at small eps, with departures beyond the perturbative range.
+
+**Unregistered observations, stated as observations:**
+(a) For gasket level k (k = 1..6) the non-dark sector has dimension exactly
+3·2^(k-1)+1, so the dark fraction tends to 1 with depth. This is a pattern, not a proof.
+(b) The slowest decay rate of the NON-dark states falls doubly exponentially
+with depth: 5.1e-2, 4.1e-2, 5.7e-4, 6.4e-8, 8.4e-16, 1.5e-31. From level 3 on,
+the exponent roughly doubles each level. These are exact 150-digit spectra of
+the Jacobi reduction; the rates sum to Gamma exactly (trace identity).
+Consequence: with finite depth, "almost trapped" states have finite but rapidly
+exploding lifetimes. Unlimited depth would trap everything.
+Data: `reference/opus_session/data/trapping_test.json`,
+`trapping_depth_rates.json`; figure `out/p17_trapping.png`; tests
+`tests/test_trapping.py`; derivations `docs/TRAPPING.md`.
+
+## P16 — The bag test: does anything inside push outward? (2026-09-19, Opus; before execution)
+
+Motivation (user picture, see `docs/BAG_PICTURE.md`): vacuum = cancelling
+"wakes" of implications; a particle = a pressurised bubble in that vacuum. A
+bubble is stable only if an outward pressure balances the inward surface
+tension. H supplies the tension (every curved face costs 1). This test asks
+whether the CURRENT model supplies any pressure: an interior quantity that
+grows with enclosed volume AND differs between inside and outside.
+No model change is made. All regions are whole Kuhn balls with identity boundary.
+
+**M1 — hidden-resolution count of the flat interior.** For n=1,2,3 (Z3; A4
+where the exact solver finishes), enumerate all flat interior fillings exactly.
+Raw count and physical count = raw / |G|^(interior vertices) (gauge acts freely
+because each interior vertex connects to the fixed boundary).
+Prediction: physical |I| = 1 at every size (flat connections on a simply
+connected ball are unique up to gauge). Raw count = |G|^(V_int): it grows with
+volume, but it is pure gauge redundancy, not a pressure.
+
+**M2 — lowest-lying excitations.** For n=2..8 (Z3, A4), enumerate every
+single-interior-edge excitation of vacuum. Record its H (the edge's face
+degree), the minimum H over these, how many reach it, and the number of
+distinct curved-face supports. Prediction: the minimum stays constant and the
+count grows in proportion to the interior edges (volume). This is ordinary
+configurational entropy, identical inside and outside any sub-region. That
+favours dispersal (a gas), not a bubble. It does not determine whether some
+multi-edge state has smaller H; only single-edge excitations are enumerated.
+
+**M3 — conserved interior content (derived, no run).** Claim 30: under all
+interior moves no nonconstant label invariant exists. So nothing inside can
+play the role of the bag model's conserved quark number.
+
+**M4 — arithmetic from M2, not dynamics.** In a Metropolis picture, a single
+lowest excitation has free energy F = H_min - ln(N_min)/beta. It goes
+negative below beta* = ln(N_min)/H_min, where the vacuum would fill with a
+gas of small loops ("wake sea"). Report beta*(n) as an equilibrium estimate
+only; no kinetics is run.
+
+**Overall prediction:** no quantity in the current model provides a
+volume-scaling pressure that differs between inside and outside. A pressurised
+bubble therefore cannot be stable here. This is the precise job any
+cone/wake extension would have to do.
+
+**P16 outcome (2026-09-19, Opus).** All registered predictions HIT.
+*M1:* physical |I| = 1 exactly for Z3 n=1,2,3 and A4 n=1,2 (raw 1, 3, 6561; 1, 12
+= |G|^(V_int), i.e. every raw filling is a gauge copy of vacuum). A4 n=3 was not
+completed: raw enumeration lists 12^8 = 4.3e8 gauge copies (an attempt ran >25
+min and was stopped). Recorded as skipped. *M2:* for n=2..8, both groups: the
+single-edge excitations have H in {4,6}; H_min = 4 at every size. The number of
+distinct minimal supports is exactly 3n^2(n-1) (12, 54, 144, 300, 540, 882, 1344),
+which grows with volume like n^3. Minimal (edge, multiplier) excitations: Z3 24 -> 2,688, A4 132 -> 14,784.
+*M4 (arithmetic):* beta* = ln(N_min)/4 grows only logarithmically: Z3 0.79 -> 1.97,
+A4 1.22 -> 2.40 from n=2 to 8. So the equilibrium density of small loops per
+unit volume is set by beta alone, and it is the SAME inside and outside any
+sub-region. *M3:* unchanged (derived). **Verdict:** the current model has
+surface tension and a uniform loop-gas entropy but no inside/outside pressure
+difference and no conserved content. A pressurised bubble has nothing to hold
+it up. Any cone/wake extension must supply a conserved, trapped content whose
+confinement energy grows as the bubble shrinks. Data:
+`reference/opus_session/data/bag_test.json`; script `examples/bag_test.py`;
+tests `tests/test_bag_test.py`.
+
+## P15 — Do non-commuting linked fluxes resist unlinking? (2026-09-19, Opus; before execution)
+
+Registered before building any fixture below. Motivation: P13/P14 used a cyclic
+subgroup, so every flux commuted and Z3 = A4 by construction. Linking was not
+protected even by the downhill-or-equal condition (P14). The memo's claim that
+knots stabilise matter has not yet been tested with the non-abelian structure
+that is the reason for choosing A4. In continuum gauge theory, line defects with
+non-commuting fluxes cannot cross freely: crossing creates a connecting string
+with commutator flux (Poenaru–Toulouse 1977; the same mechanism appears in
+non-abelian cosmic-string and nematic-disclination literature). This experiment
+checks whether that mechanism survives in these labels and whether it creates
+an action barrier under H.
+
+**Fixture (prepared, not emerged):** Kuhn n=8, identity outer boundary, the same
+two P13 rectangular disks. Disk 1 carries element a, disk 2 element b. An edge's
+label is the product of a^(+-1)/b^(+-1) factors taken in the order its segment crosses the
+disks (sign = crossing direction). An edge that meets a disk boundary is rejected,
+as in P13. Arms, all in the full group A4:
+C0 a = b = the P13 order-3 element (should reproduce the P13 labels exactly);
+C1 a, b distinct commuting involutions in V4;
+N1 a, b order-3 elements from different cyclic subgroups;
+N2 a an involution in V4, b the P13 order-3 element.
+
+**Derived expectation, stated before measurement.** A small loop around the
+arc where the disks intersect crosses disk 1 and disk 2 once each in each
+direction, so its holonomy is conjugate to the commutator [a,b]. For C0/C1 this
+is trivial. For N1/N2 it is a nonidentity element of V4. The complement of a Hopf
+link in the ball has abelian fundamental group Z^2. A flat field elsewhere
+therefore requires the two meridian holonomies to commute, whatever labels are
+chosen. Predictions: C0/C1 give exactly two disjoint dual loops with |Lk|=1.
+N1/N2 give one connected junction component: both loops plus a "tether"
+along the intersection arc carrying V4 flux, with initial H larger than C0 by
+the tether's face count. If the detector disagrees, report the failure; do not
+change the fixture to fit.
+
+**Dynamical questions (outcome open; my guess is recorded, not assumed).**
+(i) One-edge census of every initial proposal, as in P13b: count nonincreasing
+and uphill proposals and changes of support domain. (ii) The P12/P13 plateau
+search with 32 discovered states per plateau, then again with 256. Budget
+exhaustion is inconclusive. (iii) The constructive path that sets every interior
+label to identity, one move per differing edge. Its moves are on distinct edges,
+so their final state does not depend on order. Search for a nonincreasing order
+with a greedy scheduler plus bounded backtracking. Report the smallest peak
+found above initial H. It is a path upper bound, never a minimal barrier.
+**Guess:** continuum tether tension pulls the loops through each other,
+so I expect no barrier. N1/N2 would then also have nonincreasing decay to vacuum.
+If only the non-commuting arms need an uphill step, this is the first candidate
+non-abelian activation barrier. It becomes a claim only after a separate
+registered test of whether that step is necessary.
+
+Checks: full-holonomy replay, fixed boundary labels, inverse replay, and
+gauge-transported witnesses for every reported path; meridian-commutation
+measured on every two-loop state recorded. No new action, move, driver,
+constraint or clock. Search order is not time, and nothing here is a nuclear
+or particle process.
+
+**P15 amendment (before any support, action or search was measured):** building
+the fixture showed 4 edges crossing both disks at the same parameter. These edges
+pass exactly through the intersection line, so for N1/N2 the factor order is
+ambiguous. (P13 was abelian and did not see this.) Declared resolution: disk-1
+factor first, which amounts to an infinitesimal displacement of disk 2. The
+opposite convention (disk-2 first) runs as a named control arm. Both are reported.
+No other change.
+
+**P15 outcome (2026-09-19, Opus).** *Fixture prediction HIT.* C0 reproduces the P13
+A4 labels exactly, with two loops of 52/46 faces and |Lk|=1. C1 (commuting V4
+fluxes) gives two loops and |Lk|=1 at H=98. N1 and N2 each give ONE junction
+component, H=103: both loops plus a tether of 5 faces carrying V4 (commutator-class)
+flux. In N2 the V4 loop and tether together contribute 57 V4 faces. The disk-2-first
+tie control gives H=104 with a 6-face tether and the same single-component
+topology. So the tie convention moves one tether face and changes no conclusion.
+Based meridians in the commuting two-loop fixtures commute, as required.
+*Guess about dynamics CONFIRMED; no barrier.* (i) One-edge census (33,352 proposals per arm): C1 gives
+8 nonincreasing (all two-loop), 179 uphill two-loop, 2,860 uphill junction and 30,305 uphill
+loop-count changes. This is identical to the P13b A4 row. N1 and N2 each give 10
+nonincreasing and 33,342 uphill proposals, and every one stays in the single-junction
+domain. No single rewrite removes the tether. (ii) Plateau search: every
+arm exhausted its budget. With 32 states: C 98->96, N 103->89, tie control
+104->102. With 256 states: C 98->90, N 103->72, tie control 104->68. This is
+inconclusive, as registered. (iii) Ordered identity-erasure: the greedy
+scheduler found a fully nonincreasing 140-move order to flat vacuum in all six
+runs, with peak 0 above initial and no backtracking needed. Every path was verified
+by full holonomy recomputation, fixed boundary labels, inverse replay, the P12
+decay verifier and gauge transport. In N1/N2, under both tie conventions, the
+junction persists until step 52 (H=80). It then becomes two loops with Lk=0 whose
+based meridians do NOT commute. An unlinked pair is allowed that: its complement
+has a free fundamental group. Tether and linking disappear on the same move. The
+greedy C0 path is also a second, independently found nonincreasing erasure of the P13 fixture,
+which corroborates P14 by a different method. **Consequence:** with non-commuting fluxes,
+linking forces a tether, as topology requires. Under H the tether gives no activation
+barrier: the loops unlink as the tether shortens, then shrink. Non-abelian
+topological entanglement is real in these labels, but under this action it is not
+energetic protection. Data: `reference/opus_session/data/noncommuting_link_audit.json`;
+figure `out/p15_noncommuting_links.png`; tests `tests/test_link_order_and_noncommuting.py`.
+
+## P14 — Is the P13b uphill step an ordering artifact? (2026-09-19)
+
+Registered before testing reorderings. Keep each archived P13b 140-move erasure
+path and all labels unchanged. The sole uphill move was at one-based step 40.
+Take exactly steps 33–48 (16 distinct-edge rewrites), keep steps 1–32 and 49–140
+fixed, and search all nonincreasing orders of the selected moves with at most
+65,536 discovered subset states. Since each selected edge is changed once,
+the state after any subset is independent of its ordering, even for A4: products
+on different edges are independent; face holonomy products retain their order.
+
+Prediction: some ordering of this fixed window avoids every uphill increment,
+yielding a complete nonincreasing erasure witness. Exhaustion of all subset
+states would disprove only this reordering possibility, not all permitted decay
+paths. A state-budget cutoff is inconclusive. No new action, moves, confinement
+constraint, driver, or physical clock is introduced.
+
+Independently replay the resulting complete path with full holonomies, exact
+boundary labels, inverse moves and transported gauge witnesses in both Z3 and
+A4. Report state counts and the complete ordering. This is a stability control
+for the current linked fixture, not a reproduction or refutation of the new
+Williamson–van der Mark structural target (`ELECTRON_TARGET.md`).
+
+**P14 outcome (run by Astra/Codex; outcome text by Opus after independent
+reproduction):** prediction HIT in both groups. The 16-move window has a
+nonincreasing ordering, found after discovering 291 of 65,536 subset states
+(2,636 transitions checked). Window order [0,1,2,3,4,6,7,5,8,...,15]: the sole
+change is to postpone original step 38 (86 -> 84) until after steps 39–40.
+The action path then reads ...86,86,85,85,...,84... in place of ...86,84,84,85....
+The resulting complete 140-move erasure is nonincreasing from H=98 to 0 in
+both Z3 and A4. Full-holonomy, boundary, inverse and gauge-transport checks pass.
+A fresh rerun in a separate Linux checkout reproduces
+`topology_decay_order.json` semantically identically. The only difference is the
+path separator in its "source" field. **Consequence:** the prepared abelian
+linked-loop fixture has NO action barrier to complete erasure under H. Linking
+of commuting fluxes gives no energetic protection. The single uphill step of
+P13b was an artifact of move order.
+
+## P13 — Are flux links protected by the actual rewrites? (2026-09-19)
+
+Registered before generating the linked mesh fixture or running the new audit.
+Code inspection already found a missing over/under factor in `linking_number`
+and a missing two-tetrahedra-per-face check in `classify_faces`; their repair is
+not a prediction. Validate the linking measurement on Hopf/unlinked controls,
+orientation reversal, reflection, subdivision, and rational projection changes.
+Degenerate projections must be retried or rejected, never silently rounded away.
+
+**Fixture, not emergence:** Kuhn n=8 with identity boundary. Assign Z3 edge
+labels by oriented intersections with two internal rectangular spanning disks:
+one at z=17/4 with x in (9/7,37/7), y in (9/7,44/7); one at y=13/4 with
+x in (23/7,51/7), z in (16/7,44/7). Coordinates construct this diagnostic input
+and measure its embedding only; the rewrite/search rules do not read them.
+Lift the same labels into an explicitly declared cyclic order-3 subgroup of A4.
+Prediction: the resulting support is two disjoint dual loops with |linking|=1.
+If the detector disagrees, report fixture failure without quietly changing it.
+
+**Rewrite test:** apply the existing nonincreasing decay search with at most
+32 discovered states per plateau to each fixture. Save all moves and support
+classifications, recompute H independently, verify boundary and inverse replay,
+and check gauge-transported witnesses. Prediction: the loop-only domain is not
+preserved by the permitted rewrites. Whether these linked fixtures decay fully
+without an action increase is deliberately open. A budget cutoff is inconclusive.
+Save any witnessed junction, split, merger, loop loss, or linking change without
+calling it a nuclear reaction. No kinetic rate is inferred from search order.
+
+**Independent exact statement:** with a finite group and all nonidentity right
+multipliers allowed on each interior edge, any two assignments sharing boundary
+labels are joined by setting differing edges one at a time (multiplier a^-1 b).
+This holds on any fixed complex, regardless of knotting; it does not require
+every intermediate step to lower H. Thus no nonconstant label observable on
+that fixed-boundary space can be invariant under *all* those rewrites. For an
+ideal finite-beta Metropolis law all these rates are positive; beta=infinity and
+additional constraints require separate analysis. This is a deduction, not a
+prediction of experimental survival or exclusion of energetic metastability.
+
+**P13 first outcome:** fixture prediction HIT in both groups: two loops of
+lengths 52 and 46 with |linking|=1. The registered search found the action path
+98 -> 98 -> 98 -> 96, keeping two linked loops throughout (final lengths 52,44),
+then exhausted its 32-state budget. Complete downhill decay and loop-domain
+nonpreservation were NOT established by this search. No barrier claim follows.
+
+**P13b follow-up, registered after that outcome and before execution:** audit all
+single-edge proposals from the initial linked fixture in both groups. Count
+changes in the component-kind/loop-count domain separately for delta-H <= 0 and
+delta-H > 0; record the first witness of each kind with full-action replay.
+This tests loop-domain closure, not equality of linking for every pair of loops.
+Construct the theorem's ascending-edge-order path to identity labels, allowing
+uphill steps, and report its peak action as an upper bound for this particular
+path only. No numerical barrier or rate is predicted. Preserve the original
+32-state cutoff and do not present this follow-up as a successful downhill run.
+
+**P13b outcome:** all 6,064 Z3 and 33,352 A4 initial proposals audited. Each
+has eight nonincreasing proposals, all remaining two loops. Uphill proposals
+include 367 / 2,860 junction outcomes respectively. Nevertheless the separately
+constructed 140-move erasure path has a nonincreasing merger prefix: junction at
+move 37 (H=86), one loop at move 38 (H=84), from initial H=98 and |Lk|=1.
+Thus the predicted failure of loop-domain preservation IS witnessed by a path,
+even though it was not witnessed by the first bounded search or an initial
+nonincreasing one-edge move. The full path has exactly one uphill step, 84 -> 85
+at move 40, two loops with |Lk|=0 at move 52 (H=80), and flat vacuum at move 140.
+Peak H is 98. Necessity of that uphill step remains unproved. Both groups agree
+because the prepared labels and erasure path lie in a cyclic subgroup; the A4
+one-edge census also included all multipliers outside it. Full data, proof,
+controls and scope are in `TOPOLOGY_AUDIT.md` and the two `topology*_audit.json`
+records. Complete boundary, inverse, full-action and gauge-transport checks pass.
+
+## P12 — Constructive decay certificates (2026-09-19; before execution)
+
+Use the two archived nonvacuum P11 A4 n=5 endpoints, without rerunning or
+changing their initial conditions. Keep H, the mesh, every outer boundary label,
+and all nonidentity interior-edge multipliers unchanged. Search equal-H raw-label
+states breadth-first until a strict downhill exit is found, then repeat at the
+lower action. Limit each plateau search to 1000 discovered states. A reached
+budget is inconclusive; only a fully exhausted equal-H component certifies a
+closed plateau. No gauge quotient is used for exploration.
+
+Prediction: both endpoints admit a nonincreasing path all the way to H=0.
+An immediate downhill exit alone, already known from P11, does not establish this.
+Save the complete edge/multiplier witness and independently replay every step
+with full holonomy recomputation, exact boundary-label checks, and inverse replay.
+This is an existence proof for these endpoints, not a physical scheduler, lifetime,
+shortest-path claim, or exclusion of particles in every state of the model.
+
+Controls: vacuum; a single interior-edge excitation in Z3 and A4; independent
+vertex-gauge transforms of the archived endpoints with transported witnesses.
+No action tuning or replacement particle catalogue is permitted by this experiment.
+
+**P12 outcome:** prediction HIT. Both archived endpoints reach flat vacuum in
+two strictly downhill interior-edge moves: seed 0 has H=8 -> 4 -> 0; seed 1 has
+H=10 -> 6 -> 0. Full-action forward/inverse replay and independently gauged
+witness transport pass, with exact fixed boundary labels. The search did not
+need equal-action steps. These are constructive zero-barrier decay certificates;
+no shortest-path or decay-rate claim is made. The data are
+`reference/astra_session/data/decay_certificates.json`; regenerate with
+`python examples/particle_decay_certificates.py`.
+
 ---
 
 ## P1 — The μ quotient: rigid vs flexible internal-resolution counts (referee item 1)

@@ -1,13 +1,13 @@
 """End-to-end: seeded flux loops -> detector -> boundary-memory and rigidity measurements.
 
 Results codified here (see RESEARCH_DIARY E026-E027):
-1. Vertex-star seeds of order-3 elements produce CLOSED FLUX LOOPS in Kuhn balls,
-   detected by strings.flux_string_components as kind="loop" (n=1: 3-face loops at 6/8
-   vertices; n=2 central vertex: a 12-face loop). Involution seeds are flat everywhere --
+1. P13 correction: n=1 order-3 vertex-star seeds produce boundary-OPEN 3-face
+   arcs at 6/8 vertices, not closed loops; each has two boundary faces. The n=2
+   central vertex still produces a closed 12-face loop. Involution seeds are flat --
    existence of seeded loops depends on seed element order vs face orientation parity.
-2. BOUNDARY MEMORY: any ball enclosing loop flux has NO flat-interior filling (|I|=0):
-   the boundary data cannot be vacuum -- charge is measurable from outside, cone theorem
-   (E010) generalized to balls.
+2. FIXED-BOUNDARY OBSTRUCTION: the tested region around the n=1 boundary arc
+   has no flat-interior filling (|I|=0). This is not evidence of a freely persisting
+   closed loop or a theorem about every enclosing region.
 3. RIGIDITY (negative result): with class-declared curvature on interior faces, enclosed
    loops admit a UNIQUE filling (|I|=1 even at class size 4). Loop fields carry no hidden
    entropy; E010's |I|=6 lives in the defect CORE (cone apex), not the field around it.
@@ -37,12 +37,19 @@ def seed_star_loop(cx, v_star):
     return curved
 
 
-def test_vertex_star_order3_seeds_closed_loops():
-    cx = kuhn_ball("A4", n=1)
-    curved = seed_star_loop(cx, 1)
-    comps = flux_string_components(cx)
-    assert len(comps) == 1 and comps[0].kind == "loop"
-    assert all(len(cls) == 4 for cls in curved.values())      # order-3 class: size 4
+def test_boundary_vertex_star_seeds_are_open_arcs():
+    for vertex in range(8):
+        cx = kuhn_ball("A4", n=1)
+        curved = seed_star_loop(cx, vertex)
+        comps = flux_string_components(cx)
+        if vertex in (0, 7):
+            assert not comps
+            continue
+        comp, = comps
+        assert comp.kind == "sheet/junction"
+        assert comp.length == 3
+        assert len(set(comp.faces) & set(cx.boundary_faces())) == 2
+        assert all(len(cls) == 4 for cls in curved.values())
 
 
 def test_involution_star_seeds_are_flat():
@@ -63,11 +70,8 @@ def test_central_loop_in_kuhn_n2():
     assert comps[0].length == 12
 
 
-def test_boundary_memory_no_vacuum_filling():
-    """A ball enclosing loop flux admits NO flat-interior resolution: |I| = 0.
-
-    The boundary appearance remembers the enclosed charge -- vacuum capping is impossible.
-    """
+def test_boundary_arc_no_flat_interior_filling():
+    """This fixed-boundary region around an open arc has no flat-interior filling."""
     cx = kuhn_ball("A4", n=1)
     curved = seed_star_loop(cx, 1)
     tets = sorted(cx.tetrahedra())

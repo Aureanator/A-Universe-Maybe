@@ -5,7 +5,43 @@ programming specification; `[Unreleased]` holds work in progress.
 
 ## [Unreleased] — Round 3 panel response + Astra merge
 
+### Added
+- v4 dynamics design (Opus with the user): `docs/DYNAMICS_DESIGN.md`, `examples/v4_design_checks.py`,
+  `tests/test_v4_design.py`; P19 registered (not run). Framing reconciled (README preface, CLAIMS note,
+  MEMO_PATCHES P11, ELECTRON_TARGET, PARTICLE_PROGRAM): matter = trapped circulation; mass = translation
+  rewrite cost = maintenance cost. Working statement clause 12 (references only between structures) and item L.
+- `docs/WORKING_STATEMENT.md` (v4 integrated picture, status per clause) and P18 light fronts (Opus):
+  `docs/PROPAGATION.md` (D1–D7), `examples/propagation_test.py`, `propagation_graphics.py`,
+  `tests/test_propagation.py`, data, and figure `out/p18_propagation.png`. Diary E044; claims 38–39.
+- P17 trapping (Opus): `docs/TRAPPING.md` (theorems T1–T6), `examples/trapping_test.py`,
+  `trapping_depth_rates.py` (mpmath), `trapping_graphics.py`, `tests/test_trapping.py`, data and figure
+  `out/p17_trapping.png`. Diary E043; claims 36–37.
+- P16 bag test (`examples/bag_test.py`, `tests/test_bag_test.py`, `reference/opus_session/data/bag_test.json`)
+  and `docs/BAG_PICTURE.md` (why/how of the wake/bubble picture, job spec for a cone extension,
+  twist/fermion correction, sum-over-paths assessment). Diary E042; claim 35.
+- P15 (Opus): non-commuting linked flux fixtures in full A4 (`examples/noncommuting_link_audit.py`,
+  graphics script, `reference/opus_session/data/noncommuting_link_audit.json`,
+  `out/p15_noncommuting_links.png`). A forced V4 tether is confirmed. Greedy ordered
+  erasure is nonincreasing in all six arms. One-edge census included. Tie-order
+  amendment declared before measurement.
+- P14 outcome recorded (Astra run, Opus reproduction); `tests/test_link_order_and_noncommuting.py`
+  (P14 replay, P15 fixture/commutator/tie/erasure pins). Diary E040–E041, claims 32–34.
+- P13/P13b topology audit: exact linking, prescribed linked flux fixtures in Z3
+  and an A4 subgroup lift, full one-edge domain census, 38-move nonincreasing
+  merger and 140-move erasure certificates (one +1 step), and reproducible figure.
+  Constructive fixed-boundary rewrite-connectivity proof and path verifier.
+  Original bounded-search cutoff retained as inconclusive.
+- P12 constructive decay certificates: both archived A4 n=5 nonvacuum endpoints
+  reach flat vacuum in two downhill moves (8→4→0 and 10→6→0), with full-action,
+  boundary, inverse, and gauge-transport verification. Bounded raw-state plateau
+  search distinguishes closed plateaus from inconclusive budget exhaustion.
+  Reproduce with `python examples/particle_decay_certificates.py`.
+
 ### Fixed
+- Linking signs now include over/under depth, use rational predicates, and reject
+  uncertified projections; the skipped Hopf-link test now runs. Closed-loop
+  classification checks face incidence to exclude boundary-open arcs. Dual
+  embedding uses an actual cycle walk and rejects nonadjacent tetrahedra.
 - **F1 justification drift**: false "never within a fixed fibre" sentence corrected; `pointwise_stabilizer()`
   + `within_fibre_resolution_orbits()` shipped; three-convention warning (rigid/within-fibre/pooled);
   pins: flat-B stabilizer 12 constants, five-face raw 72→rigid 6→within-fibre 2, star-3 →1.

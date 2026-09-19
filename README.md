@@ -10,7 +10,64 @@ topological defects are matter; rewrite cost is mass; interaction is boundary-co
 gluing (fiber product of internal resolution spaces); and an observer coarse-grains
 event density into effective 3D geometry and gravity-like propagation delay.
 
+> **Current picture (2026-09-19): see [docs/WORKING_STATEMENT.md](docs/WORKING_STATEMENT.md).**
+> The paragraph above is the original framing, kept as history. Two of its
+> clauses have been revised on evidence:
+> - **"Persistent topological defects are matter" → matter is trapped
+>   circulation of implication.** Under the classical action H, every
+>   topological defect tested decays without a barrier (P8–P15). P16 shows why:
+>   there is tension but no pressure. P17/P18 show that trapping requires
+>   signed waves.
+> - **"Rewrite cost is mass" is kept, but made precise.** Mass is the rewrite
+>   cost of *translating* a structure: inertial mass. Equivalently, it is the
+>   maintenance cost in implication steps relative to a free implication
+>   crossing the same neighbourhood. That cost is the energy of the trapped
+>   circulation. The older reading, cost = curvature count H or the group word
+>   metric of a label change, is retained only as the pre-v4 control arm.
+>
+> The new dynamics that goes with the current picture is specified in
+> [docs/DYNAMICS_DESIGN.md](docs/DYNAMICS_DESIGN.md). Everything measured
+> under the old engine (Drivers A/B, curvature kinetics) stays valid *as
+> measured*, as a named control arm.
+
 Coordinates exist only in the visualization layer. They never determine dynamics.
+
+**Current empirical status (2026-09-19):** the paragraph above describes the
+program's intended interpretation. The group, mesh, action, and rewrite law are
+declared model inputs; they have not all been derived from the single axiom.
+Unpinned particles, nuclei, atoms, and chemical bonds have not been demonstrated.
+P12 now gives explicit two-move, zero-barrier decay paths for both A4 n=5
+structures that survived 200,000 proposals: **8 -> 4 -> 0** and **10 -> 6 -> 0**
+in curvature action. See [the particle program](docs/PARTICLE_PROGRAM.md) and
+[replayable certificates](reference/astra_session/data/decay_certificates.json).
+The claims register supersedes older milestone interpretations below.
+
+The user-selected electron reproduction target is the
+[Williamson–van der Mark structure](docs/ELECTRON_TARGET.md), tracked through
+explicit realization, circulation, persistence, charge, spin/exchange and
+response gates. Its reproduction remains open.
+
+**Topology gate (P13):** prescribed linked flux loops merge through a junction
+in 38 nonincreasing edge rewrites, H=98 -> 84, in Z3 and an A4 subgroup lift.
+A complete 140-move erasure witness has one +1 action step. Exact linking
+measurement, loop detection, replay and gauge controls are documented in the
+[topology audit](docs/TOPOLOGY_AUDIT.md). This is geometric merger, not nuclear
+fusion; the linked fixture was prepared, not spontaneously formed.
+**P14/P15:** that +1 step was an ordering artifact. The erasure is fully nonincreasing.
+With non-commuting A4 fluxes, linking forces a V4 tether (pi_1 of a Hopf complement
+is abelian), but the pair still erases without an uphill step. Under H, no closed flux
+network tested so far has an activation barrier.
+**P16 bag test:** the model supplies surface tension but no inside/outside
+pressure and no conserved interior content. This explains why nothing persists,
+and it specifies what a new ingredient must provide: see [the bag picture](docs/BAG_PICTURE.md).
+**P17:** a walk with probability weights provably escapes any region that has an
+exit. The same walk with amplitudes (factor i) traps exactly the modes that
+vanish at the exit. On a fractal the remaining leaks slow doubly-exponentially
+with depth. See [trapping](docs/TRAPPING.md).
+**P18:** in its own emergent metric the project's mesh is exactly the BCC
+tetrahedral honeycomb. Scalar waves on it have round, sharp 3D light fronts,
+and mass leaves a wake inside the cone ([propagation](docs/PROPAGATION.md)).
+The current picture is in [the working statement](docs/WORKING_STATEMENT.md).
 
 - Theory narrative & audit trail: [Memo.txt](<reference/theory_memo/Memo.txt>) (Qwen ⇄ Opus review thread)
 - Spec-to-code map: [docs/SPEC.md](<docs/SPEC.md>) · findings: [docs/PHYSICS_NOTES.md](<docs/PHYSICS_NOTES.md>),

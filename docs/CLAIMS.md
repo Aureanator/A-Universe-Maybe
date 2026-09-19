@@ -44,6 +44,50 @@ convention changes, both numbers stay here with their convention names (control-
 | 27 | No stable particle species or binding at n ≤ 3 under H: all 57 lifetime-screened branches have immediate downhill moves, 42/57 exact one-move erasures; long endpoints absorbed to vacuum at proposals 15,157 / 17,523 — longevity was proposal-waiting-time artifact | MEASURED (NEGATIVE RESULT, kept visible) | Astra (P9+P10) | `docs/PREDICTIONS.md` P9–P10; `reference/astra_session/data/{runs,candidate_audit}.json` |
 | 28 | Non-abelian critical slowing-down without metastability: at n=5, Z3 relaxes to vacuum in ≤47.3k proposals but A4 fails on 2/3 seeds within 200k (endpoints H=8/10, each with only 2 strict-downhill exits among 665×11 = 7,315 proposals); endpoints NOT local minima — no stability claim | MEASURED + reproduced bit-for-bit locally | Astra (P11); exact reproduction by local Qwen 2026-09-19 | `docs/PREDICTIONS.md` P11; `reference/astra_session/data/scale_runs*.json`, `scale_rerun.log`; diary E037 |
 
+### P12 addition (2026-09-19)
+
+**29 — MEASURED + constructive certificate (Codex):** both nonvacuum P11 A4 n=5
+endpoints have zero-barrier paths to flat vacuum under the original permitted
+interior-edge moves: H=8 -> 4 -> 0 and H=10 -> 6 -> 0. Every move is verified
+by full holonomy recomputation, fixed boundary labels, inverse replay, and gauge
+transport. This excludes an action barrier to complete decay at those endpoints;
+it does not establish rates or exclude metastability elsewhere. Evidence:
+`examples/particle_decay_certificates.py`, `tests/test_decay.py`, and
+`reference/astra_session/data/decay_certificates.json`.
+
+The earlier phrase "critical slowing-down" in row 28/P11 was an interpretation,
+not a measured critical exponent or established critical point. The supported
+observation is slow proposal-time relaxation with rare downhill moves. Likewise,
+E037's suggestion that destroying-move dilution is a conjugacy-class mechanism
+remains a hypothesis; these certificates do not derive that mechanism.
+
+### P13 / P13b additions (2026-09-19)
+
+**30 — DERIVED (Codex):** with all nonidentity right multipliers allowed on
+each interior edge, the raw fixed-boundary label graph is connected for any
+finite group on any fixed complex. Constructive path: multiply each differing
+label a by a^-1 b. Therefore no nonconstant label observable is invariant under
+ALL these unrestricted moves. Does not imply downhill connectivity or rule out
+energetic metastability. Scope/proof: `docs/TOPOLOGY_AUDIT.md`; implementation
+and checks: `rewrites.py`, `tests/test_rewrites.py`.
+
+**31 — MEASURED, exact witnesses (Codex):** prescribed linked dual loops on
+Kuhn n=8 in Z3 and an A4 order-3 subgroup lift have |Lk|=1 and a nonincreasing
+38-move merger path through a junction, H=98 -> 84. Full 140-move erasure has
+one +1 step, never exceeds initial H, and passes through a two-loop state with
+|Lk|=0. Boundary, inverse, full-holonomy and gauge checks pass. This is not
+spontaneous emergence, intrinsically non-abelian binding, nuclear fusion, a
+minimal-barrier proof, or a sampled rate. The original downhill search's
+32-state cutoff remains inconclusive. Evidence: `examples/topology*_audit.py`,
+`reference/astra_session/data/topology*_audit.json`, `tests/test_topology_audit.py`.
+
+**Historical E026/E027 correction:** n=1 order-3 vertex stars are boundary-open
+arcs (six nontrivial supports, each with two boundary faces), not closed loops.
+The n=2 central loop remains closed. The associated n=1 no-flat-filling count
+is a fixed-region result, not a theorem about all enclosing regions. Exact
+incidence checks replace the old false closure assertion; diary corrections
+retain the original statements and their revised scope.
+
 ## Protections list (R3 §4 — load-bearing walls of credibility)
 
 Future speed must not cost these. Any change that weakens one requires an explicit diary entry:
@@ -67,3 +111,84 @@ Future speed must not cost these. Any change that weakens one requires an explic
 *Opus* — external verification pass (reference/opus_audit/, R3 panel).
 *online Qwen* — theory-sounding-out instance (Memo.txt), synthesis author of referee rounds.
 *panel* — joint reconstruction across the above.
+
+### P14 / P15 additions (2026-09-19)
+
+**32 — MEASURED, exact witness (Astra run; Opus reproduction):** the P13 linked
+fixture (Z3 and the A4 cyclic lift) has a fully NONINCREASING 140-move erasure,
+H=98 -> 0. The P13b +1 step was an ordering artifact. Evidence: P14,
+`topology_decay_order.json`, `tests/test_link_order_and_noncommuting.py`.
+
+**33 — DERIVED + MEASURED (Opus):** in full A4, Hopf-linked flux loops with
+non-commuting fluxes cannot be the whole curved support. pi_1 of the complement
+is Z^2, so the meridians would have to commute. The prepared fixtures confirm this:
+one junction component with a V4 tether of 5 faces (6 under the opposite tie
+convention). The commuting controls give two clean linked loops.
+
+**34 — MEASURED, exact witnesses (Opus):** those tethered non-abelian fixtures,
+and the commuting controls, all have fully nonincreasing 140-move erasures to flat
+vacuum. The tether and the linking vanish on the same move (step 52, H=80, Lk=0).
+No single rewrite removes the tether. NOT shown: minimal barriers elsewhere,
+rates, or stability of any other structure. Evidence: P15,
+`reference/opus_session/data/noncommuting_link_audit.json`, `out/p15_noncommuting_links.png`.
+
+**35 — MEASURED + DERIVED (Opus, P16):** with identity boundary, flat interiors
+have exactly one physical filling (Z3 n≤3, A4 n≤2). The smallest excitations
+(H=4) have 3n²(n−1) distinct supports (n=2..8): uniform volume entropy, no
+inside/outside difference. With claim 30 (no conserved interior content), the
+current model has surface tension but no bubble pressure. Evidence: P16,
+`reference/opus_session/data/bag_test.json`, `tests/test_bag_test.py`;
+interpretation in `docs/BAG_PICTURE.md` (framing POSTULATED).
+
+**Note on row 23 (2026-09-19):** the "H³(A4,U(1)) menu check" is the 2+1D twist.
+For 3D space plus time the Dijkgraaf–Witten twist is H⁴, and it does not by
+itself make point charges fermionic. See `docs/BAG_PICTURE.md` §7. Row 23 is
+unchanged as history.
+
+**36 — DERIVED + MEASURED (Opus, P17):** on any connected graph with an exit,
+a walk with probability weights escapes from every start. The same walk with
+amplitude weights (identical generator, factor i) keeps exactly ||P_D psi0||^2,
+where D is spanned by the eigenmodes vanishing at the exit. Symmetry and
+degeneracy force D to be nonzero. Verified on 12 graphs, including the Kuhn
+mesh (44/64 dark). Evidence: `docs/TRAPPING.md`, `tests/test_trapping.py`.
+
+**37 — MEASURED, observed pattern (Opus, P17):** on the Sierpinski gasket
+(levels 1–6, corner exit) the non-dark dimension is 3·2^(k-1)+1, and the slowest
+non-dark leak rate falls doubly-exponentially (to 1.5e-31 at level 6). Not
+proven for general k; supplied geometry, not self-built. Evidence:
+`reference/opus_session/data/trapping_depth_rates.json`.
+
+**38 — DERIVED + MEASURED (Opus, P18):** the project's Kuhn mesh, in the
+emergent metric of any nearest-neighbour wave rule on it, has the exact
+body-centred-cubic tetrahedral vertex star. Its edge classes are fixed by
+link-ring size (6: short, 4: long, length ratio 2/√3). Weighting ring-4 edges by
+½ makes the dispersion isotropic through fourth order. In rendering coordinates
+the mesh looks anisotropic (speed ratio 2); that is a coordinate artifact under
+architecture rule 4. Evidence: `docs/PROPAGATION.md`, `tests/test_propagation.py`.
+
+**39 — MEASURED (Opus, P18):** scalar waves on that mesh reproduce the sharp
+3D Huygens principle (interior share ≤ 3e-7). A 2D control keeps its
+continuum tail (1.8%). Mass fills the cone interior, converging to the
+continuum (39% at mσ = 1). Classical damped waves keep exactly the dark-mode
+energy, so P17-style trapping needs signed waves, not specifically complex
+amplitudes. Evidence: `reference/opus_session/data/propagation_test.json`.
+
+### Framing update (2026-09-19): row 25 reconciled with the working statement
+
+**Row 25 (basement axiom and emergence narrative)** remains POSTULATED framing.
+Two sub-claims are revised, on evidence, without deleting the history above:
+
+- **"Matter = persistent knot/defect" — SUPERSEDED.** Under the pre-v4
+  classical action, no defect persists (rows 26–34). The replacement is
+  "matter = trapped circulation of implication" (`WORKING_STATEMENT.md`
+  clause 6). It is POSTULATED; its exact trapping mechanism is DERIVED (rows 36, 39).
+- **"Mass = rewrite cost" — RETAINED, made precise.** Inertial mass is the
+  rewrite cost of translating a structure. Equivalently, it is the
+  maintenance cost in implication steps relative to a free implication
+  crossing the same neighbourhood. The equivalence is a light-clock argument,
+  checked by M1/M2 in `DYNAMICS_DESIGN.md`. The old readings (curvature count
+  H; group word metric) are now the **pre-v4 control arm**, not physical mass.
+
+**Control-arm labelling:** rows 7–35 were produced by the pre-v4 engine (static
+labels, H-descent, external bath, Drivers A/B). They stay true as measured, and
+become the named control arm for the v4 dynamics.

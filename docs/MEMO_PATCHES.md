@@ -88,3 +88,25 @@ are results." Caveat kept: θ=−1 is twist, not yet exchange statistics (R-symb
 "Open problem 1: DW phases for finite G are gapped; the photon is gapless. Candidate
 resolutions: critical growth dynamics, anyonic condensation, or a separate-sector origin.
 Falsifiable and bounded; the sim is referee."
+
+## P11 — Matter and mass definitions (§5), 2026-09-19
+
+**Matter.** Replace "Matter = persistent relational fixed point of reduction,
+protected by topological invariants τ" with: **"Matter = implication trapped in
+circulation. It persists because every way out cancels (exit-free modes of a
+signed-wave dynamics), not because a topological invariant forbids change."**
+The fixed-point language may stay as a description (the circulation is a
+fixed point of the dynamics) but not as the mechanism.
+
+Why: under the classical action H no defect or knot persisted (P8–P15).
+Knotting constrains *which* intermediates occur, not *whether* decay occurs
+(P15). Trapping by cancellation is exact for waves and impossible for
+probabilities (P17, P18).
+
+**Mass.** Replace "m ∝ constraint-reconfiguration cost" with: **"inertial mass =
+the rewrite cost of translating the structure = its maintenance cost in
+implication steps relative to free passage = the energy of its trapped
+circulation (in units where the one speed is 1)."** The light-clock argument
+supplies the equivalence: every implication moves at the one speed, so
+translation borrows steps from internal circulation, and the internal clock
+slows by exactly sqrt(1 − v²). The quantitative check is M1/M2 in `DYNAMICS_DESIGN.md`.

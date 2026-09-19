@@ -12,7 +12,7 @@ import pytest
 from constraintnet.seeds import kuhn_ball, make_single_tetrahedron
 from constraintnet.strings import (
     classify_faces, curved_face_set, flux_string_components, is_flux_realizable,
-    solve_flux_z3,
+    solve_flux_z3, ordered_loop_tets,
 )
 
 
@@ -79,6 +79,30 @@ def test_flat_complex_has_no_strings():
     cx = kuhn_ball("Z3", n=1)
     assert curved_face_set(cx) == []
     assert flux_string_components(cx) == []
+
+
+def test_boundary_arc_is_not_a_closed_loop():
+    cx = make_single_tetrahedron("Z3")
+    cx.set_label(0, 1, 1)
+    comp, = flux_string_components(cx)
+    assert comp.length == 2
+    assert comp.kind == "sheet/junction"
+    with pytest.raises(ValueError, match="not a closed"):
+        ordered_loop_tets(cx, comp)
+
+
+def test_loop_walk_traverses_the_detected_dual_cycle():
+    from constraintnet.curvature import CurvatureState
+
+    cx = kuhn_ball("Z3", n=2)
+    state = CurvatureState(cx)
+    cx.set_label(*state.edges[state.interior_edges[0]], 1)
+    comp, = flux_string_components(cx)
+    assert comp.kind == "loop"
+    walk = ordered_loop_tets(cx, comp)
+    assert len(set(walk)) == len(comp.tets_touched) == len(comp.faces)
+    crossed = {tuple(sorted(set(a) & set(b))) for a, b in zip(walk, walk[1:]+walk[:1])}
+    assert crossed == set(comp.faces)
 
 
 def test_single_tet_bubble_detected_as_sheet():

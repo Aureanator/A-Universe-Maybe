@@ -30,8 +30,8 @@ from .complex import SimplicialComplex
 from .groups import Group
 
 __all__ = [
-    "FluxString", "curved_face_set", "flux_string_components", "classify_component",
-    "solve_flux_z3", "is_flux_realizable",
+    "FluxString", "curved_face_set", "flux_string_components", "classify_faces",
+    "solve_flux_z3", "is_flux_realizable", "ordered_loop_tets",
 ]
 
 
@@ -142,16 +142,58 @@ def flux_string_components(cx: SimplicialComplex) -> List[FluxString]:
 
 def classify_faces(faces: Iterable[Tuple[int, int, int]],
                    tet_members: Dict[Tuple[int, int, int, int], Sequence]) -> str:
-    """Pure classifier: 'loop' iff every touched tet carries exactly two component faces.
+    """Closed dual cycles require degree two at tets AND two tets per face.
 
     ``tet_members`` maps tetrahedron -> its faces that belong to the component.
-    Enter-and-exit at every dual vertex: no endpoints, no branching.
+    Enter-and-exit alone can misclassify an arc terminating on the boundary.
+    Disconnected unions of cycles pass this local classifier; the component
+    detector separates them before calling it.
     """
-    face_set = set(faces)
-    counts = [sum(1 for f in members if tuple(sorted(f)) in face_set) for members in tet_members.values()]
-    if not counts or any(c != 2 for c in counts):
+    face_set = {tuple(sorted(f)) for f in faces}
+    incidence = {f: 0 for f in face_set}
+    counts = []
+    for members in tet_members.values():
+        present = {tuple(sorted(f)) for f in members} & face_set
+        if present:
+            counts.append(len(present))
+        for f in present:
+            incidence[f] += 1
+    if not counts or any(c != 2 for c in counts) or any(c != 2 for c in incidence.values()):
         return "sheet/junction"
     return "loop"
+
+
+def ordered_loop_tets(cx, string):
+    """Return an actual cyclic tet walk, never the sorted support as a walk."""
+    if string.kind != "loop":
+        raise ValueError("component is not a closed dual loop")
+    faces = set(string.faces)
+    incidence = {f: [] for f in faces}
+    for tet in string.tets_touched:
+        for f in itertools.combinations(tet, 3):
+            if f in incidence:
+                incidence[f].append(tet)
+    adjacency = {tet: [] for tet in string.tets_touched}
+    for tets in incidence.values():
+        if len(tets) != 2:
+            raise ValueError("loop touches boundary or nonmanifold face")
+        a, b = tets
+        adjacency[a].append(b)
+        adjacency[b].append(a)
+    if not adjacency or any(len(n) != 2 for n in adjacency.values()):
+        raise ValueError("loop has a junction or endpoint")
+    start = min(adjacency)
+    walk = [start]
+    previous, current = start, min(adjacency[start])
+    while current != start:
+        if current in walk:
+            raise ValueError("invalid loop walk")
+        walk.append(current)
+        following = next(t for t in adjacency[current] if t != previous)
+        previous, current = current, following
+    if len(walk) != len(adjacency):
+        raise ValueError("component contains multiple cycles")
+    return tuple(walk)
 
 
 # --------------------------------------------------------------------------- GF(3) solvability

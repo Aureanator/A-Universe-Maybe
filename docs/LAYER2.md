@@ -3,6 +3,13 @@
 Branch tip work after `6e2bdbd`. Items numbered per the Layer-2 brief. Status as of
 each commit; tests are authoritative.
 
+**2026-09-19 topology update:** P13/P13b supplies exact rational pair-linking
+measurement, closed-loop detection with boundary checks, and adjacency-ordered
+dual embedding. A prescribed |Lk|=1 pair merges under nonincreasing rewrites;
+loop topology is not a conserved obstruction of the current move law. The
+single-knot heuristics and mesh/category braiding correspondence remain open.
+See [TOPOLOGY_AUDIT.md](TOPOLOGY_AUDIT.md); older brief/status text below is history.
+
 ## Item 1 — D(A4) modular data: COMPLETE (`category.py`, `tests/test_category.py`)
 
 Fourteen sectors ([flux class], centralizer irrep), canonical order
