@@ -196,3 +196,10 @@ n = 1..4; return probability P(n_steps); d_s(t) = −2·dlogP/dlogt estimated lo
 
 **Status:** NOT YET PRE-REGISTERED — will be written before that experiment runs, with an area-law
 scaling prediction for boundary-residue production under penalty λ. Listed here so the queue is visible.
+
+**Design controls adopted from R3 panel (Opus R3 design note; recorded BEFORE any run):**
+(1) vary the STARTING CONFIGURATION as well as λ — a near-flat start (71/72 identity surface edges)
+is an independent forcing reason for confinement beside the definitional predicate, and a single
+flat seed would silently confound the two; (2) report per-start statistics, not pooled ones, so a
+confinement signal attributable to seeding cannot masquerade as one attributable to λ;
+(3) include λ = 0 (unpenalized appearance-predicate baseline) in every sweep.

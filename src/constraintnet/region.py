@@ -253,12 +253,12 @@ class Region:
         return report
 
     # ------------------------------------------------- gauge-invariant relational state
-    def _surface_paths(self, root: int) -> Dict[int, Tuple[int, ...]]:
+    def _surface_paths(self, root: int, edges=None) -> Dict[int, Tuple[int, ...]]:
         """BFS vertex paths from ``root`` along the observable surface 1-skeleton."""
         from collections import deque
 
         adj: Dict[int, set] = {}
-        for (u, v) in self.surface_edges():
+        for (u, v) in (edges if edges is not None else self.surface_edges()):
             adj.setdefault(u, set()).add(v)
             adj.setdefault(v, set()).add(u)
         paths = {root: (root,)}
@@ -288,7 +288,20 @@ class Region:
         forms (exact, tested) and no relational data is discarded.  The loop SET still depends
         on region construction and BFS paths -- compare only between runs sharing one region;
         what is guaranteed is gauge invariance and completeness of the retained data.
+
+        Completeness on the tetrahedron slice: over all 1728 tree-gauge configurations of
+        d(Delta^3) this canonical form separates EXACTLY the 178 Burnside physical classes
+        (pinned by test; independently reconstructed by the R3 panel), where appearance()'s
+        class-tuples collapse them to 82.
+
+        Multi-component surfaces (R3 F6, cavity blindness): each connected component of the
+        observable surface gets its OWN basepoint and its own simultaneous conjugation --
+        vertex gauge is independent at disconnected pieces -- and every component contributes;
+        nothing is skipped.  Components are concatenated in minimum-vertex order,
+        fixed by the region rather than by the measured holonomies.  Vertex gauge
+        does not identify permutations of distinct surface components.
         """
+        from .complex import fundamental_cycles
         from .holonomy import path_holonomy
 
         group = self.cx.group
@@ -297,33 +310,54 @@ class Region:
         surface = self.surface_edges()
         if not surface:
             return ()
-        root = min(v for e in surface for v in e)
-        paths = self._surface_paths(root)
 
-        raw = []
-        def based(loop, start):
-            w = loop_holonomy(self.cx, tuple(loop))
-            if start == root:
-                return w
-            t_in = path_holonomy(self.cx, paths[start])   # root -> start
-            t_out = group.inverse(t_in)                   # start -> root: same edges reversed
-            return group.multiply(group.multiply(t_in, w), t_out)
+        # connected components of the surface 1-skeleton (R3 F6: no component may be invisible)
+        adj: Dict[int, set] = {}
+        for (u, v) in surface:
+            adj.setdefault(u, set()).add(v)
+            adj.setdefault(v, set()).add(u)
+        seen: set = set()
+        components: list = []
+        for start in sorted(adj):
+            if start in seen:
+                continue
+            comp = {v for v in self._surface_paths(start) }
+            seen |= comp
+            components.append(sorted(comp))
 
-        for face in sorted(self.observed_faces()):
-            a, b, c = face
-            if a in paths:
-                raw.append(based((a, b, c), a))
-        for loop in self.probe_cycles():
-            s = int(loop[0])
-            if s in paths:
-                raw.append(based(tuple(loop), s))
+        parts: List[Tuple[int, ...]] = []
+        for comp_vertices in components:
+            comp_set = set(comp_vertices)
+            comp_edges = [e for e in surface if e[0] in comp_set]
+            root = min(comp_vertices)
+            paths = self._surface_paths(root, comp_edges)
 
-        best = None
-        for mu in elements:
-            cand = tuple(index[group.conjugate(mu, w)] for w in raw)
-            if best is None or cand < best:
-                best = cand
-        return best
+            def based(loop, start, _paths=paths, _root=root):
+                w = loop_holonomy(self.cx, tuple(loop))
+                if start == _root:
+                    return w
+                t_in = path_holonomy(self.cx, _paths[start])   # root -> start
+                t_out = group.inverse(t_in)                    # same edges reversed
+                return group.multiply(group.multiply(t_in, w), t_out)
+
+            raw = []
+            for face in sorted(self.observed_faces()):
+                a, b, c = face
+                if a in comp_set:
+                    raw.append(based((a, b, c), a))
+            for loop in fundamental_cycles(comp_edges, root=root):
+                s = int(loop[0])
+                if s in comp_set:
+                    raw.append(based(tuple(loop), s))
+
+            best = None
+            for mu in elements:
+                cand = tuple(index[group.conjugate(mu, w)] for w in raw)
+                if best is None or cand < best:
+                    best = cand
+            parts.append(best)
+
+        return tuple(v for part in parts for v in part)
 
     def __repr__(self) -> str:  # pragma: no cover - cosmetic
         return (

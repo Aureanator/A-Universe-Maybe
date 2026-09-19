@@ -12,9 +12,11 @@ event density into effective 3D geometry and gravity-like propagation delay.
 
 Coordinates exist only in the visualization layer. They never determine dynamics.
 
-- Theory narrative & audit trail: [Memo.txt](<Memo.txt>) (Qwen ⇄ Opus review thread)
+- Theory narrative & audit trail: [Memo.txt](<reference/theory_memo/Memo.txt>) (Qwen ⇄ Opus review thread)
 - Spec-to-code map: [docs/SPEC.md](<docs/SPEC.md>) · findings: [docs/PHYSICS_NOTES.md](<docs/PHYSICS_NOTES.md>),
   [docs/R_TRACK.md](<docs/R_TRACK.md>) · conventions: [docs/CONVENTIONS.md](<docs/CONVENTIONS.md>)
+- Claims register (status × producing model) & protections list: [docs/CLAIMS.md](<docs/CLAIMS.md>) ·
+  particle/reaction program gates: [docs/PARTICLE_PROGRAM.md](<docs/PARTICLE_PROGRAM.md>)
 - Independent audit scripts (external, with corrections): [reference/opus_audit/](<reference/opus_audit/README.md>)
 
 ## Quick start
@@ -22,7 +24,7 @@ Coordinates exist only in the visualization layer. They never determine dynamics
 ```bash
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install pytest matplotlib numpy   # Windows
-PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 197 tests, ~30 s
+PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 285 tests (~4 min incl. slow)
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 1728 -> 178
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone3.py    # hidden internal states |I(B)|
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone4.py    # persistent defect + confinement

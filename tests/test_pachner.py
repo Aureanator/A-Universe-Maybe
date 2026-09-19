@@ -20,7 +20,7 @@ from constraintnet.moves import (
     find_pachner_3_2_sites,
     revert_move,
 )
-from constraintnet.seeds import kuhn_ball, randomize_labels
+from constraintnet.seeds import kuhn_ball, make_bipyramid, randomize_labels
 
 
 def snapshot(cx):
@@ -28,6 +28,8 @@ def snapshot(cx):
         frozenset(tuple(sorted(t)) for t in cx.tetrahedra()),
         tuple((tuple(sorted(e)), cx.label(*e)) for e in sorted(cx.edges())),
         frozenset(tuple(sorted(f)) for f in cx.faces()),
+        tuple((t, cx.tet_order(t)) for t in cx.tetrahedra()),
+        tuple((e, cx.is_realized(*e)) for e in cx.edges()),
     )
 
 
@@ -101,6 +103,49 @@ class TestPachner23:
 
 
 class TestPachner32:
+    def test_both_directions_preserve_euler_and_exact_undo(self):
+        for triangulation, expected_faces in [("two", 7), ("three", 9)]:
+            cx = make_bipyramid("A4", triangulation=triangulation)
+            randomize_labels(cx, seed=19)
+            for edge in cx.edges()[::2]:
+                cx.set_realized(*edge, True)
+            before = snapshot(cx)
+            boundary = boundary_labels(cx)
+            if triangulation == "two":
+                a, b, _ = find_pachner_2_3_sites(cx)[0]
+                move = apply_pachner_2_3(cx, a, b)
+                assert cx.n_faces() == 9
+            else:
+                move = apply_pachner_3_2(cx, find_pachner_3_2_sites(cx)[0])
+                assert cx.n_faces() == 7
+            assert len(cx.vertices()) - cx.n_edges() + cx.n_faces() - cx.n_tetrahedra() == 1
+            assert boundary_labels(cx) == boundary
+            assert all(cx.tets_around_face(f) for f in cx.faces())
+            revert_move(cx, move)
+            assert snapshot(cx) == before
+            assert cx.n_faces() == expected_faces
+
+    def test_existing_equatorial_face_rejected_without_mutation(self):
+        cx = make_bipyramid("A4", triangulation="three")
+        edge = find_pachner_3_2_sites(cx)[0]
+        equator = sorted(set(cx.vertices()) - set(edge))
+        cx.add_face(equator)
+        before = snapshot(cx)
+        assert edge not in find_pachner_3_2_sites(cx)
+        with pytest.raises(MoveError, match="link condition"):
+            apply_pachner_3_2(cx, edge)
+        assert snapshot(cx) == before
+
+    def test_unrelated_surface_survives_round_trip(self):
+        cx = make_bipyramid("A4", triangulation="three")
+        edge = find_pachner_3_2_sites(cx)[0]
+        cx.add_face((20, 21, 22))
+        before = snapshot(cx)
+        move = apply_pachner_3_2(cx, edge)
+        assert cx.has_face((20, 21, 22))
+        revert_move(cx, move)
+        assert snapshot(cx) == before
+
     def test_inverse_recovers_two_tetrahedra(self, ball):
         (a, b, face) = find_pachner_2_3_sites(ball)[0]
         tets_before = frozenset(tuple(sorted(t)) for t in ball.tetrahedra())

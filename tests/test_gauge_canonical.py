@@ -43,14 +43,78 @@ class TestGaugeInvariantState:
                     states.add(region.gauge_invariant_state())
                     appearances.add(region.appearance().signature())
         assert len(appearances) == 82
-        assert len(states) > 82, "canonical form should retain relational data classes discard"
-        assert len(states) <= 178
+        # independently reconstructed by the R3 panel and now pinned: on this slice the raw-
+        # holonomy canonical form is COMPLETE -- exactly the 178 Burnside physical classes
+        assert len(states) == 178, f"expected exactly the 178 orbits, got {len(states)}"
 
     def test_empty_region(self):
         cx = make_tetrahedron_boundary("A4")
         # remove all labels variety: identity everywhere -> trivial state exists
         region = Region(cx, [], "dDelta3")
         assert isinstance(region.gauge_invariant_state(), tuple)
+
+    def test_cavity_component_not_invisible(self):
+        """R3 F6: a change on a DISCONNECTED second surface component must move the canonical
+        state (the old single-root version silently skipped it)."""
+        import itertools
+
+        from constraintnet.complex import SimplicialComplex
+
+        cx = SimplicialComplex("A4")
+        # two disjoint tetrahedral boundaries: vertices 0-3 and 10-13
+        for base in (0, 10):
+            for u, v in itertools.combinations(range(base, base + 4), 2):
+                cx.add_edge(u, v)
+            for tri in itertools.combinations(range(base, base + 4), 3):
+                cx.add_face(tri)
+        g = cx.group
+        t = next(x for x in g.elements if g.order_of(x) == 3)
+        cx.set_label(10, 12, t)  # curvature ONLY on the second component
+        region = Region(cx, [], "two-shells")
+        state_with = region.gauge_invariant_state()
+        cx.set_label(10, 12, g.identity())
+        state_without = region.gauge_invariant_state()
+        assert state_with != state_without, "cavity component invisible in canonical state"
+
+    def test_curvature_cannot_swap_surface_components(self):
+        """Vertex gauge cannot move curvature between distinct labelled shells."""
+        import itertools
+
+        from constraintnet.complex import SimplicialComplex
+
+        cx = SimplicialComplex("A4")
+        for base in (0, 10):
+            for tri in itertools.combinations(range(base, base + 4), 3):
+                cx.add_face(tri)
+        g = cx.group
+        flux = next(x for x in g.elements if g.order_of(x) == 3)
+        region = Region(cx, [], "two-shells")
+        cx.set_label(0, 2, flux)
+        on_first_shell = region.gauge_invariant_state()
+        cx.set_label(0, 2, g.identity())
+        cx.set_label(10, 12, flux)
+        assert region.gauge_invariant_state() != on_first_shell
+
+    def test_multi_component_gauge_invariance(self):
+        import itertools
+        import random
+
+        from constraintnet.complex import SimplicialComplex
+        from constraintnet.gauge import gauge_transform
+
+        cx = SimplicialComplex("A4")
+        for base in (0, 10):
+            for u, v in itertools.combinations(range(base, base + 4), 2):
+                cx.add_edge(u, v)
+            for tri in itertools.combinations(range(base, base + 4), 3):
+                cx.add_face(tri)
+        rng = random.Random(9)
+        for (u, v) in cx.edges():
+            cx.set_label(u, v, rng.choice(list(cx.group.elements)))
+        region = Region(cx, [], "two-shells")
+        s0 = region.gauge_invariant_state()
+        gauge_transform(cx, {v: rng.choice(list(cx.group.elements)) for v in cx.vertices()})
+        assert region.gauge_invariant_state() == s0
 
 
 class TestClassClosedProposals:
