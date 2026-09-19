@@ -1,0 +1,1016 @@
+{
+  "branches_audited": 57,
+  "one_step_erasable": 42,
+  "with_local_downhill": 57,
+  "audits": [
+    {
+      "run": "Z3_n3_b1_uniform_s0",
+      "branch": 143,
+      "step": 8327,
+      "faces": 4,
+      "support_changes": 2,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.004273504273504274,
+      "witnesses": [
+        {
+          "edge": 223,
+          "multiplier": 2,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "Z3_n3_b1_uniform_s1",
+      "branch": 82,
+      "step": 4818,
+      "faces": 8,
+      "support_changes": 10,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 2,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "Z3_n3_b1_uniform_s1",
+      "branch": 107,
+      "step": 8036,
+      "faces": 6,
+      "support_changes": 8,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.004273504273504274,
+      "witnesses": [
+        {
+          "edge": 218,
+          "multiplier": 2,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "Z3_n3_b1_uniform_s2",
+      "branch": 123,
+      "step": 8384,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.004273504273504274,
+      "witnesses": [
+        {
+          "edge": 166,
+          "multiplier": 2,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "Z3_n3_b1_dilute_s0",
+      "branch": 92,
+      "step": 8327,
+      "faces": 4,
+      "support_changes": 2,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.004273504273504274,
+      "witnesses": [
+        {
+          "edge": 223,
+          "multiplier": 2,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "Z3_n3_b1_dilute_s1",
+      "branch": 40,
+      "step": 4818,
+      "faces": 8,
+      "support_changes": 10,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 2,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "Z3_n3_b1_dilute_s1",
+      "branch": 65,
+      "step": 8036,
+      "faces": 6,
+      "support_changes": 8,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.004273504273504274,
+      "witnesses": [
+        {
+          "edge": 218,
+          "multiplier": 2,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "Z3_n3_b1_dilute_s2",
+      "branch": 83,
+      "step": 8384,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.004273504273504274,
+      "witnesses": [
+        {
+          "edge": 166,
+          "multiplier": 2,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "Z3_n3_b2_uniform_s0",
+      "branch": 34,
+      "step": 1926,
+      "faces": 13,
+      "support_changes": 38,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 2,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "Z3_n3_binf_uniform_s0",
+      "branch": 18,
+      "step": 3319,
+      "faces": 4,
+      "support_changes": 4,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.004273504273504274,
+      "witnesses": [
+        {
+          "edge": 125,
+          "multiplier": 1,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "Z3_n3_binf_uniform_s1",
+      "branch": 16,
+      "step": 1990,
+      "faces": 16,
+      "support_changes": 29,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "Z3_n3_binf_uniform_s2",
+      "branch": 17,
+      "step": 2165,
+      "faces": 8,
+      "support_changes": 16,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 2,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "Z3_n3_binf_uniform_s2",
+      "branch": 18,
+      "step": 2165,
+      "faces": 4,
+      "support_changes": 5,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 4.273504273504273,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.004273504273504274,
+      "witnesses": [
+        {
+          "edge": 149,
+          "multiplier": 2,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b1_dilute_s0",
+      "branch": 5,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 214,
+          "multiplier": 9,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b1_dilute_s0",
+      "branch": 0,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 3,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 19,
+          "multiplier": 7,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b1_dilute_s0",
+      "branch": 13,
+      "step": 1513,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 146,
+          "multiplier": 2,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b1_dilute_s1",
+      "branch": 2,
+      "step": 1000,
+      "faces": 9,
+      "support_changes": 4,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 4,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_b1_dilute_s1",
+      "branch": 22,
+      "step": 2672,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 19,
+          "multiplier": 2,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b1_dilute_s2",
+      "branch": 6,
+      "step": 1311,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 149,
+          "multiplier": 2,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b1_dilute_s2",
+      "branch": 9,
+      "step": 1541,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 67,
+          "multiplier": 6,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_uniform_s0",
+      "branch": 6,
+      "step": 2469,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 176,
+          "multiplier": 11,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_uniform_s0",
+      "branch": 19,
+      "step": 8685,
+      "faces": 18,
+      "support_changes": 12,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 4,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_b2_uniform_s0",
+      "branch": 20,
+      "step": 8685,
+      "faces": 6,
+      "support_changes": 1,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 145,
+          "multiplier": 2,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_uniform_s1",
+      "branch": 2,
+      "step": 1828,
+      "faces": 9,
+      "support_changes": 3,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 4,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_b2_uniform_s1",
+      "branch": 24,
+      "step": 8941,
+      "faces": 6,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 126,
+          "multiplier": 8,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_uniform_s1",
+      "branch": 23,
+      "step": 8941,
+      "faces": 15,
+      "support_changes": 10,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 4,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_b2_dilute_s0",
+      "branch": 1,
+      "step": 1000,
+      "faces": 6,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 202,
+          "multiplier": 10,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s0",
+      "branch": 4,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 142,
+          "multiplier": 5,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s0",
+      "branch": 5,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 214,
+          "multiplier": 9,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s0",
+      "branch": 7,
+      "step": 1200,
+      "faces": 6,
+      "support_changes": 3,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 203,
+          "multiplier": 11,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s1",
+      "branch": 0,
+      "step": 1000,
+      "faces": 8,
+      "support_changes": 1,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 2,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_b2_dilute_s1",
+      "branch": 1,
+      "step": 1000,
+      "faces": 6,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 68,
+          "multiplier": 3,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s1",
+      "branch": 4,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 192,
+          "multiplier": 9,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s1",
+      "branch": 6,
+      "step": 1000,
+      "faces": 6,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 232,
+          "multiplier": 10,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s1",
+      "branch": 9,
+      "step": 2649,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 139,
+          "multiplier": 10,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s1",
+      "branch": 10,
+      "step": 3126,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 66,
+          "multiplier": 11,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s1",
+      "branch": 11,
+      "step": 3126,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 67,
+          "multiplier": 5,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s1",
+      "branch": 13,
+      "step": 4457,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 66,
+          "multiplier": 8,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_b2_dilute_s2",
+      "branch": 0,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 3,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 91,
+          "multiplier": 11,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_uniform_s1",
+      "branch": 10,
+      "step": 3950,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 228,
+          "multiplier": 8,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_uniform_s1",
+      "branch": 13,
+      "step": 9951,
+      "faces": 24,
+      "support_changes": 7,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 5,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_binf_uniform_s2",
+      "branch": 2,
+      "step": 1321,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 216,
+          "multiplier": 10,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_uniform_s2",
+      "branch": 4,
+      "step": 1576,
+      "faces": 4,
+      "support_changes": 1,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 192,
+          "multiplier": 6,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_uniform_s2",
+      "branch": 6,
+      "step": 3434,
+      "faces": 4,
+      "support_changes": 2,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 180,
+          "multiplier": 9,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_uniform_s2",
+      "branch": 10,
+      "step": 5418,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 108,
+          "multiplier": 1,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_uniform_s2",
+      "branch": 9,
+      "step": 5418,
+      "faces": 21,
+      "support_changes": 7,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 7,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_binf_dilute_s0",
+      "branch": 1,
+      "step": 1000,
+      "faces": 6,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 202,
+          "multiplier": 10,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_dilute_s0",
+      "branch": 4,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 142,
+          "multiplier": 5,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_dilute_s0",
+      "branch": 3,
+      "step": 1000,
+      "faces": 18,
+      "support_changes": 4,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 4,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_binf_dilute_s0",
+      "branch": 5,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 214,
+          "multiplier": 9,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_dilute_s0",
+      "branch": 7,
+      "step": 2175,
+      "faces": 6,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 203,
+          "multiplier": 10,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_dilute_s1",
+      "branch": 4,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 192,
+          "multiplier": 9,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_dilute_s1",
+      "branch": 0,
+      "step": 1000,
+      "faces": 8,
+      "support_changes": 1,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 2,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    },
+    {
+      "run": "A4_n3_binf_dilute_s1",
+      "branch": 6,
+      "step": 1000,
+      "faces": 6,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 232,
+          "multiplier": 10,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_dilute_s1",
+      "branch": 1,
+      "step": 1000,
+      "faces": 6,
+      "support_changes": 0,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 68,
+          "multiplier": 3,
+          "delta": -6
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_dilute_s2",
+      "branch": 4,
+      "step": 1000,
+      "faces": 4,
+      "support_changes": 1,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 1,
+      "one_move_erasures": 1,
+      "erase_probability_per_proposal": 0.000777000777000777,
+      "witnesses": [
+        {
+          "edge": 216,
+          "multiplier": 3,
+          "delta": -4
+        }
+      ]
+    },
+    {
+      "run": "A4_n3_binf_dilute_s2",
+      "branch": 0,
+      "step": 1000,
+      "faces": 8,
+      "support_changes": 1,
+      "age_in_proposals": 1000,
+      "age_per_specific_proposal": 0.777000777000777,
+      "local_downhill_proposals": 2,
+      "one_move_erasures": 0,
+      "erase_probability_per_proposal": 0.0,
+      "witnesses": []
+    }
+  ],
+  "extensions": [
+    {
+      "run": "A4_n3_binf_uniform_s0",
+      "final_action": 0,
+      "proposals_run": 15157,
+      "first_vacuum_step": 15157,
+      "planned_horizon": 200000
+    },
+    {
+      "run": "A4_n3_binf_uniform_s1",
+      "final_action": 0,
+      "proposals_run": 17523,
+      "first_vacuum_step": 17523,
+      "planned_horizon": 200000
+    }
+  ]
+}

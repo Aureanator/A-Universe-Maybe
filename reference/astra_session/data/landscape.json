@@ -1,0 +1,79 @@
+{
+  "Z3": {
+    "raw_states": 27,
+    "physical_states": 27,
+    "proposals_enumerated": 324,
+    "action_histogram_physical": {
+      "0": 1,
+      "2": 12,
+      "3": 8,
+      "4": 6
+    },
+    "plateaus": [
+      {
+        "action": 0,
+        "physical_states": 1,
+        "downhill_exit_states": 0
+      },
+      {
+        "action": 2,
+        "physical_states": 12,
+        "downhill_exit_states": 1
+      },
+      {
+        "action": 3,
+        "physical_states": 4,
+        "downhill_exit_states": 12
+      },
+      {
+        "action": 3,
+        "physical_states": 4,
+        "downhill_exit_states": 12
+      },
+      {
+        "action": 4,
+        "physical_states": 6,
+        "downhill_exit_states": 20
+      }
+    ],
+    "nonvacuum_closed_plateaus": 0,
+    "states_with_nonincreasing_vacuum_path": 27,
+    "max_shortest_nonincreasing_vacuum_path": 2
+  },
+  "A4": {
+    "raw_states": 1728,
+    "physical_states": 178,
+    "proposals_enumerated": 114048,
+    "action_histogram_physical": {
+      "0": 1,
+      "2": 18,
+      "3": 48,
+      "4": 111
+    },
+    "plateaus": [
+      {
+        "action": 0,
+        "physical_states": 1,
+        "downhill_exit_states": 0
+      },
+      {
+        "action": 2,
+        "physical_states": 18,
+        "downhill_exit_states": 1
+      },
+      {
+        "action": 3,
+        "physical_states": 48,
+        "downhill_exit_states": 18
+      },
+      {
+        "action": 4,
+        "physical_states": 111,
+        "downhill_exit_states": 66
+      }
+    ],
+    "nonvacuum_closed_plateaus": 0,
+    "states_with_nonincreasing_vacuum_path": 178,
+    "max_shortest_nonincreasing_vacuum_path": 3
+  }
+}

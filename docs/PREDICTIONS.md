@@ -203,3 +203,164 @@ is an independent forcing reason for confinement beside the definitional predica
 flat seed would silently confound the two; (2) report per-start statistics, not pooled ones, so a
 confinement signal attributable to seeding cannot masquerade as one attributable to λ;
 (3) include λ = 0 (unpenalized appearance-predicate baseline) in every sweep.
+
+---
+
+## P8–P11 — imported from the Astra session (2026-09-18)
+
+Provenance: entries P8–P11 were written, run, and outcome-appended by **Astra** in the sibling
+checkout during 2026-09-18; machine-readable records are archived at
+`reference/astra_session/data/` (landscape.json, runs.json, candidate_audit.json, scale_runs.json;
+full per-event traces regenerate via `examples/particle_search.py`, `particle_candidate_audit.py`,
+`particle_scale_search.py`). Imported verbatim 2026-09-19 after code merge; local reproduction of
+P11 in this tree recorded under "Reproduction" below.
+
+## P8 — Interaction repair and unfrozen particle baseline (2026-09-18, Astra)
+
+Written before the new interaction census or energy-landscape search. The earlier
+class-only counterexample is already known and is not a prediction.
+
+**Interaction convention.** Default matching will require a single relative apex
+frame aligning the whole ordered shared-face flux tuple. Raw equality and
+individual class equality survive as explicitly named controls. This follows the
+existing apex gauge action and preserves its relational information; it is not
+a derivation of a collision law. An alignment is an existence witness, not an
+extra statistical weight per pair of states.
+
+**Predictions:** independent left-multiplication of either cone's spokes leaves
+default compatibility unchanged; the saved class-only counterexample is rejected;
+Z3 agrees across all three conventions. The historical A4 phase-independent
+12-versus-3 probe counts remain true only in the raw-frame control. Default counts
+will vary with the object's simultaneous-conjugation stabilizer; no suppression
+factor is predicted for that different experiment.
+
+**Particle baseline.** Enumerate the A4 tetrahedral-boundary gauge slice and all
+physical one-edge nonidentity right-multiplication moves (including tree edges,
+gauge-fixing after each move). Action H is the number of curved faces. Find connected
+equal-H plateaus and whether any move leaves each plateau downhill. A plateau with
+no exit is a zero-temperature metastable candidate; a one-state minimum test is
+insufficient. Repeat over Z3. No boundary is frozen in this closed-surface diagnostic;
+this is a landscape control, not the 3D bulk matter experiment.
+
+**Prediction:** vacuum is the only closed downhill basin in this smallest seed.
+If so, neither a nonzero flux nor a D(A4) sector label alone establishes a stable
+classical particle under this reduction action. Report that failure before trying
+larger complexes or another declared action. Do not change H to favor a desired
+catalogue after seeing the result without a new prediction.
+
+The particle/reaction pass criteria are in `PARTICLE_PROGRAM.md`.
+
+**P8 landscape outcome:** prediction HIT. Exhausting all physical edge moves
+from 1728 A4 raw slice states gives 178 physical states, zero nonvacuum closed
+equal-action plateaus, and a nonincreasing path to vacuum from every state in at
+most three moves. Z3: 27/27 states have such a path in at most two moves. This
+excludes zero-temperature metastable particles for this action on this seed,
+not on larger bulk complexes or under all possible drivers.
+
+**Local verification (this tree, 2026-09-19):** interaction-convention predictions pinned by
+`tests/test_interaction_frames.py` (left-multiplication invariance, counterexample rejection,
+Z3 agreement across conventions) — suite green after merge.
+
+## P9 — Unpinned 3D curvature dynamics (2026-09-18, Astra; before execution)
+
+**Setup:** Kuhn balls n=2 and n=3, Z3 and A4, fixed identity outer boundary,
+all interior edges eligible, no fixed core. Uniform edge proposals and uniform
+nonidentity group multipliers; action H = number of curved faces. Metropolis
+acceptance min(1, exp(-beta delta-H)) is a declared stochastic driver hypothesis.
+Beta is a dimensionless action penalty, not an independently derived temperature.
+Controls beta=0 (unweighted), beta=infinity (downhill with equal-action moves),
+and beta=1,2. Two starts: uniform interior labels and dilute random interior-edge
+perturbations (no prescribed particle shape). Seeds 0,1,2, 10,000 proposals each.
+
+**Predictions:** unweighted runs will remain highly curved; downhill runs will
+lose most initial curvature. Larger A4 balls may have long-lived traps, but neither
+their existence nor fusion/fission/chemistry is predicted. Finite-beta loops may
+be short-lived thermal structures. The outer boundary remains exactly fixed in
+every arm, but persistence of a defect's own residue is not imposed.
+
+**Measurements:** H(t), accepted/rejected counts, exact action-change ledger;
+dual-face connected components, loop/junction classification, component sizes
+and overlap-based lineage. Birth/death/merge/split counts describe support geometry
+only. Do not call these particle reactions without independent stability evidence.
+Track at every accepted move; rendered frames may be subsampled. Archive all
+seed/model/start parameters and aggregate all runs, including zero-particle runs.
+
+**Particle candidate screen:** a branch surviving at least 1000 proposal steps
+with at most 20% of the mesh's tetrahedra in its support. This is a declared
+screen, not a sufficient particle definition. Test survivors for a downhill exit
+and control against system-size-spanning frozen networks before any promotion.
+
+**P9 outcome:** all 96 registered runs completed (960,000 proposals). Across
+all arms: 2,461 geometric merges, 2,485 splits, and 57 branches passing the
+preliminary lifetime/size screen. These are not particle/reaction identifications.
+22/24 downhill runs reached vacuum within 10,000 proposals. The other two (A4,
+n=3, uniform seeds 0 and 1) ended at H=17 and H=24, but respectively had six and
+five immediately available downhill proposals: neither endpoint is a local minimum.
+All outer boundaries and action/bath ledgers stayed exact. Full records:
+`reference/astra_session/data/runs.json` and per-run compressed event traces
+(regenerable).
+
+## P10 — Audit apparent longevity before naming particles (2026-09-18, Astra)
+
+Registered after P9, before replaying screened branches. P9's fixed 1000-proposal
+threshold is mesh/group dependent: any particular destroying move is proposed
+only once per E_interior*(|G|-1) proposals on average. This can manufacture apparent
+longevity in A4 without an energy barrier. Do not equate proposal age with proper time.
+
+**Test:** reconstruct each of the 57 qualifying branches at age 1000 from saved
+event traces; exhaust all permitted moves touching it. Count immediate downhill
+moves and single-move erasures (all its curved faces become flat, no other face's
+holonomy changes). Record age divided by E_interior*(|G|-1), support changes,
+and the local fraction of destroying proposals. Any exact erasure is a zero-barrier
+decay witness. Absence of a one-step erasure is not proof of metastability.
+
+**Prediction:** a substantial fraction are simple waiting-time artifacts and admit
+immediate erasure; no fraction is predicted. Extend both nonvacuum downhill endpoints
+to 200,000 proposals with the same RNG streams and action. Prediction: both eventually
+reach vacuum. The extension is a declared follow-up, not extra attempts hidden in P9.
+
+**P10 outcome:** all 57 branches replayed successfully with action checked after
+every event. Every branch had an immediate local downhill move; 42/57 had an exact
+one-move erasure leaving all other face holonomies unchanged. The 15 remaining
+cases are not thereby stable; only this sufficient erasure test failed. The two
+extended runs reached absorbing vacuum at proposals 15,157 and 17,523, respectively,
+and stopped there (a positive-action proposal cannot leave vacuum at infinite beta).
+No stable particle species or binding was established. Records:
+`reference/astra_session/data/candidate_audit.json`.
+
+## P11 — Larger-mesh trap search (2026-09-18, Astra; before execution)
+
+The n=2,3 negative result does not exclude larger linked/junction structures.
+Keep the same action, fixed outer boundary and class-closed proposal law; change
+only size and the declared stopping horizon. A4 and Z3, n=4 and n=5, uniform starts,
+seeds 0,1,2; downhill-only, up to 200,000 proposals each. Stop early only at the
+provably absorbing vacuum. Every 1000 proposals record action and support components.
+
+**Prediction:** relaxation slows with mesh size and group order; no claim that
+nonvacuum endpoints are stable. Exhaust local proposals at every nonvacuum endpoint.
+If any endpoint has zero downhill moves, enumerate equal-action connected moves
+until a downhill exit is found or a predeclared 100,000-state budget is exhausted.
+A budget exhaustion is inconclusive, not evidence of a closed plateau. A reachable
+downhill exit excludes that plateau as a zero-temperature stable basin.
+
+**P11 outcome (Astra run, records `reference/astra_session/data/scale_runs.json`):**
+prediction HIT on both clauses. Relaxation slows with mesh size AND group order:
+Z3 n4/n5 reach vacuum in 6.6k–47.3k proposals; A4 n4 in 45.1k–59.0k; but **A4 n=5
+seeds 0 and 1 do NOT reach vacuum within the 200,000-proposal horizon**, ending at
+H = 8 and H = 10 (from H0 ≈ 1250) — while A4 n=5 seed 2 finishes at 118.1k steps.
+Per protocol both nonvacuum endpoints were audited exhaustively: each has downhill
+exits (2 each; equal-action proposals 20 and 2), so NEITHER is a local minimum and
+NO stability claim is made. What the horizon captures is **non-abelian critical
+slowing-down without metastability**: at identical size, Z3 finishes in ≤47k while
+A4 fails to finish in >200k on 2/3 seeds — glassy relaxation near vacuum created by
+proposal-dilution of rare destroying moves (at the s0 endpoint only 2 strict-downhill
+proposals exist among 665 interior edges × 11 multipliers = 7,315 possible proposals,
+≈0.03% per proposal), not by an energy barrier (barrier-free traps, P10's mechanism at scale).
+
+**Reproduction (this tree, 2026-09-19): EXACT.** Local rerun of
+`examples/particle_scale_search.py` reproduces all 12 runs bit-for-bit — identical step
+counts to vacuum (6,638 / 11,204 / 9,591 / 37,969 / 28,454 / 47,305 / 49,479 / 59,009 /
+45,113 / horizon / horizon / 118,093), identical final actions (all 0 except s0→H=8,
+s1→H=10 at A4 n=5), identical endpoint audits (downhill 2/2, equal 20/2). Deterministic
+seeded streams make the campaign exactly reproducible across checkouts; log:
+`out/particle_search/scale_rerun.log`.
