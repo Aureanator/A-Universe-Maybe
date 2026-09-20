@@ -377,3 +377,39 @@ Persistence is a separate question, and it is what the test measures.
 stationary part of a compatible seed by time-averaging in a closed box: the component with
 eigenvalue near 1. If a large component exists, a persistent pattern exists, and its record
 statistics *are* the back-calculated bath.
+
+## 14. Dressed-state search: phase and claim controls (P26, 2026-09-20, Astra)
+
+**Amendment to the proposed search in section 13 (earlier wording preserved).**
+A stationary quantum ray satisfies U psi = exp(i theta) psi. Its phase need not
+be zero; plain time-averaging can erase an exactly persistent ray. P26 therefore
+uses two preregistered phases: zero and the isolated record-vacuum eigenphase.
+The latter is a choice of rotating frame, not a phase fitted after the run.
+
+For F_T(theta) = (1/T) sum_{t=0}^{T-1} exp(-i theta t) U^t psi, the exact identity
+is (U-z)F_T = z (z^(-T) U^T psi - psi)/T, where z = exp(i theta). Thus a small
+unnormalized residual is guaranteed as T grows; the normalized bound includes
+1/||F_T||. Report the discarded weight and check the full U, never merely its
+compression to the chosen loop. The implementation and exact-spectrum tests are
+`phase_filter.py` and `test_phase_filter.py`.
+
+A closed finite box has eigenstates whether or not it confines anything. P26
+therefore measures loop weight, topological distance from the loop, boundary-size
+dependence and subsequent open-wall escape. The frozen-loop and decoupled flat-walk
+controls are exactly persistent kinematic modes already present in this model.
+Improvement over a noisy seed alone does not establish binding caused by a
+responsive record. Also, a persistent localized superposition can beat within a
+localized invariant subspace; searching for one eigenray is a sufficient strategy,
+not the only possible form of persistence.
+
+**Bath provenance remains a separate gate.** An exact joint eigenray has a
+stationary reduced record under the *coupled* step. This does not make that record
+a fixed point of P23's distinct incoming-light and escape channel. For a normalized
+unitary one-tick residual r, the trace-norm change of any reduced state is bounded
+by 2r (pure-state distance followed by partial-trace contraction). P26 reports the
+record's configuration probabilities and their one-tick change as accessible
+readouts; those diagonal statistics alone do not characterize the reduced state.
+
+The search remains on three prescribed quantum edges with the rest frozen flat.
+No mobile particle, electron orientation cycle, spin/exchange result, or
+radiatively established bath follows from passing this diagnostic.

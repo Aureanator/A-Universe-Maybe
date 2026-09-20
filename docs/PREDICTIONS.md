@@ -63,6 +63,50 @@ and the Williamson–van der Mark reproduction gates therefore remain separate.
 Code: `examples/p26_dressed.py`, `src/constraintnet/phase_filter.py`.
 Planned data: `reference/astra_session/data/p26_dressed_n{5,6}.json`.
 
+**P26 OUTCOME (2026-09-20, appended after both runs; predictions untouched).**
+
+The protocol and executable were committed as `29a2f51` before measurement.
+Both runs completed. Summary: `reference/astra_session/data/p26_summary.json`;
+figure: `python examples/p26_summary.py` produces `out/p26_dressed.png`.
+
+| Vacuum-phase filter, T=256 | n=5 | n=6 |
+|---|---:|---:|
+| Filtered weight before normalization | 0.592919 | 0.590157 |
+| Normalized loop weight | 0.996826 | 0.980437 |
+| Full-U target residual | 0.00564205 | 0.00567408 |
+| Best-phase residual for the same vector | 0.00535443 | 0.00541077 |
+| Record-vacuum population | 0.994562 | 0.977631 |
+| Loop-weight loss in 128 open ticks | 0.0210625 | 0.0108675 |
+| Raw seed's loop-weight loss in 128 open ticks | 0.0671139 | 0.0462413 |
+| Filtered/raw loss ratio | 0.313833 | 0.235018 |
+
+- **P26-1: PASS.** Control residuals <=3.2e-15; maximum escape accounting error
+  4.14e-14 across all six release arms.
+- **P26-2: PASS.** Raw target residual is 0.313833 in both boxes; filtering lowers
+  it by about 55 times while preserving >=98% normalized loop weight.
+- **P26-3: PASS.** Loop weights differ by 0.0163894; the filtered/raw release-loss
+  ratios are 0.314 and 0.235, below the registered 0.5 threshold. Final absolute
+  loop weights after release are 0.975763 and 0.969569, against raw 0.932886 and
+  0.953759. The windows and release lengths are finite; no lifetime fit was made.
+- **P26-4: PASS.** Zero-phase filtered weights are only 0.000115712 and
+  0.000122831, about 4,800–5,100 times below the vacuum-phase weights. Their
+  normalized target residuals remain 0.437 and 0.428.
+- **Exact-eigenstate gate: NOT PASSED.** Residuals remain over five orders of
+  magnitude above 1e-8; even fitting the best phase to each final vector does not
+  change that verdict. There is no exact dressed eigenstate demonstrated here.
+- **Unregistered interpretation/readout:** filtering selects a record almost in
+  its isolated vacuum mode (97.8–99.5%, versus the seed's 60.3%). The record's
+  diagonal one-tick L1 changes are 0.000603 and 0.000701, not zero. Improvement
+  over the noisy seed cannot be attributed specifically to self-confinement;
+  comparison with an unfiltered vacuum seed is still needed, and the decoupled
+  flat-loop control is already exactly persistent.
+
+**Reading:** a substantial, highly localized, more persistent prepared component
+exists at the record-vacuum phase. This is a useful candidate and a correction to
+an eigenvalue-1-only search. It is not evidence yet of autonomous binding, mobile
+matter, directed circulation, the Williamson–van der Mark structure, or a bath
+produced by radiative cooling. No new dynamics or expansion rule was introduced.
+
 ## P25 — Seeding patterns in a compatible cooled bath (2026-09-20, Opus; registered before running)
 
 **The user's framing (verbatim intent):** "with enough noise this happened somewhere", not a

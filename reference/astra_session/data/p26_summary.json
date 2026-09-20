@@ -1,0 +1,64 @@
+{
+  "runs": [
+    {
+      "n": 5,
+      "raw_residual": 0.3138327803439259,
+      "vacuum_filter_weight": 0.592918821705527,
+      "zero_filter_weight": 0.00011571153529732699,
+      "loop_weight": 0.9968259834708879,
+      "residual": 0.005642054519786091,
+      "best_phase_residual": 0.005354428401696136,
+      "best_phase": -0.29110302435207447,
+      "record_vacuum_population": 0.9945617332340533,
+      "record_diagonal_l1": 0.0006030624851389279,
+      "loop_loss_128": {
+        "raw": 0.06711387478588449,
+        "phase_zero": 0.04645770064058086,
+        "phase_vacuum": 0.02106253908006317
+      },
+      "loss_ratio_vacuum_to_raw": 0.31383285717386533,
+      "open_final_loop": {
+        "raw": 0.9328861252141144,
+        "phase_zero": 0.9324948082354199,
+        "phase_vacuum": 0.9757634443908247
+      },
+      "bookkeeping_error": 3.4638958368304884e-14,
+      "P26_1": true,
+      "P26_2": true,
+      "P26_3_release": true,
+      "P26_4": true,
+      "eigenstate_residual_gate": false
+    },
+    {
+      "n": 6,
+      "raw_residual": 0.31383278034392603,
+      "vacuum_filter_weight": 0.5901572189835468,
+      "zero_filter_weight": 0.00012283127928515715,
+      "loop_weight": 0.980436611658844,
+      "residual": 0.005674080689967958,
+      "best_phase_residual": 0.005410765310881004,
+      "best_phase": -0.29103302917187135,
+      "record_vacuum_population": 0.9776314151791448,
+      "record_diagonal_l1": 0.000701208186835671,
+      "loop_loss_128": {
+        "raw": 0.04624128922684312,
+        "phase_zero": 0.029181690763290247,
+        "phase_vacuum": 0.010867531845861644
+      },
+      "loss_ratio_vacuum_to_raw": 0.2350179250528558,
+      "open_final_loop": {
+        "raw": 0.9537587107731562,
+        "phase_zero": 0.8876147978425106,
+        "phase_vacuum": 0.9695690798129823
+      },
+      "bookkeeping_error": 4.1300296516055823e-14,
+      "P26_1": true,
+      "P26_2": true,
+      "P26_3_release": true,
+      "P26_4": true,
+      "eigenstate_residual_gate": false
+    }
+  ],
+  "loop_weight_box_difference": 0.016389371812043918,
+  "P26_3_boundary": true
+}

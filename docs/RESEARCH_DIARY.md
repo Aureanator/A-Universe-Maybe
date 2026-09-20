@@ -864,3 +864,42 @@ This is the cosmological sequence in miniature: redshift → freeze-out → tran
 a dressed loop. Next, find it. Its record statistics would then be the back-calculated bath, which
 is the user's provenance condition made exact.
 *Evidence:* `examples/p25_seeded.py`, `reference/opus_session/data/p25_*.json`, `out/p25_seeded.png`.
+
+### E052. Resumption and phase-resolved dressed-loop search (2026-09-20, Astra)
+
+Read Opus's handoff through P25; preserved the work and user-supplied correction
+that Astra may commit. Installed missing SciPy locally, declared the `quantum`
+dependency extra, and verified the full existing suite: **356 passed in 400.03 s**.
+Four additional phase-filter and embedding tests passed separately. Commit
+`29a2f51` preserves P19–P25 plus the P26 executable and preregistration before any
+P26 measurement.
+
+**Analytic correction.** A persistent ray may have any eigenphase. Unphased
+averaging can remove it. The exact Cesaro telescoping identity gives a residual
+bound with the filtered norm in the denominator; merely averaging longer is not
+an eigenstate certificate. A stationary joint record also need not be stationary
+under the separate cooling channel. DYNAMICS_DESIGN section 14 states the scope.
+
+**P26 measured.** Compatible L4 loop, three quantum edges, (0.1,0.1), Gibbs fraction
+0.14 and seed 1, in closed boxes n=5 and n=6. Fixed phases zero and the isolated
+record vacuum; windows 64,128,256; then 128 open-wall ticks for both filters and
+the raw seed. No dynamics changed.
+
+The vacuum phase (-0.289325 rad/tick) retains about 59% filtered weight and gives
+98.04–99.68% normalized loop weight. Full-U residuals improve about 55-fold to
+0.0056–0.0057. Open-release loop loss is reduced by about 69% and 76%, with escape
+accounting accurate to 4.14e-14. All diagnostic priors pass, but the 1e-8 exact
+eigenstate gate fails. Zero-phase filtering retains only about 0.012% and does not
+produce a near-eigenstate.
+
+**Interpretation limit.** The selected record is 97.8–99.5% in its isolated vacuum
+mode. This can explain improvement over a noisy seed without self-confinement.
+The decoupled flat-loop control is already exactly persistent. The next comparison
+must include an unfiltered vacuum seed; longer or refined eigenstate searches
+must retain full-U residual and boundary checks. A current/orientation measurement
+is independently necessary before interpreting a localized dark mode as the
+Williamson–van der Mark circulation. The expansion decision remains open.
+
+*Evidence:* `examples/p26_dressed.py`, `examples/p26_summary.py`,
+`reference/astra_session/data/p26_{dressed_n5,dressed_n6,summary}.json`,
+`tests/test_phase_filter.py`, figure `out/p26_dressed.png`.

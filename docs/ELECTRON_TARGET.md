@@ -51,3 +51,16 @@ solver, not the referenced electron proposal. Afterward, specify a state-space
 and gauge-invariant transport observable for W0/W2 before attempting an electron
 fixture. Missing ingredients must be demonstrated as gaps rather than silently
 replaced by a drawing, a scheduler period, or a supplied electromagnetic wave.
+
+## Quantum-record follow-up (2026-09-20, Astra)
+
+P19–P25 supply a reversible wave engine, a partial quantum record, cooling proxies
+and compatible prepared dark-loop states. P26 tests phase-selected joint states
+with full-step residuals, a boundary-size comparison and open release. These are
+prerequisite diagnostics for W3, not a Williamson–van der Mark realization.
+
+In particular, weight concentrated on a cycle does not demonstrate directed
+circulating transport. P26 does not measure an operational current, a transported
+orientation return period, or spin/exchange. W0–W2 remain open, as does mobility:
+the quantum record still occupies three prescribed edges. Any further candidate
+must separate these gates from mere persistence of a prepared dark mode.

@@ -9,6 +9,11 @@ programming specification; `[Unreleased]` holds work in progress.
 - P26 dressed-loop diagnostic (Astra), registered before running: phase-resolved
   Cesaro filters, exact-spectrum tests, boundary-size and open-release controls.
   `examples/p26_dressed.py`, `src/constraintnet/phase_filter.py`, four tests.
+- P26 outcome: all four diagnostic priors pass; exact-eigenstate gate fails.
+  Vacuum-phase filtering retains about 59% weight, with 98–99.7% loop localization
+  after normalization and 69–76% less loop loss over 128 open ticks. No binding
+  claim: the selected record is nearly its isolated vacuum. Archived two runs,
+  summary/figure generator, diary E052, claim 46 and updated electron-target gates.
 - Local handoff verification: 356 existing tests pass; the `quantum` dependency
   extra declares NumPy/SciPy and the README includes it in setup.
 - P25 seeded patterns in a compatible cooled bath (Opus): `examples/p25_seeded.py`, `p25_graphics.py`, data `p25_*.json`,

@@ -69,6 +69,14 @@ tetrahedral honeycomb. Scalar waves on it have round, sharp 3D light fronts,
 and mass leaves a wake inside the cone ([propagation](docs/PROPAGATION.md)).
 The current picture is in [the working statement](docs/WORKING_STATEMENT.md).
 
+**Quantum-record follow-up (P19–P26, 2026-09-20):** the reversible wave engine now
+couples to a partial quantum A4 record. Compatible prepared loops still erode
+when that record moves. P26 phase filtering finds a component with 98–99.7%
+normalized loop weight and substantially less loss over 128 open-boundary ticks.
+Its full-step residual remains about 0.0057: no exact dressed eigenstate or
+self-confined particle has been established. See [P26 predictions and outcomes](docs/PREDICTIONS.md)
+and [the dressed-state claim controls](docs/DYNAMICS_DESIGN.md#14-dressed-state-search-phase-and-claim-controls-p26-2026-09-20-astra).
+
 - Theory narrative & audit trail: [Memo.txt](<reference/theory_memo/Memo.txt>) (Qwen ⇄ Opus review thread)
 - Spec-to-code map: [docs/SPEC.md](<docs/SPEC.md>) · findings: [docs/PHYSICS_NOTES.md](<docs/PHYSICS_NOTES.md>),
   [docs/R_TRACK.md](<docs/R_TRACK.md>) · conventions: [docs/CONVENTIONS.md](<docs/CONVENTIONS.md>)

@@ -263,3 +263,20 @@ loop-plus-record eigenstate (not yet found).
 
 *Status:* MEASURED; the bath is Gibbs-form (provenance check failed, see the P25-2 outcome).
 Evidence: `reference/opus_session/data/p25_*.json`.
+
+**46 — MEASURED (Astra, P26):** phase-resolved filtering improves the persistence
+of a prepared compatible L4 loop in the partial quantum-record model. At the
+isolated record-vacuum phase, a 256-tick filter retains 0.590–0.593 of the seed's
+squared amplitude. After normalization, 98.04–99.68% lies on the loop in boxes
+n=6 and n=5. The full-step residual falls from 0.314 to about 0.0057. Subsequent
+128-tick open-wall loop-weight loss is 0.235–0.314 times the unfiltered seed's loss.
+
+All four registered diagnostic predictions pass; the exact-eigenstate residual
+gate fails. Filtering also selects 97.8–99.5% record-vacuum population, so this
+does not isolate self-binding from selecting a calmer component. The exact
+decoupled dark-loop control already persists. No autonomous confinement, mobile
+particle, directed current, spin/exchange or cooling provenance is established.
+
+*Status:* MEASURED, finite windows, prepared state, three pinned quantum edges;
+remaining edges frozen flat. Evidence: `reference/astra_session/data/p26_*.json`,
+`examples/p26_dressed.py`, `tests/test_phase_filter.py`; preregistration commit `29a2f51`.
