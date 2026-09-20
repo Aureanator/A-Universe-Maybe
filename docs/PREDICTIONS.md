@@ -77,6 +77,17 @@ mass or charge follows. P29b will ask whether a responsive record changes the tr
     (loop share < 0.5).
   - **P29a-5′ (exploratory):** record the best (loop weight × |bias|) per loop and label set.
 
+## P32B — Conserving autonomous transport diagnostic (2026-09-20, Astra; before running)
+
+The protocol and checked operator algebra are in `P32B_TRANSPORT.md`. On the
+full Z2 edge spaces of a tetrahedron and a two-tetrahedron bipyramid, test the
+explicitly POSTULATED Hermitian K=-0.2 sum W_ab (I-S_a S_b)/2. Predictions:
+local defect occupations move, while total defect number, H0, flatness and norm
+are conserved; the flat two-defect sector equals a hard-core boson configuration
+graph. Controls and tolerances are fixed in that protocol. Persistence under a
+number-preserving rule is not self-binding; this is not a hard-Gauss-law model
+or a derivation of mobility/fermions from the axiom. Outcome to be appended.
+
 ## P32 — The corrected rules, and why three dimensions (2026-09-20, Opus; registered before the re-runs)
 
 **Axiom, as the user restated it:** causality travels to local effect, and it is always travelling
