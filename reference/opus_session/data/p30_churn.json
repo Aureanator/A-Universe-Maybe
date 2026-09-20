@@ -1,0 +1,2879 @@
+[
+ {
+  "kind": "A4",
+  "p": 0.0,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185779263147,
+     "loop_weight": 4.968713633311624e-07,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399277,
+     "loop_weight": 0.09687899539724565,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736017
+ },
+ {
+  "kind": "A4",
+  "p": 0.0,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185779263147,
+     "loop_weight": 4.968713633311624e-07,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399277,
+     "loop_weight": 0.09687899539724565,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736017
+ },
+ {
+  "kind": "A4",
+  "p": 0.0,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185779263147,
+     "loop_weight": 4.968713633311624e-07,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399277,
+     "loop_weight": 0.09687899539724565,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736017
+ },
+ {
+  "kind": "A4",
+  "p": 0.003,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185779263147,
+     "loop_weight": 4.968713633311624e-07,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399277,
+     "loop_weight": 0.09687899539724565,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736017
+ },
+ {
+  "kind": "A4",
+  "p": 0.003,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801675643,
+     "loop_weight": 0.008786928754712008,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185779263147,
+     "loop_weight": 4.968713633311624e-07,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793068242,
+     "loop_weight": 0.056042926524475276,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857386,
+     "loop_weight": 0.09604795862989166,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399277,
+     "loop_weight": 0.09687899539724565,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736017
+ },
+ {
+  "kind": "A4",
+  "p": 0.003,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.03333333333333333,
+   "mean_wilson": 0.03333333333333333,
+   "total_wilson": 4.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7111101936621491,
+     "loop_weight": 0.06678178183980074,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.16598270290171788
+ },
+ {
+  "kind": "A4",
+  "p": 0.01,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.06666666666666667,
+   "mean_wilson": 0.07777777777777777,
+   "total_wilson": 9.333333333333332,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 1.1709886008509714e-12,
+     "loop_weight": 0.6742444818482046,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.1709886008509714e-12,
+     "loop_weight": 0.6742444818482046,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.301956259131063,
+     "loop_weight": 0.052587772053888454,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.4220891556584608,
+     "loop_weight": 0.04502469794892425,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.4220891556584608,
+     "loop_weight": 0.04502469794892425,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 6.228302573031618e-13,
+     "loop_weight": 0.6988080105043386,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 6.228302573031618e-13,
+     "loop_weight": 0.6988080105043386,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5572788371083348,
+     "loop_weight": 0.09219949318547804,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5614240679931366,
+     "loop_weight": 0.09278573707648803,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.577018099671442,
+     "loop_weight": 0.09553966694024027,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.11222685814895232
+ },
+ {
+  "kind": "A4",
+  "p": 0.01,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.058333333333333334,
+   "mean_wilson": 0.058333333333333334,
+   "total_wilson": 7.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.44036660228475805,
+     "loop_weight": 0.017077174996257508,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.44036660228475805,
+     "loop_weight": 0.017077174996257508,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.44036660228475805,
+     "loop_weight": 0.017077174996257508,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.44036660228475805,
+     "loop_weight": 0.017077174996257508,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.4500018577020041,
+     "loop_weight": 1.0798294399328532e-06,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.6906640275867726,
+     "loop_weight": 0.015560010813577194,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6906640275867726,
+     "loop_weight": 0.015560010813577194,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6906640275867726,
+     "loop_weight": 0.015560010813577194,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6906640275867726,
+     "loop_weight": 0.015560010813577194,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6906640275867726,
+     "loop_weight": 0.015560010813577194,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.2185109650602869
+ },
+ {
+  "kind": "A4",
+  "p": 0.01,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.03333333333333333,
+   "mean_wilson": 0.03333333333333333,
+   "total_wilson": 4.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7111101936621491,
+     "loop_weight": 0.06678178183980074,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.16598270290171788
+ },
+ {
+  "kind": "A4",
+  "p": 0.03,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.10833333333333334,
+   "mean_wilson": 0.11666666666666668,
+   "total_wilson": 14.000000000000002,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 1.702075269275434e-12,
+     "loop_weight": 0.7170917010188043,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.702075269275434e-12,
+     "loop_weight": 0.7170917010188043,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.702075269275434e-12,
+     "loop_weight": 0.7170917010188043,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.024188231957360366,
+     "loop_weight": 0.02503791170043006,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.5257714706240795,
+     "loop_weight": 0.03162538456657293,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 9.739849783601675e-13,
+     "loop_weight": 0.6583164864103144,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 9.739849783601675e-13,
+     "loop_weight": 0.6583164864103144,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 9.739849783601675e-13,
+     "loop_weight": 0.6583164864103144,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.040393923750275916,
+     "loop_weight": 0.06288743888057216,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.5355514687137434,
+     "loop_weight": 0.0746145003274298,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.17329624737972257
+ },
+ {
+  "kind": "A4",
+  "p": 0.03,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.10833333333333334,
+   "mean_wilson": 0.10833333333333334,
+   "total_wilson": 13.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.5611855607756702,
+     "loop_weight": 0.015780439153439834,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5611855607756702,
+     "loop_weight": 0.015780439153439834,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5611855607756702,
+     "loop_weight": 0.015780439153439834,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5611855607756702,
+     "loop_weight": 0.015780439153439834,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.5611855607756702,
+     "loop_weight": 0.015780439153439834,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5908930572008535,
+     "loop_weight": 0.04988208769970618,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5908930572008535,
+     "loop_weight": 0.04988208769970618,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5908930572008535,
+     "loop_weight": 0.04988208769970618,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5908930572008535,
+     "loop_weight": 0.04988208769970618,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250398804,
+     "loop_weight": 0.09687899539724558,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.30371682574187336
+ },
+ {
+  "kind": "A4",
+  "p": 0.03,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.03333333333333333,
+   "mean_wilson": 0.03333333333333333,
+   "total_wilson": 4.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7111101936621494,
+     "loop_weight": 0.06678178183980135,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7111101936621491,
+     "loop_weight": 0.06678178183980074,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7604513393548656,
+     "loop_weight": 0.08199365884902254,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.16598270290171788
+ },
+ {
+  "kind": "A4",
+  "p": 0.1,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.225,
+   "mean_wilson": 0.24722222222222218,
+   "total_wilson": 29.66666666666666,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 4.3733730556651983e-14,
+     "loop_weight": 0.723751638552025,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 4.3733730556651983e-14,
+     "loop_weight": 0.723751638552025,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 4.3733730556651983e-14,
+     "loop_weight": 0.723751638552025,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 4.3733730556651983e-14,
+     "loop_weight": 0.723751638552025,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6063367779745826,
+     "loop_weight": 0.05639896177650421,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 2.5214137826982527e-14,
+     "loop_weight": 0.6688448970058987,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 2.5214137826982527e-14,
+     "loop_weight": 0.6688448970058987,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 2.5214137826982527e-14,
+     "loop_weight": 0.6688448970058987,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 2.5214137826982527e-14,
+     "loop_weight": 0.6688448970058987,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.34225071154582654,
+     "loop_weight": 0.046020235688475575,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.2817992350206149
+ },
+ {
+  "kind": "A4",
+  "p": 0.1,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.3,
+   "mean_wilson": 0.31666666666666665,
+   "total_wilson": 38.0,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 1.184421399841834e-13,
+     "loop_weight": 0.6987654670039078,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.184421399841834e-13,
+     "loop_weight": 0.6987654670039078,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.184421399841834e-13,
+     "loop_weight": 0.6987654670039078,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 1.184421399841834e-13,
+     "loop_weight": 0.6987654670039078,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45344488255428517,
+     "loop_weight": 0.03285318630053745,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 6.062166162723201e-14,
+     "loop_weight": 0.7283128477936471,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 6.062166162723201e-14,
+     "loop_weight": 0.7283128477936471,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 6.062166162723201e-14,
+     "loop_weight": 0.7283128477936471,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 6.062166162723201e-14,
+     "loop_weight": 0.7283128477936471,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.40752438790988327,
+     "loop_weight": 0.06541732426328853,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.34960306891716075
+ },
+ {
+  "kind": "A4",
+  "p": 0.1,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.23333333333333334,
+   "mean_wilson": 0.28333333333333327,
+   "total_wilson": 33.99999999999999,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 3.729860235089958e-14,
+     "loop_weight": 0.6058271135328056,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 3.729860235089958e-14,
+     "loop_weight": 0.6058271135328056,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 3.729860235089958e-14,
+     "loop_weight": 0.6058271135328056,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 3.729860235089958e-14,
+     "loop_weight": 0.6058271135328056,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.3573548154408466,
+     "loop_weight": 0.026146179922600696,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 2.2737646752530535e-14,
+     "loop_weight": 0.6989628712207168,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 2.2737646752530535e-14,
+     "loop_weight": 0.6989628712207168,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 2.2737646752530535e-14,
+     "loop_weight": 0.6989628712207168,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 2.2737646752530535e-14,
+     "loop_weight": 0.6989628712207168,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.511576152397413,
+     "loop_weight": 0.03696817493848006,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.30596913611018717
+ },
+ {
+  "kind": "A4",
+  "p": 0.3,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.6666666666666666,
+   "mean_wilson": 0.7333333333333332,
+   "total_wilson": 87.99999999999999,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 1.9608576022696672e-13,
+     "loop_weight": 0.725777983942768,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.9608576022696672e-13,
+     "loop_weight": 0.725777983942768,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.9608576022696672e-13,
+     "loop_weight": 0.725777983942768,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 1.9608576022696672e-13,
+     "loop_weight": 0.725777983942768,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.43998721408487634,
+     "loop_weight": 0.026408647760491892,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 1.7444256244662285e-13,
+     "loop_weight": 0.7228617983613916,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.7444256244662285e-13,
+     "loop_weight": 0.7228617983613916,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.7444256244662285e-13,
+     "loop_weight": 0.7228617983613916,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 1.7444256244662285e-13,
+     "loop_weight": 0.7228617983613916,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.447725778305629,
+     "loop_weight": 0.02033935499269844,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.6815665039622671
+ },
+ {
+  "kind": "A4",
+  "p": 0.3,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.625,
+   "mean_wilson": 0.6805555555555555,
+   "total_wilson": 81.66666666666666,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 1.2400757046397446e-12,
+     "loop_weight": 0.7827666354205561,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.2400757046397446e-12,
+     "loop_weight": 0.7827666354205561,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.2400757046397446e-12,
+     "loop_weight": 0.7827666354205561,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 1.2400757046397446e-12,
+     "loop_weight": 0.7827666354205561,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.37740307558194375,
+     "loop_weight": 0.02042939830963522,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 6.74062801964563e-13,
+     "loop_weight": 0.6400678141017249,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 6.74062801964563e-13,
+     "loop_weight": 0.6400678141017249,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 6.74062801964563e-13,
+     "loop_weight": 0.6400678141017249,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 6.74062801964563e-13,
+     "loop_weight": 0.6400678141017249,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.34863438051910056,
+     "loop_weight": 0.03369654552543884,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.5770550719023428
+ },
+ {
+  "kind": "A4",
+  "p": 0.3,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.6666666666666666,
+   "mean_wilson": 0.7583333333333331,
+   "total_wilson": 90.99999999999997,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 1.1441352545186153e-13,
+     "loop_weight": 0.6965261528740282,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.1441352545186153e-13,
+     "loop_weight": 0.6965261528740282,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.1441352545186153e-13,
+     "loop_weight": 0.6965261528740282,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 1.1441352545186153e-13,
+     "loop_weight": 0.6965261528740282,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.2513600121254636,
+     "loop_weight": 0.04115852689801777,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 5.893346569992017e-14,
+     "loop_weight": 0.7017357858984793,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 5.893346569992017e-14,
+     "loop_weight": 0.7017357858984793,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 5.893346569992017e-14,
+     "loop_weight": 0.7017357858984793,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 5.893346569992017e-14,
+     "loop_weight": 0.7017357858984793,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.33104848512236756,
+     "loop_weight": 0.03953968429785734,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.6623991927120737
+ },
+ {
+  "kind": "A4",
+  "p": 1.0,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.9666666666666667,
+   "mean_wilson": 1.0527777777777771,
+   "total_wilson": 126.33333333333326,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 1.499482630850761e-13,
+     "loop_weight": 0.637449457166756,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.499482630850761e-13,
+     "loop_weight": 0.637449457166756,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.499482630850761e-13,
+     "loop_weight": 0.637449457166756,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.3609513226988003,
+     "loop_weight": 0.027053850166087218,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.3609513226988003,
+     "loop_weight": 0.027053850166087218,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 1.0277720723298489e-13,
+     "loop_weight": 0.7507071100417592,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.0277720723298489e-13,
+     "loop_weight": 0.7507071100417592,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.0277720723298489e-13,
+     "loop_weight": 0.7507071100417592,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.16584119406333994,
+     "loop_weight": 0.0369427918638299,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.3687815115359989,
+     "loop_weight": 0.050785411132184585,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.8686907248757526
+ },
+ {
+  "kind": "A4",
+  "p": 1.0,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.9,
+   "mean_wilson": 0.9999999999999996,
+   "total_wilson": 119.99999999999994,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 1.029683493961375e-13,
+     "loop_weight": 0.6836882315544979,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 1.029683493961375e-13,
+     "loop_weight": 0.6836882315544979,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 1.029683493961375e-13,
+     "loop_weight": 0.6836882315544979,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 1.029683493961375e-13,
+     "loop_weight": 0.6836882315544979,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.36716943161753146,
+     "loop_weight": 0.04430313587914783,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 6.581528617564418e-14,
+     "loop_weight": 0.6801056060416125,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 6.581528617564418e-14,
+     "loop_weight": 0.6801056060416125,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 6.581528617564418e-14,
+     "loop_weight": 0.6801056060416125,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 6.581528617564418e-14,
+     "loop_weight": 0.6801056060416125,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.21298441402139207,
+     "loop_weight": 0.051136700756267986,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.807539056754738
+ },
+ {
+  "kind": "A4",
+  "p": 1.0,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.9083333333333333,
+   "mean_wilson": 0.9999999999999997,
+   "total_wilson": 119.99999999999996,
+   "faces": 120
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 4.2367721091000205e-14,
+     "loop_weight": 0.7604582810491892,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 4.2367721091000205e-14,
+     "loop_weight": 0.7604582810491892,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 4.2367721091000205e-14,
+     "loop_weight": 0.7604582810491892,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 4.2367721091000205e-14,
+     "loop_weight": 0.7604582810491892,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.3401884175895431,
+     "loop_weight": 0.03296056901081492,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 2.56133284779217e-14,
+     "loop_weight": 0.7091299480212852,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 2.56133284779217e-14,
+     "loop_weight": 0.7091299480212852,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 2.56133284779217e-14,
+     "loop_weight": 0.7091299480212852,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 2.56133284779217e-14,
+     "loop_weight": 0.7091299480212852,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.2670506475717031,
+     "loop_weight": 0.04617874513599819,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7994409611010526
+ },
+ {
+  "kind": "2T",
+  "p": 0.0,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185770213197,
+     "loop_weight": 1.0798294398338889e-06,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399663,
+     "loop_weight": 0.09687899539724551,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736024
+ },
+ {
+  "kind": "2T",
+  "p": 0.0,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185770213197,
+     "loop_weight": 1.0798294398338889e-06,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399663,
+     "loop_weight": 0.09687899539724551,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736024
+ },
+ {
+  "kind": "2T",
+  "p": 0.0,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185770213197,
+     "loop_weight": 1.0798294398338889e-06,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399663,
+     "loop_weight": 0.09687899539724551,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736024
+ },
+ {
+  "kind": "2T",
+  "p": 0.003,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185770213197,
+     "loop_weight": 1.0798294398338889e-06,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399663,
+     "loop_weight": 0.09687899539724551,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736024
+ },
+ {
+  "kind": "2T",
+  "p": 0.003,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.0,
+   "mean_wilson": 0.0,
+   "total_wilson": 0.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.40290038801676087,
+     "loop_weight": 0.008786928754711968,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.45000185770213197,
+     "loop_weight": 1.0798294398338889e-06,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.5327785793085426,
+     "loop_weight": 0.056042926523519394,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.5773687787857225,
+     "loop_weight": 0.09604795862989152,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6343040250399663,
+     "loop_weight": 0.09687899539724551,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7492202056736024
+ },
+ {
+  "kind": "2T",
+  "p": 0.003,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.03333333333333333,
+   "mean_wilson": 0.03333333333333333,
+   "total_wilson": 4.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.13501673445026968
+ },
+ {
+  "kind": "2T",
+  "p": 0.01,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.06666666666666667,
+   "mean_wilson": 0.07777777777777777,
+   "total_wilson": 9.333333333333332,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.6241797102474324,
+     "loop_weight": 0.020547326962993877,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6241797102474324,
+     "loop_weight": 0.020547326962993877,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6241797102474324,
+     "loop_weight": 0.020547326962993877,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6241797102474324,
+     "loop_weight": 0.020547326962993877,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6241797102474324,
+     "loop_weight": 0.020547326962993877,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.43127358749809175,
+     "loop_weight": 0.01216290969950852,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.43127358749809175,
+     "loop_weight": 0.01216290969950852,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.43127358749809175,
+     "loop_weight": 0.01216290969950852,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.43127358749809175,
+     "loop_weight": 0.01216290969950852,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.43127358749809175,
+     "loop_weight": 0.01216290969950852,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.18465411713516344
+ },
+ {
+  "kind": "2T",
+  "p": 0.01,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.058333333333333334,
+   "mean_wilson": 0.058333333333333334,
+   "total_wilson": 7.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.6843097991668528,
+     "loop_weight": 0.050536684067029124,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6843097991668528,
+     "loop_weight": 0.050536684067029124,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6843097991668528,
+     "loop_weight": 0.050536684067029124,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6843097991668528,
+     "loop_weight": 0.050536684067029124,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6843097991668528,
+     "loop_weight": 0.050536684067029124,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.6971184033824087,
+     "loop_weight": 0.015157686587110683,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6971184033824087,
+     "loop_weight": 0.015157686587110683,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6971184033824087,
+     "loop_weight": 0.015157686587110683,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6971184033824087,
+     "loop_weight": 0.015157686587110683,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6971184033824087,
+     "loop_weight": 0.015157686587110683,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.1751869736175127
+ },
+ {
+  "kind": "2T",
+  "p": 0.01,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.03333333333333333,
+   "mean_wilson": 0.03333333333333333,
+   "total_wilson": 4.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.13501673445026968
+ },
+ {
+  "kind": "2T",
+  "p": 0.03,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.10833333333333334,
+   "mean_wilson": 0.11666666666666668,
+   "total_wilson": 14.000000000000002,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7563394812693011,
+     "loop_weight": 0.02798406263349034,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7563394812693011,
+     "loop_weight": 0.02798406263349034,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7563394812693011,
+     "loop_weight": 0.02798406263349034,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7563394812693011,
+     "loop_weight": 0.02798406263349034,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7563394812693011,
+     "loop_weight": 0.02798406263349034,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7545694983538673,
+     "loop_weight": 0.025554557038490047,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7545694983538673,
+     "loop_weight": 0.025554557038490047,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7545694983538673,
+     "loop_weight": 0.025554557038490047,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7545694983538673,
+     "loop_weight": 0.025554557038490047,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7545694983538673,
+     "loop_weight": 0.025554557038490047,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.23282767487910372
+ },
+ {
+  "kind": "2T",
+  "p": 0.03,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.10833333333333334,
+   "mean_wilson": 0.10833333333333334,
+   "total_wilson": 13.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.6854639797096125,
+     "loop_weight": 0.007751986934307378,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6854639797096125,
+     "loop_weight": 0.007751986934307378,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6854639797096125,
+     "loop_weight": 0.007751986934307378,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6854639797096125,
+     "loop_weight": 0.007751986934307378,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6854639797096125,
+     "loop_weight": 0.007751986934307378,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.6100328115471276,
+     "loop_weight": 0.026450273748914017,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6100328115471276,
+     "loop_weight": 0.026450273748914017,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6100328115471276,
+     "loop_weight": 0.026450273748914017,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6100328115471276,
+     "loop_weight": 0.026450273748914017,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6100328115471276,
+     "loop_weight": 0.026450273748914017,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.28235724682315966
+ },
+ {
+  "kind": "2T",
+  "p": 0.03,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.03333333333333333,
+   "mean_wilson": 0.03333333333333333,
+   "total_wilson": 4.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6568556905346717,
+     "loop_weight": 0.06602077822236822,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7195342723155768,
+     "loop_weight": 0.08634342204063139,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.13501673445026968
+ },
+ {
+  "kind": "2T",
+  "p": 0.1,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.225,
+   "mean_wilson": 0.24722222222222218,
+   "total_wilson": 29.66666666666666,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.8323927445802183,
+     "loop_weight": 0.019110903177901723,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.8323927445802183,
+     "loop_weight": 0.019110903177901723,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.8323927445802183,
+     "loop_weight": 0.019110903177901723,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.8323927445802183,
+     "loop_weight": 0.019110903177901723,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.8323927445802183,
+     "loop_weight": 0.019110903177901723,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.6655576577783887,
+     "loop_weight": 0.03912861501108218,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6655576577783887,
+     "loop_weight": 0.03912861501108218,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6655576577783887,
+     "loop_weight": 0.03912861501108218,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6655576577783887,
+     "loop_weight": 0.03912861501108218,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6655576577783887,
+     "loop_weight": 0.03912861501108218,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.36176021672894576
+ },
+ {
+  "kind": "2T",
+  "p": 0.1,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.3,
+   "mean_wilson": 0.31666666666666665,
+   "total_wilson": 38.0,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7753263996845308,
+     "loop_weight": 0.03106480929830018,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7753263996845308,
+     "loop_weight": 0.03106480929830018,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7753263996845308,
+     "loop_weight": 0.03106480929830018,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7753263996845308,
+     "loop_weight": 0.03106480929830018,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7753263996845308,
+     "loop_weight": 0.03106480929830018,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.6005643294717893,
+     "loop_weight": 0.04091025280471741,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6005643294717893,
+     "loop_weight": 0.04091025280471741,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6005643294717893,
+     "loop_weight": 0.04091025280471741,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6005643294717893,
+     "loop_weight": 0.04091025280471741,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6005643294717893,
+     "loop_weight": 0.04091025280471741,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.3971595407929814
+ },
+ {
+  "kind": "2T",
+  "p": 0.1,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.23333333333333334,
+   "mean_wilson": 0.28333333333333327,
+   "total_wilson": 33.99999999999999,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7826074274557613,
+     "loop_weight": 0.04702617758853668,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7826074274557613,
+     "loop_weight": 0.04702617758853668,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7826074274557613,
+     "loop_weight": 0.04702617758853668,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7826074274557613,
+     "loop_weight": 0.04702617758853668,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7826074274557613,
+     "loop_weight": 0.04702617758853668,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.674220844862405,
+     "loop_weight": 0.028782274891925662,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.674220844862405,
+     "loop_weight": 0.028782274891925662,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.674220844862405,
+     "loop_weight": 0.028782274891925662,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.674220844862405,
+     "loop_weight": 0.028782274891925662,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.674220844862405,
+     "loop_weight": 0.028782274891925662,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.3609262288381011
+ },
+ {
+  "kind": "2T",
+  "p": 0.3,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.6666666666666666,
+   "mean_wilson": 0.7333333333333332,
+   "total_wilson": 87.99999999999999,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7785499936640554,
+     "loop_weight": 0.023581159303300417,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7785499936640554,
+     "loop_weight": 0.023581159303300417,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7785499936640554,
+     "loop_weight": 0.023581159303300417,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7785499936640554,
+     "loop_weight": 0.023581159303300417,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7785499936640554,
+     "loop_weight": 0.023581159303300417,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.6519859799883071,
+     "loop_weight": 0.04308324885431588,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6519859799883071,
+     "loop_weight": 0.04308324885431588,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6519859799883071,
+     "loop_weight": 0.04308324885431588,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6519859799883071,
+     "loop_weight": 0.04308324885431588,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6519859799883071,
+     "loop_weight": 0.04308324885431588,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7218472366935528
+ },
+ {
+  "kind": "2T",
+  "p": 0.3,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.625,
+   "mean_wilson": 0.6805555555555555,
+   "total_wilson": 81.66666666666666,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.8131564049177991,
+     "loop_weight": 0.0359795288035096,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.8131564049177991,
+     "loop_weight": 0.0359795288035096,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.8131564049177991,
+     "loop_weight": 0.0359795288035096,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.8131564049177991,
+     "loop_weight": 0.0359795288035096,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.8131564049177991,
+     "loop_weight": 0.0359795288035096,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.8352829680244533,
+     "loop_weight": 0.045459678192374606,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.8352829680244533,
+     "loop_weight": 0.045459678192374606,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.8352829680244533,
+     "loop_weight": 0.045459678192374606,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.8352829680244533,
+     "loop_weight": 0.045459678192374606,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.8352829680244533,
+     "loop_weight": 0.045459678192374606,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.6881272189159462
+ },
+ {
+  "kind": "2T",
+  "p": 0.3,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.6666666666666666,
+   "mean_wilson": 0.7583333333333331,
+   "total_wilson": 90.99999999999997,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7674025762177379,
+     "loop_weight": 0.03409178455739949,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7674025762177379,
+     "loop_weight": 0.03409178455739949,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7674025762177379,
+     "loop_weight": 0.03409178455739949,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7674025762177379,
+     "loop_weight": 0.03409178455739949,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7674025762177379,
+     "loop_weight": 0.03409178455739949,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7145964611512567,
+     "loop_weight": 0.027730300001819193,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7145964611512567,
+     "loop_weight": 0.027730300001819193,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7145964611512567,
+     "loop_weight": 0.027730300001819193,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7145964611512567,
+     "loop_weight": 0.027730300001819193,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7145964611512567,
+     "loop_weight": 0.027730300001819193,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.697159922535783
+ },
+ {
+  "kind": "2T",
+  "p": 1.0,
+  "seed": 1,
+  "curvature": {
+   "curved_fraction": 0.9666666666666667,
+   "mean_wilson": 1.0527777777777771,
+   "total_wilson": 126.33333333333326,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7968627491355543,
+     "loop_weight": 0.011513636630303269,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7968627491355543,
+     "loop_weight": 0.011513636630303269,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7968627491355543,
+     "loop_weight": 0.011513636630303269,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7968627491355543,
+     "loop_weight": 0.011513636630303269,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7968627491355543,
+     "loop_weight": 0.011513636630303269,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7402849508964443,
+     "loop_weight": 0.0692593551067153,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7402849508964443,
+     "loop_weight": 0.0692593551067153,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7402849508964443,
+     "loop_weight": 0.0692593551067153,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7402849508964443,
+     "loop_weight": 0.0692593551067153,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7402849508964443,
+     "loop_weight": 0.0692593551067153,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.8512683547407937
+ },
+ {
+  "kind": "2T",
+  "p": 1.0,
+  "seed": 2,
+  "curvature": {
+   "curved_fraction": 0.9,
+   "mean_wilson": 0.9999999999999996,
+   "total_wilson": 119.99999999999994,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.7374554230707784,
+     "loop_weight": 0.0158387820167891,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7374554230707784,
+     "loop_weight": 0.0158387820167891,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7374554230707784,
+     "loop_weight": 0.0158387820167891,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7374554230707784,
+     "loop_weight": 0.0158387820167891,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7374554230707784,
+     "loop_weight": 0.0158387820167891,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.6952941803639537,
+     "loop_weight": 0.04765363405255836,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.6952941803639537,
+     "loop_weight": 0.04765363405255836,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.6952941803639537,
+     "loop_weight": 0.04765363405255836,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.6952941803639537,
+     "loop_weight": 0.04765363405255836,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.6952941803639537,
+     "loop_weight": 0.04765363405255836,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.7745504582543713
+ },
+ {
+  "kind": "2T",
+  "p": 1.0,
+  "seed": 3,
+  "curvature": {
+   "curved_fraction": 0.9083333333333333,
+   "mean_wilson": 0.9999999999999997,
+   "total_wilson": 119.99999999999996,
+   "faces": 120,
+   "note": "label draw matched by seed; curvature computed on the A4 projection"
+  },
+  "loops": {
+   "triangle_L3": {
+    "1e-10": {
+     "max_bias": 0.8376331688858905,
+     "loop_weight": 0.019233046605355353,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.8376331688858905,
+     "loop_weight": 0.019233046605355353,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.8376331688858905,
+     "loop_weight": 0.019233046605355353,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.8376331688858905,
+     "loop_weight": 0.019233046605355353,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.8376331688858905,
+     "loop_weight": 0.019233046605355353,
+     "lifetime_ticks": 100.0
+    }
+   },
+   "axis_square_L4": {
+    "1e-10": {
+     "max_bias": 0.7741450859366726,
+     "loop_weight": 0.04441530732441387,
+     "lifetime_ticks": 10000000000.0
+    },
+    "1e-06": {
+     "max_bias": 0.7741450859366726,
+     "loop_weight": 0.04441530732441387,
+     "lifetime_ticks": 1000000.0
+    },
+    "0.0001": {
+     "max_bias": 0.7741450859366726,
+     "loop_weight": 0.04441530732441387,
+     "lifetime_ticks": 10000.0
+    },
+    "0.001": {
+     "max_bias": 0.7741450859366726,
+     "loop_weight": 0.04441530732441387,
+     "lifetime_ticks": 1000.0
+    },
+    "0.01": {
+     "max_bias": 0.7741450859366726,
+     "loop_weight": 0.04441530732441387,
+     "lifetime_ticks": 100.0
+    }
+   }
+  },
+  "lowest_positive_phase": 0.8808771380533846
+ }
+]

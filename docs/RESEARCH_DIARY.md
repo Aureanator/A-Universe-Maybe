@@ -169,8 +169,22 @@ Sorting simplex vertices discards which side is "out"; interior faces then fail 
 Labeling every edge incident to a vertex v by a fixed order-3 element of A₄ produces curvature supported on a **closed dual loop** — detected as kind="loop" (enter-and-exit at every touched tetrahedron) by the E019-era detector: 3-face loops at 6 of 8 vertices in Kuhn n=1, and a **12-face loop around the central vertex of Kuhn n=2**. The same construction with an involution seed is flat everywhere (t² = e annihilates both orientation-parity cases), while Z₃ seeds of value 1 survive only where traversal signs agree. Existence of seeded loops therefore depends on the **order of the seed element relative to face-orientation parity** — a selection rule discovered during construction, not assumed.
 *Evidence:* `tests/test_flux_loops.py` (all three facts asserted); seeding helper `seed_star_loop`; detector from E019.
 
+**Dated correction, 2026-09-19 (E039):** the n=1 three-face supports at six of
+eight vertices are boundary-open arcs, not closed dual loops. Each has two
+faces incident to only one tetrahedron. The original classifier checked tet
+degree but omitted face incidence. The n=2 central twelve-face loop remains
+closed. The old n=1 assertion is replaced by explicit incidence checks for all
+eight vertices; the original claim above remains visible as error history.
+
 ### E027. Boundary memory and rigidity: enclosed flux forbids vacuum filling, but carries zero hidden entropy — matter-entropy is CORE-localized (MEASURED; positive + negative result)
 Two measurements on balls enclosing the seeded loops:
+
+**Dated scope correction, 2026-09-19 (E039):** measurement (a)'s actual test
+uses the n=1 boundary arc corrected above. Its zero flat-interior filling count
+remains verified for that fixed region, but is not a theorem about every ball
+enclosing a closed loop or evidence for unpinned particle stability. The n=2
+rigidity test in (b) is unchanged. The original broader interpretation follows
+as historical text, superseded by this correction.
 
 **(a) Boundary memory (positive).** Any ball whose boundary encloses loop flux admits **no flat-interior resolution: |I| = 0**. The boundary appearance cannot be vacuum — charge is measurable from outside purely as a filling obstruction. This generalizes the cone theorem E010 ("curved boundaries cannot be capped by one vertex") to arbitrary enclosing regions, and strengthens E006/E007 conservation claims: the exterior does not merely see a conserved class, it sees an **unsatisfiability** of the vacuum hypothesis.
 
@@ -333,3 +347,830 @@ Across every channel found, **sign(R) = sign(θ)** — twist and statistics agre
 
 **Interpretation discipline.** These are NO-results for particles-as-action-minima under one declared action. They do NOT exclude: persistence under finite-β detailed-balance dynamics with proper-time clocks; knot/link-protected sectors (Layer-2 brief: flux-string loops, not face clusters); actions with different null structure; or boundary-condition-coupled stability. The glass finding does suggest where to look next: A4's destroying-move dilution is a CONJUGACY-class phenomenon — the same algebra that makes charge also makes rare-decay. Matter, if it comes, will hide in the ratio of barrier-free trap depth to proposal measure, not in energy minima.
 *Evidence:* `docs/PREDICTIONS.md` P8–P11 (verbatim pre-registrations + outcomes); `reference/astra_session/data/{landscape,runs,candidate_audit,scale_runs}.json`; `examples/particle_{search,scale_search,candidate_audit}.py`; reproduction log `scale_rerun.log`.
+
+### E038. Both large-mesh survivors have two-move decay certificates (2026-09-19, Codex)
+
+**Question.** P11 showed immediate downhill exits at both A4 n=5 endpoints,
+but that alone did not demonstrate a nonincreasing route all the way to vacuum.
+P12 registered that stronger test before execution, keeping the archived labels,
+action, interior-edge proposal set, and exact outer boundary unchanged.
+
+**Method.** `decay.py` searches raw equal-action label states breadth-first for
+a downhill exit and repeats at the lower action. Each plateau has a 1000-state
+discovery budget; a cutoff is reported separately from an exhausted closed
+plateau. Successful descent can repeat at most H(initial) times. This is a
+certificate-finding algorithm, not a new physical driver or a clock. It does
+not identify states by gauge representatives during exploration.
+
+**Result.** Seed 0: H=8 -> 4 -> 0. Seed 1: H=10 -> 6 -> 0. Each certificate
+uses just two strictly downhill moves and no plateau wandering. Independent
+full holonomy recomputation checks each action change; all boundary labels stay
+fixed; inverse replay returns every edge label exactly; transporting each right
+multiplier by the target-vertex gauge transformation reproduces the same action
+sequence. The machine-readable artifact includes initial labels, edge and group
+ordering, moves, search accounting, and forward action sequence.
+
+**Scope.** These two configurations have a constructive zero-action-barrier
+route to flat vacuum. Flat does not require every raw edge label to be identity.
+The existence certificate says nothing about sampled rates, a proper-time clock,
+or other configurations. Nuclei, atoms, chemical bonds and bulk point fermions
+remain unestablished. Category-level exchange signs are not a demonstration of
+point-fermion exchange in the 3D solver.
+
+**Interpretation correction to E037 (history retained).** Neither a critical
+point nor a critical exponent was measured, so "critical slowing-down" is too
+strong. Likewise, the proposed conjugacy-class explanation and prediction about
+where matter "will hide" are hypotheses, not results. Supported: rare destroying
+proposals can accompany long proposal-time survival despite a two-move downhill
+route to vacuum. The next particle gate is whether a proposed topological
+obstruction is actually preserved by all permitted rewrites, including junctions
+and reconnections; it cannot be inferred from a knotted rendering alone.
+
+*Evidence:* `examples/particle_decay_certificates.py`;
+`reference/astra_session/data/decay_certificates.json`; `tests/test_decay.py`.
+
+**Validation.** Full regression run: 288 passed, 1 skipped, 3 renderer fixture
+errors (Windows temp-directory permissions). The three renderer tests passed on
+the authorized rerun outside the sandbox with a fresh workspace basetemp. The
+targeted decay/driver run passed all 34 tests, including the newly added purity
+guard for `decay.py` (added after the full run collected tests). Thus 292 distinct
+tests passed across these runs; one existing test remains skipped. No failed
+assertion was suppressed or changed to obtain this result.
+
+### E039. Linked flux loops merge under the permitted rewrites (2026-09-19, Codex)
+
+**Prerequisites.** Inspection found that linking-number signs omitted the
+over/under factor; the skipped Hopf test's diagnosis as a projection problem
+was incomplete. Exact rational signed crossings now replace that measurement,
+with explicit projection-degeneracy failures/retries. Hopf, unlink, reflection,
+orientation, subdivision and multiple-view controls pass. The old loop
+classifier also accepted some boundary-open arcs: requiring two incident tets
+per curved face fixes this. Actual cyclic adjacency, not sorted support, now
+determines the PL dual embedding. These fixes do not validate all single-knot
+heuristics or establish a correspondence with the category's braiding operators.
+
+**P13 registered test.** The specified two-disk fixture on Kuhn n=8 produces
+two disjoint dual loops of lengths 52,46 and |Lk|=1, in Z3 and its declared A4
+order-3 subgroup lift. These are prepared test configurations, not spontaneous
+emergence. The 32-state-per-plateau search makes three moves, H=98,98,98,96,
+retaining |Lk|=1, then exhausts its budget. This remains an inconclusive outcome.
+
+**P13b registered follow-up.** All 6,064 / 33,352 initial proposals (Z3 / A4)
+were checked for support-domain changes. Each group has eight nonincreasing
+proposals, all remaining two loops. No one-step nonincreasing domain escape
+appears at this initial state; junction-creating uphill moves do exist.
+
+The constructive ascending-edge-order erasure path tells a different multi-step
+story: at step 37 it merges both loops into a junction (H=86), then one loop at
+step 38 (H=84), with no preceding action increase. Thus a linked loop pair is
+NOT protected from merger even by the downhill-or-equal move condition. The
+full 140-move route has one uphill step (84 -> 85 at step 40), returns to two
+loops with Lk=0 at step 52 (H=80), and reaches flat vacuum. It never exceeds the
+initial H=98. Necessity of the +1 step is unproved. Linking is undefined, not
+zero, on junction/single-loop states; Lk=0 alone is not a general unlink proof.
+
+Every path has independent full-holonomy, boundary, inverse, and transported
+gauge-witness checks. Nonincreasing merger prefixes are also checked using the
+P12 decay verifier. Z3 and A4 agree on the paths because their fixture labels
+and erasure moves lie in the same cyclic subgroup; the A4 census additionally
+tests multipliers outside it. No intrinsically non-abelian stability is inferred.
+
+**Exact scope theorem.** Under all nonidentity interior-edge multipliers, any
+two assignments with identical boundary labels connect by setting each differing
+edge a to b with multiplier a^-1 b. This forbids nonconstant invariants of ALL
+these moves on a fixed-boundary label space. It does not prove connectivity of
+the nonincreasing graph or exclude metastability. A frozen extra probe, a
+no-reconnection rule, or a different action is a different declared model.
+
+**Interpretation.** There are now actual linked flux structures and reproducible
+merger/split/erasure witnesses, but no stable particles, nuclear reactions, atoms,
+or chemistry. The next gate is an energetic/dynamical stability argument, not
+the assertion that an embedded knot must survive arbitrary permitted rewrites.
+
+*Evidence:* `docs/TOPOLOGY_AUDIT.md` (proof, controls and complete scope);
+`examples/topology_audit.py`, `topology_rewrite_audit.py`,
+`topology_audit_graphics.py`; `reference/astra_session/data/topology*_audit.json`;
+`out/topology_audit.png`; `tests/test_topology_audit.py`, `test_linking.py`,
+`test_knots.py`, `test_strings.py`, `test_rewrites.py`.
+
+**Regression consequence and validation.** The full run gave 307 passes and
+one failure: `test_vertex_star_order3_seeds_closed_loops` had codified the false
+n=1 closure claim. Explicit incidence enumeration found two boundary faces in
+each of the six nontrivial vertex-star supports. The corrected eight-vertex arc
+test and the existing n=2 closed-loop test both pass. Dated E026/E027 corrections
+above preserve the mistake and narrow the interpretation; no detector guard was
+weakened to retain the old result. All 49 targeted checks passed after that
+correction (flux loops, exact linking, strings, knots, drivers). Earlier all 52
+targeted topology/rewrite checks passed. Across the full run and targeted
+correction, all 308 current tests have passed; there are no skipped tests.
+The full run used a fresh workspace basetemp outside the sandbox because of the
+previously diagnosed Windows pytest temporary-directory permission problem.
+
+### E040. The P13b uphill step was an ordering artifact: abelian linked loops erase with zero barrier (2026-09-19; run by Astra/Codex, reproduced and recorded by Opus)
+
+**Question (P14, registered before running).** Is the single +1 step at move 40 of
+the P13b erasure necessary? Take steps 33–48 and search every ordering of those
+16 distinct-edge rewrites, keeping all other steps fixed.
+
+**Result.** HIT in Z3 and A4: `path_order.nonincreasing_order` finds an ordering
+after 291 discovered subset states. The only change is to postpone original step
+38 (86 -> 84) until after steps 39–40. The complete 140-move path is then
+nonincreasing, H=98 -> 0. It passes full-holonomy, boundary, inverse and gauge-transport
+checks. A fresh rerun in a separate Linux checkout reproduces the archived
+JSON semantically identically; only the path separator differs. The P15 greedy scheduler
+(E041) independently finds a different nonincreasing erasure of the same labels.
+**Scope:** the prepared abelian linked pair has no action barrier to complete
+erasure under H. This says nothing about rates. Linking of commuting fluxes gives
+no energetic protection.
+*Evidence:* `examples/topology_decay_order.py`; `src/constraintnet/path_order.py`;
+`tests/test_path_order.py`; `tests/test_link_order_and_noncommuting.py::test_p14_*`;
+`reference/astra_session/data/topology_decay_order.json`.
+
+### E041. Non-commuting linked fluxes: topology forces a tether; the action still gives no barrier (2026-09-19, Opus)
+
+**Why this experiment.** Every earlier link test lived in a cyclic subgroup, so Z3
+and A4 agreed by construction. The memo's "knots protect matter" thesis has not
+yet been tested with the non-abelian structure that motivates A4. For line
+defects with non-commuting fluxes, the continuum rule (Poenaru–Toulouse) is that
+they cannot cross freely: a connecting string with commutator flux must form.
+
+**Fixture (P15, prepared).** Same Kuhn n=8 ball and P13 disks; disk 1 carries a,
+disk 2 carries b; labels are ordered products along each edge. Four edges pass
+exactly through the disk-intersection line. Their factor order was fixed by a
+declared amendment before any measurement (disk 1 first), and the reverse
+convention runs as a control.
+
+**Derived and confirmed.** The complement of a Hopf link has fundamental group Z^2,
+so a two-loop Hopf state must have commuting meridian holonomies. Measured: the
+commuting arms (C0 = the P13 labels, C1 = distinct V4 fluxes) give two loops,
+|Lk|=1, H=98, and commuting based meridians. The non-commuting arms (N1: order 3 with
+order 3; N2: V4 with order 3) give ONE junction component, H=103: loops plus a
+5-face V4 tether along the intersection arc. The tie control gives a 6-face tether
+(H=104) and the same topology. **Non-abelian linking is visible in the labels as
+extra, unavoidable flux.** This is the first result in the program where Z3 and A4
+necessarily differ at the level of topology.
+
+**Dynamics.** One-edge census: in N1/N2, all 33,352 single proposals keep the one
+junction component (10 nonincreasing), so no single move removes the tether.
+C1 matches the P13b A4 census exactly. Plateau searches (32/256 states) all hit their budgets, which is
+inconclusive. The per-edge "set to identity" move set, ordered by a greedy
+scheduler, gives a fully nonincreasing 140-move path to flat vacuum in all six
+runs. In the N arms the tether survives until step 52 (H=80). On that move the
+structure becomes two loops with Lk=0 and non-commuting meridians, which is legal
+because an unlinked complement has a free fundamental group. Tether and linking disappear on the
+same move: the tether shortens and pulls the loops through each other, which is the
+continuum expectation. Verified by holonomy, boundary, inverse, P12-verifier and
+gauge-transport replay.
+
+**Interpretation (bounded).** After P8–P15, every tested structure under H has a
+zero-barrier route to vacuum when the outer boundary is identity. That includes
+clusters, glassy endpoints, abelian links and tethered non-abelian links. H behaves
+as a uniform string tension on closed flux networks, and tension resolves every
+entanglement tried so far. Topology here constrains WHICH intermediate structures
+occur (the tether); it has not constrained WHETHER decay occurs. This is not a
+proof for all fixtures. It does say where protection cannot come from under this
+action: closed, contractible flux networks in a flat-bounded ball. The remaining
+candidates are listed in `reference/opus_session/WORKING_STATE_2026-09-19.md`:
+Gauss-law point charges, non-contractible or boundary-anchored flux, and a changed
+action or measure. Each would be a declared model change that needs its own
+pre-registration.
+*Evidence:* `docs/PREDICTIONS.md` P15; `examples/noncommuting_link_audit.py`,
+`examples/noncommuting_link_graphics.py`; `reference/opus_session/data/noncommuting_link_audit.json`;
+`out/p15_noncommuting_links.png`; `tests/test_link_order_and_noncommuting.py`.
+
+### E042. The bag test: the model has tension but no pressure (2026-09-19, Opus)
+
+**Why.** The user proposed a picture: vacuum is the cancelling interference of the
+"wakes" of implications, and a particle is a pressurised bubble in it. A bubble
+is stable only if an outward push balances the inward surface tension. So before
+building wakes we asked the cheap question (P16, registered first): does the
+CURRENT model contain any interior quantity that grows with volume and differs
+between inside and outside?
+
+**Result (all predictions HIT).** A flat interior has exactly one physical filling
+(Z3 n=1–3, A4 n=1–2). Raw counts equal |G|^(interior vertices), so they are pure
+gauge. The smallest loop excitations always cost H=4. Their count, 3n²(n−1)
+distinct supports, grows like volume. That gives a uniform loop-gas entropy at
+finite β, the same inside and outside, so it pushes nothing outward. Claim 30
+already rules out conserved interior content. A4 n=3 exact enumeration was
+skipped: it would list 4.3e8 gauge copies.
+
+**Interpretation.** The energy of a bubble in this model has only a surface term,
+so its minimum is at zero size. That is exactly what P8–P15 observed. The
+missing piece is a conserved, trapped content whose confinement energy rises as
+the bubble shrinks (the bag model's quarks, a Q-ball's charge, a cavity's light).
+`docs/BAG_PICTURE.md` records the picture, the precedents, the job specification
+for any cone/wake extension, a correction on "twisted" theories and fermions,
+and the user's "cannot choose, so takes every path" idea (sum over paths) with
+its amplitude-vs-probability caveat.
+*Evidence:* `docs/PREDICTIONS.md` P16; `examples/bag_test.py`;
+`reference/opus_session/data/bag_test.json`; `tests/test_bag_test.py`.
+
+### E043. Probabilities always escape; amplitudes trap by interference, and fractal depth makes leaks vanish doubly-exponentially (2026-09-19, Opus)
+
+**Question (P17, derived before running).** The user's picture: a particle is a
+region where an implication wanders forever along an ergodic, fractal route
+because every way out cancels. Is that possible with probability weights, with
+amplitude weights, or with neither? Same generator (graph Laplacian), same exit;
+only the factor i differs.
+
+**Derived (docs/TRAPPING.md).** T1: probabilities escape from every start on every
+connected geometry (positive-definite generator). T3: amplitude survival tends
+exactly to ||P_D psi0||^2, where D is spanned by the eigenmodes that vanish at
+the exit. T4/T5: degeneracy and exit-fixing symmetry force such modes. T6
+(perturbative): broken symmetry gives decay at rate ~eps^2.
+
+**Measured.** All verified on 12 graphs, including the project's own Kuhn mesh
+(44 of 64 modes dark). An explicit-lead control and exact integer
+symmetry-breaking were run as well; see the PREDICTIONS P17 outcome. Two
+unregistered observations on the Sierpinski gasket: the dark fraction climbs
+toward 1 with depth (non-dark dimension 3·2^(k-1)+1), and the slowest leak of the
+non-dark states falls doubly-exponentially, down to 1.5e-31 at level 6
+(150-digit spectra).
+
+**Interpretation (bounded).** This settles the earlier open point on the
+amplitude side. Trapping requires amplitudes, because probability weights provably
+cannot trap. So stable matter in this picture needs amplitude weights. That
+motivates, but does not derive, the amplitude/Born layer (CLAIMS row 16). Both
+of the user's intuitions receive exact support on supplied geometries:
+"geometry that lines up" (symmetry/degeneracy) traps permanently, and "finite
+depth" gives finite but rapidly exploding lifetimes. Fractality is not the
+mechanism; symmetry, degeneracy and self-similar bottlenecks are. Open: whether
+the model's own record can build such a trap around the implication that made
+it (self-confinement), which is the step from trapped light to matter.
+*Evidence:* `docs/TRAPPING.md`; `examples/trapping_test.py`,
+`trapping_depth_rates.py`, `trapping_graphics.py`; `tests/test_trapping.py`;
+`reference/opus_session/data/trapping_*.json`; `out/p17_trapping.png`.
+
+### E044. The project's mesh is secretly BCC: round, sharp light fronts in its own metric, and mass makes a wake (2026-09-19, Opus)
+
+**Why.** The integrated working statement (`docs/WORKING_STATEMENT.md`, v4)
+adopts "reading 1": influence spreads isotropically at one speed, so the
+corollary cone is the light cone. Before building on it, P18 asked whether the
+project's own mesh can carry such fronts at all.
+
+**Derived first (docs/PROPAGATION.md).**
+- **The preferred axis is only apparent.** In rendering coordinates the Kuhn mesh
+  has a preferred (1,1,1) axis, with a speed ratio of 2, and no nonnegative
+  reweighting removes it. But coordinates are rendering only.
+- **The emergent metric is BCC.** In the metric defined by the dynamics, the
+  mesh's vertex star is exactly the body-centred-cubic tetrahedral star. The
+  two edge classes are told apart purely combinatorially, by link-ring size 6
+  or 4, the same numbers that appeared as H = 6 or 4 in P16.
+- **Quartic isotropy.** Weighting ring-4 edges by ½ makes the dispersion
+  isotropic through fourth order.
+- **Real waves trap too.** Classical real waves obey the P17 trapping theorem
+  (T3′). Trapping needs signed interference, not complex numbers as such.
+
+**Measured.** Everything registered was confirmed except N3's front-radius
+test, which sits below measurement resolution; the exact symbol test confirms
+N3 directly. Highlights:
+- 3D massless fronts are sharp (interior share ≤ 3e-7); the 2D control keeps a
+  1.8% tail, matching the continuum.
+- A mass term fills the cone interior, converging to the continuum (39%
+  at mσ = 1).
+- The damped real wave keeps exactly the dark-mode energy.
+
+One wording error in D1 (plane-wave versus front speed) was caught by an
+unregistered readout and amended in place, with a note.
+
+**Interpretation (bounded).** Clause 3 of the working statement holds on the
+project's mesh for scalar waves: the light cone is round in the emergent metric,
+fronts are sharp in 3D, and mass leaves a wake. The mesh's "true" geometry is
+BCC, with a combinatorial weighting (by ring size) that improves isotropy.
+Checks A–C are unchanged (spin, doubling, unitarity), and K (self-confinement)
+remains the central open problem.
+*Evidence:* `docs/PROPAGATION.md`; `examples/propagation_test.py`,
+`propagation_graphics.py`; `tests/test_propagation.py`;
+`reference/opus_session/data/propagation_test.json`; `out/p18_propagation.png`.
+
+### E045. Framing reconciled; the v4 dynamics designed and registered (2026-09-19, Opus with the user)
+
+**Reconciliation.** The original framing's "persistent topological defects are
+matter" is marked SUPERSEDED on the evidence of P8–P16. "Rewrite cost is mass"
+is RETAINED in the user's precise form: inertial mass is the rewrite cost of
+translating a structure, equivalently its maintenance cost in implication
+steps relative to free passage (the light-clock argument). The curvature-count
+and word-metric readings become the pre-v4 control arm. Edits:
+- README preface (original paragraph kept)
+- CLAIMS framing note
+- MEMO_PATCHES P11
+- ELECTRON_TARGET W0/W6
+- PARTICLE_PROGRAM
+- WORKING_STATEMENT clauses 6 and 12
+
+**Design.** `docs/DYNAMICS_DESIGN.md` registers v4.0: a gauge-covariant
+weighted-reflection (Szegedy) walk.
+- Amplitudes live on directed edges with an internal space carrying a
+  representation of A4; labels transport orientation.
+- One hop per tick; ring-size weights; no mass parameter.
+- Labels form a fixed prepared record for now; dynamical labels are v4.1.
+
+The design checks passed before any physics run:
+- exact unitarity (total implication conserved);
+- gauge covariance;
+- the Szegedy identity (spectrum = e^{±i arccos λ} of the classical walk, plus
+  flat bands of multiplicity arcs − 2V);
+- linear, emergent-isotropic massless dispersion;
+- no doubled light cone, since the minimum of λ over the Brillouin zone is
+  −5/11 (the mesh has triangles).
+
+**Two watch items.**
+- Flat bands: non-translating circulation, 12 of 14 arc dimensions per vertex.
+  They are not particle candidates.
+- The spin-½ doubling question (B) is untouched.
+
+The physics tests P19a–e are registered and not run. P19e asks whether a
+prepared flux record traps implication beyond the vacuum control. No
+direction is predicted.
+*Evidence:* `docs/DYNAMICS_DESIGN.md`; `examples/v4_design_checks.py`;
+`tests/test_v4_design.py`; `reference/opus_session/data/v4_design_checks.json`.
+
+### E046. The v4.0 walk works as a light engine, but a frozen record traps nothing (2026-09-19, Opus)
+
+P19 ran on the registered design, with two amendments made before any code:
+realisations fixed in advance, and the closed variant defined as the induced
+subgraph.
+
+**The engine passes every structural test.**
+- **Exact conservation and covariance:** implication is conserved exactly and
+  the walk is gauge-covariant.
+- **Dispersion:** exactly the Szegedy form, with long-wave speed sqrt(2/11) and
+  quartic-isotropic under the ring weighting.
+- **Relational light cone:** round to 0.3% over 60 directions on a 120³ torus,
+  with weight outside it falling exponentially. No lattice mode outruns the
+  long-wave speed.
+- **Holonomy:** non-abelian interference is exact, matching ½(1 + χ₃/3).
+
+One registered clause (P19d "contrast") was mis-stated at registration. It is
+recorded as such; the underlying formula is confirmed. An implementation bug
+(a wrap-around window in P19c) was found, fixed and rerun, with the buggy
+numbers superseded.
+
+**The physics answer is negative.** Prepared flux structures (single loop,
+linked, tethered) held fixed do not trap implication. Exact spectra show the
+same trapped dimension as vacuum, minus two. Packets on the flux escape to
+1e-32. The only trapped states anywhere are compact cycle states that never
+translate (derived result DF). They have no finite inertia, so they are not
+matter under the M1 definition.
+
+**Interpretation.** The frozen record of the old picture (defects) and the
+light of the new one (walk) do not, combined, make matter. What remains is the
+feedback: implication must reshape the record that guides it, which is item K,
+self-confinement. This is where the working statement locates matter anyway
+("the record built by implications forms the cancelling structure that then
+traps them"). v4.1 needs a reversible, gauge-covariant, conserving rule for
+how passing implication changes labels. That design needs the user's
+philosophical input: are labels separate from the implications that cross
+them, or the same thing?
+*Evidence:* `src/constraintnet/walk.py`; `examples/p19_walk.py`;
+`reference/opus_session/data/p19_{a,b,c,d,e_exact,e_time}.json`;
+`tests/test_walk.py`.
+
+### E047. A responsive record, built and then retired: chop must cost implication (2026-09-19, Opus with the user)
+
+**Built from the user's answers.**
+- Free light reads the chop.
+- Contained light pivots at loci set by the geometry, in steps. The dihedral
+  angles are exactly 60° on ring-6 edges and 90° on ring-4 edges, checked.
+- The pivot must travel with the structure, not be pinned in all six
+  degrees of freedom.
+
+**Rule (v4.1-sc).** Circulation around an edge writes a quantised 120° chop,
+oriented by the local spin. `RecordWalk` implements it and is exactly
+reversible: 50 ticks, 5,850 chops, restored to 1e-15 with labels bit for bit.
+
+**Why it was retired before any valid run.** The user objected that chop costs
+the wave nothing, and the objection is correct. Norm is conserved, but the
+evolution operator changes with the record, so the wave's energy isn't. A
+record must hold, and cost, implication. P20 was withdrawn; its one launch
+had also hit a NaN preparation bug, since fixed. Energy-accounted options
+(A: quantum record; B: ledger, curved face = ε of stored implication;
+C: no separate record) are laid out in `DYNAMICS_DESIGN.md` §9 for decision.
+
+### E048. Option A at small scale: a quantum record in a lossless box (2026-09-19, Opus with the user)
+
+**Choice.** The user chose to try A directly: "implement A on a small scale on one or three of
+our interesting geometries … reflective boundary box that echoes losslessly". The conversation
+had also concluded that B, done reversibly, becomes A, and that the geometric face cost is the
+Wilson form 1 − χ₃/3.
+
+**Build.** `QuantumRecordWalk` (`src/constraintnet/qrecord.py`):
+- 3 quantum edges (1728 record states); everything else frozen flat.
+- The walk is controlled on the record; the record has an electric term (A4 Laplacian on the
+  order-3 class) and a magnetic term (Wilson).
+- One fixed unitary, so there is nothing to account by hand.
+- A closed n = 6 Kuhn box: every arc has its reverse, so the walls echo losslessly.
+
+**Registered and run as P21:** three geometries (pivot vortex, DF loop, free flash), a 6-point
+coupling grid, and quenched-chop controls.
+
+**What we learned.**
+- The accounting is exact.
+- Free light passes a weakly fluctuating quantum vacuum almost untouched, and the energy it
+  deposits is ∝ λ_E² and levels off. A strongly fluctuating vacuum heats up under light.
+- The trapped DF loop is the structure the record interacts with. Dynamic ≫ quenched, so it
+  is response, not noise. At moderate coupling the loop stays in place while its internal state
+  beats coherently with the record (overlap 1 → 0.34 → 0.84).
+- The pivot vortex is not bound, which was the prior.
+- One correction to my own prior: I expected "leak" to mean escape. At moderate coupling it
+  mostly means rotation in place.
+
+*Evidence:* `examples/p21_quantum_record.py`; `reference/opus_session/data/p21_*.json`;
+`tests/test_qrecord.py`; `out/p21_quantum_record.png`.
+
+### E049. Freeze-out: the hot record is opaque but does not cool (2026-09-20, Opus with the user)
+
+**Question.** The user asked whether "the vacuum wasn't always calm" lines up with the model.
+Conversation answer: qualitatively yes. The cosmological order is formation by cooling, with light
+going free at decoupling, and P21 already showed loops surviving only in calm chop. Two
+distinctions:
+- "hot" should be a *state* above the vacuum, with the rule fixed;
+- a closed reversible box cannot cool, so a cooling channel is needed.
+
+**Test (P22).** Open walls, a hot record, one flash of light.
+
+**Result.**
+- **Opacity, not formation.** The dynamic hot record holds light about 30–100× longer than frozen
+  chop of the same statistics, and releases it as a power law. The flat vacuum lets light go at
+  once. Retained light ∝ hot fraction, with no threshold.
+- **No cooling:** the record's energy dwarfs what the light can carry.
+
+**Priors P22-3 and P22-4 failed on direction.** I expected trapping to prefer calm; it prefers hot.
+The registered surprise criterion was met, but the interpretation is lingering (slow release), not
+binding.
+
+**Next.** Cooling needs radiation to dominate the energy budget, or a growing or expanding mesh.
+*Evidence:* `examples/p22_freezeout.py`, `reference/opus_session/data/p22_*.json`,
+`out/p22_freezeout.png`.
+
+### E050. Radiative cooling: light has a temperature only when it is narrow and low (2026-09-20, Opus)
+
+**Plan.** The user set the order: radiative, then expanding, then both.
+
+**P23: a flood of flashes.** Built as a quantum-trajectory unravelling of the exact record channel:
+- escaped light is detected, the record keeps its conditional state, and the next flash arrives;
+- exact per-flash drifts come from a ladder of record states.
+
+**Three findings in sequence, each registered before it was run:**
+1. **Folding.** The earlier couplings (λ_B = 2) put the record's quasi-energy past π per flip.
+   Light then heats it to infinite temperature whatever the light is, so the λ_B = 2 trajectories
+   were stopped.
+2. **Broad light still heats**, even with the record unfolded (0.1, 0.1).
+3. **Narrow light cools.** Light from the lowest positive band holds the record at half its hot
+   energy. My prior, that light's symmetric band makes any light infinitely hot, failed; the
+   failure was informative.
+
+**P24a: the redshift proxy.** Bigger boxes allow lower bands:
+- E*/E_hot = 0.51, 0.22, 0.14 at ω₀ = 0.52, 0.40, 0.33;
+- magnetic excitations freeze out once ω₀ drops below their gap;
+- a cooler record is more transparent.
+
+This is the cosmological sequence in miniature: redshift → freeze-out → transparency.
+
+**Not yet shown:**
+- loops forming;
+- the record reaching its true vacuum (the vacuum population still drops slightly, since
+  electric excitations are below ω₀).
+
+**Needed next:** a growth or expansion rule, which is the user's call (axiom-level).
+*Evidence:* `examples/p23_radiative.py`, `examples/p23_graphics.py`, `reference/opus_session/data/p23_*`,
+`p24a_*`, `out/p23_p24a_radiative.png`.
+
+### E051. Seeding patterns in a compatible cooled bath (2026-09-20, Opus with the user)
+
+**The user's proposal.**
+- Extract the statistics of the cooled vacuum near where matter would form.
+- Preseed our patterns in statistically equivalent noise, back-calculated from the matter so the
+  two have compatible provenance.
+- The clarification: "we can't have the particle instantiated in an incompatible bath … 'with
+  enough noise this happened somewhere', not a rigorous reproduction of the Big Bang. Whether it
+  *continues* to persist is another question."
+
+**Built (P25).**
+- The bath is a Gibbs sample of the record at the P24a freeze-out energy.
+- The pattern is seeded per record branch in that branch's compatible form.
+- Two loops: 60° pivots (ring-6) and 90° pivots (ring-4).
+
+**Result.**
+- Compatible seeding removes the birth shock.
+- A frozen bath keeps the pattern exactly.
+- A moving bath erodes it slowly (about 15 % in 600 ticks), all of it from the record's motion.
+- 90° loops persist better.
+- The bath's own provenance check failed: the Gibbs form is not shown to be stationary under the
+  light that produced it.
+
+**Consequence.** Matter, if it exists here, must be a *joint* state that co-moves with its record:
+a dressed loop. Next, find it. Its record statistics would then be the back-calculated bath, which
+is the user's provenance condition made exact.
+*Evidence:* `examples/p25_seeded.py`, `reference/opus_session/data/p25_*.json`, `out/p25_seeded.png`.
+
+### E052. Resumption and phase-resolved dressed-loop search (2026-09-20, Astra)
+
+Read Opus's handoff through P25; preserved the work and user-supplied correction
+that Astra may commit. Installed missing SciPy locally, declared the `quantum`
+dependency extra, and verified the full existing suite: **356 passed in 400.03 s**.
+Four additional phase-filter and embedding tests passed separately. Commit
+`29a2f51` preserves P19–P25 plus the P26 executable and preregistration before any
+P26 measurement.
+
+**Analytic correction.** A persistent ray may have any eigenphase. Unphased
+averaging can remove it. The exact Cesaro telescoping identity gives a residual
+bound with the filtered norm in the denominator; merely averaging longer is not
+an eigenstate certificate. A stationary joint record also need not be stationary
+under the separate cooling channel. DYNAMICS_DESIGN section 14 states the scope.
+
+**P26 measured.** Compatible L4 loop, three quantum edges, (0.1,0.1), Gibbs fraction
+0.14 and seed 1, in closed boxes n=5 and n=6. Fixed phases zero and the isolated
+record vacuum; windows 64,128,256; then 128 open-wall ticks for both filters and
+the raw seed. No dynamics changed.
+
+The vacuum phase (-0.289325 rad/tick) retains about 59% filtered weight and gives
+98.04–99.68% normalized loop weight. Full-U residuals improve about 55-fold to
+0.0056–0.0057. Open-release loop loss is reduced by about 69% and 76%, with escape
+accounting accurate to 4.14e-14. All diagnostic priors pass, but the 1e-8 exact
+eigenstate gate fails. Zero-phase filtering retains only about 0.012% and does not
+produce a near-eigenstate.
+
+**Interpretation limit.** The selected record is 97.8–99.5% in its isolated vacuum
+mode. This can explain improvement over a noisy seed without self-confinement.
+The decoupled flat-loop control is already exactly persistent. The next comparison
+must include an unfiltered vacuum seed; longer or refined eigenstate searches
+must retain full-U residual and boundary checks. A current/orientation measurement
+is independently necessary before interpreting a localized dark mode as the
+Williamson–van der Mark circulation. The expansion decision remains open.
+
+*Evidence:* `examples/p26_dressed.py`, `examples/p26_summary.py`,
+`reference/astra_session/data/p26_{dressed_n5,dressed_n6,summary}.json`,
+`tests/test_phase_filter.py`, figure `out/p26_dressed.png`.
+
+### E053. P27 written up: the dressed loop is just a calm loop, and compact states cannot circulate (2026-09-20; Astra's run, written up by Opus)
+
+Astra registered and ran P27, then stopped before the write-up. Recomputed from the archived data.
+
+**Result.**
+- The P26 phase-filtered candidate loses *more* weight on release than a plain calm seed
+  (ratio 1.09 at n = 5, 1.23 at n = 6), and overlaps those seeds at 0.94–0.98. P26's advantage
+  over the noisy seed was calm selection, as Astra suspected in E052.
+- Neither calm seed is a near-eigenray (residuals 0.074, 0.126).
+- No directed current anywhere: 1e-12 initially, ≤ 1e-6 integrated over 128 ticks.
+
+**The structural point** is Astra's theorem (§15): a state confined strictly to a loop, with exits
+available, has exactly zero current. So "matter is trapped circulation" fails in its strict form.
+Three ways out remain: support outside the loop (a field tail), a time-dependent superposition
+rather than one eigenray, or circulation carried by an internal variable that probability flow
+cannot see.
+
+The user's reading points at the third: the several internal states can be read either as a
+wavefunction over them or as a constant, invisible transition between them. That is the subject of
+P28.
+
+*Evidence:* `reference/astra_session/data/p27_vacuum_n{5,6}.json`, `examples/p27_summary.py`,
+`out/p27_vacuum.png`.
+
+### E054. Compact loops: two phases, no current, and a two-traversal internal return (2026-09-20, Opus with the user)
+
+**The user's question,** after P27 closed off circulation: can the several internal states be read
+either as a wavefunction over them, or as a constant invisible transition between them?
+
+**Answer, derived and then checked.** Both, and the model pins it down:
+- a compact loop state forces the coin to −1, amplitudes scaling as 1/√weight (so triangles work
+  too, which P19 had missed);
+- only two walk phases exist, 0 and π;
+- existence is H a₀ = e^{iLθ} a₀, so on odd loops θ = π needs an order-2 holonomy;
+- the 0/π superposition is exactly 2-periodic: the invisible transition, made exact.
+
+**The negative that came with it.** The superposition carries no current *at any tick*, not merely
+on average. Forward and backward arcs always hold equal weight; it is a standing wave. So the
+no-current result now covers time-dependent compact states as well.
+
+**The positive.** On an odd loop with an order-2 holonomy, the internal vector returns with −1 per
+traversal: two traversals to come back, invisible to any probability measure. That is the first
+structure in this project with the shape the electron target wants, and it is kinematic, not a spin
+claim.
+
+**Next.** Directed transport requires leaving the strictly compact class: a tail or surrounding
+field. That is also what the §15 scope note said. The expansion rule is still the user's open call.
+*Evidence:* `examples/p28_compact.py`, `reference/opus_session/data/p28_compact.json`.
+
+### E055. The tail, time reversal, and why matter may need spin-½ (2026-09-20, Opus with the user)
+
+**The user's choice:** give the candidate a tail. Real matter's central disturbance is much smaller
+than its field, and the field is part of matter's imposition.
+
+**First finding (P29a).** My per-eigenvector current readout was ill-posed inside degenerate
+eigenspaces; amended mid-stream and re-run with a per-eigenspace maximisation. The real structure
+underneath: the walk has an antiunitary K with K U = U⁻¹ K and **K² = +1**, so every eigenspace has
+a current-free basis. With identity labels, symmetry supplies degeneracy and circulation is easy
+(bias 0.65). With random labels, the spectrum splits almost completely and **no** stationary state
+circulates (≤ 1.3e-11).
+
+**Second finding (P29b).** Lifting the internal space to the 2-dim spinor representation of 2T
+gives K_s² = −1. Kramers degeneracy then survives disorder, and circulation returns at bias
+0.76–0.93 in every draw. The circulating states are delocalised: ≤ 8.5 % of the weight on the loop,
+≤ 16 % of the current on its edges.
+
+**Reading.** Stationary circulation in a disordered vacuum requires the spin-½ lift, and what
+circulates is the field, not the core. That is the user's picture arrived at from the other end,
+and it promotes working-statement item A from optional to required.
+
+**Still owed:** an axiom-level reason for 2T labels; self-binding (these are box eigenstates); and
+the expansion rule.
+*Evidence:* `examples/p29_tail.py`, `examples/p29b_spin.py`,
+`reference/opus_session/data/p29a_tail_v2.json`, `p29b_spin.json`.
+
+### E056. How hot was that vacuum? (2026-09-20, Opus with the user)
+
+**The user's question:** how much energy is the "disordered vacuum" of P29 carrying? With enough
+ambient churn anything falls apart or comes together, and our objects are tiny.
+
+**Calibration.** P29's random labels curve 92 % of faces at mean Wilson cost 1.0: it is the
+infinite-temperature record, not a vacuum. The cooled vacua of P23/P24a sit at 0.14–0.51 of that.
+
+**Sweep (P30).** Diluting the labels gives curvature densities from 0 to 92 %.
+- Without the spin lift, circulation is permanent below ~10 % curvature, survives ~100 ticks at
+  25–92 %, and is not permanent above ~10 %. My registered prediction that it would die by 5 % was
+  wrong; it is hardier than that.
+- With the spin lift it is permanent at every level tested.
+- Per-face churn energy is 0.001–0.10 rad/tick, against 0.75 rad/tick for the lowest quantum that
+  fits an n = 4 box (0.33 at n = 7). Long-wavelength light is slow in lattice terms, so a real
+  vacuum around a tiny structure is near the flat end of this sweep.
+
+**Reading.** Both of the user's directions are visible in one figure: enough churn does dissolve a
+circulating structure without the spin lift, and the lift is precisely what makes a structure
+indifferent to its neighbourhood's temperature.
+*Evidence:* `examples/p30_churn.py`, `examples/p30_graphics.py`,
+`reference/opus_session/data/p30_churn.json`, `out/p30_churn.png`.
+
+### E057. A circulating structure does no work on its vacuum (2026-09-20, Opus)
+
+**Built:** `SpinRecordWalk` — the P21 quantum record with 2T labels (24 elements, the double cover)
+and a spin-½ walker, since P29b showed circulation needs that lift. The magnetic cost uses the
+spinor character, so a face carrying the central element (a 2π rotation) costs the maximum.
+
+**Bug caught in the control.** Inside a Kramers pair the two extremes of circulation are +λ and −λ,
+not flow and no-flow; the zero-current control is the time-reversal-symmetric combination. Fixed
+before any result was reported.
+
+**Result.** The circulating state and the standing state of the same family shift the record's
+energy identically to within 0.25–2.5 %. The record reacts to the walker being there, not to its
+flow. Neither binds: both empty an open box, as delocalised states must.
+
+**Open:** whether Kramers protection survives a dynamic record. The antiunitary I tested left out
+the label transport, so that check is void; the slow observed decay (1–9 % over 400 ticks) is
+consistent with approximate protection but proves nothing.
+
+*Evidence:* `examples/p31_selfbind.py`, `reference/opus_session/data/p31_selfbind_n{4,6}.json`.
+
+### E058. The project's origin, and what proof theory says about it (2026-09-20, Opus with the user)
+
+**Origin (user, recorded now as provenance):** the whole programme grew from asking *what would a
+mathematical derivation look like from inside, as logic is progressively applied?*
+
+Re-read that way, several results change meaning:
+- a self-contained sub-derivation has no direction, which is precisely the compact-loop no-current
+  theorem: direction requires an open dependency on the surroundings;
+- a closed loop of inference can only be idempotent or sign-flipping, which is the θ ∈ {0, π}
+  result, with the two-traversal return as a parity obligation;
+- discreteness is the natural state (there is no half an inference), so the continuum is what needs
+  explaining, not the steps.
+
+**Literature (see RELATED_WORK):** the formal counterpart is Girard's Geometry of Interaction —
+cut elimination as a token travelling a proof net, proofs as operators, with token machines,
+multi-token causal versions and quantum-computation semantics already in place. Also De Raedt et
+al.'s logical-inference derivations of the relativistic wave equations, and the Wolfram model.
+
+**Two technical leads this hands us:**
+1. **Non-invertible transport.** GoI's dynamic algebra is built from partial isometries (a stack
+   discipline), not group elements. Astra's no-current theorem assumes invertible transport, so a
+   stack-like rule is a candidate escape from the no-circulation result — and a stack *is* a
+   record, which is an independent reason for the record to exist.
+2. **The net is consumed.** In GoI the graph is rewritten by reduction; our mesh never changes.
+   That is where the expansion rule belongs, and it suggests its form: reduction should rewrite
+   mesh structure (Pachner-type moves), not merely move amplitude.
+
+### E059. Reading the neighbours: four upgrades, one of which reframes the goal (2026-09-20, Opus)
+
+Read the closest programmes properly (RELATED_WORK) and wrote `docs/UPGRADES_FROM_LITERATURE.md`.
+
+1. **Kitaev's quantum double** is the same mathematical object with a finished theory attached, and
+   it says matter is a **constraint defect**: a charge is a vertex where the Gauss law fails, a flux
+   is a face with non-trivial holonomy, and both are gapped and topologically protected. We never
+   imposed the Gauss law, and our terms are soft rather than projectors, so we have no gap. Our
+   "trapped circulation" target may simply be the wrong object.
+2. **Ribbon operators** create pairs at the *ends* of a string, with the string unobservable. Our
+   closed loops have no ends, which is why P28 found no current and P31 found no binding. The user's
+   "tail" is the string.
+3. **Derrick's theorem** is the name of our P14–P16 result. Escapes: a Skyrme-type term, gauge
+   fields, or time dependence. The topological-constraint route is the cheap one.
+4. **Braid matter** stalled exactly where we are: states too stable to interact, a zoo without
+   superselection rules, no masses. The quantum double supplies the missing rule; computed here, our
+   groups would give **14 sectors for A4** and **42 for 2T**, which is a falsifiable target.
+
+Recommended order: Gauss law and gap, then ribbon pair creation, then sector counting, and only then
+back to circulation and the electron.
+
+### E060. The obvious corrections, made (2026-09-20, Opus with the user)
+
+**The user restated the axiom:** causality travels to local effect, and it is always travelling as a
+conserved quantity; a multidimensional causal structure enumerates irreducible self-referential
+links. Read literally that is a per-vertex *constraint*, which our rules never had.
+
+**Corrected and implemented** (`defect.py`, `tests/test_defect.py`, `docs/CORRECTIONS_2026-09-20.md`):
+- local conservation as the projector A_v, flatness as B_f, H = −Σ A_v − Σ B_f;
+- exact projectors, exactly commuting, on Z2, Z3 and A4 patches; unique gapped ground state;
+- charge = a vertex where A_v fails (a point), flux = a face where B_f fails;
+- **on our own mesh**, one edge's label disturbs exactly the closed ring of faces around it, size 6
+  or 4, for every interior edge. Flux is a loop; our ring structure was the flux structure all
+  along, and the old "pivot edge" was a flux-loop generator.
+
+**Consequences for the old rules:** "matter is trapped circulation" is retired (C3); a static
+compact state carries no current so by the axiom it cannot be matter (C6); the missing stabiliser
+that P14–P16 found (Derrick's theorem) is replaced by constraint stability rather than a force
+balance (C5).
+
+**For the dimensional step,** registered as P32-5/6: the mesh generalises to d dimensions with
+labels in A_{d+1} (4D → A5, spin lift binary icosahedral), and since flux is codimension-2 while
+p + q = d − 1 is needed to link, **flux links flux only in three dimensions** — charge–flux braiding
+survives in all of them. That is the sharpest form yet of the user's own conjecture about why three
+dimensions persist.
+
+### E061. Newer handoff reconciled; explicit charge pairs and constraint audit (2026-09-20, Astra)
+
+The user supplied the discussion after Opus's latest commit. The workspace now
+contained P28–P31 and the uncommitted defect kernel, superseding the older handoff
+through P25. Preserved the newer pending work in `e1daede`, with P32A registered
+before the probe. The three original defect tests pass locally. P31's saved
+campaign was preserved, not claimed as a fresh local reproduction.
+
+**Audit:** the implemented H=-sum A-sum B is an energetic penalty on the full
+edge Hilbert space, not enforcement of an A_v=1 state restriction. The old walk
+already conserved probability locally; the newly added gauge constraint is a
+different property. Small couplings do not imply no gap. These distinctions,
+plus path/mobility and dimensional caveats, are in `DEFECT_AUDIT.md` with primary
+literature links. Original wording is retained with amendments.
+
+**P32A:** constructed 48 ordered endpoint/character preparations: Z2 and Z3 on
+the tetrahedron boundary; A4 1' and 1'' on a single face. Every pair costs two
+Hamiltonian units, with only its two endpoint stars violated. Direct/alternate
+paths agree on the flat vacuum; one-edge continuations move endpoints; inverse
+strings annihilate adjacent pairs. Algebraic errors are below 1.1e-15. These are
+controlled string operations, not spontaneous or energy-isolated reactions.
+
+**Persistence:** exact evolution from the commuting projectors matches a dense
+Z2 exponential and changes each pair only by its energy phase (error below
+7.2e-15). Since every local defect projector commutes with H, every defect
+location stays fixed. This proves persistence in the supplied Hamiltonian and
+also shows that autonomous propagation is absent.
+
+**Hard-constraint check:** projecting either charged endpoint gives zero.
+An all-identity record basis vector is flat but has <A_v>=1/|G|. Thus P32-3
+needs an open-system map and P32-4 needs an explicit old-to-new-state embedding.
+Neither was silently imported from the wave engine. No dimensional experiment
+or nuclear/atomic/fermionic claim was made.
+
+Next work should specify admissible charge transport and its conservation rules,
+then probe mobile configurations and interactions. A gap or an immobile eigenstate
+alone is not the requested moving matter. Evidence: `defect_ops.py`,
+`examples/p32_defects.py`, `reference/astra_session/data/p32a_defects.json`,
+`tests/test_defect_ops.py`.
+
+**Validation:** full suite **370 passed in 405.02 s**, using a fresh pycache and
+pytest temporary directory in this checkout. All saved P32A cases also pass the
+registered normalization, endpoint, flatness, energy, path, projection, motion
+intervention and phase-evolution tolerances.
+
+### E062. Conserving motion and an exchange-statistics control (2026-09-20, Astra)
+
+Triage prioritized the missing autonomous transport law over another stability
+search under the frozen H0. Registered P32B in `644e49a`, then implemented the
+Z2 operator W_ab(I-S_a S_b)/2. It moves one occupied endpoint to an empty one.
+The algebra conserves N, H0 and B, but changes A_v. Pair persistence is imposed
+by number conservation, not binding. At kappa=0.2 the operator bound
+H-E_vac >= (1-kappa*d_max)N + sum(I-B) retains a positive charge-cost bound.
+
+All 16 initial pairs and 80 time samples completed on a tetrahedron and the
+two-tetrahedron bipyramid. Occupations change by up to 0.7166; energy, norm,
+number, flatness and continuity errors are below 4.30e-14. The flat pair sector
+equals a hard-core boson graph to 1.37e-16. Unprojected strings fail the
+number/energy-conservation control, as predicted. Full matrix residuals meet
+the registered 1e-10 tolerance. There is no inferred binding or reaction result.
+
+During the work, the user supplied the quantum spin liquid article. Primary
+papers led to the Levin–Wen exchange-algebra test, registered as P32C in
+`5c2ef6a` before execution. All 108 oriented neighbor triples have nonzero,
+unit-norm products with relative sign +1. The canonical fermion control gives
+-1 in every case. Error is below 2.23e-16. The diagnostic therefore identifies
+our tested electric pairs as a bosonic baseline; it can distinguish the desired
+fermion sign and must not confuse a spinor label with exchange statistics.
+
+Seven relevant defect tests pass, including independent Pauli-matrix comparison
+and a finite-difference check on the local current. The full suite's previous
+370-test result belongs to P32A; no new full-suite claim is made here. New data:
+`p32b_transport.json` and `p32c_exchange.json` under `reference/astra_session/data`.
+
+Next priority: connect an admissible local dynamics and its sign structure to
+the reduction rules before searching for bound states. Spin-liquid/string-net
+work supplies benchmarks, not a derivation of our dynamics. The dimensional
+audit, hard-Gauss-law completion, open-boundary channel and state-space embedding
+remain separate work items; Williamson–van der Mark remains a target.

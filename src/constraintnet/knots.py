@@ -9,9 +9,9 @@ cross faces transversally. Coordinates enter INVARIANTS OF THE COMBINATORICS her
 dynamics (the architecture rule is untouched: acceptance rules remain purely relational).
 
 Pipeline:  loop -> PL segments -> generic plane projection -> Gauss code (with over/under)
--> Reidemeister I removal + II-style cancellation -> reduced crossing count (upper bound on
-crossing number; exact for alternating diagrams by the Menasco-Thistlethwaite theorem)
--> Alexander data at t = -1 (knot determinant via the Alexander matrix).
+-> legacy Reidemeister-style simplification and crossing-count/Alexander diagnostics.
+These single-knot heuristics are tested on an unknot and trefoil only; they do
+not certify minimal crossing number or general knot equivalence.
 
 Linking number between two disjoint PL loops: signed crossings of one component against the
 other under the same generic projection -- standard, and equal to the intersection number of
@@ -20,8 +20,11 @@ either with a spanning surface of the other.
 Hypothesis to LOG, not tune (from the founding sketch): m ∝ knot complexity at fixed flux
 class. This module supplies the measurement; the mass side comes from moveCost machinery.
 
-Kernel module: no RNG, no scheduler. The projection direction is fixed and rational; a tiny
-symbolic symbolic jitter resolves degenerate projective coincidences deterministically.
+No RNG or scheduler. The legacy single-knot Gauss/Alexander pipeline uses floats
+and is not a general exact knot classifier. Only the linking API delegates to
+the exact rational, degeneracy-checking implementation in `linking.py`. A reduced
+crossing count is a diagram bound, not generally a certified minimal crossing
+number. Nothing in this module derives preservation under microscopic rewrites.
 """
 
 from __future__ import annotations
@@ -38,7 +41,7 @@ __all__ = [
     "dual_embed_loop",
 ]
 
-# All coordinates are exact rationals to keep crossing detection deterministic.
+# Input coordinates may be rational; the legacy single-knot projection uses floats.
 Rat = Fraction
 Point3 = Tuple[Rat, Rat, Rat]
 Segment = Tuple[Point3, Point3]
@@ -105,8 +108,8 @@ def gauss_code(segments: Sequence[Segment]) -> List[List[Tuple[int, bool, int]]]
     """Single-component Gauss code: along the curve, entries (label, is_over, sign).
 
     Crossing labels are assigned by first encounter. Assumes a generic projection
-    (no triple points, no tangencies); callers embed via dual_embed_loop which jitters
-    deterministically if degeneracies appear.
+    (no triple points, no tangencies). This legacy function drops some degenerate
+    cases; dual_embed_loop does not resolve them. It is not used by exact linking.
     """
     segs = list(segments)
     n = len(segs)
@@ -156,9 +159,9 @@ def gauss_code(segments: Sequence[Segment]) -> List[List[Tuple[int, bool, int]]]
 def reidemeister_reduce(code: List[Tuple[int, bool, int]]):
     """Reidemeister I removal + adjacent-pair (type II style) cancellation. Iterated to fixpoint.
 
-    Returns (reduced_code, moves). This is a sound simplification but NOT a complete knot
-    algorithm: the reduced count is an upper bound on crossing number (exact for alternating
-    diagrams -- Menasco-Thistlethwaite). Recorded honestly; trefoil/unknot tests pin behavior.
+    Returns (reduced_code, moves). This legacy heuristic is NOT a complete knot
+    algorithm or a certified minimal-crossing procedure. Trefoil/unknot tests
+    pin those examples only; exact linking does not use this function.
     """
     c = list(code)
     moves = 0
@@ -297,23 +300,10 @@ def knot_invariants(segments: Sequence[Segment]) -> KnotData:
                     moves_applied=moves, determinant=det, gauss_code=reduced)
 
 
-def linking_number(segments_a: Sequence[Segment], segments_b: Sequence[Segment]) -> int:
-    """Signed inter-component crossings under the fixed projection = PL linking number."""
-    lk = 0
-    for i, (p1, p2) in enumerate(segments_a):
-        for j, (q1, q2) in enumerate(segments_b):
-            hit = _crossing_2d(p1, p2, q1, q2)
-            if hit is None:
-                continue
-            _, _, t_p, t_q = hit
-            z_p = _interp_depth(p1, p2, t_p)
-            z_q = _interp_depth(q1, q2, t_q)
-            if abs(z_p - z_q) < 1e-9:
-                continue
-            d1 = (_screen(p2)[0] - _screen(p1)[0], _screen(p2)[1] - _screen(p1)[1])
-            d2 = (_screen(q2)[0] - _screen(q1)[0], _screen(q2)[1] - _screen(q1)[1])
-            lk += 1 if (d1[0] * d2[1] - d1[1] * d2[0]) > 0 else -1
-    return lk // 2          # linking number = HALF the signed inter-crossing sum (closed components)
+def linking_number(segments_a: Sequence[Segment], segments_b: Sequence[Segment], *, projection=None) -> int:
+    """Exact rational linking measurement; independent of legacy knot heuristics."""
+    from .linking import linking_number as exact_linking
+    return exact_linking(segments_a, segments_b, projection=projection)
 
 
 # --------------------------------------------------------------------------- dual embedding
@@ -323,22 +313,26 @@ def dual_embed_loop(tet_centers: Dict[Tuple[int, ...], Point3], loop_tets: Seque
     """PL curve through tetrahedron barycenters, waypointing at shared-face barycenters.
 
     tet_centers maps each tet (sorted vertex tuple) to its 3D barycenter; loop_tets is the
-    cycle of adjacent tets from strings.flux_string_components. Consecutive tets in the cycle
+    cycle from strings.ordered_loop_tets (NOT the sorted support). Consecutive tets in the cycle
     share a face; if face_points given, route through them (keeps the curve transverse to the
     triangulation). Returns closed polyline segments.
     """
+    if len(loop_tets) < 3 or len(set(loop_tets)) != len(loop_tets):
+        raise ValueError("expected a simple closed tetrahedron walk")
     pts: List[Point3] = []
     m = len(loop_tets)
     for k in range(m):
         t_here = loop_tets[k]
         t_next = loop_tets[(k + 1) % m]
+        shared = set(t_here) & set(t_next)
+        if len(shared) != 3:
+            raise ValueError("consecutive loop tetrahedra must share a face")
         pts.append(tet_centers[tuple(sorted(t_here))])
         if face_points is not None:
-            shared = set(t_here) & set(t_next)
-            if len(shared) == 3:
-                fp = face_points.get(tuple(sorted(shared)))
-                if fp is not None:
-                    pts.append(fp)
+            fp = face_points.get(tuple(sorted(shared)))
+            if fp is None:
+                raise ValueError("missing shared-face barycenter")
+            pts.append(fp)
     # close back to start implicitly (segments wrap)
     segs = [(pts[i], pts[(i + 1) % len(pts)]) for i in range(len(pts))]
     return [s for s in segs if s[0] != s[1]]

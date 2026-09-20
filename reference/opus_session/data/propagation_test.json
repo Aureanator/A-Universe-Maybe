@@ -1,0 +1,351 @@
+{
+ "N1_star": {
+  "A_tilde_uniform": [
+   [
+    4.0,
+    2.0,
+    2.0
+   ],
+   [
+    2.0,
+    4.0,
+    2.0
+   ],
+   [
+    2.0,
+    2.0,
+    4.0
+   ]
+  ],
+  "A_eigenvalues": [
+   1.9999999999999987,
+   2.0,
+   7.999999999999997
+  ],
+  "n_short_ring6": 8,
+  "n_long_ring4": 6,
+  "short_lengths_equal": true,
+  "long_over_short": 1.1547005383792517,
+  "expected_long_over_short": 1.1547005383792517,
+  "short_pairwise_cosines": [
+   -1.0,
+   -0.3333333333,
+   0.3333333333
+  ],
+  "long_pairwise_cosines": [
+   -1.0,
+   -0.0
+  ],
+  "long_along_cube_axes": true
+ },
+ "N3_symbol": {
+  "uniform": {
+   "rows": [
+    {
+     "kappa": 0.05,
+     "spread_over_mean": 1.7353854080372684e-05
+    },
+    {
+     "kappa": 0.1,
+     "spread_over_mean": 6.941306395191961e-05
+    },
+    {
+     "kappa": 0.2,
+     "spread_over_mean": 0.00027761460560160855
+    },
+    {
+     "kappa": 0.4,
+     "spread_over_mean": 0.0011098553036645044
+    }
+   ],
+   "loglog_slope": 1.9996719409861776
+  },
+  "ring_weighted": {
+   "rows": [
+    {
+     "kappa": 0.05,
+     "spread_over_mean": 9.588996009912746e-10
+    },
+    {
+     "kappa": 0.1,
+     "spread_over_mean": 1.5343391444391845e-08
+    },
+    {
+     "kappa": 0.2,
+     "spread_over_mean": 2.455452608978523e-07
+    },
+    {
+     "kappa": 0.4,
+     "spread_over_mean": 3.931985395293216e-06
+    }
+   ],
+   "loglog_slope": 4.000507138618914
+  }
+ },
+ "N2_grid_speed": [
+  {
+   "sigma": 1.5,
+   "measured_grid_speeds": {
+    "diag_111": 2.7543368222507567,
+    "perp_1m10": 1.3878760321264825,
+    "axis_100": 1.6008430144629209
+   },
+   "predicted_grid_speeds": {
+    "diag_111": 2.8284271247461903,
+    "perp_1m10": 1.4142135623730951,
+    "axis_100": 2.0
+   },
+   "predicted_ray_speeds": {
+    "diag_111": 2.82842712474619,
+    "perp_1m10": 1.414213562373095,
+    "axis_100": 1.6329931618554523
+   },
+   "measured_ratio_diag_over_perp": 1.9845697731594973,
+   "predicted_ratio": 2.0
+  },
+  {
+   "sigma": 3.0,
+   "measured_grid_speeds": {
+    "diag_111": 2.793289910250222,
+    "perp_1m10": 1.3934291831823924,
+    "axis_100": 1.6289637931083405
+   },
+   "predicted_grid_speeds": {
+    "diag_111": 2.8284271247461903,
+    "perp_1m10": 1.4142135623730951,
+    "axis_100": 2.0
+   },
+   "predicted_ray_speeds": {
+    "diag_111": 2.82842712474619,
+    "perp_1m10": 1.414213562373095,
+    "axis_100": 1.6329931618554523
+   },
+   "measured_ratio_diag_over_perp": 2.0046156230708103,
+   "predicted_ratio": 2.0
+  }
+ ],
+ "N3_N4_kuhn_uniform_massless": [
+  {
+   "label": "kuhn uniform",
+   "sigma": 1.5,
+   "m_sigma": 0.0,
+   "grid_N": 90,
+   "interior_fraction_lattice": 1.4771555412818946e-07,
+   "interior_fraction_continuum": 2.4529241784502117e-07,
+   "anisotropy_lattice": 0.004472932714824319,
+   "anisotropy_continuum": 0.0011547413772895244
+  },
+  {
+   "label": "kuhn uniform",
+   "sigma": 2.0,
+   "m_sigma": 0.0,
+   "grid_N": 118,
+   "interior_fraction_lattice": 2.1067724161355476e-09,
+   "interior_fraction_continuum": 2.539062516453922e-07,
+   "anisotropy_lattice": 0.0028387228642294394,
+   "anisotropy_continuum": 0.0008332448830331673
+  },
+  {
+   "label": "kuhn uniform",
+   "sigma": 3.0,
+   "m_sigma": 0.0,
+   "grid_N": 176,
+   "interior_fraction_lattice": 3.847723688079439e-08,
+   "interior_fraction_continuum": 2.486315311782988e-07,
+   "anisotropy_lattice": 0.0015957214673387964,
+   "anisotropy_continuum": 0.0008771418370353152
+  },
+  {
+   "label": "kuhn uniform",
+   "sigma": 4.0,
+   "m_sigma": 0.0,
+   "grid_N": 232,
+   "interior_fraction_lattice": 1.0548634833192828e-07,
+   "interior_fraction_continuum": 2.571547424690709e-07,
+   "anisotropy_lattice": 0.0018747465944550458,
+   "anisotropy_continuum": 0.001711542592630026
+  }
+ ],
+ "N3_kuhn_ring_weighted_massless": [
+  {
+   "label": "kuhn ring 1:1/2",
+   "sigma": 1.5,
+   "m_sigma": 0.0,
+   "grid_N": 78,
+   "interior_fraction_lattice": 1.9025062822163902e-06,
+   "interior_fraction_continuum": 2.3424308835146326e-07,
+   "anisotropy_lattice": 0.0019190487330270798,
+   "anisotropy_continuum": 0.0015888967131236023
+  },
+  {
+   "label": "kuhn ring 1:1/2",
+   "sigma": 2.0,
+   "m_sigma": 0.0,
+   "grid_N": 102,
+   "interior_fraction_lattice": 5.702524668368425e-09,
+   "interior_fraction_continuum": 2.442076009151051e-07,
+   "anisotropy_lattice": 0.0015043518720678213,
+   "anisotropy_continuum": 0.0009657302225337522
+  },
+  {
+   "label": "kuhn ring 1:1/2",
+   "sigma": 3.0,
+   "m_sigma": 0.0,
+   "grid_N": 152,
+   "interior_fraction_lattice": 1.6815633573402165e-08,
+   "interior_fraction_continuum": 2.529481328279121e-07,
+   "anisotropy_lattice": 0.0015798207171247444,
+   "anisotropy_continuum": 0.0012235675385036467
+  },
+  {
+   "label": "kuhn ring 1:1/2",
+   "sigma": 4.0,
+   "m_sigma": 0.0,
+   "grid_N": 202,
+   "interior_fraction_lattice": 7.897190474423564e-08,
+   "interior_fraction_continuum": 2.5987764544146113e-07,
+   "anisotropy_lattice": 0.0014418455256913693,
+   "anisotropy_continuum": 0.001223787414954307
+  }
+ ],
+ "N5_kuhn_uniform_massive": [
+  {
+   "label": "kuhn m*sigma=0.5",
+   "sigma": 1.5,
+   "m_sigma": 0.5,
+   "grid_N": 90,
+   "interior_fraction_lattice": 0.03062098226887133,
+   "interior_fraction_continuum": 0.03198813952240303,
+   "anisotropy_lattice": 0.007308918722513274,
+   "anisotropy_continuum": 0.0025808296605181196
+  },
+  {
+   "label": "kuhn m*sigma=0.5",
+   "sigma": 2.0,
+   "m_sigma": 0.5,
+   "grid_N": 118,
+   "interior_fraction_lattice": 0.03159305329326485,
+   "interior_fraction_continuum": 0.032197889252412376,
+   "anisotropy_lattice": 0.0039825114246670006,
+   "anisotropy_continuum": 0.0009887781028395364
+  },
+  {
+   "label": "kuhn m*sigma=0.5",
+   "sigma": 3.0,
+   "m_sigma": 0.5,
+   "grid_N": 176,
+   "interior_fraction_lattice": 0.03182257176942147,
+   "interior_fraction_continuum": 0.032055211047266816,
+   "anisotropy_lattice": 0.0018755036836190862,
+   "anisotropy_continuum": 0.0006189996304380312
+  },
+  {
+   "label": "kuhn m*sigma=1",
+   "sigma": 1.5,
+   "m_sigma": 1.0,
+   "grid_N": 90,
+   "interior_fraction_lattice": 0.4075536560499593,
+   "interior_fraction_continuum": 0.386216057070315,
+   "anisotropy_lattice": 0.006729742292877634,
+   "anisotropy_continuum": 0.0017264157622940124
+  },
+  {
+   "label": "kuhn m*sigma=1",
+   "sigma": 2.0,
+   "m_sigma": 1.0,
+   "grid_N": 118,
+   "interior_fraction_lattice": 0.39748666035357866,
+   "interior_fraction_continuum": 0.38621698898773615,
+   "anisotropy_lattice": 0.0038900841066240566,
+   "anisotropy_continuum": 0.0007946589941183588
+  },
+  {
+   "label": "kuhn m*sigma=1",
+   "sigma": 3.0,
+   "m_sigma": 1.0,
+   "grid_N": 176,
+   "interior_fraction_lattice": 0.39102591481506305,
+   "interior_fraction_continuum": 0.3862018986399126,
+   "anisotropy_lattice": 0.0017868394477076213,
+   "anisotropy_continuum": 0.00022798779705154255
+  }
+ ],
+ "N4_square_2d_massless": [
+  {
+   "label": "square 2D",
+   "sigma": 1.5,
+   "m_sigma": 0.0,
+   "grid_N": 56,
+   "interior_fraction_lattice": 0.015888125367769595,
+   "interior_fraction_continuum": 0.016684126074948312,
+   "anisotropy_lattice": 0.028011350641956277,
+   "anisotropy_continuum": 0.02711435130055823
+  },
+  {
+   "label": "square 2D",
+   "sigma": 2.0,
+   "m_sigma": 0.0,
+   "grid_N": 74,
+   "interior_fraction_lattice": 0.01724593836577861,
+   "interior_fraction_continuum": 0.017614742650999535,
+   "anisotropy_lattice": 0.028680878668512558,
+   "anisotropy_continuum": 0.011703782128737612
+  },
+  {
+   "label": "square 2D",
+   "sigma": 3.0,
+   "m_sigma": 0.0,
+   "grid_N": 108,
+   "interior_fraction_lattice": 0.017470197137618992,
+   "interior_fraction_continuum": 0.017741970398293946,
+   "anisotropy_lattice": 0.00896800393963109,
+   "anisotropy_continuum": 0.006377213494888873
+  },
+  {
+   "label": "square 2D",
+   "sigma": 4.0,
+   "m_sigma": 0.0,
+   "grid_N": 144,
+   "interior_fraction_lattice": 0.01794422605077066,
+   "interior_fraction_continuum": 0.018111609201656942,
+   "anisotropy_lattice": 0.00878485021044726,
+   "anisotropy_continuum": 0.005562277010748139
+  },
+  {
+   "label": "square 2D",
+   "sigma": 6.0,
+   "m_sigma": 0.0,
+   "grid_N": 214,
+   "interior_fraction_lattice": 0.018018600882158658,
+   "interior_fraction_continuum": 0.01809364957818386,
+   "anisotropy_lattice": 0.002474049682916457,
+   "anisotropy_continuum": 0.0012159029236520464
+  }
+ ],
+ "N6_damped_wave": {
+  "level": 3,
+  "T": 80000.0,
+  "rows": [
+   {
+    "start": 8,
+    "energy_fraction_T": 0.5000000000986884,
+    "predicted_dark_energy_fraction": 0.5000000000000153
+   },
+   {
+    "start": 5,
+    "energy_fraction_T": 0.8438857290374864,
+    "predicted_dark_energy_fraction": 0.8438857297080156
+   },
+   {
+    "start": 17,
+    "energy_fraction_T": 0.8468404000631005,
+    "predicted_dark_energy_fraction": 0.8468404006929282
+   },
+   {
+    "start": 30,
+    "energy_fraction_T": 0.9158569951484385,
+    "predicted_dark_energy_fraction": 0.9158569958072853
+   }
+  ]
+ }
+}

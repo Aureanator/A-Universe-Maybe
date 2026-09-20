@@ -1,0 +1,58 @@
+{
+ "block_theta_vs_arccos_lambda_max_err": 1.4043333874306805e-15,
+ "twelve_flat_eigenvalues_per_k": true,
+ "ring_weights": {
+  "rows": [
+   {
+    "kappa": 0.05,
+    "mean_theta_over_k": 0.4263947027039061,
+    "spread_over_mean": 4.649231237774407e-10
+   },
+   {
+    "kappa": 0.1,
+    "mean_theta_over_k": 0.4263745104411438,
+    "spread_over_mean": 7.439995733618207e-09
+   },
+   {
+    "kappa": 0.2,
+    "mean_theta_over_k": 0.42629370777083986,
+    "spread_over_mean": 1.1911921656912698e-07
+   },
+   {
+    "kappa": 0.4,
+    "mean_theta_over_k": 0.42596995873743604,
+    "spread_over_mean": 1.910992307379122e-06
+   }
+  ],
+  "loglog_slope": 4.001608706956838,
+  "predicted_speed_sqrt_2_over_W": 0.4264014327112209
+ },
+ "unit_weights": {
+  "rows": [
+   {
+    "kappa": 0.05,
+    "mean_theta_over_k": 0.37795977393418284,
+    "spread_over_mean": 8.430953116497226e-06
+   },
+   {
+    "kappa": 0.1,
+    "mean_theta_over_k": 0.37794567546944713,
+    "spread_over_mean": 3.3725784558880603e-05
+   },
+   {
+    "kappa": 0.2,
+    "mean_theta_over_k": 0.3778892630138469,
+    "spread_over_mean": 0.000134934682708307
+   },
+   {
+    "kappa": 0.4,
+    "mean_theta_over_k": 0.37766331547603654,
+    "spread_over_mean": 0.0005402428667186626
+   }
+  ],
+  "loglog_slope": 2.0005643020549777,
+  "predicted_speed_sqrt_2_over_W": 0.3779644730092272
+ },
+ "DF_cycle_holonomy_has_fixed_vector": true,
+ "DF_eigen_residual": 1.6653345369377348e-16
+}

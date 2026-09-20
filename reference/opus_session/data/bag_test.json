@@ -1,0 +1,277 @@
+{
+ "M1": [
+  {
+   "group": "Z3",
+   "n": 1,
+   "status": "exact",
+   "interior_vertices": 0,
+   "interior_edges": 1,
+   "raw_flat_fillings": 1,
+   "gauge_orbit_size": 1,
+   "physical_I": 1.0,
+   "seconds": 0.0
+  },
+  {
+   "group": "Z3",
+   "n": 2,
+   "status": "exact",
+   "interior_vertices": 1,
+   "interior_edges": 26,
+   "raw_flat_fillings": 3,
+   "gauge_orbit_size": 3,
+   "physical_I": 1.0,
+   "seconds": 0.01
+  },
+  {
+   "group": "Z3",
+   "n": 3,
+   "status": "exact",
+   "interior_vertices": 8,
+   "interior_edges": 117,
+   "raw_flat_fillings": 6561,
+   "gauge_orbit_size": 6561,
+   "physical_I": 1.0,
+   "seconds": 43.77
+  },
+  {
+   "group": "A4",
+   "n": 1,
+   "status": "exact",
+   "interior_vertices": 0,
+   "interior_edges": 1,
+   "raw_flat_fillings": 1,
+   "gauge_orbit_size": 1,
+   "physical_I": 1.0,
+   "seconds": 0.0
+  },
+  {
+   "group": "A4",
+   "n": 2,
+   "status": "exact",
+   "interior_vertices": 1,
+   "interior_edges": 26,
+   "raw_flat_fillings": 12,
+   "gauge_orbit_size": 12,
+   "physical_I": 1.0,
+   "seconds": 0.06
+  },
+  {
+   "group": "A4",
+   "n": 3,
+   "status": "skipped",
+   "reason": "raw enumeration lists 12**8 gauge copies; not run"
+  }
+ ],
+ "M2": [
+  {
+   "group": "Z3",
+   "n": 2,
+   "interior_edges": 26,
+   "tets": 48,
+   "single_edge_excitations": 52,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 24,
+   "distinct_supports_at_H_min": 12,
+   "beta_star": 0.7945134575869864
+  },
+  {
+   "group": "Z3",
+   "n": 3,
+   "interior_edges": 117,
+   "tets": 162,
+   "single_edge_excitations": 234,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 108,
+   "distinct_supports_at_H_min": 54,
+   "beta_star": 1.170532806781055
+  },
+  {
+   "group": "Z3",
+   "n": 4,
+   "interior_edges": 316,
+   "tets": 384,
+   "single_edge_excitations": 632,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 288,
+   "distinct_supports_at_H_min": 144,
+   "beta_star": 1.4157401200339865
+  },
+  {
+   "group": "Z3",
+   "n": 5,
+   "interior_edges": 665,
+   "tets": 750,
+   "single_edge_excitations": 1330,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 600,
+   "distinct_supports_at_H_min": 300,
+   "beta_star": 1.5992324138040366
+  },
+  {
+   "group": "Z3",
+   "n": 6,
+   "interior_edges": 1206,
+   "tets": 1296,
+   "single_edge_excitations": 2412,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 1080,
+   "distinct_supports_at_H_min": 540,
+   "beta_star": 1.7461790800295665
+  },
+  {
+   "group": "Z3",
+   "n": 7,
+   "interior_edges": 1981,
+   "tets": 2058,
+   "single_edge_excitations": 3962,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 1764,
+   "distinct_supports_at_H_min": 882,
+   "beta_star": 1.8688348091416842
+  },
+  {
+   "group": "Z3",
+   "n": 8,
+   "interior_edges": 3032,
+   "tets": 3072,
+   "single_edge_excitations": 6064,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 2688,
+   "distinct_supports_at_H_min": 1344,
+   "beta_star": 1.97413817541076
+  },
+  {
+   "group": "A4",
+   "n": 2,
+   "interior_edges": 26,
+   "tets": 48,
+   "single_edge_excitations": 286,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 132,
+   "distinct_supports_at_H_min": 12,
+   "beta_star": 1.2207004806465926
+  },
+  {
+   "group": "A4",
+   "n": 3,
+   "interior_edges": 117,
+   "tets": 162,
+   "single_edge_excitations": 1287,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 594,
+   "distinct_supports_at_H_min": 54,
+   "beta_star": 1.5967198298406613
+  },
+  {
+   "group": "A4",
+   "n": 4,
+   "interior_edges": 316,
+   "tets": 384,
+   "single_edge_excitations": 3476,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 1584,
+   "distinct_supports_at_H_min": 144,
+   "beta_star": 1.8419271430935928
+  },
+  {
+   "group": "A4",
+   "n": 5,
+   "interior_edges": 665,
+   "tets": 750,
+   "single_edge_excitations": 7315,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 3300,
+   "distinct_supports_at_H_min": 300,
+   "beta_star": 2.025419436863643
+  },
+  {
+   "group": "A4",
+   "n": 6,
+   "interior_edges": 1206,
+   "tets": 1296,
+   "single_edge_excitations": 13266,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 5940,
+   "distinct_supports_at_H_min": 540,
+   "beta_star": 2.1723661030891726
+  },
+  {
+   "group": "A4",
+   "n": 7,
+   "interior_edges": 1981,
+   "tets": 2058,
+   "single_edge_excitations": 21791,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 9702,
+   "distinct_supports_at_H_min": 882,
+   "beta_star": 2.2950218322012903
+  },
+  {
+   "group": "A4",
+   "n": 8,
+   "interior_edges": 3032,
+   "tets": 3072,
+   "single_edge_excitations": 33352,
+   "H_values": [
+    4,
+    6
+   ],
+   "H_min": 4,
+   "N_at_H_min": 14784,
+   "distinct_supports_at_H_min": 1344,
+   "beta_star": 2.4003251984703664
+  }
+ ]
+}

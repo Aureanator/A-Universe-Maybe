@@ -5,7 +5,87 @@ programming specification; `[Unreleased]` holds work in progress.
 
 ## [Unreleased] — Round 3 panel response + Astra merge
 
+### Added
+- P32A (Astra): 48 explicit electric charge-pair preparations in Z2/Z3/A4 finite
+  patches; matrix-free projector actions, unitary character strings and exact
+  commuting-projector evolution. Path, endpoint, energy, translation-intervention
+  and annihilation checks pass. `DEFECT_AUDIT.md` distinguishes finite penalties,
+  hard gauge restriction and probability continuity; H freezes defect locations.
+  P32-3/4 remain untested pending boundary/state-space definitions. Diary E061,
+  claim 54, archived data and two new regression tests.
+- Corrected rules (Opus, from the user's restatement + literature): `src/constraintnet/defect.py` (Gauss-law projector A_v,
+  flatness B_f, H = -sum A - sum B, defects), `tests/test_defect.py`, `docs/CORRECTIONS_2026-09-20.md`, P32 registration,
+  WORKING_STATEMENT amendment 2 (matter = constraint defect), diary E060. Flux of one edge = the closed ring of faces
+  around it (6 or 4), verified on every interior edge.
+- P31 spin-1/2 walker with a dynamic 2T quantum record (Opus): `src/constraintnet/spin_record.py`, `examples/p31_selfbind.py`,
+  data. Circulation does no work on its surroundings (energies equal to 0.25-2.5%); nothing binds; joint Kramers protection
+  untested. Diary E057; claim 53.
+- P30 vacuum-churn sweep (Opus): `examples/p30_churn.py`, `p30_graphics.py`, data, figure. P29's disorder was the
+  infinite-temperature limit (92% curved); A4 circulation is permanent below ~10% curvature and short-lived above;
+  the 2T lift is permanent at every level. Diary E056; claim 52.
+- P29a/P29b tails and the spin-1/2 lift (Opus): `examples/p29_tail.py`, `examples/p29b_spin.py`, data `p29a_tail_v2.json`,
+  `p29b_spin.json`. Time-reversal K with K^2=+1 forbids stationary current outside degenerate eigenspaces; random A4 labels
+  leave none; the 2T spinor lift gives K^2=-1, Kramers degeneracy and circulation (bias 0.76-0.93) carried by the field.
+  DYNAMICS_DESIGN section 17; diary E055; claims 50-51.
+- P28 compact-loop kinematics (Opus): `examples/p28_compact.py`, data `p28_compact.json`. Only phases 0 and pi; existence
+  law H a = e^{iL theta} a; 1/sqrt(weight) amplitudes (triangles work); zero current including 0/pi superpositions;
+  two-traversal internal return on odd loops with order-2 holonomy. DYNAMICS_DESIGN section 16; diary E054; claim 49.
+- P27 written up (Astra's run, appended by Opus): outcome in PREDICTIONS, claims 47–48, diary E053. The P26 dressed
+  loop is a calm loop and slightly worse than plain calm seeds; no directed current; compact-eigenray no-current theorem.
+- P25 seeded patterns in a compatible cooled bath (Opus): `examples/p25_seeded.py`, `p25_graphics.py`, data `p25_*.json`,
+  figure. No birth shock; exact permanence in a frozen bath; slow erosion from record motion; 90° loops outlast 60°.
+  DYNAMICS_DESIGN §13; diary E051; claim 45.
+- P23 radiative cooling + P24a redshift proxy (Opus): `examples/p23_radiative.py` (trajectory unravelling, ladders,
+  lowest-band spectral filter), `examples/p23_graphics.py`, data `p23_*`, `p24a_*`, figure. Folding diagnosis; narrow low light
+  cools the record; E* falls with redshift. DYNAMICS_DESIGN §12; diary E050; claim 44.
+- P22 freeze-out (Opus): open-wall mode for `QuantumRecordWalk` (escape bookkeeping), `examples/p22_freezeout.py`,
+  `p22_graphics.py`, data `p22_*.json`, test. Hot dynamic record is opaque (power-law release), no cooling; P22-3/4 priors failed.
+  DYNAMICS_DESIGN §11; diary E049; claim 43.
+- P21 option A at small scale (Opus): `src/constraintnet/qrecord.py` (`QuantumRecordWalk`), `examples/p21_quantum_record.py`,
+  `p21_summary.py`, `p21_graphics.py`, `tests/test_qrecord.py`, data `p21_*.json`. Exact accounting; free light
+  coherent in a weak quantum vacuum; the DF loop responds to the record (dynamic ≫ quenched); no binding. DYNAMICS_DESIGN §10;
+  diary E048; claim 42.
+- v4.1-sc `RecordWalk` (reversible record engine, tested) + P20 registration; P20 withdrawn and the rule
+  retired on energy accounting (user objection accepted). Options A/B/C in DYNAMICS_DESIGN §9. Diary E047.
+- P19 run (Opus): `src/constraintnet/walk.py` (v4.0 ArcWalk engine), `examples/p19_walk.py`,
+  `tests/test_walk.py`, data `reference/opus_session/data/p19_*.json`. Engine passes a–d; P19e negative
+  (a frozen record does not trap). Diary E046; claims 40–41; design gate → v4.1.
+- v4 dynamics design (Opus with the user): `docs/DYNAMICS_DESIGN.md`, `examples/v4_design_checks.py`,
+  `tests/test_v4_design.py`; P19 registered (not run). Framing reconciled (README preface, CLAIMS note,
+  MEMO_PATCHES P11, ELECTRON_TARGET, PARTICLE_PROGRAM): matter = trapped circulation; mass = translation
+  rewrite cost = maintenance cost. Working statement clause 12 (references only between structures) and item L.
+- `docs/WORKING_STATEMENT.md` (v4 integrated picture, status per clause) and P18 light fronts (Opus):
+  `docs/PROPAGATION.md` (D1–D7), `examples/propagation_test.py`, `propagation_graphics.py`,
+  `tests/test_propagation.py`, data, and figure `out/p18_propagation.png`. Diary E044; claims 38–39.
+- P17 trapping (Opus): `docs/TRAPPING.md` (theorems T1–T6), `examples/trapping_test.py`,
+  `trapping_depth_rates.py` (mpmath), `trapping_graphics.py`, `tests/test_trapping.py`, data and figure
+  `out/p17_trapping.png`. Diary E043; claims 36–37.
+- P16 bag test (`examples/bag_test.py`, `tests/test_bag_test.py`, `reference/opus_session/data/bag_test.json`)
+  and `docs/BAG_PICTURE.md` (why/how of the wake/bubble picture, job spec for a cone extension,
+  twist/fermion correction, sum-over-paths assessment). Diary E042; claim 35.
+- P15 (Opus): non-commuting linked flux fixtures in full A4 (`examples/noncommuting_link_audit.py`,
+  graphics script, `reference/opus_session/data/noncommuting_link_audit.json`,
+  `out/p15_noncommuting_links.png`). A forced V4 tether is confirmed. Greedy ordered
+  erasure is nonincreasing in all six arms. One-edge census included. Tie-order
+  amendment declared before measurement.
+- P14 outcome recorded (Astra run, Opus reproduction); `tests/test_link_order_and_noncommuting.py`
+  (P14 replay, P15 fixture/commutator/tie/erasure pins). Diary E040–E041, claims 32–34.
+- P13/P13b topology audit: exact linking, prescribed linked flux fixtures in Z3
+  and an A4 subgroup lift, full one-edge domain census, 38-move nonincreasing
+  merger and 140-move erasure certificates (one +1 step), and reproducible figure.
+  Constructive fixed-boundary rewrite-connectivity proof and path verifier.
+  Original bounded-search cutoff retained as inconclusive.
+- P12 constructive decay certificates: both archived A4 n=5 nonvacuum endpoints
+  reach flat vacuum in two downhill moves (8→4→0 and 10→6→0), with full-action,
+  boundary, inverse, and gauge-transport verification. Bounded raw-state plateau
+  search distinguishes closed plateaus from inconclusive budget exhaustion.
+  Reproduce with `python examples/particle_decay_certificates.py`.
+
 ### Fixed
+- Linking signs now include over/under depth, use rational predicates, and reject
+  uncertified projections; the skipped Hopf-link test now runs. Closed-loop
+  classification checks face incidence to exclude boundary-open arcs. Dual
+  embedding uses an actual cycle walk and rejects nonadjacent tetrahedra.
 - **F1 justification drift**: false "never within a fixed fibre" sentence corrected; `pointwise_stabilizer()`
   + `within_fibre_resolution_orbits()` shipped; three-convention warning (rigid/within-fibre/pooled);
   pins: flat-B stabilizer 12 constants, five-face raw 72→rigid 6→within-fibre 2, star-3 →1.

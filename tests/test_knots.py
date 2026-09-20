@@ -1,19 +1,17 @@
-"""Knot invariants of PL curves -- what is VERIFIED here, and one known-open piece.
+"""Knot invariants of PL curves -- verified controls and regression examples.
 
 Verified (pinned below): unknot detection (planar curve -> 0 crossings, det 1) and trefoil
 (3 raw = 3 reduced crossings, Alexander determinant |Delta(-1)| = 3). The Gauss-code
 over/under bug (hardcoded flags) and the arc-structure of the Alexander matrix were caught
 by exactly these ground-truth curves -- E018 discipline again: find the discriminating example.
 
-KNOWN OPEN (skipped test documents it): linking_number returns 0 on a round-circle Hopf link;
-suspected projection degeneracy for near-coplanar components under the fixed tilt. Until this
-passes, mesh-side linking claims are NOT made anywhere.
+P13 repairs the missing over/under factor in linking and makes its predicates
+exact. The historical Hopf regression now runs; it was not just a near-coplanar
+projection issue. Separate knot heuristics have not acquired this exactness.
 """
 
 import math
 from fractions import Fraction
-
-import pytest
 
 from constraintnet.knots import gauss_code, knot_invariants, linking_number
 
@@ -62,8 +60,6 @@ def test_gauss_code_alternates_over_under():
     assert all(a != b for a, b in (v for v in by_label.values() if len(v) == 2))
 
 
-@pytest.mark.skip(reason="KNOWN OPEN: linking_number degenerate on near-coplanar round circles "
-                         "(returns 0 on Hopf link); fix before any mesh-side linking claims")
 def test_hopf_linking_number():
     def c1(N=96):
         return _poly([(math.cos(2 * math.pi * k / N), math.sin(2 * math.pi * k / N), 0.0)

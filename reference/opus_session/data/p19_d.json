@@ -1,0 +1,22 @@
+[
+ {
+  "flux": "order3",
+  "cycle_holonomy_class_order": 3,
+  "chi3": 1.1102230246251565e-16,
+  "detection_flux": 0.4999999999999998,
+  "detection_trivial": 0.9999999999999996,
+  "predicted": 0.5,
+  "difference_trivial_minus_flux": 0.4999999999999998,
+  "registered_contrast_clause_abs_chi_over_3": 3.700743415417188e-17
+ },
+ {
+  "flux": "V4",
+  "cycle_holonomy_class_order": 2,
+  "chi3": -1.0,
+  "detection_flux": 0.33333333333333304,
+  "detection_trivial": 0.9999999999999996,
+  "predicted": 0.33333333333333337,
+  "difference_trivial_minus_flux": 0.6666666666666665,
+  "registered_contrast_clause_abs_chi_over_3": 0.3333333333333333
+ }
+]

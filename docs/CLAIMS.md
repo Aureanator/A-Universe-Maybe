@@ -44,6 +44,50 @@ convention changes, both numbers stay here with their convention names (control-
 | 27 | No stable particle species or binding at n ≤ 3 under H: all 57 lifetime-screened branches have immediate downhill moves, 42/57 exact one-move erasures; long endpoints absorbed to vacuum at proposals 15,157 / 17,523 — longevity was proposal-waiting-time artifact | MEASURED (NEGATIVE RESULT, kept visible) | Astra (P9+P10) | `docs/PREDICTIONS.md` P9–P10; `reference/astra_session/data/{runs,candidate_audit}.json` |
 | 28 | Non-abelian critical slowing-down without metastability: at n=5, Z3 relaxes to vacuum in ≤47.3k proposals but A4 fails on 2/3 seeds within 200k (endpoints H=8/10, each with only 2 strict-downhill exits among 665×11 = 7,315 proposals); endpoints NOT local minima — no stability claim | MEASURED + reproduced bit-for-bit locally | Astra (P11); exact reproduction by local Qwen 2026-09-19 | `docs/PREDICTIONS.md` P11; `reference/astra_session/data/scale_runs*.json`, `scale_rerun.log`; diary E037 |
 
+### P12 addition (2026-09-19)
+
+**29 — MEASURED + constructive certificate (Codex):** both nonvacuum P11 A4 n=5
+endpoints have zero-barrier paths to flat vacuum under the original permitted
+interior-edge moves: H=8 -> 4 -> 0 and H=10 -> 6 -> 0. Every move is verified
+by full holonomy recomputation, fixed boundary labels, inverse replay, and gauge
+transport. This excludes an action barrier to complete decay at those endpoints;
+it does not establish rates or exclude metastability elsewhere. Evidence:
+`examples/particle_decay_certificates.py`, `tests/test_decay.py`, and
+`reference/astra_session/data/decay_certificates.json`.
+
+The earlier phrase "critical slowing-down" in row 28/P11 was an interpretation,
+not a measured critical exponent or established critical point. The supported
+observation is slow proposal-time relaxation with rare downhill moves. Likewise,
+E037's suggestion that destroying-move dilution is a conjugacy-class mechanism
+remains a hypothesis; these certificates do not derive that mechanism.
+
+### P13 / P13b additions (2026-09-19)
+
+**30 — DERIVED (Codex):** with all nonidentity right multipliers allowed on
+each interior edge, the raw fixed-boundary label graph is connected for any
+finite group on any fixed complex. Constructive path: multiply each differing
+label a by a^-1 b. Therefore no nonconstant label observable is invariant under
+ALL these unrestricted moves. Does not imply downhill connectivity or rule out
+energetic metastability. Scope/proof: `docs/TOPOLOGY_AUDIT.md`; implementation
+and checks: `rewrites.py`, `tests/test_rewrites.py`.
+
+**31 — MEASURED, exact witnesses (Codex):** prescribed linked dual loops on
+Kuhn n=8 in Z3 and an A4 order-3 subgroup lift have |Lk|=1 and a nonincreasing
+38-move merger path through a junction, H=98 -> 84. Full 140-move erasure has
+one +1 step, never exceeds initial H, and passes through a two-loop state with
+|Lk|=0. Boundary, inverse, full-holonomy and gauge checks pass. This is not
+spontaneous emergence, intrinsically non-abelian binding, nuclear fusion, a
+minimal-barrier proof, or a sampled rate. The original downhill search's
+32-state cutoff remains inconclusive. Evidence: `examples/topology*_audit.py`,
+`reference/astra_session/data/topology*_audit.json`, `tests/test_topology_audit.py`.
+
+**Historical E026/E027 correction:** n=1 order-3 vertex stars are boundary-open
+arcs (six nontrivial supports, each with two boundary faces), not closed loops.
+The n=2 central loop remains closed. The associated n=1 no-flat-filling count
+is a fixed-region result, not a theorem about all enclosing regions. Exact
+incidence checks replace the old false closure assertion; diary corrections
+retain the original statements and their revised scope.
+
 ## Protections list (R3 §4 — load-bearing walls of credibility)
 
 Future speed must not cost these. Any change that weakens one requires an explicit diary entry:
@@ -67,3 +111,291 @@ Future speed must not cost these. Any change that weakens one requires an explic
 *Opus* — external verification pass (reference/opus_audit/, R3 panel).
 *online Qwen* — theory-sounding-out instance (Memo.txt), synthesis author of referee rounds.
 *panel* — joint reconstruction across the above.
+
+### P14 / P15 additions (2026-09-19)
+
+**32 — MEASURED, exact witness (Astra run; Opus reproduction):** the P13 linked
+fixture (Z3 and the A4 cyclic lift) has a fully NONINCREASING 140-move erasure,
+H=98 -> 0. The P13b +1 step was an ordering artifact. Evidence: P14,
+`topology_decay_order.json`, `tests/test_link_order_and_noncommuting.py`.
+
+**33 — DERIVED + MEASURED (Opus):** in full A4, Hopf-linked flux loops with
+non-commuting fluxes cannot be the whole curved support. pi_1 of the complement
+is Z^2, so the meridians would have to commute. The prepared fixtures confirm this:
+one junction component with a V4 tether of 5 faces (6 under the opposite tie
+convention). The commuting controls give two clean linked loops.
+
+**34 — MEASURED, exact witnesses (Opus):** those tethered non-abelian fixtures,
+and the commuting controls, all have fully nonincreasing 140-move erasures to flat
+vacuum. The tether and the linking vanish on the same move (step 52, H=80, Lk=0).
+No single rewrite removes the tether. NOT shown: minimal barriers elsewhere,
+rates, or stability of any other structure. Evidence: P15,
+`reference/opus_session/data/noncommuting_link_audit.json`, `out/p15_noncommuting_links.png`.
+
+**35 — MEASURED + DERIVED (Opus, P16):** with identity boundary, flat interiors
+have exactly one physical filling (Z3 n≤3, A4 n≤2). The smallest excitations
+(H=4) have 3n²(n−1) distinct supports (n=2..8): uniform volume entropy, no
+inside/outside difference. With claim 30 (no conserved interior content), the
+current model has surface tension but no bubble pressure. Evidence: P16,
+`reference/opus_session/data/bag_test.json`, `tests/test_bag_test.py`;
+interpretation in `docs/BAG_PICTURE.md` (framing POSTULATED).
+
+**Note on row 23 (2026-09-19):** the "H³(A4,U(1)) menu check" is the 2+1D twist.
+For 3D space plus time the Dijkgraaf–Witten twist is H⁴, and it does not by
+itself make point charges fermionic. See `docs/BAG_PICTURE.md` §7. Row 23 is
+unchanged as history.
+
+**36 — DERIVED + MEASURED (Opus, P17):** on any connected graph with an exit,
+a walk with probability weights escapes from every start. The same walk with
+amplitude weights (identical generator, factor i) keeps exactly ||P_D psi0||^2,
+where D is spanned by the eigenmodes vanishing at the exit. Symmetry and
+degeneracy force D to be nonzero. Verified on 12 graphs, including the Kuhn
+mesh (44/64 dark). Evidence: `docs/TRAPPING.md`, `tests/test_trapping.py`.
+
+**37 — MEASURED, observed pattern (Opus, P17):** on the Sierpinski gasket
+(levels 1–6, corner exit) the non-dark dimension is 3·2^(k-1)+1, and the slowest
+non-dark leak rate falls doubly-exponentially (to 1.5e-31 at level 6). Not
+proven for general k; supplied geometry, not self-built. Evidence:
+`reference/opus_session/data/trapping_depth_rates.json`.
+
+**38 — DERIVED + MEASURED (Opus, P18):** the project's Kuhn mesh, in the
+emergent metric of any nearest-neighbour wave rule on it, has the exact
+body-centred-cubic tetrahedral vertex star. Its edge classes are fixed by
+link-ring size (6: short, 4: long, length ratio 2/√3). Weighting ring-4 edges by
+½ makes the dispersion isotropic through fourth order. In rendering coordinates
+the mesh looks anisotropic (speed ratio 2); that is a coordinate artifact under
+architecture rule 4. Evidence: `docs/PROPAGATION.md`, `tests/test_propagation.py`.
+
+**39 — MEASURED (Opus, P18):** scalar waves on that mesh reproduce the sharp
+3D Huygens principle (interior share ≤ 3e-7). A 2D control keeps its
+continuum tail (1.8%). Mass fills the cone interior, converging to the
+continuum (39% at mσ = 1). Classical damped waves keep exactly the dark-mode
+energy, so P17-style trapping needs signed waves, not specifically complex
+amplitudes. Evidence: `reference/opus_session/data/propagation_test.json`.
+
+### Framing update (2026-09-19): row 25 reconciled with the working statement
+
+**Row 25 (basement axiom and emergence narrative)** remains POSTULATED framing.
+Two sub-claims are revised, on evidence, without deleting the history above:
+
+- **"Matter = persistent knot/defect" — SUPERSEDED.** Under the pre-v4
+  classical action, no defect persists (rows 26–34). The replacement is
+  "matter = trapped circulation of implication" (`WORKING_STATEMENT.md`
+  clause 6). It is POSTULATED; its exact trapping mechanism is DERIVED (rows 36, 39).
+- **"Mass = rewrite cost" — RETAINED, made precise.** Inertial mass is the
+  rewrite cost of translating a structure. Equivalently, it is the
+  maintenance cost in implication steps relative to a free implication
+  crossing the same neighbourhood. The equivalence is a light-clock argument,
+  checked by M1/M2 in `DYNAMICS_DESIGN.md`. The old readings (curvature count
+  H; group word metric) are now the **pre-v4 control arm**, not physical mass.
+
+**Control-arm labelling:** rows 7–35 were produced by the pre-v4 engine (static
+labels, H-descent, external bath, Drivers A/B). They stay true as measured, and
+become the named control arm for the v4 dynamics.
+
+**40 — MEASURED + DERIVED (Opus, P19):** the v4.0 walk (gauge-covariant
+Szegedy walk on the Kuhn mesh, ring weights) conserves implication exactly and
+is gauge-covariant.
+- Its dispersion is θ = arccos λ(k), with long-wave speed sqrt(2/11).
+- It gives a relational light cone isotropic to 0.3% (torus 120³), with
+  exponentially small weight outside the cone.
+- No mode outruns that speed (sampled).
+- It reproduces non-abelian holonomy interference ½(1 + χ₃/3) exactly.
+- Compact non-translating cycle states exist whenever the holonomy fixes a
+  vector (DF, derived and checked).
+
+Evidence: `reference/opus_session/data/p19_{a,b,c,d}.json`, `tests/test_walk.py`.
+
+**41 — MEASURED (NEGATIVE, Opus, P19e):** a frozen prepared flux record
+(single loop, P13 linked, P15 tethered) traps no implication beyond the
+vacuum's cycle states. Trapped dimension: fixture 2,875 against vacuum 2,877
+(n = 6, exact). Retained weight of packets on the flux: ≤ 4e-32 after 20,000
+ticks. Self-confinement therefore needs dynamical labels (v4.1).
+Evidence: `reference/opus_session/data/p19_e_exact.json`, `p19_e_time.json`.
+
+**42 — MEASURED (Opus, P21):** an energy-accounted quantum record (option A: 3 quantum A4
+edges, electric term plus Wilson term, one fixed unitary, closed n = 6 box) is exactly
+reversible and conserving to about 1e-13.
+- Free light passes a weakly fluctuating quantum vacuum with fidelity ≥ 0.985 over 600 ticks.
+  The energy it deposits is ∝ λ_E² and levels off. A strongly fluctuating vacuum heats up
+  steadily.
+- The dynamic record disturbs a trapped DF loop far more than quenched chop from the same
+  vacuum does. At moderate coupling the loop stays on its arcs (82–99 %) and beats coherently
+  with the record.
+- A pivot vortex is not bound (±3 %).
+
+*Status:* POSTULATED model, MEASURED behaviour; partial record (other edges frozen).
+Evidence: `reference/opus_session/data/p21_{G1,G2,G3}.json`, `tests/test_qrecord.py`.
+
+**43 — MEASURED (Opus, P22):** with open walls, a hot *dynamic* quantum record holds light.
+- It releases light as roughly t^−1 to t^−1.9, retaining about 30–100× more at T = 600 than
+  frozen chop of the same statistics. A flat vacuum releases light exponentially.
+- Retained light is proportional to the hot fraction, with no threshold.
+- A single flash cannot cool the record: the record's energy dwarfs the light's.
+- So the model shows opacity when hot and transparency when calm, but not formation on cooling.
+
+*Status:* POSTULATED model, MEASURED behaviour; the record is pinned to 3 edges.
+Evidence: `reference/opus_session/data/p22_*.json`.
+
+**44 — MEASURED (Opus, P23/P24a):** a quantum A4 record exchanging energy with light behaves
+thermodynamically only when two conditions hold:
+- its quasi-energy spectrum is unfolded (spans less than π);
+- the light is spectrally narrow.
+
+Under those conditions:
+- broad light holds it near infinite temperature;
+- narrow light at phase ω₀ holds it at an equilibrium E* that falls steeply with ω₀
+  (0.51 → 0.22 → 0.14 × E_hot for ω₀ = 0.52 → 0.40 → 0.33, box n = 5 → 7);
+- a lower-energy record retains less light, so it is more transparent.
+
+*Status:* MEASURED (exact per-flash expectations); a static redshift proxy, not expansion
+dynamics. Evidence: `reference/opus_session/data/p23_ladder_*`, `p24a_redshift_n*.json`.
+
+**45 — MEASURED (Opus, P25):** compact loop patterns seeded compatibly in a cooled quantum-record
+bath (each record branch holds its own compatible loop form) behave as follows:
+- they have no birth shock, whereas imprinting costs about 4.5 %;
+- they are exactly permanent if the bath is frozen;
+- they erode at about 2–3e-4 per tick if the bath moves (λ = 0.1);
+- 90° loops (ring-4) outlast 60° loops (ring-6).
+
+The erosion comes entirely from record motion. A persistent pattern would have to be a joint
+loop-plus-record eigenstate (not yet found).
+
+*Status:* MEASURED; the bath is Gibbs-form (provenance check failed, see the P25-2 outcome).
+Evidence: `reference/opus_session/data/p25_*.json`.
+
+**46 — MEASURED (Astra, P26):** phase-resolved filtering improves the persistence
+of a prepared compatible L4 loop in the partial quantum-record model. At the
+isolated record-vacuum phase, a 256-tick filter retains 0.590–0.593 of the seed's
+squared amplitude. After normalization, 98.04–99.68% lies on the loop in boxes
+n=6 and n=5. The full-step residual falls from 0.314 to about 0.0057. Subsequent
+128-tick open-wall loop-weight loss is 0.235–0.314 times the unfiltered seed's loss.
+
+All four registered diagnostic predictions pass; the exact-eigenstate residual
+gate fails. Filtering also selects 97.8–99.5% record-vacuum population, so this
+does not isolate self-binding from selecting a calmer component. The exact
+decoupled dark-loop control already persists. No autonomous confinement, mobile
+particle, directed current, spin/exchange or cooling provenance is established.
+
+*Status:* MEASURED, finite windows, prepared state, three pinned quantum edges;
+remaining edges frozen flat. Evidence: `reference/astra_session/data/p26_*.json`,
+`examples/p26_dressed.py`, `tests/test_phase_filter.py`; preregistration commit `29a2f51`.
+
+**47 — MEASURED (Astra's run, P27; appended by Opus from the archived data):** the phase-filtered
+"dressed loop" of P26 is not a distinct bound state.
+- Its 128-tick loop loss is 1.09× (n = 5) and 1.23× (n = 6) the loss of a plain calm seed
+  (compatible-vacuum or imprinted-vacuum), so it is *worse* than starting calm.
+- Its squared overlap with a calm seed is 0.94–0.98.
+- Neither calm seed reaches a near-eigenray: full-step residuals 0.074 and 0.126 against the
+  registered bound of 0.063.
+- Probability current around the loop is zero to 1e-12 initially and stays at 1e-6 or below over
+  128 open ticks, in every arm.
+
+*Status:* MEASURED; prepared states, three pinned quantum edges, finite windows.
+Evidence: `reference/astra_session/data/p27_vacuum_n{5,6}.json`, `examples/p27_vacuum.py`,
+`src/constraintnet/current.py`, `tests/test_current.py`.
+
+**48 — DERIVED (Astra, DYNAMICS_DESIGN §15):** a joint eigenray supported strictly on a loop,
+where every occupied vertex has an unused exit arc of positive coin weight, has exactly zero net
+probability current on every edge. The argument holds for entangled records and any eigenphase.
+
+*Consequence:* in this architecture, perfect trapping and directed probability circulation are
+mutually exclusive.
+
+**49 — DERIVED and MEASURED (Opus, P28):** for a state supported strictly on a cycle of the flat
+walk (every cycle vertex having unused arcs of positive weight):
+- the coin acts as −1 on it, which forces amplitudes to scale as 1/√(edge weight) around the cycle,
+  so mixed-weight cycles (triangles) carry compact states;
+- its walk phase can only be 0 or π;
+- it exists exactly when H a = e^{iLθ} a for the ordered holonomy H, so on odd cycles θ = π needs an
+  order-2 holonomy, and then the internal vector returns with −1 per traversal (a two-traversal
+  return);
+- every such eigenstate, and every 0/π superposition of them, carries exactly zero net current;
+  the superposition is exactly 2-periodic and alternates weight between interleaved arcs.
+
+*Status:* DERIVED analytically, verified over 84 cases (4 cycle types × 21 label draws) to 1e-14.
+Evidence: `examples/p28_compact.py`, `reference/opus_session/data/p28_compact.json`.
+
+**50 — DERIVED and MEASURED (Opus, P29a):** the walk carries an antiunitary symmetry
+K ψ(w→v) = ρ(A_wv)·conj(ψ(v→w)) with K U = U⁻¹ K and **K² = +1** (verified to 1.8e-15). Hence every
+eigenspace admits a current-free basis, and stationary circulation exists only in degenerate
+eigenspaces.
+- With identity labels (all eigenspaces degenerate): maximum loop bias 0.652.
+- With random A4 labels (162 of 165 eigenspaces one-dimensional): maximum bias over every
+  eigenspace 1.3e-11, i.e. none.
+
+*Status:* DERIVED, verified over 11 label sets and 4 loops. Evidence:
+`reference/opus_session/data/p29a_tail_v2.json`.
+
+**51 — MEASURED (Opus, P29b):** replacing the internal space by the 2-dim spinor representation of
+the binary tetrahedral group 2T (the double cover of A4) gives K_s² = −1 (5.0e-16), hence Kramers
+degeneracy: no one-dimensional eigenspaces in any random draw. Stationary loop circulation returns,
+with maximum bias 0.76–0.93 per draw against ≤ 1.3e-11 for A4.
+- The circulating states are delocalised: loop weight ≤ 0.085, and ≤ 0.16 of the total current sits
+  on the loop's own edges. The circulation is carried by the surrounding field.
+
+*Consequence:* in this architecture, stationary circulation in a disordered vacuum **requires the
+spin-½ lift**. This is kinematics; no self-binding, mass, charge or exchange statistics follows.
+*Status:* MEASURED, closed box n = 4, 10 random 2T label draws.
+Evidence: `reference/opus_session/data/p29b_spin.json`, `examples/p29b_spin.py`.
+
+**52 — MEASURED (Opus, P30):** vacuum churn was calibrated and swept (dilute labels, closed n = 4
+box, 120 interior faces, 3 seeds).
+- P29's "disordered vacuum" is the infinite-temperature limit: 92.5 % of faces curved, mean Wilson
+  cost 1.02 per face; the cooled vacua of P24a sit at 0.14–0.51 of that energy.
+- **A4 labels:** exact stationary circulation survives to about 8 % curved faces (bias 0.45) and is
+  gone by 25 %; at ~100-tick lifetimes it persists to 92 % (bias 0.36). So without the spin lift,
+  circulation is a lifetime, set by how much the churn splits the degeneracies.
+- **2T spinor labels:** exact circulation at every churn level tested, bias 0.53–0.80 including
+  92.5 % curved faces.
+- Scale: at λ_B = 0.1 the churn carries 0.001–0.10 rad/tick per face, against 0.749 rad/tick for the
+  lowest quantum that fits the box (0.33 at n = 7).
+
+*Status:* MEASURED, static labels, closed box; δ-windows are a lifetime proxy.
+Evidence: `reference/opus_session/data/p30_churn.json`, `out/p30_churn.png`.
+
+**53 — MEASURED (Opus, P31):** with a spin-½ walker and a *dynamic* 2T quantum record on two loop
+edges (`src/constraintnet/spin_record.py`), a circulating state and the time-reversal-symmetric
+standing state of the same degenerate family shift the record's energy by amounts differing by
+2.5 % (n = 4) and 0.25 % (n = 6). The record responds to the walker's presence, not to its
+circulation: **circulation does no work on its surroundings**, and neither state binds (both empty
+an open box). Whether Kramers protection survives a dynamic record is untested — the operator used
+for that check was incomplete.
+
+*Status:* MEASURED; prepared states, two quantum edges, remaining labels frozen flat.
+Evidence: `reference/opus_session/data/p31_selfbind_n{4,6}.json`.
+
+**54 — MEASURED / DERIVED (Astra, P32A):** the finite-penalty projector model
+supports explicit electric pairs made by unitary one-dimensional-character
+strings. Across 48 preparations (Z2/Z3 tetrahedron boundaries and an A4 single
+face), only endpoint stars are violated, every face is flat, and energy is
+E_vac+2. Paths agree on the tested flat vacuum. Single-edge string continuations
+move endpoints; inverse strings annihilate adjacent pairs. Errors are below
+1e-12. These are operations on the existing edge Hilbert space, not new particles
+inserted as primitive degrees of freedom.
+
+Since [H,A_v]=[H,B_f]=0, H freezes every local defect occupation. Exact persistence
+under this H is not evidence of propagation, self-binding or survival under an
+open-boundary channel. A literal restriction to A_v=1 excludes these bare charged
+states. The prior handoff's probability-conservation/gauge-invariance identification,
+no-gap inference from weak coupling, and local-immobility claim are superseded
+by `DEFECT_AUDIT.md`; all old finite measurements remain on record.
+
+*Status:* POSTULATED Hamiltonian; exact finite-patch algebra and MEASURED prepared
+states. No new fermion, nucleus, atom or bond result. Evidence:
+`reference/astra_session/data/p32a_defects.json`, `examples/p32_defects.py`,
+`tests/test_defect_ops.py`.
+
+**55 — DERIVED / MEASURED (Astra, P32B/P32C):** a declared local Z2 transport
+term moves electric defects while conserving total defect number, every flux
+projector, and H0. Sixteen initial pairs on two finite simplicial 3-balls pass
+the registered continuity and energy checks (errors below 4.30e-14).
+The flat-pair restriction equals a hard-core boson hopping graph. An explicit
+exchange-algebra test gives +1 for all 108 comparisons; an independent canonical
+fermion control gives -1. No fermionic exchange is found in this sector.
+
+*Status:* POSTULATED extension, not derived from the axiom. Local gauge symmetry
+is not retained; pair number and therefore pair persistence are imposed. No
+self-binding, reaction or electron claim. Protocols and evidence:
+`P32B_TRANSPORT.md`, `P32C_EXCHANGE.md`, and
+`reference/astra_session/data/p32{b_transport,c_exchange}.json`.

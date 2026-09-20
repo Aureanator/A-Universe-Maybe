@@ -1,0 +1,12 @@
+{
+ "unitary_trivial": 2.220446049250313e-16,
+ "szegedy_max_mismatch": 4.8460313009596005e-15,
+ "remainder_count": 768,
+ "remainder_all_pm1": true,
+ "remainder_expected_arcs_minus_2V": 768,
+ "lambda_min_over_torus": -0.45454545454545453,
+ "BZ_lambda_min": -0.45454545454545453,
+ "BZ_max_lambda_away_from_0": 0.9645019979391489,
+ "unitary_A4_irrep3": 8.881784197001252e-16,
+ "gauge_spectrum_max_diff": 0.0
+}
