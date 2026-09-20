@@ -64,3 +64,25 @@ def test_cycle_bias_detects_direction_and_reverses_with_cycle_orientation():
     assert abs(forward['bias'] - 1) < 1e-14
     assert abs(backward['bias'] + 1) < 1e-14
     assert abs(forward['traffic'] - 1) < 1e-14
+
+
+def test_exact_compact_branch_eigenrays_have_zero_current_despite_nontrivial_transport():
+    from examples.p25_seeded import df_branches
+
+    cx = kuhn_ball('A4', n=3)
+    coords = {tuple(cx.vertex(v).metadata['grid']): v for v in cx.vertices()}
+    cycle = [coords[p] for p in [(1, 1, 1), (2, 1, 1), (2, 2, 1), (1, 2, 1)]]
+    Q = QuantumRecordWalk(cx, [(cycle[0], cycle[1])], 0.0, 0.1)
+    df, mask = df_branches(Q, cycle)
+    # Check the no-current theorem's exit assumption for this fixture.
+    for v in cycle:
+        assert any(a == v and not mask[i] and Q.walk.phi[i] > 0
+                   for i, (a, _) in enumerate(Q.walk.arcs))
+    for c in range(Q.nc):
+        psi = np.zeros_like(df)
+        psi[:, c, :] = df[:, c, :]
+        phase = np.exp(-1j * 0.1 * Q.W[c])
+        assert np.linalg.norm(Q.step(psi) - phase * psi) < 1e-12
+        outgoing, current = transport_current(Q.walk, psi)
+        assert np.max(np.abs(current)) < 1e-12
+        assert abs(cycle_transport(Q.walk, outgoing, cycle)['traffic'] - 1) < 1e-12

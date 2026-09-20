@@ -6,6 +6,332 @@ after the run, never edited into the predictions. If we are wrong, the wrongness
 
 This file is the epistemic shield for the critique-response work (`docs/CRITIQUE_TRIAGE.md`).
 
+## P29a — Stationary states with a tail: where circulation is allowed, and what it costs (2026-09-20, Opus; registered before running)
+
+**Decision behind it (user, 2026-09-20).** Give the candidate a tail: support outside the loop, a
+surrounding field. Real matter's core is far smaller than its field, and the field is part of
+matter's imposition. Self-binding still has to be earned, so this experiment only maps what the
+flat walk allows; the record's role comes next (P29b).
+
+**Analytic frame (DERIVED).**
+- Every eigenstate has a time-independent density, so its current is divergence-free at every
+  vertex: Σ_w J(v,w) = 0. Stationary flow therefore runs in closed circuits; a ring current needs
+  no return path.
+- P28: strict confinement to a loop forces the coin to −1, hence θ ∈ {0, π} and zero current. The
+  minimal relaxation is amplitude on the arcs leaving the loop's vertices, which is what "tail"
+  means here.
+- The walk with the A4 3-dim irrep is a **real orthogonal** matrix (the coin, the shift and the
+  irrep are all real), so its spectrum is conjugate-symmetric and complex eigenvectors come in
+  ± pairs. This is where any circulation must come from.
+
+**Setup.** Flat closed Kuhn box, n = 4, ring weights (1, ½), the 3-dim irrep; the full walk
+diagonalised exactly (dimension 3 × number of arcs). Two label sets: identity, and 10 random draws.
+Loops: the P28 axis square (L = 4), the face-diagonal square (L = 4), the triangle (L = 3) and the
+found odd cycle (L = 5).
+
+**Per eigenstate we record:** phase; current bias around each loop; the largest single-edge current;
+divergence; weight on the loop's arcs; weight within hop distance 1 of the loop; inverse
+participation ratio over vertices; and the share of total |J| carried on loop edges versus outside.
+
+**Predictions.**
+- **P29a-1 (exact):** divergence ≤ 1e-12 for every eigenstate; eigen-residuals ≤ 1e-10.
+- **P29a-2:** every eigenstate with |loop bias| > 1e-9 has phase away from 0 and π (by more than
+  1e-6). Circulation requires a genuinely complex state.
+- **P29a-3 (the cost of a tail):** among states carrying |bias| ≥ 0.01, the maximum weight on the
+  loop's arcs is below 0.5, while compact (zero-current) states reach 1.0. Circulation is paid for
+  in delocalisation.
+- **P29a-4:** for current-carrying states, most of the total |J| sits *off* the loop: the loop's
+  share is below 0.5 for the state with the largest loop bias. If this fails, the flow really is
+  concentrated on the core rather than the field.
+- **P29a-5 (exploratory, no direction):** the best trade-off, defined as the largest product of
+  (loop weight) × (|bias|), is recorded for each loop and label set, together with that state's
+  phase. No prior on its size or on which loop wins.
+
+**Claim limits.** These are flat-walk kinematics in a closed box. A box eigenstate is not a bound
+particle, a tail here is not yet a field with its own dynamics, and nothing about self-binding,
+mass or charge follows. P29b will ask whether a responsive record changes the trade-off.
+
+**P29a AMENDMENT (2026-09-20, registered after the first run was seen, before the re-run).**
+
+- **What the first run showed.** Divergence ≤ 2e-15 and residuals fine (P29a-1 holds), but the
+  per-eigenvector current readout is **ill-posed**: the spectrum is massively degenerate (423–549
+  of 588 gaps below 1e-8), and inside a degenerate eigenspace the current depends on which basis
+  the diagonaliser happens to return. With identity labels it returned 219 current-carrying
+  vectors; with random labels it returned essentially none (max |J| 9.8e-14). Both are basis
+  artefacts, not physics. The first run's `p29a_tail.json` is kept and marked superseded.
+- **The symmetry behind it (DERIVED, verified to 1.4e-15).** Define the antiunitary
+  K ψ(w→v) = ρ(A_wv) · conj(ψ(v→w)): conjugate and reverse every arc, transporting as the walk
+  does. Then **K U = U⁻¹ K** and **K² = +1**.
+  - Consequently every eigenspace admits a K-invariant basis, and a K-invariant state has
+    q(v,w) = q(w,v), i.e. **zero current**.
+  - So stationary current is never forced: it lives only in degenerate eigenspaces, as a complex
+    combination, always paired with its time-reverse.
+  - This is the walk's version of time-reversal symmetry, with K² = +1, i.e. no Kramers protection.
+- **P29a-2 is withdrawn as stated** (it asked a basis-dependent question). Replaced by:
+  - **P29a-2′:** in each degenerate eigenspace, the maximum loop bias is obtained by solving the
+    generalized eigenproblem max ψ†(Σ_f M_f − M_r)ψ / ψ†(Σ M)ψ over that space. Predictions:
+    every one-dimensional eigenspace gives bias ≤ 1e-9; circulation requires degeneracy.
+  - **P29a-3′ (the cost of a tail, restated basis-independently):** for the eigenspace maximiser
+    with |bias| ≥ 0.01, the loop weight stays below 0.5, while compact zero-current states reach 1.0.
+  - **P29a-4′:** for the state of largest |bias|, most of the total |J| sits off the loop
+    (loop share < 0.5).
+  - **P29a-5′ (exploratory):** record the best (loop weight × |bias|) per loop and label set.
+
+## P30 — How much churn does the vacuum actually carry, and how much can circulation stand? (2026-09-20, Opus; registered before running)
+
+**The user's question.** How much energy is the "disordered vacuum" of P29 carrying? With enough
+ambient churn anything falls apart or comes together, and our objects are tiny: photons that repeat
+at a comparable rate would be enormously high in frequency.
+
+**First, the calibration (measured before registering this).** P29's random labels put **91.2 % of
+faces curved**, mean Wilson cost 0.994 per face, order histogram 76 flat / 212 order-2 / 576
+order-3 out of 864 faces. That is the **infinite-temperature limit** of the record: by construction
+the energy fraction is 1.0, against the cooled vacua of P24a at 0.51, 0.22 and 0.14. So P29's
+vacuum is not a physical vacuum at all; it is the maximally hot one, and the honest reading of P29a
+is "in a maximally hot vacuum, A4 circulation is destroyed".
+
+**This experiment: dilute the churn.** Each edge is flat with probability 1 − p and carries a
+uniform non-identity label otherwise, for p ∈ {0, 0.003, 0.01, 0.03, 0.1, 0.3, 1}, three seeds,
+closed n = 4 box, loops = triangle (L = 3) and axis square (L = 4), both internal spaces (A4 3-dim
+irrep, and the 2T spinor lift).
+
+**Measured.** Curvature density and mean Wilson cost (the vacuum's energy per face); the spectrum;
+then, for tolerance windows δ ∈ {1e-10, 1e-6, 1e-4, 1e-3, 1e-2}, the maximum loop bias attainable
+within any set of levels lying inside a window of width δ. A window of width δ means the
+combination stays coherent for about 1/δ ticks, so δ converts directly into a **circulation
+lifetime in ticks**.
+
+**Predictions.**
+- **P30-1 (descriptive):** curvature density rises with p roughly as 1 − (1 − p)³ (three edges per
+  face), reaching 0.91 at p = 1. Mean Wilson cost per curved face ≈ 1.09 (mixing 1 and 4/3).
+- **P30-2 (A4, exact degeneracy):** at δ = 1e-10 the maximum bias falls below 0.01 once p ≥ 0.01.
+- **P30-3 (A4, quasi-stationary):** at δ = 1e-3, i.e. lifetimes of about 1000 ticks, the maximum
+  bias stays ≥ 0.3 for p ≤ 0.03. Circulation in a nearly flat vacuum is long-lived even without
+  spin-½. Medium confidence.
+- **P30-4 (2T):** at δ = 1e-10 the maximum bias is ≥ 0.5 at every p, including p = 1: Kramers
+  degeneracy is exact and disorder-proof.
+- **P30-5 (scale, descriptive, no prior):** report the vacuum's magnetic energy per face at
+  λ_B = 0.1 beside the box's lowest positive walk phase, so the ambient churn and the available
+  quanta are in the same units (radians per tick).
+
+**Claim limits.** Still closed-box kinematics with static labels; δ-windows are a proxy for
+lifetime, not a decay measurement; no self-binding or mass follows.
+
+**P30 OUTCOME (2026-09-20, appended after the run; predictions above untouched).**
+Data: `reference/opus_session/data/p30_churn.json`; code `examples/p30_churn.py`; figure
+`examples/p30_graphics.py` → `out/p30_churn.png`. Curvature is counted over the 120 faces whose
+three edges all lie inside the closed walk.
+
+| p | curved faces | mean Wilson / face | A4 forever | A4 ~1e3 ticks | A4 ~1e2 ticks | 2T (any) |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0 | 0 % | 0 | 0.533 | 0.577 | 0.634 | 0.533 |
+| 0.003 | 1.1 % | 0.011 | 0.609 | 0.638 | 0.676 | 0.595 |
+| 0.01 | 5.3 % | 0.057 | 0.484 | 0.671 | 0.676 | 0.680 |
+| 0.03 | 8.3 % | 0.086 | 0.450 | 0.464 | 0.643 | 0.720 |
+| 0.1 | 25.3 % | 0.282 | **0.000** | **0.000** | 0.524 | 0.797 |
+| 0.3 | 65.3 % | 0.724 | **0.000** | **0.000** | 0.385 | 0.794 |
+| 1 | 92.5 % | 1.018 | **0.000** | 0.120 | 0.359 | 0.791 |
+
+- **P30-1: PASS in form, with one correction.** Curvature follows 1 − (1 − p)³ closely from p = 0.03
+  upward (8.3 % vs 8.7 %, 25.3 % vs 27.1 %, 65.3 % vs 65.7 %); at p = 1 it saturates at 92.5 %, since
+  a random holonomy is the identity with probability 1/12. Mean Wilson per *curved* face is 1.10,
+  against the predicted 1.09. The small-p points sit above the curve on 120 faces × 3 seeds.
+- **P30-2: FAIL — circulation survives more churn than I expected.** I predicted exact-forever
+  circulation would die by p ≥ 0.01 (5 % curvature). It survives at 5 % (0.48) and 8 % (0.45),
+  though with seed variance (one of three seeds gives 0 at each). It dies completely at 25 %.
+- **P30-3: PASS on the mean, not on the worst seed.** At ~1,000-tick lifetimes, A4 circulation holds
+  0.46 at 8 % curvature (mean over seeds), but the weakest seed gives 0.04.
+- **P30-4: PASS.** With the 2T lift, the strongest exact-forever circulation is 0.53–0.80 at *every*
+  churn level, including 92.5 % curvature. Kramers degeneracy is exact and completely
+  disorder-proof.
+- **P30-5 (scale).** At λ_B = 0.1 the vacuum's magnetic energy per face runs from 0.001 to
+  0.10 rad/tick across this range, against the box's lowest available quantum at 0.749 rad/tick
+  (n = 4; it falls to 0.33 at n = 7). So even the maximally churned vacuum holds about a seventh of
+  one quantum per face locally, while summing to ~11 rad/tick across the box.
+
+**Reading (the user's question answered).**
+- P29's "disordered vacuum" was the **maximally hot** one: 92 % of faces curved, the
+  infinite-temperature limit, not a physical vacuum.
+- Without the spin lift, circulation is a **lifetime** question: it is permanent below about 10 %
+  curvature, lasts ~100 ticks at 25–90 %, and is gone as a permanent feature above ~10 %.
+- With the spin lift it is **permanent at every churn level tested**.
+- A quantum's frequency is set by how many cells its wavelength spans: 0.75 rad/tick is the lowest
+  mode that fits in this box and 0.33 at n = 7. Long-wavelength ambient light is, in lattice terms,
+  vanishingly slow, so a real vacuum around a small structure sits near the p ≈ 0 end — where even
+  A4 circulation is permanent. The spin lift is what makes it survive a *hot* neighbourhood.
+
+## P29b — Does the spin-½ lift restore circulation? (2026-09-20, Opus; registered before running)
+
+**Why.** P29a (amended) shows that in the A4 3-dim irrep walk, stationary current lives only in
+degenerate eigenspaces, and with generic labels there is essentially no degeneracy: 162 of 165
+blocks are one-dimensional and the maximum loop bias over *every* eigenspace is ≤ 1.3e-11. With
+identity labels, where symmetry makes every block degenerate, biases reach 0.65. The cause is the
+antiunitary K with **K² = +1**: no protected degeneracy, so a current state is never forced.
+
+**The physics this points at.** For a half-integer-spin time reversal, K² = −1 and Kramers' theorem
+makes every level at least doubly degenerate, whatever the disorder. That is the working statement's
+open item A: lifting the labels to the binary tetrahedral group 2T, the double cover of A4, acting
+in its 2-dim spinor representation. So the question "can matter carry circulation in a disordered
+vacuum?" turns into "does matter need spin-½?".
+
+**Setup.** Same closed Kuhn box n = 4 and the same four loops. The walk keeps its coin and ring
+weights, but the internal space is 2-dimensional and each edge carries a label drawn from 2T's 24
+unit quaternions in the spinor representation, with the reverse arc carrying the adjoint. Labels:
+identity, and 10 random draws, matching P29a. K_s ψ(w→v) = ρ(A_wv)·(iσ_y)·conj(ψ(v→w)).
+
+**Predictions.**
+- **P29b-1 (exact):** K_s U = U⁻¹ K_s to 1e-12 and **K_s² = −1** to 1e-12; the walk stays unitary.
+- **P29b-2 (Kramers):** for every random label draw, every eigenvalue block has even dimension, and
+  the number of distinct blocks is at most half the dimension. No one-dimensional blocks at all,
+  against 162 of 165 in P29a.
+- **P29b-3 (circulation returns):** in every random draw, at least one loop has a maximum eigenspace
+  bias ≥ 0.1, against ≤ 1.3e-11 in P29a. This is the registered discriminator.
+- **P29b-4 (the tail's cost):** the maximum-bias state has loop weight < 0.5, so circulation is
+  still paid for in delocalisation, as P29a-3′ asked.
+- **P29b-5 (exploratory):** record the best (loop weight × |bias|) per loop and draw, and the share
+  of |J| on the loop against off it. No prior.
+
+**Claim limits.** This is a kinematic test of which internal space permits stationary circulation.
+It shows nothing about self-binding, mass, charge, or exchange statistics, and 2T labels are not yet
+justified by the axiom — only by this requirement. If P29b-3 passes, the claim is "circulation in a
+disordered vacuum requires the spin-½ lift", not "we have an electron".
+
+**P29a OUTCOME (2026-09-20, amended protocol; the v1 run is superseded and kept as
+`p29a_tail.json`).** Data: `reference/opus_session/data/p29a_tail_v2.json`; code
+`examples/p29_tail.py`.
+
+- **P29a-1: PASS.** Divergence ≤ 1.6e-12 for every state examined; the walk is exactly unitary.
+- **Symmetry (DERIVED, verified):** K U = U⁻¹ K to 1.4e-15 and K² = +1 to 1.8e-15, with
+  K ψ(w→v) = ρ(A_wv)·conj(ψ(v→w)).
+- **P29a-2′: PASS.** Every one-dimensional eigenspace has |bias| ≤ 1.3e-11. Circulation needs
+  degeneracy.
+- **P29a-3′ and -4′: not reachable with generic labels, and that is the finding.**
+  - With **identity labels** (39 eigenspaces, none one-dimensional) circulation is easy: maximum
+    loop bias 0.652, and the best (loop weight × |bias|) is 0.234, on the L = 5 cycle with loop
+    weight 0.516.
+  - With **random labels** the spectrum splits: 162 of 165 eigenspaces are one-dimensional, and the
+    maximum bias over *every* eigenspace, on every loop and every draw, is **1.3e-11**. There is no
+    stationary circulation at all to pay a localisation cost for.
+- **Reading.** Because K² = +1, every eigenspace admits a current-free basis, so circulation is
+  never forced; it survives only where symmetry supplies degeneracy. A disordered vacuum destroys
+  it. This is the walk's version of the standard result that time reversal forbids current in
+  non-degenerate stationary states.
+
+**P29b OUTCOME (2026-09-20, appended after the run; predictions untouched).**
+Data: `reference/opus_session/data/p29b_spin.json`; code `examples/p29b_spin.py`.
+
+- **P29b-1: PASS.** The spinor walk is unitary to 4.4e-16, K_s U = U⁻¹ K_s to 9.9e-16, and
+  **K_s² = −1** to 5.0e-16.
+- **P29b-2: PASS, with one bookkeeping note.** No one-dimensional eigenspaces at all (against 162
+  of 165 for A4): 54 Kramers pairs plus three flat bands, in every draw. The "odd blocks" counted in
+  the raw output are the π flat band split across the −π/+π wrap (63 + 79 = 142); with the wrap
+  handled, every block has even dimension.
+- **P29b-3: PASS, decisively.** The maximum loop bias per draw is between **0.76 and 0.93**, against
+  ≤ 1.3e-11 for A4 labels. Mean maxima by loop: triangle 0.79, axis square 0.71, diagonal square
+  0.67, L = 5 cycle 0.65. Divergence 5.3e-16.
+- **P29b-4: PASS.** The maximum-bias states are strongly delocalised: loop weight ≤ 0.085, weight
+  within one hop of the loop 0.51–0.91, and only ≤ 0.16 of the total |J| sits on the loop's own
+  edges. **The circulation lives in the tail, not in the core** — which is the shape the user
+  argued for from real matter.
+- **P29b-5 (exploratory):** the best (loop weight × |bias|) is 0.061, well below the identity-label
+  A4 value of 0.234. Spin-½ buys circulation in a disordered vacuum, not a compact circulating core.
+
+**Reading, and the claim this licenses.** In this architecture, a stationary state can circulate in
+a disordered vacuum only if the internal space is the spin-½ lift (2T), because only then does
+Kramers degeneracy survive disorder. Circulation and confinement remain in tension: what circulates
+is the field around the loop. This says nothing yet about self-binding, mass or charge, and 2T
+labels are still motivated only by this requirement, not by the axiom.
+
+## P28 — What a compact loop can do instead of circulating (2026-09-20, Opus; analytic first, registered before computation)
+
+**Where this comes from.** P27 and the §15 theorem close off probability circulation for a state
+confined strictly to a loop. The user's reading of what is left: the several internal states can be
+taken either as a wavefunction over them, or as a constant, invisible transition between them. P28
+derives the answer first and then checks it.
+
+**Derivation (DERIVED, in the declared walk; to be verified numerically).**
+Take a state supported only on a cycle v₀ … v_{L−1}, with every cycle vertex also carrying unused
+arcs of positive weight. Write a_k for the amplitude on the forward arc v_k → v_{k+1} and c_k for
+the backward arc.
+1. Keeping the unused arcs empty forces the coin overlap to vanish at every cycle vertex, so the
+   coin acts as **−1** on the state. This needs √(w_k)·a_k + √(w_{k−1})·c_{k−1} = 0, i.e. the
+   amplitudes scale as 1/√weight. Equal weights are *not* required.
+2. The eigen-equation then gives, on each edge, both
+   −ρ_k a_k = e^{iθ} c_k and −ρ_k⁻¹ c_k = e^{iθ} a_k, hence **e^{2iθ} = 1**:
+   **a compact loop state can only have walk phase θ = 0 or θ = π.**
+3. Going once around, a_0 = e^{−iLθ} H a_0 with H the ordered loop holonomy, so
+   **H a₀ = e^{iLθ} a₀**:
+   - θ = 0 needs a +1 eigenvector of H (every A4 element has one);
+   - θ = π needs H a₀ = (−1)^L a₀.
+4. In A4's 3-dim irrep the eigenvalues are (1,1,1) for the identity, (1,−1,−1) for the three
+   order-2 elements, and (1, ω, ω̄) for the eight order-3 elements. Therefore:
+   - **even L:** both phases exist, on the same +1 eigenvectors;
+   - **odd L:** θ = π exists only when H is an order-2 element, and then in a 2-dim space.
+
+**Predictions.**
+- **P28-1:** over 20 random label draws per loop, every eigenstate supported on the loop has phase
+  0 or π to 1e-12. The compact invariant subspace is found exactly (null space of the escape map,
+  then diagonalised), not by construction, so the claim is about *all* of them.
+- **P28-2:** its dimensions match step 4 exactly: dim(θ = 0) = dim ker(H − I) and
+  dim(θ = π) = dim ker(H − (−1)^L I).
+- **P28-3:** √(w_k)·|a_k| is constant around the loop, so mixed-weight loops (triangles, with two
+  ring-6 edges and one ring-4) carry compact states. P19's equal-weight squares were a special case.
+- **P28-4:** every compact eigenstate has zero loop current, ≤ 1e-12 (the §15 theorem).
+- **P28-5 (the user's question, made sharp):** an equal superposition of the θ = 0 and θ = π states
+  on the same loop is **exactly 2-periodic**: U²ψ = ψ to 1e-12. Its instantaneous current bias is
+  non-zero, and its mean over any two consecutive ticks vanishes to 1e-12. Probability sloshes
+  back and forth between the two directions of each edge, with no net transport.
+- **P28-6:** for an odd loop whose holonomy is order-2, the θ = π state's internal vector returns
+  with a minus sign after one traversal: ⟨a₀, H a₀⟩/|a₀|² = −1 to 1e-12. Two traversals are needed
+  to come back. No spin claim is attached to this: it is a transport period, not an exchange
+  statistic or an angular momentum.
+
+**Loops:** a triangle (L = 3, mixed weights), the axis square (L = 4, ring-6), the face-diagonal
+parallelogram (L = 4, ring-4), and an odd cycle of length 5 if the mesh provides one. Closed box,
+n = 4, flat vacuum with classical random A4 labels; no quantum record is needed for the structure.
+
+**Claim limits.** These are kinematic statements about compact states in the flat walk. They do not
+show binding, mobility, charge, spin, or an electromagnetic field, and the no-current theorem still
+applies to every single eigenray.
+
+**P28 OUTCOME (2026-09-20, appended after the run; predictions above untouched).**
+Data: `reference/opus_session/data/p28_compact.json` (84 rows: 4 loops × flat labels + 20 random
+label draws); code `examples/p28_compact.py`. The compact invariant subspace is found by iterating
+S ← {v ∈ S : Uv has no weight off the loop and stays in S} to a fixed point, so the statements
+cover *all* compact states, not just constructed ones.
+
+- **P28-1: PASS.** Every compact eigenstate found has phase exactly 0 or π. Worst eigen-residual
+  7.1e-15.
+- **P28-2: PASS.** Dimensions match ker(H − I) and ker(H − (−1)^L I) in all 84 rows.
+  - Odd loops: θ = π states appear only for order-2 holonomies (13 of the 42 odd-loop rows), always
+    in a 2-dim space; never for orders 1 or 3.
+- **P28-3: PASS.** √(w_k)·|a_k| is constant around each loop to 6.6e-15. Triangles with mixed
+  ring-6/ring-4 weights carry compact states, so P19's equal-weight squares were a special case.
+- **P28-4: PASS.** Every compact eigenstate's loop current bias is ≤ 3.5e-15.
+- **P28-5: PART PASS, PART FAIL — and the failure is the interesting half.**
+  - Exact 2-periodicity: PASS. U²ψ = ψ to 3.1e-15 for the 0/π superposition, in all 55 rows where
+    both phases exist.
+  - Two-tick mean current: PASS, ≤ 4.0e-16.
+  - **Non-zero instantaneous current: FAIL.** The bias is zero at *every* tick (≤ 1e-16), not just
+    on average.
+  - What the superposition does instead: the weight alternates between the two interleaved halves
+    of the loop's arcs, e.g. 0.25 on four arcs at even ticks and on the complementary four at odd
+    ticks, with forward and backward arcs always carrying equal weight. It is a standing wave of
+    two counter-propagating halves, not a circulation.
+- **P28-6: PASS.** On odd loops with an order-2 holonomy, the θ = π state's internal vector returns
+  with exactly −1 after one traversal (all 13 rows), so it takes two traversals to return. On
+  even loops the return is +1.
+
+**Reading.**
+- The user's two readings — a wavefunction over the internal states, or a constant invisible
+  transition between them — are the same object in two bases, and the model makes that exact: a
+  compact loop admits only two phases, 0 and π, and their superposition is exactly 2-periodic.
+- Neither reading yields directed probability circulation. The no-current result is stronger than
+  §15's theorem: it now covers these time-dependent compact superpositions too.
+- What *is* directed, and invisible to probability, is the internal transport: a minus sign per
+  traversal on an odd loop with order-2 holonomy, i.e. a two-traversal return. That is a transport
+  period, not spin, charge or angular momentum.
+
 ## P27 — Vacuum controls and operational current (2026-09-20, Astra; registered before running)
 
 **Question.** Does P26 improve substantially over an already calm seed, and is
@@ -68,6 +394,68 @@ Vacuum-state filtering is preparation, not a cooling mechanism.
 
 Code: `examples/p27_vacuum.py`, `src/constraintnet/current.py`.
 Planned data: `reference/astra_session/data/p27_vacuum_n{5,6}.json`.
+
+**P27 analytic companion (added while the registered campaign is running, before
+the companion computation; campaign protocol/predictions above unchanged).**
+For an exact joint eigenray supported only on a loop, assume each loop vertex
+has an available exit arc outside that support with positive coin weight. No
+amplitude may arrive on a nonloop arc after a tick. Unitary shift/record transport
+on each arc is invertible, so the coined amplitude on each exit must vanish.
+Its initial amplitude is zero, hence the local coin overlap must vanish. The
+coin is therefore minus the identity on the supported state. Stationarity of
+each arc's norm then gives equal probabilities on reverse arcs: J=0. This is a
+conditional no-current result for strictly compact eigenrays, not for states
+with spatial tails, time-dependent superpositions, or electromagnetic fields.
+
+Before checking: construct all twelve one-quantum-edge A4 branch dark loops with
+electric coupling zero and magnetic coupling0.1. Each is an exact joint eigenray
+at its branch's magnetic phase. Predict eigen-residuals and loop-edge currents
+<1e-12, with an exit at every loop vertex. This checks the analytic implication
+on explicit nontrivial transport branches; the algebra supplies the general proof.
+
+**P27 OUTCOME (2026-09-20; run by Astra, appended by Opus from Astra's archived data;
+predictions above untouched).**
+Astra registered and ran P27 but stopped before writing it up. The numbers below are
+recomputed from `reference/astra_session/data/p27_vacuum_n{5,6}.json` via
+`examples/p27_summary.py` (figure: `out/p27_vacuum.png`). Both runs report
+`status: complete`.
+
+| | n = 5 | n = 6 |
+|---|---:|---:|
+| Full-U target residual, Cv | 0.0741980 | 0.0741980 |
+| Full-U target residual, Iv | 0.1259575 | 0.1259575 |
+| Full-U target residual, F (P26 filter) | 0.0056421 | 0.0056741 |
+| 128-tick loop loss, Cv | 0.0198427 | 0.0091090 |
+| 128-tick loop loss, Iv | 0.0192988 | 0.0088427 |
+| 128-tick loop loss, F | 0.0210625 | 0.0108675 |
+| F loss / best vacuum-seed loss | **1.0914** | **1.2290** |
+| Squared overlap of F with Cv / Iv | 0.9554 / 0.9804 | 0.9389 / 0.9640 |
+| Integrated current bias (all arms) | ≤ 5.7e-6 | ≤ 8.5e-7 |
+
+- **P27-1: PASS.** P26 is reproduced exactly (filtered weight and loop weight to 0; residual to
+  6.1e-18 and 9.5e-17). The decoupled control D is an exact eigenray: residual 3.1e-15 at the
+  record-vacuum phase −0.2893245638 rad/tick. Continuity errors ≤ 9.0e-16, escape bookkeeping
+  ≤ 6.8e-14.
+- **P27-2: FAIL.** The registered bound was 20 % of the raw seed's residual (0.3138), i.e. 0.0628.
+  Cv is at 23.6 % and Iv at 40.1 %. Preparing a calm seed does not by itself give a near-eigenray.
+- **P27-3: PASS, in the direction that undercuts P26.** F's release loss is not merely at least
+  half the better vacuum seed's: it is **larger** than both, by 9 % (n = 5) and 23 % (n = 6). The
+  P26 improvement over the *noisy* seed is explained by selecting a calmer component, and the
+  filtered candidate is beaten by simply starting calm.
+- **P27-4: PASS.** F overlaps a vacuum seed with squared overlap 0.94–0.98, so F is largely the
+  same object as the plain calm seeds.
+- **P27-5: PASS.** Initial loop currents vanish at 1e-12 or below, as the branchwise dark states
+  require. Over 128 open ticks every arm's integrated bias stays at 1e-6 or below, with the
+  largest single-tick bias 1.9e-4. **No directed circulation is seen in any arm.**
+- **Reading.**
+  - The dressed-loop candidate of P26 is not a distinct bound object; it is a calm prepared loop,
+    and a slightly worse one than the plain calm seeds.
+  - The current readout is consistent with the compact-eigenray theorem (DYNAMICS_DESIGN §15):
+    a state confined strictly to the loop, with exits available, carries exactly zero net current.
+  - Consequence for the working statement: "matter is trapped circulation" cannot hold in the
+    strict form. Perfect trapping excludes probability circulation here. A matter candidate must
+    have support outside the loop, be a time-dependent superposition, or carry its circulation in
+    an internal variable rather than in probability flow.
 
 ## P26 — Phase-resolved dressed-loop diagnostic (2026-09-20, Astra; registered before running)
 

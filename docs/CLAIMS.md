@@ -280,3 +280,76 @@ particle, directed current, spin/exchange or cooling provenance is established.
 *Status:* MEASURED, finite windows, prepared state, three pinned quantum edges;
 remaining edges frozen flat. Evidence: `reference/astra_session/data/p26_*.json`,
 `examples/p26_dressed.py`, `tests/test_phase_filter.py`; preregistration commit `29a2f51`.
+
+**47 — MEASURED (Astra's run, P27; appended by Opus from the archived data):** the phase-filtered
+"dressed loop" of P26 is not a distinct bound state.
+- Its 128-tick loop loss is 1.09× (n = 5) and 1.23× (n = 6) the loss of a plain calm seed
+  (compatible-vacuum or imprinted-vacuum), so it is *worse* than starting calm.
+- Its squared overlap with a calm seed is 0.94–0.98.
+- Neither calm seed reaches a near-eigenray: full-step residuals 0.074 and 0.126 against the
+  registered bound of 0.063.
+- Probability current around the loop is zero to 1e-12 initially and stays at 1e-6 or below over
+  128 open ticks, in every arm.
+
+*Status:* MEASURED; prepared states, three pinned quantum edges, finite windows.
+Evidence: `reference/astra_session/data/p27_vacuum_n{5,6}.json`, `examples/p27_vacuum.py`,
+`src/constraintnet/current.py`, `tests/test_current.py`.
+
+**48 — DERIVED (Astra, DYNAMICS_DESIGN §15):** a joint eigenray supported strictly on a loop,
+where every occupied vertex has an unused exit arc of positive coin weight, has exactly zero net
+probability current on every edge. The argument holds for entangled records and any eigenphase.
+
+*Consequence:* in this architecture, perfect trapping and directed probability circulation are
+mutually exclusive.
+
+**49 — DERIVED and MEASURED (Opus, P28):** for a state supported strictly on a cycle of the flat
+walk (every cycle vertex having unused arcs of positive weight):
+- the coin acts as −1 on it, which forces amplitudes to scale as 1/√(edge weight) around the cycle,
+  so mixed-weight cycles (triangles) carry compact states;
+- its walk phase can only be 0 or π;
+- it exists exactly when H a = e^{iLθ} a for the ordered holonomy H, so on odd cycles θ = π needs an
+  order-2 holonomy, and then the internal vector returns with −1 per traversal (a two-traversal
+  return);
+- every such eigenstate, and every 0/π superposition of them, carries exactly zero net current;
+  the superposition is exactly 2-periodic and alternates weight between interleaved arcs.
+
+*Status:* DERIVED analytically, verified over 84 cases (4 cycle types × 21 label draws) to 1e-14.
+Evidence: `examples/p28_compact.py`, `reference/opus_session/data/p28_compact.json`.
+
+**50 — DERIVED and MEASURED (Opus, P29a):** the walk carries an antiunitary symmetry
+K ψ(w→v) = ρ(A_wv)·conj(ψ(v→w)) with K U = U⁻¹ K and **K² = +1** (verified to 1.8e-15). Hence every
+eigenspace admits a current-free basis, and stationary circulation exists only in degenerate
+eigenspaces.
+- With identity labels (all eigenspaces degenerate): maximum loop bias 0.652.
+- With random A4 labels (162 of 165 eigenspaces one-dimensional): maximum bias over every
+  eigenspace 1.3e-11, i.e. none.
+
+*Status:* DERIVED, verified over 11 label sets and 4 loops. Evidence:
+`reference/opus_session/data/p29a_tail_v2.json`.
+
+**51 — MEASURED (Opus, P29b):** replacing the internal space by the 2-dim spinor representation of
+the binary tetrahedral group 2T (the double cover of A4) gives K_s² = −1 (5.0e-16), hence Kramers
+degeneracy: no one-dimensional eigenspaces in any random draw. Stationary loop circulation returns,
+with maximum bias 0.76–0.93 per draw against ≤ 1.3e-11 for A4.
+- The circulating states are delocalised: loop weight ≤ 0.085, and ≤ 0.16 of the total current sits
+  on the loop's own edges. The circulation is carried by the surrounding field.
+
+*Consequence:* in this architecture, stationary circulation in a disordered vacuum **requires the
+spin-½ lift**. This is kinematics; no self-binding, mass, charge or exchange statistics follows.
+*Status:* MEASURED, closed box n = 4, 10 random 2T label draws.
+Evidence: `reference/opus_session/data/p29b_spin.json`, `examples/p29b_spin.py`.
+
+**52 — MEASURED (Opus, P30):** vacuum churn was calibrated and swept (dilute labels, closed n = 4
+box, 120 interior faces, 3 seeds).
+- P29's "disordered vacuum" is the infinite-temperature limit: 92.5 % of faces curved, mean Wilson
+  cost 1.02 per face; the cooled vacua of P24a sit at 0.14–0.51 of that energy.
+- **A4 labels:** exact stationary circulation survives to about 8 % curved faces (bias 0.45) and is
+  gone by 25 %; at ~100-tick lifetimes it persists to 92 % (bias 0.36). So without the spin lift,
+  circulation is a lifetime, set by how much the churn splits the degeneracies.
+- **2T spinor labels:** exact circulation at every churn level tested, bias 0.53–0.80 including
+  92.5 % curved faces.
+- Scale: at λ_B = 0.1 the churn carries 0.001–0.10 rad/tick per face, against 0.749 rad/tick for the
+  lowest quantum that fits the box (0.33 at n = 7).
+
+*Status:* MEASURED, static labels, closed box; δ-windows are a lifetime proxy.
+Evidence: `reference/opus_session/data/p30_churn.json`, `out/p30_churn.png`.

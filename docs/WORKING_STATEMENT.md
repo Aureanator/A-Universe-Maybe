@@ -151,3 +151,26 @@ this page states where the picture now stands and what must be checked next.
   direction-free.
 - **E, G, I.** The bubble wall; discreteness versus winding; non-radiating orbits.
 - **F. Born weight.**
+
+
+## Amendment (2026-09-20, after P27–P29): clause 6 narrowed
+
+Clause 6 said matter is trapped circulation. Three results narrow it; the earlier wording is kept
+above as written.
+
+1. **Strictly trapped states cannot circulate** (Astra, DYNAMICS_DESIGN §15; Opus, §16). A state
+   supported only on a loop, with exits available at its vertices, has exactly zero net probability
+   current — including every 0/π superposition of such states, which are standing waves rather than
+   circulations.
+2. **What a compact loop does have** is an internal return: on an odd loop whose holonomy is an
+   order-2 element, the internal vector comes back with a minus sign, so two traversals return it.
+   Invisible to probability; the first structure here of the kind the electron target needs.
+3. **Circulation requires a tail and spin-½** (§17). Stationary flow lives only in degenerate
+   eigenspaces; with K² = +1 disorder removes the degeneracy and with it all circulation. The 2T
+   spinor lift gives K² = −1 and Kramers degeneracy, and circulation returns — carried by the field
+   around the loop (≤ 8.5 % of the weight on the loop itself).
+
+**Clause 6, as it now stands:** matter is a compact core whose *field* circulates; the core's own
+signature is an internal return, not a probability current; and this requires the spin-½ lift of the
+labels. Self-binding (why the core holds at all) remains open, as does the axiom-level reason for
+the lift.

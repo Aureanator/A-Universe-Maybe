@@ -903,3 +903,101 @@ Williamson–van der Mark circulation. The expansion decision remains open.
 *Evidence:* `examples/p26_dressed.py`, `examples/p26_summary.py`,
 `reference/astra_session/data/p26_{dressed_n5,dressed_n6,summary}.json`,
 `tests/test_phase_filter.py`, figure `out/p26_dressed.png`.
+
+### E053. P27 written up: the dressed loop is just a calm loop, and compact states cannot circulate (2026-09-20; Astra's run, written up by Opus)
+
+Astra registered and ran P27, then stopped before the write-up. Recomputed from the archived data.
+
+**Result.**
+- The P26 phase-filtered candidate loses *more* weight on release than a plain calm seed
+  (ratio 1.09 at n = 5, 1.23 at n = 6), and overlaps those seeds at 0.94–0.98. P26's advantage
+  over the noisy seed was calm selection, as Astra suspected in E052.
+- Neither calm seed is a near-eigenray (residuals 0.074, 0.126).
+- No directed current anywhere: 1e-12 initially, ≤ 1e-6 integrated over 128 ticks.
+
+**The structural point** is Astra's theorem (§15): a state confined strictly to a loop, with exits
+available, has exactly zero current. So "matter is trapped circulation" fails in its strict form.
+Three ways out remain: support outside the loop (a field tail), a time-dependent superposition
+rather than one eigenray, or circulation carried by an internal variable that probability flow
+cannot see.
+
+The user's reading points at the third: the several internal states can be read either as a
+wavefunction over them or as a constant, invisible transition between them. That is the subject of
+P28.
+
+*Evidence:* `reference/astra_session/data/p27_vacuum_n{5,6}.json`, `examples/p27_summary.py`,
+`out/p27_vacuum.png`.
+
+### E054. Compact loops: two phases, no current, and a two-traversal internal return (2026-09-20, Opus with the user)
+
+**The user's question,** after P27 closed off circulation: can the several internal states be read
+either as a wavefunction over them, or as a constant invisible transition between them?
+
+**Answer, derived and then checked.** Both, and the model pins it down:
+- a compact loop state forces the coin to −1, amplitudes scaling as 1/√weight (so triangles work
+  too, which P19 had missed);
+- only two walk phases exist, 0 and π;
+- existence is H a₀ = e^{iLθ} a₀, so on odd loops θ = π needs an order-2 holonomy;
+- the 0/π superposition is exactly 2-periodic: the invisible transition, made exact.
+
+**The negative that came with it.** The superposition carries no current *at any tick*, not merely
+on average. Forward and backward arcs always hold equal weight; it is a standing wave. So the
+no-current result now covers time-dependent compact states as well.
+
+**The positive.** On an odd loop with an order-2 holonomy, the internal vector returns with −1 per
+traversal: two traversals to come back, invisible to any probability measure. That is the first
+structure in this project with the shape the electron target wants, and it is kinematic, not a spin
+claim.
+
+**Next.** Directed transport requires leaving the strictly compact class: a tail or surrounding
+field. That is also what the §15 scope note said. The expansion rule is still the user's open call.
+*Evidence:* `examples/p28_compact.py`, `reference/opus_session/data/p28_compact.json`.
+
+### E055. The tail, time reversal, and why matter may need spin-½ (2026-09-20, Opus with the user)
+
+**The user's choice:** give the candidate a tail. Real matter's central disturbance is much smaller
+than its field, and the field is part of matter's imposition.
+
+**First finding (P29a).** My per-eigenvector current readout was ill-posed inside degenerate
+eigenspaces; amended mid-stream and re-run with a per-eigenspace maximisation. The real structure
+underneath: the walk has an antiunitary K with K U = U⁻¹ K and **K² = +1**, so every eigenspace has
+a current-free basis. With identity labels, symmetry supplies degeneracy and circulation is easy
+(bias 0.65). With random labels, the spectrum splits almost completely and **no** stationary state
+circulates (≤ 1.3e-11).
+
+**Second finding (P29b).** Lifting the internal space to the 2-dim spinor representation of 2T
+gives K_s² = −1. Kramers degeneracy then survives disorder, and circulation returns at bias
+0.76–0.93 in every draw. The circulating states are delocalised: ≤ 8.5 % of the weight on the loop,
+≤ 16 % of the current on its edges.
+
+**Reading.** Stationary circulation in a disordered vacuum requires the spin-½ lift, and what
+circulates is the field, not the core. That is the user's picture arrived at from the other end,
+and it promotes working-statement item A from optional to required.
+
+**Still owed:** an axiom-level reason for 2T labels; self-binding (these are box eigenstates); and
+the expansion rule.
+*Evidence:* `examples/p29_tail.py`, `examples/p29b_spin.py`,
+`reference/opus_session/data/p29a_tail_v2.json`, `p29b_spin.json`.
+
+### E056. How hot was that vacuum? (2026-09-20, Opus with the user)
+
+**The user's question:** how much energy is the "disordered vacuum" of P29 carrying? With enough
+ambient churn anything falls apart or comes together, and our objects are tiny.
+
+**Calibration.** P29's random labels curve 92 % of faces at mean Wilson cost 1.0: it is the
+infinite-temperature record, not a vacuum. The cooled vacua of P23/P24a sit at 0.14–0.51 of that.
+
+**Sweep (P30).** Diluting the labels gives curvature densities from 0 to 92 %.
+- Without the spin lift, circulation is permanent below ~10 % curvature, survives ~100 ticks at
+  25–92 %, and is not permanent above ~10 %. My registered prediction that it would die by 5 % was
+  wrong; it is hardier than that.
+- With the spin lift it is permanent at every level tested.
+- Per-face churn energy is 0.001–0.10 rad/tick, against 0.75 rad/tick for the lowest quantum that
+  fits an n = 4 box (0.33 at n = 7). Long-wavelength light is slow in lattice terms, so a real
+  vacuum around a tiny structure is near the flat end of this sweep.
+
+**Reading.** Both of the user's directions are visible in one figure: enough churn does dissolve a
+circulating structure without the spin lift, and the lift is precisely what makes a structure
+indifferent to its neighbourhood's temperature.
+*Evidence:* `examples/p30_churn.py`, `examples/p30_graphics.py`,
+`reference/opus_session/data/p30_churn.json`, `out/p30_churn.png`.

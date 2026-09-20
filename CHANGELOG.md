@@ -6,16 +6,18 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
-- P26 dressed-loop diagnostic (Astra), registered before running: phase-resolved
-  Cesaro filters, exact-spectrum tests, boundary-size and open-release controls.
-  `examples/p26_dressed.py`, `src/constraintnet/phase_filter.py`, four tests.
-- P26 outcome: all four diagnostic priors pass; exact-eigenstate gate fails.
-  Vacuum-phase filtering retains about 59% weight, with 98–99.7% loop localization
-  after normalization and 69–76% less loop loss over 128 open ticks. No binding
-  claim: the selected record is nearly its isolated vacuum. Archived two runs,
-  summary/figure generator, diary E052, claim 46 and updated electron-target gates.
-- Local handoff verification: 356 existing tests pass; the `quantum` dependency
-  extra declares NumPy/SciPy and the README includes it in setup.
+- P30 vacuum-churn sweep (Opus): `examples/p30_churn.py`, `p30_graphics.py`, data, figure. P29's disorder was the
+  infinite-temperature limit (92% curved); A4 circulation is permanent below ~10% curvature and short-lived above;
+  the 2T lift is permanent at every level. Diary E056; claim 52.
+- P29a/P29b tails and the spin-1/2 lift (Opus): `examples/p29_tail.py`, `examples/p29b_spin.py`, data `p29a_tail_v2.json`,
+  `p29b_spin.json`. Time-reversal K with K^2=+1 forbids stationary current outside degenerate eigenspaces; random A4 labels
+  leave none; the 2T spinor lift gives K^2=-1, Kramers degeneracy and circulation (bias 0.76-0.93) carried by the field.
+  DYNAMICS_DESIGN section 17; diary E055; claims 50-51.
+- P28 compact-loop kinematics (Opus): `examples/p28_compact.py`, data `p28_compact.json`. Only phases 0 and pi; existence
+  law H a = e^{iL theta} a; 1/sqrt(weight) amplitudes (triangles work); zero current including 0/pi superpositions;
+  two-traversal internal return on odd loops with order-2 holonomy. DYNAMICS_DESIGN section 16; diary E054; claim 49.
+- P27 written up (Astra's run, appended by Opus): outcome in PREDICTIONS, claims 47–48, diary E053. The P26 dressed
+  loop is a calm loop and slightly worse than plain calm seeds; no directed current; compact-eigenray no-current theorem.
 - P25 seeded patterns in a compatible cooled bath (Opus): `examples/p25_seeded.py`, `p25_graphics.py`, data `p25_*.json`,
   figure. No birth shock; exact permanence in a frozen bath; slow erosion from record motion; 90° loops outlast 60°.
   DYNAMICS_DESIGN §13; diary E051; claim 45.

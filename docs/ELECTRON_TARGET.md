@@ -64,3 +64,16 @@ circulating transport. P26 does not measure an operational current, a transporte
 orientation return period, or spin/exchange. W0–W2 remain open, as does mobility:
 the quantum record still occupies three prescribed edges. Any further candidate
 must separate these gates from mere persistence of a prepared dark mode.
+
+**P27 current gate.** A probability-current observable now satisfies exact local
+continuity in this walk, including record entanglement and open outflow. It is
+not yet an electromagnetic energy or charge current. The conditional theorem in
+DYNAMICS_DESIGN section 15 proves that an exact eigenray confined strictly to a
+loop with available positive-weight exits has zero net current on every edge.
+Unitary record/internal transport cannot evade that norm argument.
+
+Thus making a compact dark loop perfectly stationary would not, by itself,
+produce directed circulation. An exact stationary candidate carrying nonzero
+probability current in this same architecture must relax that strict support
+condition, for example through a surrounding field. Whether such a field binds
+itself, remains mobile, and supplies the target's orientation structure is open.

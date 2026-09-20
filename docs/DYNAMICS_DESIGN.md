@@ -413,3 +413,109 @@ readouts; those diagonal statistics alone do not characterize the reduced state.
 The search remains on three prescribed quantum edges with the rest frozen flat.
 No mobile particle, electron orientation cycle, spin/exchange result, or
 radiatively established bath follows from passing this diagnostic.
+
+## 15. Probability current and compact-state obstruction (P27, 2026-09-20)
+
+**DERIVED within the declared coined-walk model; no new dynamics.** Measure
+outgoing transport immediately after the coin:
+
+q(v,w) = ||(C Psi)_(v->w)||^2, with the norm over internal and record indices,
+and J(v,w) = q(v,w) - q(w,v). An absent reverse boundary arc contributes zero.
+The coin preserves total probability at each source vertex. The shift carries
+q(v,w) to vertex w; both its controlled internal transport and the subsequent
+record unitary preserve the norm on that arc. Therefore
+
+rho_next(v) - rho(v) = -sum_w J(v,w).
+
+This is a local conservation identity, including open-boundary outflow. It also
+makes the readout invariant under internal frame changes at each vertex. Sum
+over all record configurations before interpreting it as observable transport.
+It is probability current, with no identification as electric current or spin.
+`src/constraintnet/current.py` implements it independently of the step kernel.
+
+**Compact-eigenray no-current theorem.** Suppose a joint eigenray has support
+only on a loop, and every occupied vertex has an available arc outside that
+support with positive coin weight. Assume the declared one-to-one arc shift
+and unitary internal/record operations. Then its net current is zero on every
+edge.
+
+Proof: an initially empty exit arc must still be empty after a stationary tick.
+The shift has a unique source arc for each destination; its transport and the
+record operation are invertible on that arc. Thus the coined exit amplitude
+must vanish. Since it equals twice the positive coin weight times the local
+coin overlap, that overlap vanishes. On the supported state C Psi = -Psi.
+Each edge shift now exchanges the norms on its reverse arcs. Eigenray
+stationarity preserves each arc's norm, so those two norms must be equal.
+Consequently q(v,w)=q(w,v) and J(v,w)=0. This reasoning includes entangled records
+and arbitrary eigenphase; it is not restricted to real or flat-branch states.
+
+**Scope.** This excludes directed probability circulation in the strictly
+compact eigenray limit of these dark loops. It does not exclude localized modes
+with spatial tails, time-dependent superpositions, loops without exits, or other
+microscopic dynamics. Nonzero current alone likewise does not identify an
+electromagnetic field or the target's orientation cycle. For a cycle, P27 reports
+signed edge crossings divided by total traffic, with the sign fixed by the
+listed vertex order; reversing that order reverses the sign. This statistic is
+not a count of complete revolutions.
+
+**Computational checks.** `tests/test_current.py` checks local continuity for
+closed/open quantum records, exit accounting, frame invariance and a directed
+positive control. All twelve A4 labels on a one-quantum-edge loop with zero
+electric coupling give explicit exact eigenrays at their magnetic phases, with
+zero current and nonzero bidirectional traffic. The analytic-companion
+prediction was recorded before that check. The proof, rather than that finite
+sample, establishes the conditional theorem.
+
+## 16. Compact loop states: the full kinematics (P28, 2026-09-20, Opus)
+
+Following the user's reading of the several internal states as either a wavefunction over them or a
+constant invisible transition between them.
+
+**Result (DERIVED, verified).** Let a state be supported only on a cycle v₀ … v_{L−1}, each cycle
+vertex also carrying unused arcs of positive weight. Then:
+1. keeping the unused arcs empty forces √(w_k)·a_k + √(w_{k−1})·c_{k−1} = 0 at every vertex, so the
+   coin is −1 on the state and the amplitudes scale as 1/√weight (equal weights are not needed);
+2. the eigen-equation forces e^{2iθ} = 1, so **only θ = 0 and θ = π occur**;
+3. closing the cycle gives **H a₀ = e^{iLθ} a₀**;
+4. in A4's 3-dim irrep this means: even L admits both phases on the +1 eigenvectors; odd L admits
+   θ = π only for order-2 holonomies, in a 2-dim space, with a −1 internal return per traversal.
+
+**Consequences.**
+- Both of the user's readings are exact and equivalent: the stationary states are the two phases,
+  and their superposition is the constant transition, exactly 2-periodic.
+- Neither carries current. The §15 theorem covers single eigenrays; P28 extends the no-current
+  result to their time-dependent superpositions, which turn out to be standing waves of two
+  counter-propagating halves.
+- The only directed, probability-invisible structure available on a compact loop is the internal
+  return: a sign flip per traversal, so two traversals to return.
+
+**Where this points.** A matter candidate carrying directed transport must leave the strictly
+compact class: it needs support outside the loop (a tail or surrounding field), an incommensurate
+set of phases (which compact loops cannot supply, since only 0 and π exist), or a different
+microscopic rule. The two-traversal internal return is the one structure of the target's kind that
+this model does supply, and it costs nothing to keep.
+
+## 17. Tails, time reversal and the spin-½ lift (P29a/P29b, 2026-09-20, Opus)
+
+The user chose the tail: matter's core is small, its field is large, and the field is part of
+matter's imposition.
+
+1. **Stationary flow is divergence-free,** so it runs in closed circuits; a ring needs no return
+   path. The tail is needed for a different reason: strict confinement forces the coin to −1, which
+   is what kills the flow (§15, §16).
+2. **Time reversal in this walk.** K ψ(w→v) = ρ(A_wv)·conj(ψ(v→w)) satisfies K U = U⁻¹ K with
+   **K² = +1**. Every eigenspace therefore has a current-free basis, and circulation lives only in
+   degenerate eigenspaces. Random A4 labels leave almost none: 162 of 165 eigenspaces are
+   one-dimensional and no stationary state circulates.
+3. **The spin-½ lift fixes exactly this.** With 2T labels in the 2-dim spinor representation,
+   K_s² = −1, so Kramers degeneracy survives any disorder, and stationary circulation reappears
+   with bias 0.76–0.93.
+4. **But it circulates in the field.** The maximum-bias states put ≤ 8.5 % of their weight on the
+   loop and ≤ 16 % of their current on the loop's edges. Confinement and circulation stay in
+   tension: a compact core with a circulating field is what the model offers, not a circulating
+   core.
+
+**Status of the internal space.** Working-statement item A (the spin-½ lift) is now *required* by
+the physics rather than optional: without it, a disordered vacuum has no stationary circulation at
+all. What is still missing is the axiom-level reason for 2T labels, and any self-binding: these are
+box eigenstates, not bound particles.
