@@ -6,6 +6,69 @@ after the run, never edited into the predictions. If we are wrong, the wrongness
 
 This file is the epistemic shield for the critique-response work (`docs/CRITIQUE_TRIAGE.md`).
 
+## P27 — Vacuum controls and operational current (2026-09-20, Astra; registered before running)
+
+**Question.** Does P26 improve substantially over an already calm seed, and is
+there directed probability transport around the cycle? P26's outcomes are known
+and motivate this new test; these are new predictions, not independent prior
+predictions of the P26 data.
+
+**Unchanged model.** Same L4 geometry, n=5 and n=6, three quantum A4 edges,
+couplings (0.1,0.1), all other edges flat. No new dynamics or expansion rule.
+
+**Arms.**
+- Cv: compatible vacuum-coefficient seed, sum_c vac_c |c> DF_c. This is generally
+  entangled: its reduced record is NOT automatically the pure vacuum. Measure its
+  actual vacuum population.
+- Iv: imprinted flat dark-loop state times the pure record vacuum.
+- F: reproduce P26's Gibbs-seed-1, fraction-0.14, T=256 vacuum-phase filter.
+  Report normalized overlaps with Cv and Iv as well as P26 reproduction error.
+- D: decoupled flat-walker Iv, an exact stationary ray at the record-vacuum phase;
+  check its one-step residual as the known kinematic persistence control.
+
+All three coupled arms get full closed-U target/best-phase residuals, normalized
+loop weight and record vacuum population. Release them into the same open boxes
+for128 ticks, using P26's isometric embedding and t=0,32,64,128 readouts. Run all
+arms even if a prior fails. Keep P26's comparison data unchanged.
+
+**Current (DERIVED for this declared walk).** Let q(v,w)=||(C psi)_(v->w)||^2,
+tracing over all internal and record indices, and J(v,w)=q(v,w)-q(w,v), with
+missing boundary incoming arcs assigned zero. The coin conserves vertex norm;
+transport and record motion conserve each shifted arc's norm. Hence the exact
+continuity identity is rho_next(v)-rho(v)=-sum_w J(v,w). Local internal frame
+rotations preserve these norms. This is probability current, not electric
+current or angular momentum. Unit tests check continuity for both boundary modes,
+frame invariance, and an explicitly directed positive control with bias +/-1.
+
+For each open tick, record the four oriented loop-edge currents and traffic
+sum_loop(q_forward+q_reverse). Report total signed crossings / total traffic
+over ticks0..127, and separately the first/last64 ticks. Orientation reversal
+changes only the sign. Also report the largest individual instantaneous bias
+and conservation errors; a transient bias is not persistent circulation.
+
+**Predictions (priors, before any P27 campaign data).**
+- P27-1: reproduction of P26 F weight, loop weight and full-U residual to1e-10;
+  D residual <1e-12; local continuity and cumulative escape errors <1e-10.
+- P27-2: each vacuum seed has a target residual <=20% of the noisy P26 raw seed's
+  target residual, in both boxes.
+- P27-3 (calm selection explains much of P26): F's128-tick loop-weight loss is
+  >=half the smaller loss of Cv and Iv in each box. A failure means an additional
+  finite-window benefit beyond these calm controls, not a self-binding proof.
+- P27-4: F has squared overlap >=0.95 with at least one vacuum seed in each box.
+- P27-5: Cv and Iv have initial edge currents <1e-12 in magnitude on the loop.
+  Branchwise dark states have opposite transported amplitudes and equal edge
+  norms. Subsequent currents and F's current are exploratory, with no direction
+  or magnitude prior; every readout is retained.
+
+**Claim limits.** Prepared, pinned partial-record states; finite128-tick loss,
+not an asymptotic lifetime. If currents cancel, localization must not be called
+directed circulation. Even nonzero probability current alone cannot establish
+the target's orientation cycle, spin, charge, or electromagnetic field structure.
+Vacuum-state filtering is preparation, not a cooling mechanism.
+
+Code: `examples/p27_vacuum.py`, `src/constraintnet/current.py`.
+Planned data: `reference/astra_session/data/p27_vacuum_n{5,6}.json`.
+
 ## P26 — Phase-resolved dressed-loop diagnostic (2026-09-20, Astra; registered before running)
 
 **Question.** Does finite spectral filtering of P25's compatible loop isolate a
