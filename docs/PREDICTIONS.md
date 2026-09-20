@@ -77,6 +77,15 @@ mass or charge follows. P29b will ask whether a responsive record changes the tr
     (loop share < 0.5).
   - **P29a-5′ (exploratory):** record the best (loop weight × |bias|) per loop and label set.
 
+## P32C — Exchange-algebra control (2026-09-20, Astra; before running)
+
+Following the user's quantum-spin-liquid lead, `P32C_EXCHANGE.md` registers the
+Levin–Wen triple-hop diagnostic on all 108 oriented neighbor triples of the two
+P32B fixtures. Prediction: relative sign +1 for the edge-model electric pairs,
+-1 for an independently implemented canonical-fermion control; neither product
+may vanish. This is a test of statistics in the specified sector, not an imported
+fermion construction or a derivation from the axiom. Outcome to be appended.
+
 ## P32B — Conserving autonomous transport diagnostic (2026-09-20, Astra; before running)
 
 The protocol and checked operator algebra are in `P32B_TRANSPORT.md`. On the
