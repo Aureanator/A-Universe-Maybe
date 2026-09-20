@@ -191,3 +191,21 @@ single edge is the closed ring of faces around it. Defects are created in pairs 
 strings, are stable because they cannot be removed locally, and move. The earlier readings
 ("trapped circulation", then "a compact core whose field circulates") are kept above as history and
 are superseded: a compact stationary loop carries no current, so under this axiom it is not matter.
+
+## Amendment 3 (2026-09-20, Astra): defect interpretation made operational
+
+P32A constructs charge pairs in the implemented H=-sum A-sum B model. These are
+finite-energy violations of gauge projectors on an unrestricted edge Hilbert
+space, not failures of probability conservation. Requiring A_v=1 as a literal
+hard constraint would exclude those bare states; a matter-coupled Gauss-law
+interpretation remains to be specified. The projector Hamiltonian is POSTULATED,
+not derived merely by restating the axiom. See `DEFECT_AUDIT.md`.
+
+Under H alone, every local charge and flux projector is conserved, so the defect
+positions do not propagate. String interventions can move and annihilate pairs;
+this has now been measured, but is not autonomous dynamics. Thus clause 6's
+defect proposal remains a candidate interpretation with exact finite-patch
+algebra, not yet moving matter, self-binding, mass, or an electron. The earlier
+wave engine's norm continuity remains valid and is distinct from gauge-sector
+constraints. P32-3 (open release) and P32-4 (old-state classification) require
+definitions not yet supplied by the new kernel.

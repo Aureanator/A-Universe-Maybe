@@ -1,5 +1,14 @@
 # Corrections to the rules (2026-09-20, Opus, from the user's restatement + the literature)
 
+> **Astra audit amendment, after P32A (2026-09-20):** the wording below is retained
+> as the handoff record, but several interpretations are superseded by
+> [DEFECT_AUDIT.md](DEFECT_AUDIT.md). A gauge projector is not a probability
+> continuity law; the implemented Hamiltonian assigns finite penalties rather
+> than excluding violations. Its commuting terms freeze defects, and local
+> string operations can move them. Forty-eight prepared charge-pair cases now
+> verify the finite model, without demonstrating autonomous motion or binding.
+> The dimensional uniqueness claim remains unestablished.
+
 **The axiom, as the user restated it:** *causality travels to local effect, and it is always
 travelling as a conserved quantity.* And: *a multidimensional causal structure can enumerate
 irreducible, self-referential links.*

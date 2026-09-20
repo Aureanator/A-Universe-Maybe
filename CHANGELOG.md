@@ -6,6 +6,13 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- P32A (Astra): 48 explicit electric charge-pair preparations in Z2/Z3/A4 finite
+  patches; matrix-free projector actions, unitary character strings and exact
+  commuting-projector evolution. Path, endpoint, energy, translation-intervention
+  and annihilation checks pass. `DEFECT_AUDIT.md` distinguishes finite penalties,
+  hard gauge restriction and probability continuity; H freezes defect locations.
+  P32-3/4 remain untested pending boundary/state-space definitions. Diary E061,
+  claim 54, archived data and two new regression tests.
 - Corrected rules (Opus, from the user's restatement + literature): `src/constraintnet/defect.py` (Gauss-law projector A_v,
   flatness B_f, H = -sum A - sum B, defects), `tests/test_defect.py`, `docs/CORRECTIONS_2026-09-20.md`, P32 registration,
   WORKING_STATEMENT amendment 2 (matter = constraint defect), diary E060. Flux of one edge = the closed ring of faces

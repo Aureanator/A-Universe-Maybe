@@ -162,6 +162,30 @@ require an explicit dynamics/charge-sector construction consistent with the axio
 Code planned: `src/constraintnet/defect_ops.py`, `examples/p32_defects.py`.
 Data planned: `reference/astra_session/data/p32a_defects.json`.
 
+**P32A OUTCOME (2026-09-20, appended after running).** Preregistration and the
+newer Opus handoff were committed in `e1daede` before the probe. All five bounded
+predictions pass in 48 ordered endpoint/character cases (12 Z2, 24 Z3, 12 A4):
+
+- Every pair has energy E_vac+2, A=0 only at the endpoints, and all B=1.
+  Maximum energy residual: 1.09e-15; endpoint expectation error: 4.45e-16.
+- Alternate paths agree exactly in the saved arrays. String reversal/continuation
+  moves and annihilates pairs with error below 8.3e-16. Opposite-edge interventions
+  preserve the original endpoints' star readouts.
+- Evolution at both registered times gives only the predicted phase, with
+  maximum error 7.2e-15. All defect locations remain fixed under H.
+- Charged-endpoint projection norms are below 3e-16: a hard A_v=1 restriction
+  excludes these bare states.
+- The flat basis vector has <A_v>=1/2, 1/3, 1/12, respectively; flatness alone is
+  not a charge-free quantum record.
+
+These are explicit electric excitations and local string interventions in the
+POSTULATED finite-penalty model, not moving or self-bound particles. The full
+P32-1 claim about a lone charge is not tested by a neutral pair; P32-2 is
+verified only for the specified flat, contractible fixtures and 1D characters.
+P32-3 and P32-4 remain undefined/untested without an open channel and state-space
+map. P32-5/6 are not run. `docs/DEFECT_AUDIT.md` records the interpretation and
+dimensional caveats, with the original handoff claims preserved.
+
 ## P31 — Does a circulating structure work on the vacuum around it? (2026-09-20, Opus; registered before running)
 
 **Why.** P29b/P30: circulation needs the spin-½ lift, and it is carried by the field around the

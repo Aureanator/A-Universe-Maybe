@@ -1094,3 +1094,48 @@ labels in A_{d+1} (4D → A5, spin lift binary icosahedral), and since flux is c
 p + q = d − 1 is needed to link, **flux links flux only in three dimensions** — charge–flux braiding
 survives in all of them. That is the sharpest form yet of the user's own conjecture about why three
 dimensions persist.
+
+### E061. Newer handoff reconciled; explicit charge pairs and constraint audit (2026-09-20, Astra)
+
+The user supplied the discussion after Opus's latest commit. The workspace now
+contained P28–P31 and the uncommitted defect kernel, superseding the older handoff
+through P25. Preserved the newer pending work in `e1daede`, with P32A registered
+before the probe. The three original defect tests pass locally. P31's saved
+campaign was preserved, not claimed as a fresh local reproduction.
+
+**Audit:** the implemented H=-sum A-sum B is an energetic penalty on the full
+edge Hilbert space, not enforcement of an A_v=1 state restriction. The old walk
+already conserved probability locally; the newly added gauge constraint is a
+different property. Small couplings do not imply no gap. These distinctions,
+plus path/mobility and dimensional caveats, are in `DEFECT_AUDIT.md` with primary
+literature links. Original wording is retained with amendments.
+
+**P32A:** constructed 48 ordered endpoint/character preparations: Z2 and Z3 on
+the tetrahedron boundary; A4 1' and 1'' on a single face. Every pair costs two
+Hamiltonian units, with only its two endpoint stars violated. Direct/alternate
+paths agree on the flat vacuum; one-edge continuations move endpoints; inverse
+strings annihilate adjacent pairs. Algebraic errors are below 1.1e-15. These are
+controlled string operations, not spontaneous or energy-isolated reactions.
+
+**Persistence:** exact evolution from the commuting projectors matches a dense
+Z2 exponential and changes each pair only by its energy phase (error below
+7.2e-15). Since every local defect projector commutes with H, every defect
+location stays fixed. This proves persistence in the supplied Hamiltonian and
+also shows that autonomous propagation is absent.
+
+**Hard-constraint check:** projecting either charged endpoint gives zero.
+An all-identity record basis vector is flat but has <A_v>=1/|G|. Thus P32-3
+needs an open-system map and P32-4 needs an explicit old-to-new-state embedding.
+Neither was silently imported from the wave engine. No dimensional experiment
+or nuclear/atomic/fermionic claim was made.
+
+Next work should specify admissible charge transport and its conservation rules,
+then probe mobile configurations and interactions. A gap or an immobile eigenstate
+alone is not the requested moving matter. Evidence: `defect_ops.py`,
+`examples/p32_defects.py`, `reference/astra_session/data/p32a_defects.json`,
+`tests/test_defect_ops.py`.
+
+**Validation:** full suite **370 passed in 405.02 s**, using a fresh pycache and
+pytest temporary directory in this checkout. All saved P32A cases also pass the
+registered normalization, endpoint, flatness, energy, path, projection, motion
+intervention and phase-evolution tolerances.

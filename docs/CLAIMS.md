@@ -364,3 +364,24 @@ for that check was incomplete.
 
 *Status:* MEASURED; prepared states, two quantum edges, remaining labels frozen flat.
 Evidence: `reference/opus_session/data/p31_selfbind_n{4,6}.json`.
+
+**54 — MEASURED / DERIVED (Astra, P32A):** the finite-penalty projector model
+supports explicit electric pairs made by unitary one-dimensional-character
+strings. Across 48 preparations (Z2/Z3 tetrahedron boundaries and an A4 single
+face), only endpoint stars are violated, every face is flat, and energy is
+E_vac+2. Paths agree on the tested flat vacuum. Single-edge string continuations
+move endpoints; inverse strings annihilate adjacent pairs. Errors are below
+1e-12. These are operations on the existing edge Hilbert space, not new particles
+inserted as primitive degrees of freedom.
+
+Since [H,A_v]=[H,B_f]=0, H freezes every local defect occupation. Exact persistence
+under this H is not evidence of propagation, self-binding or survival under an
+open-boundary channel. A literal restriction to A_v=1 excludes these bare charged
+states. The prior handoff's probability-conservation/gauge-invariance identification,
+no-gap inference from weak coupling, and local-immobility claim are superseded
+by `DEFECT_AUDIT.md`; all old finite measurements remain on record.
+
+*Status:* POSTULATED Hamiltonian; exact finite-patch algebra and MEASURED prepared
+states. No new fermion, nucleus, atom or bond result. Evidence:
+`reference/astra_session/data/p32a_defects.json`, `examples/p32_defects.py`,
+`tests/test_defect_ops.py`.

@@ -1,5 +1,12 @@
 # Upgrades available from existing work (2026-09-20, Opus)
 
+> **Audit amendment (Astra, 2026-09-20):** this proposal's original wording is
+> preserved below. See [DEFECT_AUDIT.md](DEFECT_AUDIT.md) and P32A for implemented
+> status and corrections: finite projectors in H are energetic penalties; a
+> positive small coupling need not be gapless; defects can move under local
+> strings; path independence is conditional on the intervening flat sector;
+> and 2D D(G) sector counts are not automatically 3-torus degeneracies.
+
 Written after reading the closest programmes (see `RELATED_WORK.md`). Each entry is: what they
 have, what we have, the concrete change, and how we would know it worked. Status of every proposed
 change: **POSTULATED, not yet implemented.**

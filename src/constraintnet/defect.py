@@ -1,20 +1,18 @@
-"""Local conservation (Gauss law) and defects, in the quantum-double form.
+"""Finite-group gauge projectors and the POSTULATED quantum-double Hamiltonian.
 
-The user's axiom, stated 2026-09-20: *causality travels to local effect, and it is always
-travelling as a conserved quantity*. That is a constraint per vertex, not a soft cost:
+A_v averages vertex gauge transformations; B_f selects trivial face holonomy.
+H=-sum A-sum B assigns a finite energy penalty to violations on the unrestricted
+edge Hilbert space. It does not restrict that space to A_v=1. Such a restriction
+would exclude bare electric-defect states unless the charge content were enlarged.
 
-    A_v = (1/|G|) sum_g A_v^g   projects onto states invariant under a gauge move at v
-                                (nothing is created at a vertex: local conservation)
-    B_f                          projects onto trivial holonomy around a face f (flatness)
+Gauge invariance is distinct from probability continuity (already present in the
+earlier walk). A weak coupling alone does not imply a gapless spectrum. The
+earlier handoff's stronger interpretations are retained, with corrections, in
+docs/CORRECTIONS_2026-09-20.md and docs/DEFECT_AUDIT.md.
 
-Both are projectors, they commute, and the ground state satisfies every one of them. Excitations
-are their violations:
-  * a **charge** is a vertex where A_v fails - a point defect, the matter candidate;
-  * a **flux** is a face where B_f fails. In three dimensions the faces that a single edge's label
-    disturbs form the closed ring around that edge, so a flux is a **loop**, never a point.
-
-This replaces the soft electric/Wilson costs of `qrecord`/`spin_record`, which have no gap and
-impose no conservation. See `docs/UPGRADES_FROM_LITERATURE.md`.
+This module supplies projector algebra, not autonomous defect hopping or an
+open-boundary release channel. See defect_ops for state preparations and exact
+evolution under this commuting-projector Hamiltonian.
 """
 
 import itertools

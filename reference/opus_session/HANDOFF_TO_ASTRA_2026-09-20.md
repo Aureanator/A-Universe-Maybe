@@ -21,6 +21,10 @@ Welcome back. This covers everything since your last turn. The detailed logs are
 - **The user commits git themselves.** The correct folder is "A universe maybe 2 - Copy". The
   non-Copy folder belongs to local Qwen.
 
+> **Superseded handoff:** the project advanced through P31 and P32A after this
+> document. Start with `reference/HANDOFF.md` and `docs/DEFECT_AUDIT.md`; the
+> historical P25 next steps below are no longer the current work queue.
+
 ## 1. Where the physics stands
 
 The picture is `docs/WORKING_STATEMENT.md` (v4):
