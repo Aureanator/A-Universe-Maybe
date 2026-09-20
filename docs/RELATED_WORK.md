@@ -269,3 +269,16 @@ reproduce quantum-double phenomenology — flux superselection, charge–flux bi
 topological degeneracy on a torus? If it does, we inherit their results and our "self-binding"
 question becomes "where is our Gauss-law constraint and gap?". If it does not, that is a real
 negative about our dynamics rather than another inconclusive run.
+
+### Quantum spin liquids: operational follow-up (2026-09-20, Astra)
+
+The user's quantum-spin-liquid reference led to a concrete exchange-algebra
+diagnostic, now registered and run in `P32C_EXCHANGE.md`. That document links
+the primary papers, distinguishes collective quantum vacuum structure from
+classical random-label disorder, and reports a bosonic control result.
+
+The preceding quantum-double comparison must be read with `DEFECT_AUDIT.md`:
+sharing some gauge ingredients is not an established equivalence of Hilbert
+spaces or dynamics, and cannot transfer binding, mobility, dimensional sector
+counts or fermionic statistics automatically. P32A–C test specified operators
+directly. New mechanisms must carry their assumptions with them.

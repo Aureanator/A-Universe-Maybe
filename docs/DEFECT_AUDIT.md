@@ -121,3 +121,15 @@ Evidence: `examples/p32_defects.py`, `reference/astra_session/data/p32a_defects.
 
 Outputs must have a new filename. Source claims and priors were retained;
 P32A outcomes are appended in PREDICTIONS.
+
+## Follow-up: transport and statistics (P32B/P32C)
+
+The unchanged H0 remains frozen. `P32B_TRANSPORT.md` defines a separate local
+Z2 extension K with [K,H0]=[K,N]=[K,B_f]=0 but [K,A_v]!=0. Exact finite-patch
+evolution demonstrates motion and number-current continuity. The rule blocks
+pair creation and annihilation, so it is a diagnostic of compatible conservation
+laws, not an emergent stability mechanism or a hard-Gauss-law completion.
+
+`P32C_EXCHANGE.md` checks the resulting flat-pair hopping algebra against a
+fermionic control: the former is bosonic (+1), the latter fermionic (-1), in
+all 108 cases. This supplies an explicit statistics gate for future candidates.

@@ -385,3 +385,17 @@ by `DEFECT_AUDIT.md`; all old finite measurements remain on record.
 states. No new fermion, nucleus, atom or bond result. Evidence:
 `reference/astra_session/data/p32a_defects.json`, `examples/p32_defects.py`,
 `tests/test_defect_ops.py`.
+
+**55 — DERIVED / MEASURED (Astra, P32B/P32C):** a declared local Z2 transport
+term moves electric defects while conserving total defect number, every flux
+projector, and H0. Sixteen initial pairs on two finite simplicial 3-balls pass
+the registered continuity and energy checks (errors below 4.30e-14).
+The flat-pair restriction equals a hard-core boson hopping graph. An explicit
+exchange-algebra test gives +1 for all 108 comparisons; an independent canonical
+fermion control gives -1. No fermionic exchange is found in this sector.
+
+*Status:* POSTULATED extension, not derived from the axiom. Local gauge symmetry
+is not retained; pair number and therefore pair persistence are imposed. No
+self-binding, reaction or electron claim. Protocols and evidence:
+`P32B_TRANSPORT.md`, `P32C_EXCHANGE.md`, and
+`reference/astra_session/data/p32{b_transport,c_exchange}.json`.

@@ -56,3 +56,19 @@ one-point expectations. Neither spin-liquid valence bonds nor string endpoints
 alone identify chemical bonds or electrons. Next candidate mechanisms must
 declare their local algebra and pass a statistics test before being promoted to
 fermions. The Williamson–van der Mark target remains separate and unachieved.
+
+## Outcome (appended after execution)
+
+Preregistration commit: `5c2ef6a`. All 108 cases passed: both edge-model products
+have norm one, reach the expected final charge positions, and agree with relative
+sign +1. The independent canonical-fermion control gives -1 in every case.
+The maximum edge-model residual is 2.23e-16. Thus the tested flat electric-pair
+sector of the new transport diagnostic has bosonic exchange algebra. It is a
+working negative control for a future fermion search, not a fermion discovery.
+
+Evidence: `examples/p32_exchange.py`,
+`reference/astra_session/data/p32c_exchange.json`. Reproduce to a fresh path:
+
+```powershell
+.venv/Scripts/python.exe examples/p32_exchange.py --output out/p32c_reproduction.json
+```

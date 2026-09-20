@@ -72,3 +72,32 @@ law. kappa, continuous-time unitary evolution, the Z2 restriction, and selection
 of number-preserving matrix elements are additional assumptions. The priority
 after this test is to justify an admissible transport/reaction rule from the
 reduction model; a stable-configuration search must state that rule first.
+
+## Outcome (appended after execution)
+
+Preregistration commit: `644e49a`. All 16 preparations and 80 registered time
+samples completed. Maximum local occupation changes were 0.6848 (tetrahedron)
+and 0.7166 (bipyramid). Maximum conservation/evolution readout errors were
+4.30e-14 and 1.26e-14; full-matrix eigendecomposition residuals were below
+5.65e-13. All registered checks passed at the 1e-10 tolerance.
+
+The flat-pair restriction matches the independent hard-core boson graph to
+1.37e-16. The unprojected control fails: ||[K_raw,N]|| is 5.54 and 19.2, and
+its action on vacuum has nonzero pair amplitudes. Conversely ||[K,A_v]|| reaches
+1.96 and 6.4, confirming that this motion does not retain local gauge symmetry.
+These Frobenius norms are finite-patch operator diagnostics, not physical units.
+
+This supplies autonomous moving defects under the declared extension, with a
+local number current and explicit energy accounting. It supplies no attraction,
+isolated energy-conserving reactions, fermions or electron structure. Pair
+separation distributions are archived; neither small patch is a binding test.
+
+Evidence: `examples/p32_transport.py`, `src/constraintnet/defect_transport.py`,
+`reference/astra_session/data/p32b_transport.json`. Two new tests compare the
+operator with independent Pauli matrices, check a finite-difference continuity
+equation, and verify the vacuum/annihilation controls. The seven relevant defect
+tests pass. Reproduction must use a fresh filename:
+
+```powershell
+.venv/Scripts/python.exe examples/p32_transport.py --output out/p32b_reproduction.json
+```

@@ -1139,3 +1139,38 @@ alone is not the requested moving matter. Evidence: `defect_ops.py`,
 pytest temporary directory in this checkout. All saved P32A cases also pass the
 registered normalization, endpoint, flatness, energy, path, projection, motion
 intervention and phase-evolution tolerances.
+
+### E062. Conserving motion and an exchange-statistics control (2026-09-20, Astra)
+
+Triage prioritized the missing autonomous transport law over another stability
+search under the frozen H0. Registered P32B in `644e49a`, then implemented the
+Z2 operator W_ab(I-S_a S_b)/2. It moves one occupied endpoint to an empty one.
+The algebra conserves N, H0 and B, but changes A_v. Pair persistence is imposed
+by number conservation, not binding. At kappa=0.2 the operator bound
+H-E_vac >= (1-kappa*d_max)N + sum(I-B) retains a positive charge-cost bound.
+
+All 16 initial pairs and 80 time samples completed on a tetrahedron and the
+two-tetrahedron bipyramid. Occupations change by up to 0.7166; energy, norm,
+number, flatness and continuity errors are below 4.30e-14. The flat pair sector
+equals a hard-core boson graph to 1.37e-16. Unprojected strings fail the
+number/energy-conservation control, as predicted. Full matrix residuals meet
+the registered 1e-10 tolerance. There is no inferred binding or reaction result.
+
+During the work, the user supplied the quantum spin liquid article. Primary
+papers led to the Levin–Wen exchange-algebra test, registered as P32C in
+`5c2ef6a` before execution. All 108 oriented neighbor triples have nonzero,
+unit-norm products with relative sign +1. The canonical fermion control gives
+-1 in every case. Error is below 2.23e-16. The diagnostic therefore identifies
+our tested electric pairs as a bosonic baseline; it can distinguish the desired
+fermion sign and must not confuse a spinor label with exchange statistics.
+
+Seven relevant defect tests pass, including independent Pauli-matrix comparison
+and a finite-difference check on the local current. The full suite's previous
+370-test result belongs to P32A; no new full-suite claim is made here. New data:
+`p32b_transport.json` and `p32c_exchange.json` under `reference/astra_session/data`.
+
+Next priority: connect an admissible local dynamics and its sign structure to
+the reduction rules before searching for bound states. Spin-liquid/string-net
+work supplies benchmarks, not a derivation of our dynamics. The dimensional
+audit, hard-Gauss-law completion, open-boundary channel and state-space embedding
+remain separate work items; Williamson–van der Mark remains a target.

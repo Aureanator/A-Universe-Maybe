@@ -209,3 +209,19 @@ algebra, not yet moving matter, self-binding, mass, or an electron. The earlier
 wave engine's norm continuity remains valid and is distinct from gauge-sector
 constraints. P32-3 (open release) and P32-4 (old-state classification) require
 definitions not yet supplied by the new kernel.
+
+## Amendment 4 (2026-09-20, Astra): motion and exchange distinguished
+
+P32B adds a POSTULATED local Z2 transport term to the edge model. It moves
+defects autonomously while preserving their total number, all flux projectors,
+and H0. Its local defect-number current satisfies continuity. It changes
+individual A_v and forbids pair creation/annihilation by design; it therefore
+does not establish mobile matter with a literal hard Gauss constraint or binding.
+The coupling and transport law remain additional assumptions beyond the axiom.
+
+P32C, prompted by the user's quantum-spin-liquid lead, tests exchange algebra:
+all 108 registered local triple-hop comparisons give +1 for these electric
+pairs, versus -1 for an independent fermionic control. They provide a bosonic
+baseline. A spinor representation, closed loop, conserved defect number, and
+fermionic exchange are distinct properties. The electron/nuclear/chemical goals
+remain open. See `P32B_TRANSPORT.md` and `P32C_EXCHANGE.md` for protocols and data.

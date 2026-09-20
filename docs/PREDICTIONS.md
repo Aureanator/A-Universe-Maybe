@@ -86,6 +86,12 @@ P32B fixtures. Prediction: relative sign +1 for the edge-model electric pairs,
 may vanish. This is a test of statistics in the specified sector, not an imported
 fermion construction or a derivation from the axiom. Outcome to be appended.
 
+**P32C OUTCOME (appended after execution):** all 108 cases passed. Nonzero
+unit-norm products have relative sign +1 in the edge model and -1 in the
+canonical-fermion control; maximum edge-model error 2.23e-16. This is a bosonic
+exchange-algebra baseline, not emergent fermions. Preregistration `5c2ef6a`;
+data `reference/astra_session/data/p32c_exchange.json`.
+
 ## P32B — Conserving autonomous transport diagnostic (2026-09-20, Astra; before running)
 
 The protocol and checked operator algebra are in `P32B_TRANSPORT.md`. On the
@@ -96,6 +102,15 @@ are conserved; the flat two-defect sector equals a hard-core boson configuration
 graph. Controls and tolerances are fixed in that protocol. Persistence under a
 number-preserving rule is not self-binding; this is not a hard-Gauss-law model
 or a derivation of mobility/fermions from the axiom. Outcome to be appended.
+
+**P32B OUTCOME (appended after execution):** all 16 pair preparations and 80
+time samples passed. Local occupations changed by up to 0.6848/0.7166 in the
+tetrahedron/bipyramid. Conservation/readout errors stayed below 4.30e-14,
+and the two-defect sector matched the boson graph to 1.37e-16. The raw-string
+control violates N/H0 conservation, and the projected rule changes individual
+A_v as predicted. This proves transport under the declared extension; it does
+not derive that law, binding or hard-Gauss-law matter. Preregistration `644e49a`;
+data `reference/astra_session/data/p32b_transport.json`.
 
 ## P32 — The corrected rules, and why three dimensions (2026-09-20, Opus; registered before the re-runs)
 

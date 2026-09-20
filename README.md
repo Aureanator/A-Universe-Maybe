@@ -2,9 +2,10 @@
 
 > **Latest handoff (2026-09-20):** [reference/HANDOFF.md](reference/HANDOFF.md).
 > The program now also tests a finite-group projector model of charge/flux defects.
-> P32A constructs charge pairs with a fixed energy cost and verified string
-> operations. Its Hamiltonian freezes those defects; autonomous motion and
-> binding remain open. See [the defect audit](docs/DEFECT_AUDIT.md) before relying
+> P32A constructs charge pairs; its Hamiltonian freezes their locations. A
+> declared Z2 extension now gives conserving motion (P32B), with **bosonic**
+> exchange algebra (P32C). Derivation from the axiom and binding remain open.
+> See [the defect audit](docs/DEFECT_AUDIT.md) before relying
 > on the earlier "hard constraints imply moving matter" interpretation.
 
 **Axiom: directed implications reduce.** Nothing else is assumed — no space, no time,
