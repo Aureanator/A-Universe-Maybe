@@ -6,6 +6,13 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- Corrected rules (Opus, from the user's restatement + literature): `src/constraintnet/defect.py` (Gauss-law projector A_v,
+  flatness B_f, H = -sum A - sum B, defects), `tests/test_defect.py`, `docs/CORRECTIONS_2026-09-20.md`, P32 registration,
+  WORKING_STATEMENT amendment 2 (matter = constraint defect), diary E060. Flux of one edge = the closed ring of faces
+  around it (6 or 4), verified on every interior edge.
+- P31 spin-1/2 walker with a dynamic 2T quantum record (Opus): `src/constraintnet/spin_record.py`, `examples/p31_selfbind.py`,
+  data. Circulation does no work on its surroundings (energies equal to 0.25-2.5%); nothing binds; joint Kramers protection
+  untested. Diary E057; claim 53.
 - P30 vacuum-churn sweep (Opus): `examples/p30_churn.py`, `p30_graphics.py`, data, figure. P29's disorder was the
   infinite-temperature limit (92% curved); A4 circulation is permanent below ~10% curvature and short-lived above;
   the 2T lift is permanent at every level. Diary E056; claim 52.

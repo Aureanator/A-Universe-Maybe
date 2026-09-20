@@ -1001,3 +1001,96 @@ circulating structure without the spin lift, and the lift is precisely what make
 indifferent to its neighbourhood's temperature.
 *Evidence:* `examples/p30_churn.py`, `examples/p30_graphics.py`,
 `reference/opus_session/data/p30_churn.json`, `out/p30_churn.png`.
+
+### E057. A circulating structure does no work on its vacuum (2026-09-20, Opus)
+
+**Built:** `SpinRecordWalk` — the P21 quantum record with 2T labels (24 elements, the double cover)
+and a spin-½ walker, since P29b showed circulation needs that lift. The magnetic cost uses the
+spinor character, so a face carrying the central element (a 2π rotation) costs the maximum.
+
+**Bug caught in the control.** Inside a Kramers pair the two extremes of circulation are +λ and −λ,
+not flow and no-flow; the zero-current control is the time-reversal-symmetric combination. Fixed
+before any result was reported.
+
+**Result.** The circulating state and the standing state of the same family shift the record's
+energy identically to within 0.25–2.5 %. The record reacts to the walker being there, not to its
+flow. Neither binds: both empty an open box, as delocalised states must.
+
+**Open:** whether Kramers protection survives a dynamic record. The antiunitary I tested left out
+the label transport, so that check is void; the slow observed decay (1–9 % over 400 ticks) is
+consistent with approximate protection but proves nothing.
+
+*Evidence:* `examples/p31_selfbind.py`, `reference/opus_session/data/p31_selfbind_n{4,6}.json`.
+
+### E058. The project's origin, and what proof theory says about it (2026-09-20, Opus with the user)
+
+**Origin (user, recorded now as provenance):** the whole programme grew from asking *what would a
+mathematical derivation look like from inside, as logic is progressively applied?*
+
+Re-read that way, several results change meaning:
+- a self-contained sub-derivation has no direction, which is precisely the compact-loop no-current
+  theorem: direction requires an open dependency on the surroundings;
+- a closed loop of inference can only be idempotent or sign-flipping, which is the θ ∈ {0, π}
+  result, with the two-traversal return as a parity obligation;
+- discreteness is the natural state (there is no half an inference), so the continuum is what needs
+  explaining, not the steps.
+
+**Literature (see RELATED_WORK):** the formal counterpart is Girard's Geometry of Interaction —
+cut elimination as a token travelling a proof net, proofs as operators, with token machines,
+multi-token causal versions and quantum-computation semantics already in place. Also De Raedt et
+al.'s logical-inference derivations of the relativistic wave equations, and the Wolfram model.
+
+**Two technical leads this hands us:**
+1. **Non-invertible transport.** GoI's dynamic algebra is built from partial isometries (a stack
+   discipline), not group elements. Astra's no-current theorem assumes invertible transport, so a
+   stack-like rule is a candidate escape from the no-circulation result — and a stack *is* a
+   record, which is an independent reason for the record to exist.
+2. **The net is consumed.** In GoI the graph is rewritten by reduction; our mesh never changes.
+   That is where the expansion rule belongs, and it suggests its form: reduction should rewrite
+   mesh structure (Pachner-type moves), not merely move amplitude.
+
+### E059. Reading the neighbours: four upgrades, one of which reframes the goal (2026-09-20, Opus)
+
+Read the closest programmes properly (RELATED_WORK) and wrote `docs/UPGRADES_FROM_LITERATURE.md`.
+
+1. **Kitaev's quantum double** is the same mathematical object with a finished theory attached, and
+   it says matter is a **constraint defect**: a charge is a vertex where the Gauss law fails, a flux
+   is a face with non-trivial holonomy, and both are gapped and topologically protected. We never
+   imposed the Gauss law, and our terms are soft rather than projectors, so we have no gap. Our
+   "trapped circulation" target may simply be the wrong object.
+2. **Ribbon operators** create pairs at the *ends* of a string, with the string unobservable. Our
+   closed loops have no ends, which is why P28 found no current and P31 found no binding. The user's
+   "tail" is the string.
+3. **Derrick's theorem** is the name of our P14–P16 result. Escapes: a Skyrme-type term, gauge
+   fields, or time dependence. The topological-constraint route is the cheap one.
+4. **Braid matter** stalled exactly where we are: states too stable to interact, a zoo without
+   superselection rules, no masses. The quantum double supplies the missing rule; computed here, our
+   groups would give **14 sectors for A4** and **42 for 2T**, which is a falsifiable target.
+
+Recommended order: Gauss law and gap, then ribbon pair creation, then sector counting, and only then
+back to circulation and the electron.
+
+### E060. The obvious corrections, made (2026-09-20, Opus with the user)
+
+**The user restated the axiom:** causality travels to local effect, and it is always travelling as a
+conserved quantity; a multidimensional causal structure enumerates irreducible self-referential
+links. Read literally that is a per-vertex *constraint*, which our rules never had.
+
+**Corrected and implemented** (`defect.py`, `tests/test_defect.py`, `docs/CORRECTIONS_2026-09-20.md`):
+- local conservation as the projector A_v, flatness as B_f, H = −Σ A_v − Σ B_f;
+- exact projectors, exactly commuting, on Z2, Z3 and A4 patches; unique gapped ground state;
+- charge = a vertex where A_v fails (a point), flux = a face where B_f fails;
+- **on our own mesh**, one edge's label disturbs exactly the closed ring of faces around it, size 6
+  or 4, for every interior edge. Flux is a loop; our ring structure was the flux structure all
+  along, and the old "pivot edge" was a flux-loop generator.
+
+**Consequences for the old rules:** "matter is trapped circulation" is retired (C3); a static
+compact state carries no current so by the axiom it cannot be matter (C6); the missing stabiliser
+that P14–P16 found (Derrick's theorem) is replaced by constraint stability rather than a force
+balance (C5).
+
+**For the dimensional step,** registered as P32-5/6: the mesh generalises to d dimensions with
+labels in A_{d+1} (4D → A5, spin lift binary icosahedral), and since flux is codimension-2 while
+p + q = d − 1 is needed to link, **flux links flux only in three dimensions** — charge–flux braiding
+survives in all of them. That is the sharpest form yet of the user's own conjecture about why three
+dimensions persist.

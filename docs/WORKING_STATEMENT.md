@@ -174,3 +174,20 @@ above as written.
 signature is an internal return, not a probability current; and this requires the spin-½ lift of the
 labels. Self-binding (why the core holds at all) remains open, as does the axiom-level reason for
 the lift.
+
+
+## Amendment 2 (2026-09-20): the axiom restated, and clause 6 replaced
+
+**Axiom, in the user's words:** causality travels to local effect, and it is always travelling as a
+conserved quantity. A multidimensional causal structure can enumerate irreducible, self-referential
+links.
+
+This makes local conservation a **constraint at each vertex** (A_v), not a cost. With flatness
+(B_f) it gives H = −Σ A_v − Σ B_f, which is gapped. See `docs/CORRECTIONS_2026-09-20.md`.
+
+**Clause 6 now reads:** matter is a **defect in the constraints** — a charge is a vertex where local
+conservation fails; a flux is a face where flatness fails, and in three dimensions the flux of a
+single edge is the closed ring of faces around it. Defects are created in pairs at the ends of
+strings, are stable because they cannot be removed locally, and move. The earlier readings
+("trapped circulation", then "a compact core whose field circulates") are kept above as history and
+are superseded: a compact stationary loop carries no current, so under this axiom it is not matter.

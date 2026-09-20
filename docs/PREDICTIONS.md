@@ -77,6 +77,180 @@ mass or charge follows. P29b will ask whether a responsive record changes the tr
     (loop share < 0.5).
   - **P29a-5′ (exploratory):** record the best (loop weight × |bias|) per loop and label set.
 
+## P32 — The corrected rules, and why three dimensions (2026-09-20, Opus; registered before the re-runs)
+
+**Axiom, as the user restated it:** causality travels to local effect, and it is always travelling
+as a conserved quantity; a multidimensional causal structure can enumerate irreducible,
+self-referential links.
+
+**Corrections now in the kernel** (`src/constraintnet/defect.py`, `docs/CORRECTIONS_2026-09-20.md`):
+local conservation is the projector A_v, flatness is B_f, H = −Σ A_v − Σ B_f, charge = a vertex
+where A_v fails, flux = a face where B_f fails.
+
+**Already measured while implementing (stated here so the re-runs are judged against it):**
+A_v, B_f are exact commuting projectors (Z2, Z3, A4 patches, error 0.0); the tetrahedron-boundary
+ground state is unique and gapped; a single edge's label disturbs exactly the closed ring of faces
+around that edge, of size 6 or 4, on every interior edge of an n = 3 Kuhn ball.
+
+**Predictions for the re-runs (P19–P31 repeated with the corrected rules).**
+- **P32-1:** a single charge defect costs the same energy wherever it sits (translation-independent
+  to 1e-12) and cannot be removed by any local unitary acting away from it.
+- **P32-2:** a defect pair created by a string operator depends only on its endpoints: two different
+  paths with the same ends give the same state to 1e-12.
+- **P32-3:** with the hard constraints, a prepared defect survives open-wall release, unlike every
+  soft-coupling candidate in P25–P31 (which lost 1–17 % per 400 ticks and emptied the box).
+- **P32-4:** the old candidates fail *as matter* under the corrected rules: a compact dark loop
+  carries no charge (A_v holds everywhere) and no net flux, so it is not a defect at all.
+
+**Predictions for the dimensional step (registered now, before any d > 3 code exists).**
+- **P32-5:** the Kuhn subdivision generalises: a d-cube splits into d! simplices, each a d-simplex
+  whose rotation group is A_{d+1}; d = 3 gives A4 (ours), d = 4 gives A5, and the spin lift is the
+  double cover (binary icosahedral for d = 4).
+- **P32-6 (why three dimensions):** gauge flux is codimension-2, so it is a (d−2)-dimensional
+  object: a loop in 3D, a sheet in 4D. Closed p- and q-dimensional objects link only when
+  p + q = d − 1. Therefore **flux links flux only in d = 3**, while charge–flux braiding works in
+  every d. If "irreducible self-referential links" means flux linking flux, three dimensions is the
+  only dimension that supports it.
+  - **Test:** build d = 4, enumerate the flux objects, and check that no pair of them has a
+    non-trivial linking invariant while charge–flux braiding survives.
+  - **Failure mode that would refute it:** a d = 4 flux sheet pair with non-trivial linking, or a
+    3D flux pair with none.
+
+### P32A — Executable charge-pair probe and constraint audit (2026-09-20, Astra; before running)
+
+The newer handoff supersedes the earlier P25/P27 continuation. The three supplied
+defect-kernel tests pass locally. The original P32 predictions above are retained.
+Before claiming new stable matter, distinguish the implemented finite-penalty
+Hamiltonian from a restriction to A_v=1: a state with A_v=0 is an excitation of
+the former but is excluded by the latter. Gauge invariance is not the same
+condition as the walk's already verified probability continuity equation.
+
+**Fixed finite fixtures.** Full tetrahedron boundary for Z2 and Z3; one triangular
+face with all three edges quantum for A4 (dimensions64,729,1728). Use every
+nontrivial one-dimensional character: Z2 k=1; Z3 k=1,2; A4 1',1''.
+The normalized uniform superposition of flat configurations is the vacuum.
+Prepare a pair along each ordered pair of distinct vertices with the diagonal
+unitary W_path=chi(product of oriented path labels). Compare the direct path
+with each two-edge path via a third vertex. This covers only these electric
+charge families, not all non-Abelian charges, flux sectors or 3D bound states.
+
+**Predictions and readouts.**
+1. Every prepared pair has A=0 exactly at its two endpoints, A=1 elsewhere,
+   B=1 on every face, norm1, and energy E_vac+2, tolerance1e-12. All endpoints
+   have the same cost; direct and alternate paths agree on this flat vacuum.
+2. A one-edge unitary string continuation moves one endpoint to a neighbouring
+   vertex with no change in pair energy. The inverse direct-edge string removes
+   an adjacent pair. A unitary supported on an edge disjoint from the endpoints'
+   stars cannot change their A readouts (check the opposite edge on the tetrahedron).
+   These are explicit interventions, not autonomous motion or closed-system decay.
+3. Evolve with the stated H, U(t)=exp(-itH), at t=0.37 and7.25, using commuting
+   projector factors. Pair states change only by exp(-it(E_vac+2)); all local
+   defect probabilities stay fixed. Check against a dense exponential for Z2.
+   This is expected frozen-sector stability, not self-binding or propagation.
+4. Applying A at either charged endpoint annihilates the pair state. Thus exact
+   all-vertex Gauss enforcement would remove these bare charge states.
+5. The all-identity *basis vector* is flat but has <A_v>=1/|G|, not1. A classical
+   flat record or an old dark walker loop alone therefore cannot certify P32-4.
+
+**Scope amendments before running.** P32-3 has no implemented open-boundary
+channel for this new state space, and P32-4 has no old-to-new-state embedding.
+Leave both untested, rather than importing the old walk's boundary operation or
+calling a conserved defect projector a demonstrated lifetime. Since [H,A_v]=
+[H,B_f]=0, this H alone cannot transport defects. A moving-matter claim will
+require an explicit dynamics/charge-sector construction consistent with the axiom.
+
+Code planned: `src/constraintnet/defect_ops.py`, `examples/p32_defects.py`.
+Data planned: `reference/astra_session/data/p32a_defects.json`.
+
+## P31 — Does a circulating structure work on the vacuum around it? (2026-09-20, Opus; registered before running)
+
+**Why.** P29b/P30: circulation needs the spin-½ lift, and it is carried by the field around the
+loop. Everything so far used *static* labels, which can neither respond nor carry energy away. The
+self-binding question the user set ("self-binding has to be earned") needs a record that can move.
+
+**Build (new).** `src/constraintnet/spin_record.py`, `SpinRecordWalk`: the P21 quantum record with
+labels in 2T (24 elements, the double cover) and a spin-½ walker. The magnetic cost uses the spinor
+character, so a face whose holonomy is the central element (a 2π rotation) costs the maximum 2 and
+a flat face costs 0. Two quantum edges on the loop gives 576 record states; all other labels are
+frozen flat. Couplings (λ_E, λ_B) = (0.1, 0.1), which keeps the record unfolded (W spans 0–20, so
+0–2 rad/tick).
+
+**Arms.** All in the closed n = 4 box, 400 ticks, then 200 ticks of open release.
+- **C+**: the walker state that maximises loop circulation inside its degenerate family of the flat
+  spin walk, times the record vacuum.
+- **C0**: the state in the *same* family with the least circulation — same energy, same family,
+  no flow. This isolates circulation from mere presence.
+- **Q+ / Q0**: the same two states with the record frozen (U_rec = identity).
+- **V**: record vacuum, no walker, as the energy reference.
+
+**Measured.** Record energy ⟨λ_E L/8 + λ_B W⟩ − vacuum; record vacuum population; loop current bias;
+on release, loop weight and bias retained, with escape bookkeeping.
+
+**Predictions.**
+- **P31-1 (exact):** unitarity and norm to 1e-12; the record vacuum is stationary with no walker to
+  1e-12; λ_E = 0 reproduces the flat spin walk to 1e-12.
+- **P31-2:** both walker arms *raise* the record energy (light heats the record, as in P21–P23):
+  ΔE > 0 for C+ and C0.
+- **P31-3 (the self-binding comparison; prior negative):** the two energies differ by no more than
+  20 % of the larger, i.e. circulation as such does not dig its own well.
+  - **Surprise criterion:** C+ lowers the record energy by ≥ 1.5× relative to C0, or drives it
+    below the vacuum (ΔE < 0). Either would be the first sign of a structure working on its
+    surroundings in its own favour.
+- **P31-4 (does the record break the protection?):** the loop bias of C+ under the dynamic record
+  decays with a half-life of fewer than 400 ticks, while the frozen-record control Q+ keeps it
+  constant to 1e-6.
+- **P31-5 (Kramers with a moving record, analytic-then-checked):** I expect the joint step to admit
+  an antiunitary K (spinor reversal on the walker, conjugation with label inversion on the record)
+  with K U K⁻¹ = U⁻¹ and K² = −1. If it holds, the protection survives a dynamic record and
+  P31-4's decay must come from entanglement with the record rather than from lost degeneracy. No
+  prior on which.
+- **P31-6 (release):** C+ retains more loop weight than C0 on open release. No prior on size.
+
+**Claim limits.** Two quantum edges, everything else frozen flat, a prepared state, one box. Nothing
+about mass, charge or mobility follows, and a favourable energy comparison would be a hint of
+self-binding, not a demonstration of it.
+
+**P31 OUTCOME (2026-09-20, appended after the runs; predictions above untouched).**
+Data: `reference/opus_session/data/p31_selfbind_n{4,6}.json`; code `examples/p31_selfbind.py`,
+`src/constraintnet/spin_record.py`.
+
+**Control bug found and fixed before the reported runs.** My first "least circulating" state was
+taken as the other extreme of the ratio inside the degenerate family. Inside a Kramers pair those
+extremes are +λ and −λ — the same circulation reversed, not circulation versus none. The correct
+control is the time-reversal-symmetric combination ψ + K_sψ, which has exactly zero current
+(measured |bias| ≤ 3e-16 at t = 0). The first run is discarded; nothing was reported from it.
+
+| | C+ (circulating) | C0 (standing) | Q+ (frozen record) | Q0 |
+|---|---:|---:|---:|---:|
+| n = 4: bias 0 → 400 ticks | 0.606 → 0.551 | −0.000 → −0.028 | 0.606 → 0.595 | −0.000 → −0.001 |
+| n = 4: record energy at 400 | 0.000806 | 0.000827 | 0.007591 | 0.007593 |
+| n = 6: bias 0 → 400 | 0.639 → 0.632 | −0.000 → 0.019 | 0.639 → 0.613 | −0.000 → −0.003 |
+| n = 6: record energy at 400 | 0.01207 | 0.01210 | 0.01693 | 0.01691 |
+
+- **P31-1: PASS.** Record unitarity 2.2e-15, vacuum stationarity 1.7e-15, escape bookkeeping
+  ≤ 1.8e-15.
+- **P31-2: PASS.** Both walker arms raise the record energy (0.0008 at n = 4, 0.0121 at n = 6).
+- **P31-3: prior-negative CONFIRMED, and sharply.** The circulating and standing states shift the
+  record's energy by amounts differing by **2.5 % (n = 4) and 0.25 % (n = 6)**, far inside the
+  registered 20 %. The surprise criterion is not met anywhere. **Circulation does no work on its
+  surroundings**: the record responds to the walker's presence, not to its flow.
+- **P31-4: FAIL as worded.** Under the dynamic record the bias decays slowly (−9 % at n = 4, −1 %
+  at n = 6 over 400 ticks), not with a half-life under 400 ticks. The frozen control is not
+  constant either (−2 % and −4 %), because the record vacuum is a superposition of configurations
+  and the walker state is exact only in the flat one.
+- **P31-5: INCONCLUSIVE, my fault.** The joint antiunitary I tested omitted the label transport
+  (a placeholder was left in the operator), so its 4.7 mismatch shows nothing. Whether Kramers
+  protection survives a dynamic record is **open**; the slow decay above is consistent with
+  approximate protection but does not establish it.
+- **P31-6: no signal.** On open release both arms empty the box (norm ≤ 1e-4 at n = 4 and ≤ 1e-5 at
+  n = 6), as expected for states with only ~5 % of their weight on the loop. These are delocalised
+  box eigenstates, not bound objects.
+
+**Reading.** With the spin lift and a responsive record, a circulating structure still does not act
+on its surroundings in its own favour, and nothing binds. Self-binding remains unearned, which is
+the condition the user set. The one open thread is P31-5: whether the protection that makes the
+circulation permanent survives a dynamic record.
+
 ## P30 — How much churn does the vacuum actually carry, and how much can circulation stand? (2026-09-20, Opus; registered before running)
 
 **The user's question.** How much energy is the "disordered vacuum" of P29 carrying? With enough

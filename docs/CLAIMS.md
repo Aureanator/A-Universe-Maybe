@@ -353,3 +353,14 @@ box, 120 interior faces, 3 seeds).
 
 *Status:* MEASURED, static labels, closed box; δ-windows are a lifetime proxy.
 Evidence: `reference/opus_session/data/p30_churn.json`, `out/p30_churn.png`.
+
+**53 — MEASURED (Opus, P31):** with a spin-½ walker and a *dynamic* 2T quantum record on two loop
+edges (`src/constraintnet/spin_record.py`), a circulating state and the time-reversal-symmetric
+standing state of the same degenerate family shift the record's energy by amounts differing by
+2.5 % (n = 4) and 0.25 % (n = 6). The record responds to the walker's presence, not to its
+circulation: **circulation does no work on its surroundings**, and neither state binds (both empty
+an open box). Whether Kramers protection survives a dynamic record is untested — the operator used
+for that check was incomplete.
+
+*Status:* MEASURED; prepared states, two quantum edges, remaining labels frozen flat.
+Evidence: `reference/opus_session/data/p31_selfbind_n{4,6}.json`.
