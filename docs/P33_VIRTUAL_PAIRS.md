@@ -95,3 +95,19 @@ for the *leading* hopping approximation. It does not derive the perturbation
 from reduction, produce fermions, or establish binding/nuclear reactions.
 Any later binding test must use a separation/size analysis and a two-particle
 threshold, not a low eigenvalue or an apparent finite-box attraction alone.
+
+## Pre-execution analytic refinement
+
+After committing the protocol but before implementation or execution, specialize
+the four formulas to the complete tetrahedron graph K4. All degrees are three,
+there are six edges, and each pair of distinct vertices has two common
+neighbors, exactly one occupied in a two-defect transition. Hence **C=0
+identically**: diagonal entries vanish, shared-endpoint contributions cancel,
+and disjoint transfers cancel. The two approximations must therefore coincide
+on this fixture; the generic prediction of improvement at the smallest lambda
+does not apply there. Preserve that original prediction above as written.
+
+For K4, predict identical first/second-order spectra to 1e-10 and O(lambda^3)
+or smaller error for both. Retain the improvement prediction for the bipyramid,
+where the registered formulas give nonzero C. This is an analytic refinement
+before data, not a post-execution change of the test.
