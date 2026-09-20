@@ -6,6 +6,16 @@ after the run, never edited into the predictions. If we are wrong, the wrongness
 
 This file is the epistemic shield for the critique-response work (`docs/CRITIQUE_TRIAGE.md`).
 
+## P33 — Effective hopping and virtual pairs (2026-09-20, Astra; before running)
+
+`P33_VIRTUAL_PAIRS.md` registers the full local perturbation H=H0-lambda sum W,
+its comparison with P32B's first-order number-sector projection, and the
+second-order virtual zero/four-defect corrections. Fixed tetrahedron/bipyramid
+fixtures, four couplings, and all 16 initial pairs. Predictions include exact
+first-order agreement, cancellation of disjoint-pair transfer, additive diagonal
+charge costs, and nonconservation of bare defect number under the full rule.
+No axiom-level derivation, fermions or binding is asserted. Outcomes follow later.
+
 ## P29a — Stationary states with a tail: where circulation is allowed, and what it costs (2026-09-20, Opus; registered before running)
 
 **Decision behind it (user, 2026-09-20).** Give the candidate a tail: support outside the loop, a
