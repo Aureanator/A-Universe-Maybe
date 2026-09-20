@@ -171,3 +171,93 @@ next.
 
 **Git.** Still nothing committed. The user is trying to fix the desktop shell;
 Astra is unavailable due to usage limits.
+
+## Addendum 5: P19 run
+
+**Passes.** The v4.0 engine `src/constraintnet/walk.py` passes P19a–d:
+- exact identities;
+- Szegedy dispersion, speed sqrt(2/11);
+- light cone round to 0.3% (120³ torus), no superluminal modes;
+- non-abelian holonomy ½(1 + χ₃/3) exact.
+
+**Registration error.** P19d's "contrast" clause was mis-registered; this is
+noted in the outcome.
+
+**Negative.** P19e: frozen flux records trap nothing beyond vacuum cycle states
+(DF).
+
+**Next.** v4.1 design: how implication changes labels. This needs the user's
+answer on whether labels are separate from implications. The user committed
+this session's work in git (branch bionic/kernel-drivers, copy folder); the
+P19 files come after that commit.
+
+## Addendum 6: v4.1-sc built and retired
+
+- **Built:** `RecordWalk` (circulation writes quantised chop), exactly reversible.
+- **Retired:** the user objected that chop costs no energy, which is correct:
+  quasi-energy is not conserved. P20 was withdrawn with no valid result.
+- **Next:** the user picks A, B or C for the energy-accounted record
+  (`DYNAMICS_DESIGN.md` §9); then P20 is re-registered.
+
+## Addendum 7: option A at small scale (P21)
+
+- **The user chose to try A directly,** in a lossless box. Conversation conclusions behind the
+  choice:
+  - B, done reversibly, becomes A;
+  - the geometric face cost is Wilson, 1 − χ₃/3;
+  - chop that is purely gauge is invisible to light.
+- **Built:** `QuantumRecordWalk`, 3 quantum edges, exact. **Run:** P21 (40 runs).
+- **Results:**
+  - accounting exact;
+  - free light is fine in a weakly fluctuating vacuum and heats a strongly fluctuating one;
+  - the DF loop responds (dynamic ≫ quenched) with a coherent beat, and stays in place at
+    moderate coupling;
+  - the vortex is not bound.
+- **Next options:**
+  - (i) make the full loop quantum (4 edges, n = 5) and look for dressed loop eigenstates;
+  - (ii) the B-geometry check (the Wilson ratio 4 : 3 from the walk's own spectrum);
+  - (iii) scale the record region.
+
+## Addendum 8: freeze-out (P22, 2026-09-20)
+
+- **User's idea:** the early vacuum was not calm. In conversation it lines up qualitatively with
+  cosmology (formation by cooling, then decoupling).
+- **Test:** P22 (open walls, hot record, one flash).
+- **Result:**
+  - a hot dynamic record is opaque (power-law release, 30–100× the frozen-chop control);
+  - no cooling, because the record's energy dwarfs the light's;
+  - retained light ∝ hot fraction, with no threshold;
+  - no formation seen.
+- **Next options:**
+  - a radiation-dominated start (many flashes, or light energy ≫ record energy), then watch
+    for loops appearing as the record cools;
+  - the full-quantum loop and dressed states (from addendum 7);
+  - the B-geometry check;
+  - a new open item: expansion or growth of the mesh as the cooling channel (axiom-level).
+
+## Addendum 9: radiative cooling and the redshift proxy (P23, P24a; 2026-09-20)
+
+- **The user's order:** radiative, then expanding, then both.
+- **Found:**
+  - λ_B = 2 is folded, so use (0.1, 0.1) for thermodynamics;
+  - broad light heats the record to near infinite temperature;
+  - narrow lowest-band light cools it;
+  - E* falls with the light's phase (a bigger box stands in for redshift);
+  - a cooler record is more transparent.
+- **Stopped:** the P23b trajectories at λ_B = 2 (folded, so uninformative).
+- **Pending:** the expansion rule (the user's call), then P24b (expansion dynamics), then both
+  together.
+
+## Addendum 10: seeded patterns in a compatible bath (P25, 2026-09-20)
+
+- **User's principle:** seed patterns compatibly ("with enough noise this happened somewhere");
+  persistence is a separate question.
+- **Result:**
+  - no birth shock;
+  - a frozen bath keeps the pattern exactly;
+  - a moving bath erodes it at about 2–3e-4 per tick;
+  - 90° loops beat 60° loops;
+  - the Gibbs provenance check failed.
+- **Next:** dressed loops, i.e. joint eigenstates of loop plus record. Get them by time-averaging
+  a compatible seed in a closed box.
+- **Still pending:** the expansion rule (the user's call).

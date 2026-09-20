@@ -115,6 +115,10 @@ this page states where the picture now stands and what must be checked next.
   signed interference, not specifically complex numbers.
 - **Fractal depth.** On the Sierpinski gasket, leaks from the non-trapped modes
   fall doubly-exponentially with depth (P17; an observed pattern).
+- **A working light engine** (P19). The v4.0 walk is exactly conservative and
+  gauge-covariant. Its relational light cone is round to 0.3%, with no
+  superluminal modes, and holonomy interference is exact. But a frozen flux
+  record traps nothing (negative).
 - **Round, sharp light cones on the project's own mesh** (P18). In its
   emergent metric the mesh is exactly BCC. Scalar waves have sharp 3D fronts,
   and mass fills the cone with a wake. Check D is done for scalar waves.
@@ -134,7 +138,9 @@ this page states where the picture now stands and what must be checked next.
   are registered.
 - **K. Self-confinement.** Can the record built by implications form the
   cancelling structure that then traps them? This is the step from trapped
-  light to matter.
+  light to matter. **P19e:** a *frozen* record traps nothing beyond vacuum
+  cycle states, so the record must respond (v4.1). That is now the central
+  open design question.
 - **L. Provenance versus waves.** First arrival (Fermat: the fastest route
   sets the state) and all routes (Huygens) agree only at large scale. On a
   regular lattice, first-arrival fronts stay faceted at every scale; the

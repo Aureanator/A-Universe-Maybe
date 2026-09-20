@@ -6,6 +6,568 @@ after the run, never edited into the predictions. If we are wrong, the wrongness
 
 This file is the epistemic shield for the critique-response work (`docs/CRITIQUE_TRIAGE.md`).
 
+## P26 — Phase-resolved dressed-loop diagnostic (2026-09-20, Astra; registered before running)
+
+**Question.** Does finite spectral filtering of P25's compatible loop isolate a
+more stationary, still localized joint walker-record state? This is a bounded
+search in the existing POSTULATED partial-record model, not a test of spontaneous
+formation, mobile matter, or fermionic statistics.
+
+**Analytic checks (DERIVED, checked against exact small spectra in
+`tests/test_phase_filter.py`).** For unitary U and z = exp(i theta), define
+F_T = (1/T) sum_{t=0}^{T-1} z^(-t) U^t psi. Then
+(U-z)F_T = z (z^(-T) U^T psi - psi)/T. Consequently the normalized target
+residual is at most 2 ||psi|| / (T ||F_T||). A shrinking raw residual alone is
+built into the algorithm. The finite-T filter weight is not an exact spectral
+projection probability. An unphased average selects eigenvalue 1; a stationary
+ray with nonzero phase can be completely missed.
+
+**Protocol fixed before data.**
+- P25 L4 loop, same prepared coordinates, first three loop edges quantum A4;
+  all other edges frozen flat. Couplings (0.1, 0.1).
+- Compatible branchwise seed from P25, Gibbs proxy-energy fraction 0.14, seed 1.
+  This retains P25's unproven bath provenance; it does not repair it by assumption.
+- Closed boxes n=5 and n=6, keeping the loop fixed while extending the boundary.
+- Two phases only: zero, and the eigenphase of the isolated record vacuum.
+  The latter is fixed from U_rec before filtering, not fitted to a favorable result.
+- Cesaro windows T=64,128,256. Report full-U target and best-phase residuals,
+  filter weight, loop's eight-arc weight, graph-distance distribution from its
+  vertices, record configuration probabilities, vacuum population and Wilson mean.
+  Measurements use topology and record amplitudes, not coordinates.
+- Open-wall release for 128 ticks of BOTH normalized T=256 filters and the raw
+  compatible seed. Isometrically embed all closed arcs and zero newly added arcs;
+  do not project onto the loop. Save t=0,32,64,128 and escape bookkeeping.
+- Controls: frozen compatible seed is a full-walk eigenstate at phase zero;
+  flat, decoupled walker loop times record vacuum is an eigenstate at the vacuum
+  phase. Check both directly; its filter weights also have an exact geometric-sum
+  expression. These are positive controls for known kinematic trapping.
+
+**Predictions (priors).**
+- P26-1: both control residuals <1e-12; open escape accounting error <1e-10.
+- P26-2: vacuum-phase T=256 target residual <=1/4 the raw seed's target residual,
+  with normalized loop weight >=0.80, in both boxes. A pass is only a useful
+  filtered candidate, not an eigenstate proof.
+- P26-3: its T=256 loop weights differ by <=0.05 between boxes; after open release,
+  its loop-weight loss from t=0 to128 is <=1/2 the raw seed's loss in each box.
+- P26-4: vacuum-phase filtered weight exceeds zero-phase filtered weight at256
+  in both boxes. No all-phase exclusion follows if neither filter succeeds.
+
+**Claim gate.** No exact dressed eigenstate claim unless the full-U normalized
+residual is <1e-8 and localization survives boundary and release controls.
+Even a pass leaves the three quantum edges pinned and most of the record frozen;
+remote flat-cycle eigenstates exist in this model. A stationary joint state's
+record marginal is stationary under the coupled dynamics, but need not be a fixed
+point of the separate radiative-cooling channel. P25's bath-provenance question
+and the Williamson–van der Mark reproduction gates therefore remain separate.
+
+Code: `examples/p26_dressed.py`, `src/constraintnet/phase_filter.py`.
+Planned data: `reference/astra_session/data/p26_dressed_n{5,6}.json`.
+
+## P25 — Seeding patterns in a compatible cooled bath (2026-09-20, Opus; registered before running)
+
+**The user's framing (verbatim intent):** "with enough noise this happened somewhere", not a
+reproduction of the Big Bang. We only make sure the pattern is not imprinted on something
+fundamentally incompatible with its existence. Whether it *continues* to persist is a separate
+question, and it is the one measured here.
+
+**Bath (the cooled vacuum at freeze-out).**
+- **Couplings:** unfolded, (λ_E, λ_B) = (0.1, 0.1).
+- **Energy:** the record energy fraction is fixed at P24a's n = 7 point:
+  (E − E_vac) = 0.14 × (E_∞ − E_vac), just below the magnetic freeze-out.
+- **Form: Gibbs, ρ ∝ exp(−β H_rec).** β is fixed by that energy. This form is POSTULATED;
+  checked in P25-2.
+- **Bath samples:** typical pure states |b⟩ = Σ_i √p_i e^{iφ_i} |ε_i⟩ with seeded random phases
+  (seeds 1, 2, 3).
+- **Light bath:** not included. The walker is a single-particle wave, so bath light and pattern
+  would share one amplitude. The light's effect enters only through the record statistics it set.
+- **Far edges:** flat. At 0.14, curvature is sparse, so this is a stated simplification.
+
+**Compatible provenance (the user's condition).**
+- The pattern is instantiated *per record branch*: Ψ = Σ_c b_c |c⟩ ⊗ |DF_c⟩.
+- DF_c is the compact loop state built with branch c's own transports. Its internal vector is
+  the fixed vector of branch c's loop holonomy that lies nearest the reference vector.
+- Every A4 holonomy fixes a vector (in the 3-dim irrep), so no branch is incompatible. The pattern
+  simply takes the form the local chop allows.
+- **Control, "imprinted":** Ψ = |b⟩ ⊗ |DF_flat⟩, the flat-vacuum form stamped on regardless.
+
+**Patterns (both verified compact eigenstates of the flat walk, residual 6e-17):**
+- **L6:** an axis square, 4 ring-6 edges (60° pivots).
+- **L4:** a face-diagonal parallelogram, 4 ring-4 edges (90° pivots).
+- In both, 3 of the 4 loop edges carry quantum labels.
+
+**Arms (per pattern).**
+- **V:** record vacuum ⊗ DF_flat.
+- **C:** compatible, × 3 bath seeds.
+- **I:** imprinted, × 3 bath seeds.
+- **Qc:** compatible with a quenched record, seed 1.
+
+**Run settings.** Open walls, n = 6, T = 600.
+
+**Measured.** Weight on the loop's 8 arcs, W_loop(t). Norm left in the box.
+
+**Predictions (priors).**
+- **P25-1 (exact):**
+  - DF_c is stationary under the frozen-branch walk for every branch (residual < 1e-12);
+  - Ψ is normalised;
+  - escape bookkeeping holds to 1e-12.
+- **P25-2 (bath provenance):** one flash of lowest-band light at n = 7, run on a Gibbs bath
+  sample, changes its energy by |ΔE| ≤ 25 % of the vacuum-point drift at n = 7 (1.26e-5). The
+  Gibbs bath is then near-stationary under the light that made it.
+- **P25-3 (compatibility matters):** at t = 50, the loop weight lost in C is ≤ ½ the loss in I
+  (seed-averaged, both patterns).
+- **P25-4 (persistence):** C keeps W_loop(T) ≥ 0.8 for both patterns. V keeps ≥ 0.95. No prior on
+  L6 against L4 (exploratory).
+- **P25-5:** C against Qc differs by < 10 % in W_loop(T), since the record at λ = 0.1 moves slowly.
+
+**P25 OUTCOME (2026-09-20, appended after the run; predictions above untouched).**
+Data: `reference/opus_session/data/p25_{L6,L4,provenance}.json`; code `examples/p25_seeded.py`;
+figure `examples/p25_graphics.py` → `out/p25_seeded.png`.
+
+- **P25-1: PASS.** DF_c is stationary in every one of the 1728 branches (residual 2e-16);
+  Ψ is normalised; bookkeeping holds to 2e-13.
+- **P25-2: FAIL.**
+  - Single-flash drifts on two Gibbs bath samples were −1.6e-5 and +4.4e-5, against the
+    registered bound of 3.2e-6.
+  - The sign depends on the sample's random phases, and the mean (+1.4e-5) is slightly heating.
+  - So the Gibbs form of the bath is *not* shown to be the state the light would leave. Two
+    samples cannot resolve the ensemble drift, and the true stationary state need not be Gibbs.
+    The bath's provenance is therefore approximate.
+- **P25-3: PASS.** Loop weight lost by t = 50 is 0.43 × the imprinted loss for L6
+  (0.024 vs 0.055) and 0.44 × for L4 (0.015 vs 0.034). Imprinting gives an immediate shock
+  (about 4.5 % in the first ticks); compatible seeding does not.
+- **P25-4: PASS for C, FAIL for V.**
+  - C keeps 0.83–0.85 (L6) and 0.87–0.88 (L4) at T.
+  - V keeps 0.926 (L6) and 0.941 (L4), below the registered 0.95. Even the calm quantum vacuum
+    wears the loop down slowly.
+- **P25-5: FAIL, decisively.** The compatible pattern in a *frozen* bath (Qc) keeps *exactly* 1.0000
+  (every branch is an exact eigenstate), against 0.83–0.88 with a moving record. **All of the erosion
+  comes from the record's own motion.**
+- **Unregistered readouts:**
+  - Compatible and imprinted cross near t ≈ 300. Afterwards the compatible form erodes slightly
+    *faster*: its internal orientation is branch-dependent, so every record transition
+    mismatches it, whereas the imprinted form is the same in every branch.
+  - L4 (90° pivots, ring-4) outlasts L6 (60° pivots, ring-6) in every arm.
+- **Reading:**
+  - Compatible provenance removes the birth shock, as intended.
+  - Persistence then depends on whether the pattern can *co-move* with its record. A pattern that
+    is an eigenstate of the frozen record but not of the moving one erodes at about 2–3e-4 per tick.
+  - A persistent pattern would be a *joint* eigenstate of loop plus record (a dressed loop). That
+    is the next thing to look for.
+
+## P24a — Redshift proxy: does colder light hold the record calmer? (2026-09-20, Opus; registered before running)
+
+**Where this came from.** P23d′ (seen) moved the equilibrium E* to about 0.5 × E_hot using
+narrow light from the lowest positive band. The lowest walk phase falls as the box grows:
+0.523 at n = 5, 0.401 at n = 6, 0.325 at n = 7. A bigger box is the static stand-in for
+expansion: its light is redshifted. This is not yet expansion *dynamics*.
+
+**Setup.**
+- Unfolded couplings (0.1, 0.1); the quantum square at the box centre; open walls; one flash per
+  ladder point.
+- The flash is spectrally filtered onto the lowest positive band: a Gaussian time window, width 60
+  ticks, on the flat closed walk. The eigen-residual is ≤ 2e-5.
+- The same 7-state θ-ladder as P23.
+- n = 5 (a cross-check of P23d′), 6 and 7.
+
+**Predictions.**
+- **P24a-1:** n = 5 reproduces P23d′ (a crossing between θ = π/4 and π/3).
+- **P24a-2:** E*/E_hot falls with n, i.e. as the light's phase falls.
+- **P24a-3 (stretch):** at n = 7 the crossing lies below θ = π/4.
+
+**P24a OUTCOME (2026-09-20, appended after the run).**
+Data: `reference/opus_session/data/p24a_redshift_n{5,6,7}.json`; figure `examples/p23_graphics.py` →
+`out/p23_p24a_radiative.png`.
+- **P24a-1: PASS.** At n = 5, E*/E_hot = 0.51 (ΔE = +3e-7 at θ = π/4, −9e-6 at π/3). This matches
+  P23d′.
+- **P24a-2: PASS.** E*/E_hot = 0.51, 0.22, 0.14 for light at ω₀ = 0.523, 0.401, 0.325.
+- **P24a-3: PASS.** At n = 7 the crossing lies between θ = π/12 and π/6.
+- **Reading:** colder, redshifted light holds the record at a lower energy.
+  - The steep drop between n = 5 and n = 6 comes as ω₀ falls below the magnetic gap
+    (λ_B·W ≈ 0.4–0.6 for one flip). The light can no longer create magnetic excitations, so they
+    *freeze out*.
+  - Caveat: the record's exact vacuum population still falls slightly per flash at every point
+    (dP_vac < 0). The light can still make electric excitations (gap about 0.1). So "calmer" here
+    means lower energy, not more vacuum.
+- **This is a static proxy** (bigger box = redshifted light), not expansion dynamics.
+
+## P23 — Radiative cooling: can a flood of light calm a hot record? (2026-09-20, Opus; registered before running)
+
+The user's order is radiative first, then expanding, then both. P22 showed that one flash cannot
+cool the record; here the light is many flashes in sequence.
+
+**Method (exact in expectation).**
+- **Box and record:** an open Kuhn box, n = 5 (896 arcs, 338 of them into the boundary). The
+  3 quantum edges sit on the central axis square.
+- **Flashes:** each flash runs L = 80 ticks.
+- **Detection:** escaped light is "detected". That leaves the record in a conditional pure state,
+  which becomes the input to the next flash. This is a quantum-trajectory unravelling of the exact
+  record channel.
+  - The detection event is sampled by weighted reservoir sampling over all escape events.
+  - Light still inside at the cut is detected in place.
+- **Exact drift:** each flash also gives the exact expected change of the record's energy proxy
+  ⟨λ_E L/8 + λ_B W⟩ and of its vacuum population, from its input state.
+- **Radiation "temperature":** the flash's ⟨cos ω⟩ on the flat walk.
+  - Cold light: σ = 1.2, ⟨cos ω⟩ = 0.84 (mostly long-wave).
+  - Hot light: σ = 0.5, ⟨cos ω⟩ = 0.30.
+
+**Parts.**
+- **P23a, ladder:** the exact per-flash drift ΔE from 7 record states. The states are
+  cos θ |vac⟩ + sin θ |hot⟩, θ from 0 to π/2, for cold and hot light, at λ_E = 0.3 and 1.0 (λ_B = 2).
+- **P23b, trajectories:** 20 flashes in sequence from the hot state.
+  - Cold light at λ_E = 0.3 and at 1.0: seeds 1 and 2.
+  - Hot light at λ_E = 0.3: seeds 1 and 2.
+
+**Predictions (priors).**
+- **P23-1 (exact):** unravelling weights sum to 1 to 1e-12 per flash; the conditional states are
+  normalised.
+- **P23-2 (equilibrium exists):** for cold light, ΔE < 0 from the hot state (θ = π/2) and ΔE > 0
+  from the vacuum (θ = 0), with one sign change in between. That sign change is the energy E*
+  that the radiation holds the record at. Same for hot light, with E*(hot light) > E*(cold light).
+  Medium confidence on the ordering.
+- **P23-3 (cooling is slow):** |ΔE| per flash from the hot state is ≤ 1 % of the hot energy.
+  Calming the record therefore needs hundreds or more flashes: light must outnumber record
+  excitations by a large factor, as photons outnumber baryons.
+- **P23-4 (trajectories):** the mean record energy over 20 cold flashes drops, by ≤ 5 % of the hot
+  energy. Hot light cools less, or heats. Low confidence; the trajectories are noisy.
+- **P23-5 (decoupling):** along the ladder, the light still inside at the cut rises with record
+  energy, as in P22. So as the record cools, the box becomes more transparent.
+
+**P23 AMENDMENT (2026-09-20, registered after the P23a ladder at λ_B = 2 was seen, before P23c
+is run).**
+- **The flaw found.** The P21–P23 couplings put the record deep in the *folded* Floquet regime.
+  One order-3 flip on an axis edge costs W = 6, so it advances the phase by λ_B·W = 12 rad per tick,
+  far beyond π.
+  - Quasi-energy is only defined modulo 2π, so "record energy" (the proxy) has no ordering there.
+  - Light then drives the record towards infinite temperature whatever its spectrum. That is
+    Floquet heating.
+- **P23c (added):** the same ladder in the *unfolded* regime, λ_E = 0.1 and λ_B = 0.1. The whole
+  record spectrum spans less than π: the hot state's W is about 18, the maximum 24, times 0.1;
+  the electric term is at most 0.45.
+- **Predictions:**
+  - **P23c-1:** for cold light, ΔE > 0 from the vacuum and ΔE < 0 from the hot state, with a sign
+    change at an E* well below the hot state's energy (E* < 0.7 × E_hot).
+  - **P23c-2:** E*(hot light) > E*(cold light).
+  - **P23c-3:** the λ_B = 2 ladders (P23a) show E* ≈ E_hot for both lights; that is the folding
+    signature.
+
+**P23 AMENDMENT 2 (2026-09-20, registered after the P23c ladder was seen, before P23d is run).**
+- **P23c result:** even unfolded, light heats the record towards the hot state (E* ≈ E_hot for
+  both lights).
+- **Diagnosis (analytic):** the walk's quasi-energy band is symmetric, with eigenphases ±arccos λ.
+  Light has no lowest state. A photon near ω ≈ 0 can hand a record transition Δ in either
+  direction (ω → ω ± Δ), with symmetric matrix elements, so light acts as an infinite-temperature
+  bath for anything it touches.
+- **P23d (added):** the same unfolded ladder (0.1, 0.1) with a *positive-frequency, narrow* cold
+  flash. The flash is projected onto flat closed-box eigenmodes with phase in (0, 0.3], then
+  released in the open box.
+- **Prediction P23d-1:** heating persists (E* ≈ E_hot), because the band below the flash is still
+  available.
+- **Consequence if confirmed:** cooling needs light with a ground state, and redshift alone will
+  not supply one.
+
+**P23 AMENDMENT 3 (2026-09-20).**
+- **P23d as registered cannot be run.** In the closed n = 5 box the lowest non-zero walk phase is
+  0.523, so no mode lies in (0, 0.3].
+  - n = 6 has 0.401 and n = 7 has 0.325; the λ = 1 uniform mode sits at exactly 0.
+  - A first attempt kept 308 "modes" that were the exact-zero flat band split by round-off. That
+    output is **discarded**, and the window now starts at 1e-6.
+- **Why this matters:** the box is too small to hold light colder than about 0.5 rad. The record's
+  gaps at (0.1, 0.1) are about 0.1 (electric) and 0.4–0.6 (magnetic). No light in this box is
+  cold relative to the record, and that is itself the motivation for expansion.
+- **P23d′ (replacement):** the flash is projected onto the lowest *positive* band, phase in
+  (1e-6, 0.55], i.e. the modes at 0.523.
+- **Prediction P23d′-1:** heating persists; ΔE ≥ 0 from the hot state.
+
+**P23 OUTCOME (2026-09-20, appended; the amendments above were registered before each part
+ran).**
+Data: `reference/opus_session/data/p23_ladder_{0.3,1.0,0.1_0.1,0.1_0.1_posfreq}.json`,
+`p23_cold03_{1,2}.json` (partial).
+- **P23-1: PASS.** Unravelling weights sum to 1 within 7e-15; conditional states are normalised to
+  5e-15.
+- **P23-2 (λ_B = 2):** the sign change exists (PASS), but sits at E*/E_hot = 0.98–0.99 for every
+  light. That is the folding signature. The ordering E*(hot light) > E*(cold light) FAILS
+  (0.980 vs 0.991 at λ_E = 0.3).
+- **P23-3: PASS.** |ΔE| from the hot state is at most 0.07 % of E_hot per flash.
+- **P23-4: STOPPED early.** The cold03 trajectories were stopped after 5 flashes once the folding
+  diagnosis made λ_B = 2 uninformative. Their E moved from 33.34 to 33.08 and 33.15 (−0.8 %,
+  −0.6 %), in the registered direction. The hot03 and cold10 trajectories were never run.
+- **P23-5: PASS.** On every ladder, the light still inside at the cut rises with record energy,
+  e.g. 3.3e-4 → 3.3e-3. A cooling record becomes transparent.
+- **P23c-1: FAIL.** Unfolded, broad light still holds the record near the hot state:
+  E*/E_hot = 0.99 (σ = 1.2) and 0.95 (σ = 0.5).
+- **P23c-2: FAIL.** The broad "hot" flash gives the *lower* E*. ⟨cos ω⟩ is not a good temperature
+  for a broad flash.
+- **P23c-3: PASS.** At λ_B = 2, E* ≈ E_hot for all lights.
+- **P23d: not runnable** (see amendment 3); its first output was discarded.
+- **P23d′-1: FAIL, and informatively.**
+  - Narrow light from the lowest positive band (ω₀ = 0.523) *cools* the record from the hot
+    state, with a crossing at E* ≈ 0.51 × E_hot.
+  - So my "a symmetric band makes light an infinite-temperature bath" diagnosis was too strong.
+    It holds for *broad* light. Narrow light has a real temperature set by its frequency relative
+    to the record's gaps.
+- **Summary:** radiation can cool the record only if it is narrow and below the record's gaps. The
+  small box cannot hold such light (lowest positive phase 0.52 at n = 5), which is what motivates
+  expansion.
+
+## P22 — Freeze-out: does trapped light appear only once the chop calms? (2026-09-20, Opus; registered before implementation)
+
+Motivation (the user): the early vacuum was surely not calm. Standard cosmology orders formation
+by cooling (nucleons, then nuclei, then atoms, then free light). P21 already shows loops surviving
+only in calm chop. Here "hot" means a *state* far above the record vacuum, with the rule fixed,
+and cooling means energy carried away by light leaving through open walls.
+
+**Setup.**
+- **Model:** as P21 (QuantumRecordWalk, 3 quantum edges on the central axis square, the other
+  edges frozen flat, n = 6). **Walls are open** (`mode="open"`): light reaching the boundary
+  leaves.
+- **Where the record's state goes when light leaves:** the escaped branches' record state is kept
+  in the bookkeeping. After escape it evolves under U_rec alone, which conserves its vacuum
+  population exactly, so that population is recorded at the moment of escape.
+- **Initial state:** |r_θ⟩ ⊗ flash.
+  - Record: |r_θ⟩ = cos θ |vac⟩ + sin θ |hot⟩, where |hot⟩ is a seeded random record state
+    orthogonal to the vacuum (a typical, near-infinite-temperature state; seed 22).
+  - Flash: a Gaussian (σ = 1.2, coin profile, fixed real polarisation) centred on the square.
+    It is ordinary light, not a prepared loop.
+- **θ ∈ {0, π/8, π/4, 3π/8, π/2}.**
+- **Arms:**
+  - **A:** dynamic record at (λ_E, λ_B) = (0.3, 2) and (1.0, 2).
+  - **Q:** quenched, U_rec replaced by the identity, at θ = π/4 and π/2 for both couplings.
+  - **C0:** λ_E = 0, i.e. v4.0 with open walls.
+- **Horizon:** T = 600.
+
+**Measured.**
+- Norm left in the box, N(t).
+- Walker weight on the square's 8 arcs.
+- Record calmness P_vac,total(t): the vacuum population of the whole record, box plus escaped
+  branches. It is exactly bookkept and starts at cos²θ.
+- P_vac,in(t): the weight with the walker still inside and the record in its vacuum.
+
+**Predictions (priors).**
+- **P22-1 (exact):**
+  - N(t) plus escaped weight = 1 to 1e-12;
+  - λ_E = 0 equals v4.0 in open mode to 1e-12;
+  - N(t) never increases.
+- **P22-2 (cooling is light-limited):** for θ = π/2 in the A arms, P_vac,total rises above 0 but
+  stays < 0.05 by T. At least 80 % of the rise happens in the first 100 ticks, while the flash
+  is still inside. Without continuing radiation (in reality, expansion), cooling stalls.
+- **P22-3 (trapping against hotness):** in the A arms, N(T) falls as θ rises. The fall is smooth,
+  with no *sharp threshold*.
+  - **Sharp threshold:** one adjacent θ-step accounts for ≥ 60 % of N(0) − N(π/2).
+  - Prior: not sharp.
+- **P22-4 (retained light sits with a calm record):** for θ ≥ π/4 in the A arms,
+  P_vac,in(T) / N(T) ≥ 1.5 × P_vac,total(T). Medium confidence.
+  - A retains *less* than Q at equal θ, because the dynamic record disturbs loops (P21).
+  - **Formation beyond filtering (a surprise):** A retains ≥ 1.2 × Q at some θ ≥ π/4.
+
+**P22 OUTCOME (2026-09-20, appended after the run; predictions above untouched).**
+Data: `reference/opus_session/data/p22_{A03,A10,rest}.json`; code `examples/p22_freezeout.py`;
+figure `examples/p22_graphics.py` → `out/p22_freezeout.png`.
+
+- **P22-1: PASS.**
+  - Escape bookkeeping holds to 6e-15.
+  - N(t) never increases (the largest step is −1e-18).
+  - λ_E = 0 open mode equals v4.0 open mode (unit test, 1e-12).
+- **P22-2: PASS as worded, and the cooling is negligible.**
+  - At θ = π/2 the record's vacuum population rises only to 4e-6 (λ_E = 0.3) or 2e-5 (λ_E = 1),
+    all of it before t = 100.
+  - Where the record starts partly calm, the flash *heats* it: P_vac,total falls, e.g.
+    1 → 0.997 and 1 → 0.986 at θ = 0.
+  - Reason: the hot record holds far more energy than one unit of light can carry. The record
+    energy proxy is about 30 per unit norm; a unit of light carries at most π of quasi-energy.
+    Cooling of this kind needs radiation to dominate the energy budget, as it did in the early
+    universe.
+- **P22-3: FAIL on direction; the "no threshold" part holds.**
+  - Retained light *rises* with hotness.
+  - N(T) is proportional to the hot fraction sin²θ to within 4 % at both couplings:
+    5.1–5.3e-4 per unit hot fraction at λ_E = 0.3, 1.7–1.8e-4 at λ_E = 1.
+  - It is exactly linear, so there is no threshold. Structurally, the hot and vacuum branches of
+    the record evolve almost independently.
+- **P22-4: FAIL.**
+  - Retained light sits with a *hot* record: P_vac,in / N(T) ≤ 0.012, against P_vac,total of
+    0.15–0.85.
+  - The registered surprise criterion (A ≥ 1.2 × Q at θ ≥ π/4) is met by a wide margin:
+    A/Q at T is about 100× (λ_E = 0.3) and about 30× (λ_E = 1).
+  - **But this is not formation:**
+    - nothing plateaus;
+    - the hot dynamic record releases light slowly, as roughly t^−1 (λ_E = 0.3) and t^−1.9
+      (λ_E = 1) over t > 200;
+    - frozen hot chop releases it exponentially, and the flat vacuum (C0) releases it
+      exponentially and fast (1e-18 by T);
+    - the retained light sits on the quantum loop's arcs (about 82 %) in every arm.
+- **Reading.** A hot, *responsive* record is **opaque**: it absorbs and re-emits light, holding it
+  far longer than static disorder of the same statistics. A calm vacuum is transparent. This
+  matches the decoupling half of the user's cosmology: light trapped while hot, free when calm.
+  It does **not** show matter forming as things calm, because nothing cooled.
+- **Caveat:** the record's excitations are pinned by construction (only 3 edges are quantum), so
+  the light lingers where the record is.
+
+## P21 — Option A at small scale: a quantum record in a lossless box (2026-09-19, Opus; registered before implementation)
+
+Requested by the user: "implement A on a small scale on one or three of our interesting
+geometries/initial conditions … reflective boundary box that echoes losslessly".
+Design: `DYNAMICS_DESIGN.md` §10 (written with this entry).
+
+**Model (one fixed unitary; status POSTULATED for the test).**
+- **State:** Ψ(g₁,g₂,g₃; arc, i). Three chosen edges carry *quantum* labels (12³ = 1728
+  record basis states); every other edge is frozen at the identity (flat vacuum). This is a
+  partial quantum record; gauge invariance holds only for gauge moves that do not touch
+  frozen edges. Labelled as such.
+- **Tick:** U = U_rec · U_walk.
+  - U_walk: the v4.0 walk (3-dim irrep, ring weights 1 : ½), *controlled* on the record:
+    an arc across a quantum edge is transported by ρ of that basis label.
+  - U_rec = e^{−iλ_B W/2} · ⊗_e e^{−iλ_E L_e/8} · e^{−iλ_B W/2}.
+    - L_e: group Laplacian on the edge, generated by the 8 order-3 elements (a class
+      union, so it commutes with gauge moves). Costs: 0 (trivial), 1 (irrep 3), 3/2 (1′, 1″)
+      after the /8.
+    - W = Σ over faces touching a quantum edge of (1 − χ₃(hol)/3): the Wilson cost
+      argued in conversation (order-3 holonomy 1, order-2 holonomy 4/3).
+  - Quasi-energy of the whole is conserved automatically; every tick is exactly invertible.
+- **Box:** Kuhn ball n = 6, walk in `closed` mode (induced subgraph on the 125 interior
+  vertices, 1208 arcs). Nothing leaves; the walls echo.
+- **Record vacuum:** the eigenvector of U_rec (alone) nearest to |e,e,e⟩. Exactly stationary
+  without the walker. Initial Ψ = |vac⟩ ⊗ ψ_walker.
+
+**Geometries.**
+- **G1, pivot vortex:** the P20 vortex ring shrunk to the box (σ = 1.2, R = 1.2, spin along an
+  A4 3-fold axis), centred on the box centre. Quantum edges: the 3 edges carrying the most
+  initial walker weight (a relational rule).
+- **G2, DF cycle:** the P19 compact cycle state on an axis square at the centre (exactly
+  stationary in vacuum), internal vector on an A4 3-fold axis. Quantum edges: 3 of its 4 edges.
+- **G3, free flash:** a Gaussian flash (σ = 1, coin profile, fixed real polarisation) placed off
+  centre. It expands, crosses a central triangle whose 3 edges are quantum, and echoes off the
+  walls. This is the free-photon / sea-of-chop test.
+
+**Arms (per geometry).**
+- **C0:** λ_E = 0. The vacuum is exactly |e,e,e⟩ and nothing moves in the record, so the run
+  is bit-identical to v4.0.
+- **A(λ_E, λ_B):** λ_E ∈ {0.05, 0.3, 1.0} × λ_B ∈ {0.5, 2.0}.
+- **Q(λ_E, λ_B), quenched control:** the same initial Ψ, but U_rec is replaced by the identity.
+  The walker then sees a static mixture of chop drawn from the vacuum distribution. This
+  separates "the record responds" from "the background is noisy".
+- **Horizon:** T = 600 ticks (the box crossing is about 12 ticks, so dozens of echoes).
+
+**Measured.** Norm; P_vac(t), the probability the record is still in its vacuum; record energy
+⟨λ_E L/8 + λ_B W⟩ − vacuum value, against its infinite-temperature value; walker weight
+near the structure (G1: hop ball r = 1 around the centre vertex; G2: on the cycle arcs, plus the
+overlap with the DF state; G3: fidelity with the C0 walker); walker–record purity at T/2 and T.
+Reversibility: T ticks forward then T back.
+
+**Predictions (priors, stated before running).**
+- **P21-1 (exact; must hold):** norm drift < 1e-12; reverse error < 1e-10; C0 equals v4.0 to 1e-12;
+  the vacuum is stationary without the walker to 1e-12.
+- **P21-2 (free flash, G3):** after the first crossing, 1 − P_vac ≤ 0.05 for λ_E ≤ 0.3 and grows
+  ∝ λ_E² at small λ_E. Over T the record energy stays below 10 % of its infinite-temperature
+  value for λ_E ≤ 0.3: no runaway heating in this closed system. Low confidence on the second
+  half.
+- **P21-3 (DF cycle, G2):** the quantum vacuum makes the DF state leak; the leaked weight grows
+  ∝ t² at first and ∝ λ_E² in rate. The dynamic arms (A) leak more than the quenched arms (Q)
+  at equal λ, because only A can change the holonomy during the run. Medium confidence.
+- **P21-4 (pivot trapping, G1): prior negative.** The time-averaged near weight over
+  [T/2, T] stays within ±25 % of C0 in every arm.
+  - **Surprise criterion:** a positive result would be ≥ 1.5 × C0 *and* ≥ 1.2 × the matching Q,
+    at two adjacent grid points.
+
+**P21 OUTCOME (2026-09-19, appended after the run; predictions above untouched).**
+Data: `reference/opus_session/data/p21_{G1,G2,G3}.json`; code `examples/p21_quantum_record.py`,
+summary `examples/p21_summary.py`, figure `examples/p21_graphics.py` → `out/p21_quantum_record.png`.
+Each run took 6–11 minutes; there were 40 runs in all.
+
+- **P21-1: PASS.**
+  - Worst norm drift 5.9e-13.
+  - 600 ticks forward and back: error 1.4e-13 (G2), 4e-14 (G1, G3).
+  - Vacuum stationary to 1.0e-14.
+  - λ_E = 0 equals v4.0 (unit test, 1e-12).
+- **P21-2 (free flash): PASS.**
+  - 1 − P_vac at t = 10 is at most 1.1e-3 (A) or 4.9e-3 (Q) for λ_E ≤ 0.3, against the ≤ 0.05
+    threshold.
+  - The A arms grow by 38× (λ_B = ½) and 32× (λ_B = 2) from λ_E = 0.05 to 0.3, against 36× for
+    λ_E²: consistent.
+  - Record energy over the second half is at most 1.1 % of its infinite-temperature value for
+    λ_E ≤ 0.3, and it has levelled off.
+  - *Unregistered readouts:*
+    - Fidelity with flat-vacuum light after 600 ticks (about 50 wall echoes) is ≥ 0.985 when
+      the vacuum overlaps |e,e,e⟩ ≥ 0.99, and 0.92 at (0.3, 2).
+    - At λ_E = 1 the light keeps heating the record: energy rises linearly to 6 % (λ_B = ½) and
+      12 % (λ_B = 2) of the infinite-temperature value by T and has not levelled off. Fidelity
+      falls to 0.75 and 0.64.
+    - Quenched chop pulls light towards the defect: near weight 1.37–1.70 × C0, against
+      1.29–1.30 × for A. That is disorder, not response.
+- **P21-3 (DF loop): direction PASS; stated forms NOT confirmed; the reading needs correcting.**
+  - The dynamic record disturbs the loop far more than quenched chop does. At λ_E = 1 the mean
+    second-half DF overlap is 0.40 (A) vs 0.96 (Q) at λ_B = ½, and 0.19 vs 0.91 at λ_B = 2.
+  - The t² onset could not be resolved: samples are every 5 ticks, and the vacuum is not
+    |e,e,e⟩, so there is a sudden-quench jump at the first sample.
+  - The λ_E² rate is not clean: 18× and 44× against 36×.
+  - The loss is also not monotone. At (0.3, 2) the DF overlap falls to 0.34 at t = 355 and
+    returns to 0.84 by t = 600: a slow coherent oscillation. At the minimum:
+    - 82 % of the walker is still on the loop's 8 arcs (0.66 % of all arcs);
+    - the record is 96 % in its vacuum.
+
+    So at moderate coupling "leak" mostly means the loop's internal state rotates while the
+    loop stays put: a beat between dressed loop states, not escape.
+  - At λ_E = 1 there is real escape: weight on the loop drops to 0.3–0.6, and the record takes
+    up to 24 % of its infinite-temperature energy.
+- **P21-4 (pivot vortex): prior negative CONFIRMED.** Near weight is 0.967–1.0004 × C0 across all
+  A arms. The surprise criterion was not met.
+- **Caveat on the energy readout.** The vacuum is an eigenvector of U_rec, not the ground state
+  of the generator λ_E L/8 + λ_B W used for the E_rec readout. That is why Q arms can show a
+  slightly *negative* E_rec. E_rec is a proxy observable, not the conserved quasi-energy.
+
+## P20 — Does a responsive record hold a pivoting wave together? (2026-09-19, Opus; registered before implementation)
+
+Design: `DYNAMICS_DESIGN.md` §8 (v4.1-sc).
+
+**Setup.**
+- **Region:** Kuhn ball n = 16 with an open outer boundary. The A4 3-dim irrep
+  carries the internal state.
+- **Initial state, a prepared "pivot":**
+  - a vortex ring, amplitude exp(−|p−p0|²/2σ²)·((ρ − R) + i(z − z0)), with
+    σ = 3 and R = 3 in grid units (coordinates used for preparation only);
+  - arcs filled in the coin state φ_v;
+  - circularly polarised internal state (u1 + i u2)/√2, spin along one A4
+    3-fold axis.
+- **Horizon:** 400 ticks.
+
+**Measured:**
+- norm left in the region;
+- weight inside the graph ball of hop radius 4 around the centre vertex (a
+  relational structure, not coordinates);
+- number of chops written;
+- curvature count H at checkpoints.
+
+**Arms.**
+- **C0:** v4.0, no feedback.
+- **C1:** random chops, matched in count each tick to the feedback run (seeded,
+  random interior edge, random order-3 factor). This separates "the record
+  responds to the wave" from "the record is just disordered", since disorder
+  alone can localise waves.
+- **F(κ):** feedback at the three registered κ.
+
+**Engine check:** 50 ticks forward then 50 back must restore ψ and g exactly
+(to round-off).
+
+**P20 WITHDRAWN (2026-09-19), with no valid result produced.**
+- **Bug:** the first launch hit a preparation bug. The spin axis was parallel
+  to a helper vector, which made the initial state NaN. The run was killed
+  before producing numbers. The bug is fixed in `examples/p20_record.py`.
+- **Objection accepted:** the user objected to the rule itself. Chop is
+  written without costing the wave anything, so the record changes for free.
+- **Why that is right:** the norm is conserved, but the wave's evolution
+  operator changes whenever the record changes, so its energy (quasi-energy)
+  is *not* conserved. Energy appears or vanishes with each chop. That breaks
+  the spirit of clause 1 (one conserved quantity), and it is also contrary to
+  Landauer: writing a record should cost something.
+- **Consequence:** the v4.1-sc rule is retired as physics. Its reversible
+  engine (`RecordWalk`: exact forward/backward over 50 ticks and 5,850 chops,
+  labels restored bit for bit) is kept as a tested component. P20 will be
+  re-registered against an energy-accounted rule.
+
+**Success criterion (registered):** for some κ, ball weight at T = 400 is at
+least 10 × max(C0, C1) and at least 1e-3. A pass is only a *candidate*: it
+must then show coherent motion and M1 = M2. **No directional prediction.**
+My prior, stated for the record: failure is more likely than success for this
+first rule.
+
 ## P19 — First tests of the v4 dynamics (2026-09-19, Opus; registered, NOT run)
 
 Design: `docs/DYNAMICS_DESIGN.md` (v4.0).
@@ -50,6 +612,125 @@ The unit-weight walk and the pre-v4 engine are control arms.
   are both informative: a negative sends the design to v4.1 (dynamical labels);
   a positive is the first "defect plus trapped light" candidate. It must then
   face M1 = M2 before any matter language is used.
+
+**P19 outcome (2026-09-19, Opus).** Code: `src/constraintnet/walk.py` and
+`examples/p19_walk.py`. Data: `reference/opus_session/data/p19_*.json`.
+
+- **P19a HIT.**
+  - *Closed:* unitarity to 2e-16 on Kuhn n = 3 and 4. The Szegedy identity
+    holds to 5e-8, a limit set by eigen-solver accuracy on the degenerate ±1
+    sector; the remainder is all ±1. The gauge-transformed spectrum is
+    identical, with random A4 labels and the 3-dim irrep.
+  - *Open:* ‖U_R‖₂ = 1 and spectral radius = 1, both to round-off, so the
+    norm never increases.
+- **P19b HIT.**
+  - The momentum blocks reproduce θ = arccos λ(k) to 1e-15, with exactly 12
+    flat eigenvalues (±1) at every sampled k.
+  - The long-wave speed θ/|k| = 0.42639, against the predicted sqrt(2/11) = 0.42640.
+  - Direction spread scales as k^4.00 with ring weights and k^2.00 with unit
+    weights.
+  - **DF** holds exactly: an axis-square cycle with random labels carries a +1
+    eigenstate (residual 2e-16) whenever the holonomy has a fixed vector, which
+    in the A4 irrep it always does.
+  - Unregistered, sampled over 200,000 k: the maximum group speed anywhere in
+    the Brillouin zone equals the long-wave speed (ratio 0.99996). No lattice
+    mode outruns the light cone.
+- **P19c HIT at the largest size, n = 120.** An n = 40 torus is too small for
+  any clean window.
+  - The median-arrival speed is 0.4217 (predicted 0.4264, 1.1% low), with a
+    spread over 60 directions of 0.32% (criterion ≤ 2%). The peak-arrival speed
+    is 0.4267, spread 0.13%.
+  - The weight beyond 1.25·c·t falls exponentially: 3e-5 at t = 7, 1e-10 at
+    t = 42, then a floor near 1e-11.
+  - The first n = 80/120 run had a wrap-around bug: its time window was too
+    long by the width of the front's tail. It was fixed and rerun, and the
+    buggy numbers are superseded.
+  - n = 80 with the corrected short window gives a noisy median fit (spread
+    5.7%) but a peak speed of 0.4252.
+- **P19d: the detection formula HIT exactly; the contrast clause was mis-registered.**
+  - Detection is the coin-symmetric channel at the antipode of an axis square
+    whose holonomy is the loop's flux. It gives exactly ½(1 + χ₃/3): 0.5 for
+    order-3 flux and 1/3 for V4 flux, with 1 for trivial labels.
+  - The registered "contrast = |χ₃|/3" does not follow from that formula; the
+    difference from the trivial run is ½(1 − χ₃/3). |χ₃|/3 is the fringe
+    visibility you would get by scanning an extra route phase, which the model
+    has no parameter for. The error is kept visible; the formula itself is confirmed.
+- **P19e NEGATIVE: a static flux record does not trap implication.**
+  - *Exact (Kuhn n = 6, single loop, 5,250-dim open walk):* 2,875 trapped
+    eigenvalues with the fixture against 2,877 in vacuum, for both order-3 and
+    V4 flux. The gap below the trapped sector is identical (0.0246), and so is
+    the trapped weight near the flux (0.80). The flux *removes* two trapped
+    states, consistent with DF: holonomy cuts the fixed-vector space of cycles
+    that link it. Every trapped state is a vacuum-type, non-translating cycle
+    state.
+  - *Time evolution (Kuhn n = 8: P13 linked, P15 tethered, single loop; 20,000
+    ticks):* the coin-state packet on the flux support escapes completely.
+    Retained weight is 1e-32 to 4e-32 with fixtures and 1e-32 to 2e-32 in
+    vacuum, already below 1e-12 by tick 1,000.
+
+**Consequence (as registered):** v4.0 is a sound propagation engine. It is
+exactly conservative, gauge-covariant, sharp and round, and nothing in it
+outruns the light cone. But a prepared, frozen record traps nothing beyond the
+vacuum's own non-translating cycle states. Trapping must come from the record
+*responding* to the implication, i.e. v4.1 (dynamical labels, self-confinement K).
+
+**P19 amendment A2 (2026-09-19, still before any P19 code ran).** The "closed
+variant" of P19a becomes the walk on the subgraph induced by the interior
+vertices: arcs to boundary vertices are absent, not reflected in place. Reason:
+in-place reflection is not of Szegedy form, so the identity would not apply to
+it. The open variant is unchanged.
+
+**P19 amendment A1 (2026-09-19, before any P19 code ran): realisations, fixed
+now so the outcome cannot steer them.**
+
+- **P19a** runs on finite `kuhn_ball` n = 2, 3 with the walk restricted to
+  interior vertices.
+  - **Closed variant:** arcs into boundary vertices reflect. Unitarity, gauge
+    covariance and the Szegedy identity are checked with degree-dependent
+    weights.
+  - **Open variant:** arcs into boundary vertices leave, giving a
+    sub-unitary U_R, whose norm must never increase.
+- **P19b** uses the exact momentum blocks (14×14 per k) of the implemented
+  torus walk. It adds one derived statement, DF, to test.
+  - **DF:** a closed cycle whose two edges at every vertex have equal weight
+    carries an exact, compact eigenstate: eigenvalue +1 for the pattern
+    "transported forward amplitude, opposite sign on each reverse arc".
+  - With labels, DF exists iff ρ(holonomy) fixes a nonzero vector. In the
+    A4 3-dim irrep every element is a rotation and fixes its axis, so flux never
+    removes these states.
+- **P19c** uses a 3D torus, n = 40, with a Gaussian source of width σ = 3 hops
+  shaped by the coin state φ_v. Detectors are vertices, binned by
+  emergent-metric radius and direction (the metric of P18, weighted).
+  - **Predicted front speed:** sqrt(2/W) per tick in that metric, with W = 11.
+  - **Isotropy criterion:** the spread over directions of the median-arrival
+    speed is at most 2%.
+  - **Cone criterion:** the weight beyond (1.25 × predicted speed × t) falls
+    with t. Exponential form is checked, not assumed.
+- **P19d** uses an even cycle of the mesh's own 1-skeleton, made of
+  equal-weight edges, whose holonomy under a single-loop A4 fixture is
+  nontrivial. The walk is restricted to that cycle subgraph, so the two
+  routes have equal length. The source is the coin state at one vertex; the
+  detector is the antipode at tick L; internal states are averaged (maximally
+  mixed).
+  - **Prediction:** detection = ½(1 + χ₃(Φ)/3). The contrast relative to the
+    trivial-label run is |χ₃(Φ)|/3, i.e. 1/3 for V4 flux and 0 for order-3
+    flux. χ₃ is real on A4.
+- **P19e** has two parts; fixtures lie strictly inside and outer-boundary
+  vertices act as exits.
+  - **Exact:** the open walk U_R on `kuhn_ball` n = 6 with one rectangular-disk
+    loop. Flux element: order-3, and separately V4. Count eigenvalues with
+    |μ| > 1 − 1e-9 (the trapped subspace), fixture versus vacuum. Report the
+    trapped weight within one hop of the curved-face vertices, fixture versus
+    vacuum.
+  - **Time evolution:** n = 8 with the P13 linked loops (order-3 lift), the
+    P15 tethered link (N1) and one loop. The packet is the coin state on the
+    curved-face vertices, with internal state maximally mixed (average of 3
+    basis states). Retained weight is followed to 20,000 ticks, against the
+    vacuum control.
+  - **Trapping beyond vacuum** means the trapped dimension exceeds the
+    vacuum's, or the retained weight exceeds the vacuum's by more than 1e-3
+    and is concentrated at the flux support. Given DF, cycle states that avoid
+    the flux are expected in both runs and are the control, not the result.
 
 ## P18 — Round, sharp light fronts on the project's mesh? (2026-09-19, Opus; derived before execution)
 

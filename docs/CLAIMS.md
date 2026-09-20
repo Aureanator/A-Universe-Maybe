@@ -192,3 +192,74 @@ Two sub-claims are revised, on evidence, without deleting the history above:
 **Control-arm labelling:** rows 7–35 were produced by the pre-v4 engine (static
 labels, H-descent, external bath, Drivers A/B). They stay true as measured, and
 become the named control arm for the v4 dynamics.
+
+**40 — MEASURED + DERIVED (Opus, P19):** the v4.0 walk (gauge-covariant
+Szegedy walk on the Kuhn mesh, ring weights) conserves implication exactly and
+is gauge-covariant.
+- Its dispersion is θ = arccos λ(k), with long-wave speed sqrt(2/11).
+- It gives a relational light cone isotropic to 0.3% (torus 120³), with
+  exponentially small weight outside the cone.
+- No mode outruns that speed (sampled).
+- It reproduces non-abelian holonomy interference ½(1 + χ₃/3) exactly.
+- Compact non-translating cycle states exist whenever the holonomy fixes a
+  vector (DF, derived and checked).
+
+Evidence: `reference/opus_session/data/p19_{a,b,c,d}.json`, `tests/test_walk.py`.
+
+**41 — MEASURED (NEGATIVE, Opus, P19e):** a frozen prepared flux record
+(single loop, P13 linked, P15 tethered) traps no implication beyond the
+vacuum's cycle states. Trapped dimension: fixture 2,875 against vacuum 2,877
+(n = 6, exact). Retained weight of packets on the flux: ≤ 4e-32 after 20,000
+ticks. Self-confinement therefore needs dynamical labels (v4.1).
+Evidence: `reference/opus_session/data/p19_e_exact.json`, `p19_e_time.json`.
+
+**42 — MEASURED (Opus, P21):** an energy-accounted quantum record (option A: 3 quantum A4
+edges, electric term plus Wilson term, one fixed unitary, closed n = 6 box) is exactly
+reversible and conserving to about 1e-13.
+- Free light passes a weakly fluctuating quantum vacuum with fidelity ≥ 0.985 over 600 ticks.
+  The energy it deposits is ∝ λ_E² and levels off. A strongly fluctuating vacuum heats up
+  steadily.
+- The dynamic record disturbs a trapped DF loop far more than quenched chop from the same
+  vacuum does. At moderate coupling the loop stays on its arcs (82–99 %) and beats coherently
+  with the record.
+- A pivot vortex is not bound (±3 %).
+
+*Status:* POSTULATED model, MEASURED behaviour; partial record (other edges frozen).
+Evidence: `reference/opus_session/data/p21_{G1,G2,G3}.json`, `tests/test_qrecord.py`.
+
+**43 — MEASURED (Opus, P22):** with open walls, a hot *dynamic* quantum record holds light.
+- It releases light as roughly t^−1 to t^−1.9, retaining about 30–100× more at T = 600 than
+  frozen chop of the same statistics. A flat vacuum releases light exponentially.
+- Retained light is proportional to the hot fraction, with no threshold.
+- A single flash cannot cool the record: the record's energy dwarfs the light's.
+- So the model shows opacity when hot and transparency when calm, but not formation on cooling.
+
+*Status:* POSTULATED model, MEASURED behaviour; the record is pinned to 3 edges.
+Evidence: `reference/opus_session/data/p22_*.json`.
+
+**44 — MEASURED (Opus, P23/P24a):** a quantum A4 record exchanging energy with light behaves
+thermodynamically only when two conditions hold:
+- its quasi-energy spectrum is unfolded (spans less than π);
+- the light is spectrally narrow.
+
+Under those conditions:
+- broad light holds it near infinite temperature;
+- narrow light at phase ω₀ holds it at an equilibrium E* that falls steeply with ω₀
+  (0.51 → 0.22 → 0.14 × E_hot for ω₀ = 0.52 → 0.40 → 0.33, box n = 5 → 7);
+- a lower-energy record retains less light, so it is more transparent.
+
+*Status:* MEASURED (exact per-flash expectations); a static redshift proxy, not expansion
+dynamics. Evidence: `reference/opus_session/data/p23_ladder_*`, `p24a_redshift_n*.json`.
+
+**45 — MEASURED (Opus, P25):** compact loop patterns seeded compatibly in a cooled quantum-record
+bath (each record branch holds its own compatible loop form) behave as follows:
+- they have no birth shock, whereas imprinting costs about 4.5 %;
+- they are exactly permanent if the bath is frozen;
+- they erode at about 2–3e-4 per tick if the bath moves (λ = 0.1);
+- 90° loops (ring-4) outlast 60° loops (ring-6).
+
+The erosion comes entirely from record motion. A persistent pattern would have to be a joint
+loop-plus-record eigenstate (not yet found).
+
+*Status:* MEASURED; the bath is Gibbs-form (provenance check failed, see the P25-2 outcome).
+Evidence: `reference/opus_session/data/p25_*.json`.

@@ -80,8 +80,8 @@ The current picture is in [the working statement](docs/WORKING_STATEMENT.md).
 
 ```bash
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install pytest matplotlib numpy   # Windows
-PYTHONPATH=src .venv/Scripts/python.exe -m pytest -q              # 285 tests (~4 min incl. slow)
+.venv/Scripts/python.exe -m pip install -e ".[viz,quantum]" pytest   # Windows; includes SciPy for the quantum record
+.venv/Scripts/python.exe -m pytest -q
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone1.py    # reproduce 1728 -> 178
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone3.py    # hidden internal states |I(B)|
 PYTHONPATH=src .venv/Scripts/python.exe examples/milestone4.py    # persistent defect + confinement

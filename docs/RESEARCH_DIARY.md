@@ -685,3 +685,182 @@ prepared flux record traps implication beyond the vacuum control. No
 direction is predicted.
 *Evidence:* `docs/DYNAMICS_DESIGN.md`; `examples/v4_design_checks.py`;
 `tests/test_v4_design.py`; `reference/opus_session/data/v4_design_checks.json`.
+
+### E046. The v4.0 walk works as a light engine, but a frozen record traps nothing (2026-09-19, Opus)
+
+P19 ran on the registered design, with two amendments made before any code:
+realisations fixed in advance, and the closed variant defined as the induced
+subgraph.
+
+**The engine passes every structural test.**
+- **Exact conservation and covariance:** implication is conserved exactly and
+  the walk is gauge-covariant.
+- **Dispersion:** exactly the Szegedy form, with long-wave speed sqrt(2/11) and
+  quartic-isotropic under the ring weighting.
+- **Relational light cone:** round to 0.3% over 60 directions on a 120³ torus,
+  with weight outside it falling exponentially. No lattice mode outruns the
+  long-wave speed.
+- **Holonomy:** non-abelian interference is exact, matching ½(1 + χ₃/3).
+
+One registered clause (P19d "contrast") was mis-stated at registration. It is
+recorded as such; the underlying formula is confirmed. An implementation bug
+(a wrap-around window in P19c) was found, fixed and rerun, with the buggy
+numbers superseded.
+
+**The physics answer is negative.** Prepared flux structures (single loop,
+linked, tethered) held fixed do not trap implication. Exact spectra show the
+same trapped dimension as vacuum, minus two. Packets on the flux escape to
+1e-32. The only trapped states anywhere are compact cycle states that never
+translate (derived result DF). They have no finite inertia, so they are not
+matter under the M1 definition.
+
+**Interpretation.** The frozen record of the old picture (defects) and the
+light of the new one (walk) do not, combined, make matter. What remains is the
+feedback: implication must reshape the record that guides it, which is item K,
+self-confinement. This is where the working statement locates matter anyway
+("the record built by implications forms the cancelling structure that then
+traps them"). v4.1 needs a reversible, gauge-covariant, conserving rule for
+how passing implication changes labels. That design needs the user's
+philosophical input: are labels separate from the implications that cross
+them, or the same thing?
+*Evidence:* `src/constraintnet/walk.py`; `examples/p19_walk.py`;
+`reference/opus_session/data/p19_{a,b,c,d,e_exact,e_time}.json`;
+`tests/test_walk.py`.
+
+### E047. A responsive record, built and then retired: chop must cost implication (2026-09-19, Opus with the user)
+
+**Built from the user's answers.**
+- Free light reads the chop.
+- Contained light pivots at loci set by the geometry, in steps. The dihedral
+  angles are exactly 60° on ring-6 edges and 90° on ring-4 edges, checked.
+- The pivot must travel with the structure, not be pinned in all six
+  degrees of freedom.
+
+**Rule (v4.1-sc).** Circulation around an edge writes a quantised 120° chop,
+oriented by the local spin. `RecordWalk` implements it and is exactly
+reversible: 50 ticks, 5,850 chops, restored to 1e-15 with labels bit for bit.
+
+**Why it was retired before any valid run.** The user objected that chop costs
+the wave nothing, and the objection is correct. Norm is conserved, but the
+evolution operator changes with the record, so the wave's energy isn't. A
+record must hold, and cost, implication. P20 was withdrawn; its one launch
+had also hit a NaN preparation bug, since fixed. Energy-accounted options
+(A: quantum record; B: ledger, curved face = ε of stored implication;
+C: no separate record) are laid out in `DYNAMICS_DESIGN.md` §9 for decision.
+
+### E048. Option A at small scale: a quantum record in a lossless box (2026-09-19, Opus with the user)
+
+**Choice.** The user chose to try A directly: "implement A on a small scale on one or three of
+our interesting geometries … reflective boundary box that echoes losslessly". The conversation
+had also concluded that B, done reversibly, becomes A, and that the geometric face cost is the
+Wilson form 1 − χ₃/3.
+
+**Build.** `QuantumRecordWalk` (`src/constraintnet/qrecord.py`):
+- 3 quantum edges (1728 record states); everything else frozen flat.
+- The walk is controlled on the record; the record has an electric term (A4 Laplacian on the
+  order-3 class) and a magnetic term (Wilson).
+- One fixed unitary, so there is nothing to account by hand.
+- A closed n = 6 Kuhn box: every arc has its reverse, so the walls echo losslessly.
+
+**Registered and run as P21:** three geometries (pivot vortex, DF loop, free flash), a 6-point
+coupling grid, and quenched-chop controls.
+
+**What we learned.**
+- The accounting is exact.
+- Free light passes a weakly fluctuating quantum vacuum almost untouched, and the energy it
+  deposits is ∝ λ_E² and levels off. A strongly fluctuating vacuum heats up under light.
+- The trapped DF loop is the structure the record interacts with. Dynamic ≫ quenched, so it
+  is response, not noise. At moderate coupling the loop stays in place while its internal state
+  beats coherently with the record (overlap 1 → 0.34 → 0.84).
+- The pivot vortex is not bound, which was the prior.
+- One correction to my own prior: I expected "leak" to mean escape. At moderate coupling it
+  mostly means rotation in place.
+
+*Evidence:* `examples/p21_quantum_record.py`; `reference/opus_session/data/p21_*.json`;
+`tests/test_qrecord.py`; `out/p21_quantum_record.png`.
+
+### E049. Freeze-out: the hot record is opaque but does not cool (2026-09-20, Opus with the user)
+
+**Question.** The user asked whether "the vacuum wasn't always calm" lines up with the model.
+Conversation answer: qualitatively yes. The cosmological order is formation by cooling, with light
+going free at decoupling, and P21 already showed loops surviving only in calm chop. Two
+distinctions:
+- "hot" should be a *state* above the vacuum, with the rule fixed;
+- a closed reversible box cannot cool, so a cooling channel is needed.
+
+**Test (P22).** Open walls, a hot record, one flash of light.
+
+**Result.**
+- **Opacity, not formation.** The dynamic hot record holds light about 30–100× longer than frozen
+  chop of the same statistics, and releases it as a power law. The flat vacuum lets light go at
+  once. Retained light ∝ hot fraction, with no threshold.
+- **No cooling:** the record's energy dwarfs what the light can carry.
+
+**Priors P22-3 and P22-4 failed on direction.** I expected trapping to prefer calm; it prefers hot.
+The registered surprise criterion was met, but the interpretation is lingering (slow release), not
+binding.
+
+**Next.** Cooling needs radiation to dominate the energy budget, or a growing or expanding mesh.
+*Evidence:* `examples/p22_freezeout.py`, `reference/opus_session/data/p22_*.json`,
+`out/p22_freezeout.png`.
+
+### E050. Radiative cooling: light has a temperature only when it is narrow and low (2026-09-20, Opus)
+
+**Plan.** The user set the order: radiative, then expanding, then both.
+
+**P23: a flood of flashes.** Built as a quantum-trajectory unravelling of the exact record channel:
+- escaped light is detected, the record keeps its conditional state, and the next flash arrives;
+- exact per-flash drifts come from a ladder of record states.
+
+**Three findings in sequence, each registered before it was run:**
+1. **Folding.** The earlier couplings (λ_B = 2) put the record's quasi-energy past π per flip.
+   Light then heats it to infinite temperature whatever the light is, so the λ_B = 2 trajectories
+   were stopped.
+2. **Broad light still heats**, even with the record unfolded (0.1, 0.1).
+3. **Narrow light cools.** Light from the lowest positive band holds the record at half its hot
+   energy. My prior, that light's symmetric band makes any light infinitely hot, failed; the
+   failure was informative.
+
+**P24a: the redshift proxy.** Bigger boxes allow lower bands:
+- E*/E_hot = 0.51, 0.22, 0.14 at ω₀ = 0.52, 0.40, 0.33;
+- magnetic excitations freeze out once ω₀ drops below their gap;
+- a cooler record is more transparent.
+
+This is the cosmological sequence in miniature: redshift → freeze-out → transparency.
+
+**Not yet shown:**
+- loops forming;
+- the record reaching its true vacuum (the vacuum population still drops slightly, since
+  electric excitations are below ω₀).
+
+**Needed next:** a growth or expansion rule, which is the user's call (axiom-level).
+*Evidence:* `examples/p23_radiative.py`, `examples/p23_graphics.py`, `reference/opus_session/data/p23_*`,
+`p24a_*`, `out/p23_p24a_radiative.png`.
+
+### E051. Seeding patterns in a compatible cooled bath (2026-09-20, Opus with the user)
+
+**The user's proposal.**
+- Extract the statistics of the cooled vacuum near where matter would form.
+- Preseed our patterns in statistically equivalent noise, back-calculated from the matter so the
+  two have compatible provenance.
+- The clarification: "we can't have the particle instantiated in an incompatible bath … 'with
+  enough noise this happened somewhere', not a rigorous reproduction of the Big Bang. Whether it
+  *continues* to persist is another question."
+
+**Built (P25).**
+- The bath is a Gibbs sample of the record at the P24a freeze-out energy.
+- The pattern is seeded per record branch in that branch's compatible form.
+- Two loops: 60° pivots (ring-6) and 90° pivots (ring-4).
+
+**Result.**
+- Compatible seeding removes the birth shock.
+- A frozen bath keeps the pattern exactly.
+- A moving bath erodes it slowly (about 15 % in 600 ticks), all of it from the record's motion.
+- 90° loops persist better.
+- The bath's own provenance check failed: the Gibbs form is not shown to be stationary under the
+  light that produced it.
+
+**Consequence.** Matter, if it exists here, must be a *joint* state that co-moves with its record:
+a dressed loop. Next, find it. Its record statistics would then be the back-calculated bath, which
+is the user's provenance condition made exact.
+*Evidence:* `examples/p25_seeded.py`, `reference/opus_session/data/p25_*.json`, `out/p25_seeded.png`.

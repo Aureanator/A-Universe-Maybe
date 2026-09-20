@@ -1,0 +1,44 @@
+[
+ {
+  "flux": "order3",
+  "curved_faces": 34,
+  "fixture": {
+   "dim_trapped": 2875,
+   "size": 5250,
+   "gap_below_trapped": 0.024557706344886077,
+   "trapped_count_tol_1e-6": 2875,
+   "mean_trapped_weight_near_flux": 0.799590976047532,
+   "near_arc_fraction_of_space": 0.72
+  },
+  "vacuum": {
+   "dim_trapped": 2877,
+   "size": 5250,
+   "gap_below_trapped": 0.024557706344882746,
+   "trapped_count_tol_1e-6": 2877,
+   "mean_trapped_weight_near_flux": 0.8000946624008455,
+   "near_arc_fraction_of_space": 0.72
+  },
+  "seconds": 174.7
+ },
+ {
+  "flux": "V4",
+  "curved_faces": 34,
+  "fixture": {
+   "dim_trapped": 2875,
+   "size": 5250,
+   "gap_below_trapped": 0.024557706344886965,
+   "trapped_count_tol_1e-6": 2875,
+   "mean_trapped_weight_near_flux": 0.7979798658728304,
+   "near_arc_fraction_of_space": 0.72
+  },
+  "vacuum": {
+   "dim_trapped": 2877,
+   "size": 5250,
+   "gap_below_trapped": 0.024557706344882746,
+   "trapped_count_tol_1e-6": 2877,
+   "mean_trapped_weight_near_flux": 0.8000946624008455,
+   "near_arc_fraction_of_space": 0.72
+  },
+  "seconds": 176.1
+ }
+]

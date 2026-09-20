@@ -6,6 +6,29 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- P26 dressed-loop diagnostic (Astra), registered before running: phase-resolved
+  Cesaro filters, exact-spectrum tests, boundary-size and open-release controls.
+  `examples/p26_dressed.py`, `src/constraintnet/phase_filter.py`, four tests.
+- Local handoff verification: 356 existing tests pass; the `quantum` dependency
+  extra declares NumPy/SciPy and the README includes it in setup.
+- P25 seeded patterns in a compatible cooled bath (Opus): `examples/p25_seeded.py`, `p25_graphics.py`, data `p25_*.json`,
+  figure. No birth shock; exact permanence in a frozen bath; slow erosion from record motion; 90° loops outlast 60°.
+  DYNAMICS_DESIGN §13; diary E051; claim 45.
+- P23 radiative cooling + P24a redshift proxy (Opus): `examples/p23_radiative.py` (trajectory unravelling, ladders,
+  lowest-band spectral filter), `examples/p23_graphics.py`, data `p23_*`, `p24a_*`, figure. Folding diagnosis; narrow low light
+  cools the record; E* falls with redshift. DYNAMICS_DESIGN §12; diary E050; claim 44.
+- P22 freeze-out (Opus): open-wall mode for `QuantumRecordWalk` (escape bookkeeping), `examples/p22_freezeout.py`,
+  `p22_graphics.py`, data `p22_*.json`, test. Hot dynamic record is opaque (power-law release), no cooling; P22-3/4 priors failed.
+  DYNAMICS_DESIGN §11; diary E049; claim 43.
+- P21 option A at small scale (Opus): `src/constraintnet/qrecord.py` (`QuantumRecordWalk`), `examples/p21_quantum_record.py`,
+  `p21_summary.py`, `p21_graphics.py`, `tests/test_qrecord.py`, data `p21_*.json`. Exact accounting; free light
+  coherent in a weak quantum vacuum; the DF loop responds to the record (dynamic ≫ quenched); no binding. DYNAMICS_DESIGN §10;
+  diary E048; claim 42.
+- v4.1-sc `RecordWalk` (reversible record engine, tested) + P20 registration; P20 withdrawn and the rule
+  retired on energy accounting (user objection accepted). Options A/B/C in DYNAMICS_DESIGN §9. Diary E047.
+- P19 run (Opus): `src/constraintnet/walk.py` (v4.0 ArcWalk engine), `examples/p19_walk.py`,
+  `tests/test_walk.py`, data `reference/opus_session/data/p19_*.json`. Engine passes a–d; P19e negative
+  (a frozen record does not trap). Diary E046; claims 40–41; design gate → v4.1.
 - v4 dynamics design (Opus with the user): `docs/DYNAMICS_DESIGN.md`, `examples/v4_design_checks.py`,
   `tests/test_v4_design.py`; P19 registered (not run). Framing reconciled (README preface, CLAIMS note,
   MEMO_PATCHES P11, ELECTRON_TARGET, PARTICLE_PROGRAM): matter = trapped circulation; mass = translation
