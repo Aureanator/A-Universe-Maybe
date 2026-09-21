@@ -6,6 +6,14 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- P33 local recreation (local Qwen): independent from-scratch implementation of the registered
+  virtual-pair perturbation protocol (`docs/P33_VIRTUAL_PAIRS.md`) without reading Astra's
+  uncommitted sibling module — `src/constraintnet/defect_perturb.py`,
+  `tests/test_defect_perturb.py` (9 tests), `examples/p33_effective_local.py`, records under
+  `reference/local_qwen/data/`. All registered identities pass; K4 cancellation exact;
+  bipyramid second order improves at every coupling; cross-check against Astra's archived run
+  agrees to machine precision (band max diff 0.0 / 5.3e-15). Two bugs caught only by the
+  asymmetric fixture recorded in diary E063; CLAIMS row 56.
 - P32A (Astra): 48 explicit electric charge-pair preparations in Z2/Z3/A4 finite
   patches; matrix-free projector actions, unitary character strings and exact
   commuting-projector evolution. Path, endpoint, energy, translation-intervention

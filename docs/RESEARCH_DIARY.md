@@ -1174,3 +1174,44 @@ the reduction rules before searching for bound states. Spin-liquid/string-net
 work supplies benchmarks, not a derivation of our dynamics. The dimensional
 audit, hard-Gauss-law completion, open-boundary channel and state-space embedding
 remain separate work items; Williamson–van der Mark remains a target.
+
+### E063. P33 recreated independently: virtual pairs check the bookkeeping to machine precision, and two bugs only the bipyramid could catch (MEASURED; cross-checkout reproduction)
+
+**Context.** The Opus P19–P31 + Astra P26–P33 wave was fast-forward merged into this canonical
+checkout from the sibling tree (committed history only, per instruction) and pushed to GitHub.
+SciPy 1.18.1 / NumPy 2.5.3 installed to match the sibling environment; full suite green after
+merge. Astra's P33 implementation existed only as uncommitted files in the sibling — so this tree
+re-implemented the registered protocol (`docs/P33_VIRTUAL_PAIRS.md`, commits b8e462f/a836e7d)
+from scratch, deliberately without reading their code: the pre-registration itself is the spec,
+and agreement becomes a two-implementation test of BOTH the physics and the protocol's completeness.
+
+**Result.** Every registered identity holds in the independent implementation: first-order block
+sum_m P_m V P_m = -sum W_ab(I-S_aS_b)/2 (P32B's transport form, residual <= 2.0e-13); flat-sector
+duality to E_vac + sum n_v and -sum X_aX_b; all four second-order coefficient formulas with
+C_vac = -|E|/2 exactly (-3 tetrahedron, -4.5 bipyramid); the pre-execution K4 cancellation is real
+and exact (C identically zero to 8e-16 — first and second order coincide at every coupling,
+residuals scale lam^3, observed orders 3.000–3.006); on the bipyramid second order improves
+everywhere (3.03e-4 -> 1.85e-5 at lam=0.01). Exact evolution: norm/energy/flatness conserved to
+<= 7.2e-15; bare defect number is NOT conserved (>1e-8 sector departure) — as registered, and the
+point of the exercise: P32B's exact number conservation is the leading-order shadow of a simpler
+non-conserving rule, so it need not be postulated fundamentally.
+
+**Cross-checkout reproduction.** Against Astra's archived run: band eigenvalues max diff 0.0
+(tetrahedron) and 5.3e-15 (bipyramid); first/second-order matrices <= 2.1e-15. Two independent
+implementations of one pre-registration, same numbers — the protocol was complete enough to pin
+the computation uniquely.
+
+**Methodological harvest (bugs as fixtures).** Two implementation bugs were INVISIBLE on the
+tetrahedron and caught only by the bipyramid: (i) iterating all vertex pairs instead of complex
+edges in the dual hopping — K4 has every pair as an edge, so V-duality passed there while wrong;
+(ii) a set-mutation ordering error in the shared-endpoint predictor. Both are exactly the class
+of "verified on the friendly fixture" failure this project keeps hitting; the registered decision
+to run BOTH fixtures is what caught them. Recorded so future protocols keep the asymmetric-fixture
+requirement.
+
+**Status discipline.** H(lam), continuous-time unitary evolution and the phase action remain
+POSTULATED (protocol's own ledger); success removes exact N-conservation as a fundamental
+postulate for LEADING hopping only — no fermions, no binding, no derivation from reduction.
+*Evidence:* `src/constraintnet/defect_perturb.py`, `tests/test_defect_perturb.py` (9 tests),
+`examples/p33_effective_local.py`, `reference/local_qwen/data/p33_effective.json`; PREDICTIONS
+P33 outcome; CLAIMS row 56.

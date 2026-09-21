@@ -399,3 +399,27 @@ is not retained; pair number and therefore pair persistence are imposed. No
 self-binding, reaction or electron claim. Protocols and evidence:
 `P32B_TRANSPORT.md`, `P32C_EXCHANGE.md`, and
 `reference/astra_session/data/p32{b_transport,c_exchange}.json`.
+
+**56 — DERIVED + MEASURED (local Qwen, P33 local recreation; independent reproduction of Astra's run):**
+for the POSTULATED perturbation H(lam) = H0 - lam*sum_edges W_e on Z2 tetrahedron and
+bipyramid edge models, the registered perturbative algebra holds exactly: the first-order
+number-sector projection equals P32B's transport form sum_m P_m V P_m = -sum_ab W_ab(I-S_aS_b)/2
+(residuals <= 2.0e-13); all four second-order coefficient formulas hold (C_vac = -|E|/2;
+diagonal (deg a + deg b - |E|)/2 with no two-body diagonal potential; shared-endpoint transfers
+sum(1[v=b] - 1/2) over common neighbours; disjoint transfers vanish by vacuum/four-defect
+cancellation); the pre-execution K4 symmetry cancellation is confirmed identically (C = 0 on the
+tetrahedron, both approximations coincide, residuals scale as lam^3 with observed order
+3.000-3.006); on the bipyramid second order improves at every registered coupling
+(observed order ~3.0-3.1). Exact evolution of all 16 bare pairs conserves norm, total energy and
+flatness (<= 7.2e-15) while bare defect number is NOT conserved (sector departure > 1e-8 as
+registered). Conclusion per the interpretation gate: EXACT defect-number conservation is removed
+as a required fundamental postulate for the LEADING hopping approximation only; nothing here
+derives the perturbation from reduction, produces fermions, or establishes binding.
+Cross-checkout reproduction: an independent implementation written from the protocol alone agrees
+with Astra's archived numbers to machine precision (band eigenvalues max diff 0.0 on tetrahedron,
+5.3e-15 on bipyramid; first/second-order matrices <= 2.1e-15).
+*Status:* DERIVED algebra + MEASURED numerics within the declared model; POSTULATED H(lam) itself.
+Evidence: `src/constraintnet/defect_perturb.py`, `tests/test_defect_perturb.py` (9 tests),
+`examples/p33_effective_local.py`, `reference/local_qwen/data/p33_effective.json`; protocol
+`docs/P33_VIRTUAL_PAIRS.md` (commits b8e462f, a836e7d); Astra records
+`reference/astra_session/data/p33_virtual_pairs.json`. Diary E063.
