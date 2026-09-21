@@ -16,6 +16,30 @@ first-order agreement, cancellation of disjoint-pair transfer, additive diagonal
 charge costs, and nonconservation of bare defect number under the full rule.
 No axiom-level derivation, fermions or binding is asserted. Outcomes follow later.
 
+**P33 outcome — local recreation (local Qwen, 2026-09-20).** This tree did not have Astra's
+uncommitted implementation, so the protocol was re-implemented independently from
+`docs/P33_VIRTUAL_PAIRS.md` alone (`src/constraintnet/defect_perturb.py`,
+`tests/test_defect_perturb.py`, `examples/p33_effective_local.py`) — a genuine cross-checkout
+test of the pre-registration's completeness. ALL registered checks pass: subset-basis
+orthonormality/completeness (<= 1.1e-16); first-order block identity with P32B's transport form
+(<= 2.0e-13); flat-sector duality H0 = E_vac + sum n_v and V = -sum X_aX_b over complex edges
+(<= 2.0e-15; note: K4 hides the edge-vs-all-pairs distinction, the bipyramid does not — one of
+two implementation bugs found only there); all four second-order coefficient formulas (<= 1.7e-15)
+with C_vac = -3 = -|E|/2 on tetrahedron and -4.5 on bipyramid; the pre-execution K4 cancellation
+confirmed identically (C_pair max abs 8.0e-16, first- and second-order spectra coincide at every
+coupling, observed error order 3.000–3.006 = O(lam^3)); bipyramid second order improves at every
+registered coupling (err 3.03e-4 -> 1.85e-5 at lam=0.01; observed order ~3.0–3.1). Exact evolution
+of all 16 bare pairs: norm/energy/flatness conserved <= 7.2e-15, bare-sector departure > 1e-8 as
+predicted. **Cross-check against Astra's archived run** (`reference/astra_session/data/p33_virtual_pairs.json`,
+written by their independent implementation; completed-run data artifact archived from the sibling
+working tree 2026-09-20 so evidence paths resolve in this checkout — their uncommitted CODE was
+never read; only this data artifact's summary fields were consulted, as cross-check targets): band eigenvalues agree to max diff **0.0** (tetrahedron) and
+**5.3e-15** (bipyramid); first/second-order matrices to <= 2.1e-15; vacuum energies exact.
+Two implementations, one protocol, same numbers. Interpretation per the registered gate: exact
+defect-number conservation is not required as a fundamental postulate for the leading hopping
+approximation; nothing about binding or fermions changes. Records:
+`reference/local_qwen/data/p33_effective.json`; diary E063; CLAIMS row 56.
+
 ## P29a — Stationary states with a tail: where circulation is allowed, and what it costs (2026-09-20, Opus; registered before running)
 
 **Decision behind it (user, 2026-09-20).** Give the candidate a tail: support outside the loop, a
