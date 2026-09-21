@@ -201,7 +201,7 @@ no-signalling).
 | **F5** Pachner orphan face + reverse-revert raise | FIXED + hardened | Drop uncarried face; revert via `move.added`; Astra guards: link conditions, `_realized`/`_tet_orders` snapshot-restore, exact-snapshot undo test |
 | **F6** cavity blindness in canonical state | FIXED (Astra caught a bug IN the first fix — shell-swapping sort) | Per-component independent canonicalization in min-vertex order; `test_curvature_cannot_swap_surface_components`; completeness claim domain stated exactly |
 | **F7** Driver B not gauge-equivariant | ACCEPTED as labelling | Cycle spectrum labelled SCHEDULER DIAGNOSTICS in class docstring; physics claims from sigma must be orbit-canonicalised |
-| **F8** word-cost gauge dependence; property-suite coverage | PARTIALLY ADDRESSED | Class-closed arm cost = 1 per nontrivial relabelling (conjugation-invariant); legacy keeps word metric. Property-based invariant suite LANDED E064 (`tests/test_properties.py`, 73 seeded tests across six groups); scaling study remains in queue |
+| **F8** word-cost gauge dependence; property-suite coverage | FIXED | Class-closed arm cost = 1 per nontrivial relabelling (conjugation-invariant); legacy keeps word metric. Property suite E064 (`tests/test_properties.py`, 73 seeded tests, six groups); scaling study E065 (n=3, 500×2 steps/cell, quotient depth k≤4 — all invariants hold; whole-complex accept rate characterized as closed-form interior-edge fraction, CLAIMS row 58) |
 | P7 design note | ADOPTED | Start-configuration control required alongside λ sweep (near-flat start is an independent forcing reason) — recorded in `PREDICTIONS.md` before any run |
 
 ---
@@ -226,5 +226,5 @@ no-signalling).
 - ~~Universality matrix S₃/Q₈/D₄~~ DONE E064 (CLAIMS row 57; zero closed nonvacuum basins, all six groups).
 - Heat-kernel extrapolation or larger meshes for absolute d_s.
 - Arrow-of-time: Lyapunov candidate or formal renaming decision (open problem, named).
-- F8 remainder: ~~property-based invariant suite~~ DONE E064 (`tests/test_properties.py`); scaling study remains.
+- ~~F8 remainder: property-based invariant suite + scaling study~~ DONE E064/E065 (`tests/test_properties.py`, `examples/f8_scaling_study.py`, CLAIMS row 58).
 - Particle program gates 1–4 (`docs/PARTICLE_PROGRAM.md`): unpinned persistent-structure search with negative controls; fusion/fission trajectory replay; bound-composite barrier; chemistry. Astra's audit queue items 1–4 closed this round; gate 2 onward is next.

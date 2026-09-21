@@ -6,6 +6,13 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- F8 scaling study (local Qwen, diary E065): `examples/f8_scaling_study.py` — invariants hold at
+  n=3 / 500 steps × 2 seeds / quotient depth k=1..4 for all six groups. MECHANISM FINDING (prior
+  refuted): whole-complex DriverA(relational) accepts ONLY purely-interior-edge proposals (zero
+  surface acceptances in 12,000 moves), acceptance rate = closed-form interior-edge fraction
+  (0.265 → 0.419 with n, Euler on the sphere) — bulk churns freely, boundary frozen; whole-complex
+  accept rates are geometry-dominated and not comparable to single-tetrahedron baselines (CLAIMS
+  row 58). Records `reference/local_qwen/data/f8_scaling.json`. F8 closed.
 - Universality matrix + property suite (local Qwen, diary E064): generic `TableGroup` with axioms
   verified at construction; S3/Q8/D4 registered alongside Z2/Z3/A4. Tetrahedron-seed landscape:
   zero closed nonvacuum plateaus for ALL six groups (physical states 8/27/49/176/176/178;
