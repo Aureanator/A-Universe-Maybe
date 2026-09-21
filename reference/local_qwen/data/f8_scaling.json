@@ -1,0 +1,499 @@
+{
+  "acceptance_mechanism": {
+    "A4": [
+      {
+        "accepted_interior": 258,
+        "accepted_surface": 0,
+        "closed_form_expected": 265.3,
+        "interior_edge_fraction": 0.2653,
+        "n": 2,
+        "z_score": -0.52
+      },
+      {
+        "accepted_interior": 441,
+        "accepted_surface": 0,
+        "closed_form_expected": 419.4,
+        "interior_edge_fraction": 0.4194,
+        "n": 3,
+        "z_score": 1.39
+      }
+    ],
+    "D4": [
+      {
+        "accepted_interior": 246,
+        "accepted_surface": 0,
+        "closed_form_expected": 265.3,
+        "interior_edge_fraction": 0.2653,
+        "n": 2,
+        "z_score": -1.38
+      },
+      {
+        "accepted_interior": 443,
+        "accepted_surface": 0,
+        "closed_form_expected": 419.4,
+        "interior_edge_fraction": 0.4194,
+        "n": 3,
+        "z_score": 1.52
+      }
+    ],
+    "Q8": [
+      {
+        "accepted_interior": 246,
+        "accepted_surface": 0,
+        "closed_form_expected": 265.3,
+        "interior_edge_fraction": 0.2653,
+        "n": 2,
+        "z_score": -1.38
+      },
+      {
+        "accepted_interior": 443,
+        "accepted_surface": 0,
+        "closed_form_expected": 419.4,
+        "interior_edge_fraction": 0.4194,
+        "n": 3,
+        "z_score": 1.52
+      }
+    ],
+    "S3": [
+      {
+        "accepted_interior": 258,
+        "accepted_surface": 0,
+        "closed_form_expected": 265.3,
+        "interior_edge_fraction": 0.2653,
+        "n": 2,
+        "z_score": -0.52
+      },
+      {
+        "accepted_interior": 452,
+        "accepted_surface": 0,
+        "closed_form_expected": 419.4,
+        "interior_edge_fraction": 0.4194,
+        "n": 3,
+        "z_score": 2.09
+      }
+    ],
+    "Z2": [
+      {
+        "accepted_interior": 258,
+        "accepted_surface": 0,
+        "closed_form_expected": 265.3,
+        "interior_edge_fraction": 0.2653,
+        "n": 2,
+        "z_score": -0.52
+      },
+      {
+        "accepted_interior": 416,
+        "accepted_surface": 0,
+        "closed_form_expected": 419.4,
+        "interior_edge_fraction": 0.4194,
+        "n": 3,
+        "z_score": -0.21
+      }
+    ],
+    "Z3": [
+      {
+        "accepted_interior": 258,
+        "accepted_surface": 0,
+        "closed_form_expected": 265.3,
+        "interior_edge_fraction": 0.2653,
+        "n": 2,
+        "z_score": -0.52
+      },
+      {
+        "accepted_interior": 416,
+        "accepted_surface": 0,
+        "closed_form_expected": 419.4,
+        "interior_edge_fraction": 0.4194,
+        "n": 3,
+        "z_score": -0.21
+      }
+    ]
+  },
+  "driver_conservation": {
+    "A4": {
+      "accept_rate_rises_n2_to_n3": true,
+      "per_mesh": [
+        {
+          "accept_rate": 0.258,
+          "accepted": 258,
+          "edges": 98,
+          "ms_per_step": 8.709,
+          "n": 2,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 48,
+          "vetoed": 742
+        },
+        {
+          "accept_rate": 0.441,
+          "accepted": 441,
+          "edges": 279,
+          "ms_per_step": 23.652,
+          "n": 3,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 162,
+          "vetoed": 559
+        }
+      ]
+    },
+    "D4": {
+      "accept_rate_rises_n2_to_n3": true,
+      "per_mesh": [
+        {
+          "accept_rate": 0.246,
+          "accepted": 246,
+          "edges": 98,
+          "ms_per_step": 5.725,
+          "n": 2,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 48,
+          "vetoed": 754
+        },
+        {
+          "accept_rate": 0.443,
+          "accepted": 443,
+          "edges": 279,
+          "ms_per_step": 16.582,
+          "n": 3,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 162,
+          "vetoed": 557
+        }
+      ]
+    },
+    "Q8": {
+      "accept_rate_rises_n2_to_n3": true,
+      "per_mesh": [
+        {
+          "accept_rate": 0.246,
+          "accepted": 246,
+          "edges": 98,
+          "ms_per_step": 5.751,
+          "n": 2,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 48,
+          "vetoed": 754
+        },
+        {
+          "accept_rate": 0.443,
+          "accepted": 443,
+          "edges": 279,
+          "ms_per_step": 16.609,
+          "n": 3,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 162,
+          "vetoed": 557
+        }
+      ]
+    },
+    "S3": {
+      "accept_rate_rises_n2_to_n3": true,
+      "per_mesh": [
+        {
+          "accept_rate": 0.258,
+          "accepted": 258,
+          "edges": 98,
+          "ms_per_step": 5.464,
+          "n": 2,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 48,
+          "vetoed": 742
+        },
+        {
+          "accept_rate": 0.452,
+          "accepted": 452,
+          "edges": 279,
+          "ms_per_step": 15.938,
+          "n": 3,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 162,
+          "vetoed": 548
+        }
+      ]
+    },
+    "Z2": {
+      "accept_rate_rises_n2_to_n3": true,
+      "per_mesh": [
+        {
+          "accept_rate": 0.258,
+          "accepted": 258,
+          "edges": 98,
+          "ms_per_step": 4.394,
+          "n": 2,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 48,
+          "vetoed": 742
+        },
+        {
+          "accept_rate": 0.416,
+          "accepted": 416,
+          "edges": 279,
+          "ms_per_step": 13.346,
+          "n": 3,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 162,
+          "vetoed": 584
+        }
+      ]
+    },
+    "Z3": {
+      "accept_rate_rises_n2_to_n3": true,
+      "per_mesh": [
+        {
+          "accept_rate": 0.258,
+          "accepted": 258,
+          "edges": 98,
+          "ms_per_step": 4.39,
+          "n": 2,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 48,
+          "vetoed": 742
+        },
+        {
+          "accept_rate": 0.416,
+          "accepted": 416,
+          "edges": 279,
+          "ms_per_step": 13.397,
+          "n": 3,
+          "seeds": [
+            0,
+            1
+          ],
+          "steps_per_seed": 500,
+          "tets": 162,
+          "vetoed": 584
+        }
+      ]
+    }
+  },
+  "gauge_invariance_n3": {
+    "A4": {
+      "preserved": true,
+      "raw_labels_moved": true
+    },
+    "D4": {
+      "preserved": true,
+      "raw_labels_moved": true
+    },
+    "Q8": {
+      "preserved": true,
+      "raw_labels_moved": true
+    },
+    "S3": {
+      "preserved": true,
+      "raw_labels_moved": true
+    },
+    "Z2": {
+      "preserved": true,
+      "raw_labels_moved": true
+    },
+    "Z3": {
+      "preserved": true,
+      "raw_labels_moved": true
+    }
+  },
+  "pachner_n3": {
+    "A4": {
+      "round_trips_exact": 4
+    },
+    "D4": {
+      "round_trips_exact": 4
+    },
+    "Q8": {
+      "round_trips_exact": 4
+    },
+    "S3": {
+      "round_trips_exact": 4
+    },
+    "Z2": {
+      "round_trips_exact": 4
+    },
+    "Z3": {
+      "round_trips_exact": 4
+    }
+  },
+  "provenance": {
+    "exact_landscape_tractability": "proposals scale as |G|^free * edges * (|G|-1); exact landscapes stay on tetrahedron-sized seeds, scale coverage uses the stochastic driver",
+    "mechanism_finding": "whole-complex DriverA(relational) accepts only purely-interior-edge proposals (zero surface acceptances all groups/meshes); acceptance rate equals the closed-form interior-edge fraction, which RISES with mesh size -- refuting the first draft's drop-with-size prior",
+    "model": "local Qwen (LM Studio), F8 scaling study session",
+    "nature": "robustness/coverage study closing referee F8 remainder; conservation verdicts are hard assertions, rates and times are diagnostics",
+    "script": "examples/f8_scaling_study.py"
+  },
+  "quotient_depth_k1_to_k4": {
+    "A4": {
+      "1": {
+        "burnside": 4.0,
+        "orbits": 4,
+        "raw": 12
+      },
+      "2": {
+        "burnside": 22.0,
+        "orbits": 22,
+        "raw": 144
+      },
+      "3": {
+        "burnside": 178.0,
+        "orbits": 178,
+        "raw": 1728
+      },
+      "4": {
+        "burnside": 1846.0,
+        "orbits": 1846,
+        "raw": 20736
+      }
+    },
+    "D4": {
+      "1": {
+        "burnside": 5.0,
+        "orbits": 5,
+        "raw": 8
+      },
+      "2": {
+        "burnside": 28.0,
+        "orbits": 28,
+        "raw": 64
+      },
+      "3": {
+        "burnside": 176.0,
+        "orbits": 176,
+        "raw": 512
+      },
+      "4": {
+        "burnside": 1216.0,
+        "orbits": 1216,
+        "raw": 4096
+      }
+    },
+    "Q8": {
+      "1": {
+        "burnside": 5.0,
+        "orbits": 5,
+        "raw": 8
+      },
+      "2": {
+        "burnside": 28.0,
+        "orbits": 28,
+        "raw": 64
+      },
+      "3": {
+        "burnside": 176.0,
+        "orbits": 176,
+        "raw": 512
+      },
+      "4": {
+        "burnside": 1216.0,
+        "orbits": 1216,
+        "raw": 4096
+      }
+    },
+    "S3": {
+      "1": {
+        "burnside": 3.0,
+        "orbits": 3,
+        "raw": 6
+      },
+      "2": {
+        "burnside": 11.0,
+        "orbits": 11,
+        "raw": 36
+      },
+      "3": {
+        "burnside": 49.0,
+        "orbits": 49,
+        "raw": 216
+      },
+      "4": {
+        "burnside": 251.0,
+        "orbits": 251,
+        "raw": 1296
+      }
+    },
+    "Z2": {
+      "1": {
+        "burnside": 2.0,
+        "orbits": 2,
+        "raw": 2
+      },
+      "2": {
+        "burnside": 4.0,
+        "orbits": 4,
+        "raw": 4
+      },
+      "3": {
+        "burnside": 8.0,
+        "orbits": 8,
+        "raw": 8
+      },
+      "4": {
+        "burnside": 16.0,
+        "orbits": 16,
+        "raw": 16
+      }
+    },
+    "Z3": {
+      "1": {
+        "burnside": 3.0,
+        "orbits": 3,
+        "raw": 3
+      },
+      "2": {
+        "burnside": 9.0,
+        "orbits": 9,
+        "raw": 9
+      },
+      "3": {
+        "burnside": 27.0,
+        "orbits": 27,
+        "raw": 27
+      },
+      "4": {
+        "burnside": 81.0,
+        "orbits": 81,
+        "raw": 81
+      }
+    }
+  }
+}

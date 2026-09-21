@@ -438,3 +438,19 @@ row 26. New machinery: `TableGroup` verifies closure/associativity/identity/inve
 construction (a broken table fails where it is built). *Evidence:* `examples/universality_matrix.py`,
 `reference/local_qwen/data/universality_matrix.json`, `src/constraintnet/groups.py`,
 `tests/test_properties.py::test_kernel_orbit_quotient_matches_burnside`. Diary E064.
+
+**58 — MEASURED (local Qwen, F8 scaling study; module characterization):** for the WHOLE-COMPLEX
+region, DriverA(model="relational") on kuhn balls accepts only proposals on purely-interior edges:
+zero surface-edge acceptances in 12,000 moves across {Z2,Z3,S3,D4,Q8,A4} × n ∈ {2,3}, and interior
+proposals are accepted essentially always (accepted counts within |z| ≤ 2.1 of the closed-form
+Binomial(steps, interior-edge fraction)). The acceptance rate is therefore pure boundary geometry --
+(E_total − E_surface)/E_total = 0.265 at n=2, 0.419 at n=3 (Euler on the sphere), rising toward ~1
+with mesh size -- refuting this study's first-draft prior that rates should drop with system size.
+Equivalently: whole-complex relational dynamics is exactly "bulk churns freely, boundary frozen"
+(E064-P2's interior-churn asymmetry in closed form). *Scope:* characterization of the declared
+region+driver combination, not of dynamics under arbitrary regions; consequence -- accept-rate
+cross-checks (backlog item 7) are meaningless without stating the observed region, and whole-complex
+rates must not be compared to single-tetrahedron baselines. All F8 scaling assertions held: gauge
+invariance at n=3, conservation recomputed-from-complex over 500×2 steps per cell, Pachner exact
+round-trips at n=3, kernel quotient == Burnside for k = 1..4 free edges. *Evidence:*
+`examples/f8_scaling_study.py`, `reference/local_qwen/data/f8_scaling.json`. Diary E065.

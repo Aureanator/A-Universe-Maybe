@@ -1275,3 +1275,46 @@ claim about arbitrary finite groups or other actions. Suite green: 454 tests.
 *Evidence:* `src/constraintnet/groups.py` (TableGroup + S3/Q8/D4), `examples/universality_matrix.py`,
 `reference/local_qwen/data/universality_matrix.json`, `tests/test_properties.py`; CLAIMS row 57;
 triage item 16 closed, F8 remainder partially closed (scaling study still queued).
+
+### E065. F8 scaling study: invariants hold at n=3 over 12,000 driver steps — and the whole-complex relational driver turns out to be exactly "bulk churns freely, boundary frozen" (MEASURED; one prior refuted) (2026-09-21, local Qwen)
+
+**Context.** F8's remainder from the Round-3 referee: property coverage at small fixtures only
+(E064 tested n=2 / 60 steps). The scaling study pushes the same invariants along mesh size
+(n=2 → n=3), run length (60 → 500 steps × 2 seeds), and quotient depth (k = 1..4 free edges,
+|G|^k up to 20736 configs for A4), for all six registered groups.
+
+**Result 1 — invariants survive at scale.** Vertex gauge preserves Region.gauge_invariant_state and
+boundary face classes exactly at n=3 (raw labels verified moving); DriverA(relational) conserves the
+region state and boundary-surface classes recomputed from the complex every step across 6 groups ×
+2 meshes × 500 steps × 2 seeds; Pachner 2-3 apply+revert exact snapshots at n=3 with randomized
+labels; kernel quotient == Burnside for k = 1..4. No exceptions.
+
+**Result 2 — the mechanism finding (prior refuted).** The first draft predicted accept rates should
+DROP with mesh size (more observed loops → tighter conservation). Measurement: rate RISES, ~0.25 at
+n=2 to ~0.44 at n=3. A label-diff probe (classifying every accepted move by which edge's label
+actually changed — after discarding a first attempt that parsed record text and got garbage) shows
+why exactly: for a WHOLE-COMPLEX region, DriverA(relational) accepts ONLY proposals on purely-
+interior edges — zero surface-edge acceptances in 12,000 moves across every group and mesh — and
+interior proposals are accepted essentially always (all cells within |z| ≤ 2.1 of the closed-form
+Binomial count). The acceptance rate is therefore pure geometry: interior-edge fraction
+(E_total − E_surface)/E_total = 26/98 ≈ 0.265 at n=2, 117/279 ≈ 0.419 at n=3 (Euler on the boundary
+sphere), growing toward ~1 with mesh size as volume/surface. The prior was wrong because boundary
+observability does not grow with bulk size: the observed surface stays a sphere while invisible
+interior edges proliferate.
+
+**Interpretation discipline.** This is a characterization of OUR chosen region+driver, not of
+physics in general: "whole-complex region" means the only conserved observables are on the boundary
+sphere, so the relational dynamics is exactly bulk churn with frozen boundary — E064-P2's asymmetry
+sharpened to a closed form. Consequence for future cross-checks (backlog item 7): whole-complex
+accept rates are geometry-dominated and must NOT be compared against single-tetrahedron baselines
+(~0.34) as if they measured the same thing; per-move-class and per-shell statistics need a region
+specification to mean anything. Recorded as CLAIMS row 58 (MEASURED, module characterization).
+
+**Methodological note.** The label-diff-vs-text-parsing lesson: classifying driver events by parsing
+record.detail produced impossible numbers (488/500 "interior proposals" at interior fraction 0.265);
+diffing labels before/after each step is slower but ground truth. Driver event records are for humans;
+measurements must come from the complex.
+
+*Evidence:* `examples/f8_scaling_study.py`, `reference/local_qwen/data/f8_scaling.json`; CLAIMS row 58;
+triage F8 closed (property suite E064 + scaling study E065). Suite unaffected (no kernel changes);
+study script assertions all held.
