@@ -6,6 +6,16 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- Free space v1 — DriverC (local Qwen, diary E066): Pachner 2<->3 relinkings added to the relational
+  move set (`src/constraintnet/drivers.py::DriverC`, model `freepach-v1`); entailment can now lay the
+  adjacency it travels on. `tests/test_driverC.py` (8 tests) pin: interior relinkings never vetoed,
+  boundary sphere + canonical state frozen, Euler V−E+F−T=1 step-by-step, NO-TELEPORTATION (surviving
+  faces keep holonomy). `examples/free_space_tracking.py` measures a combinatorial tracking boundary:
+  relinking is a genuine relocation channel (~2/3 of tracked support changes; first displacement steps
+  {4,3,1} vs label-only {34,20,1}), BUT naive overlap-lineage survival is a metric failure — the vacuum
+  heats (6→~230 A / ~370 C curved faces) and tracked clusters end at 96–100% of global curvature.
+  Persistence needs extent-normalization vs matched vacuum + confinement beyond boundary freezing.
+  CLAIMS row 59; figure `reference/local_qwen/figures/e066_free_space_accretion.png`.
 - F8 scaling study (local Qwen, diary E065): `examples/f8_scaling_study.py` — invariants hold at
   n=3 / 500 steps × 2 seeds / quotient depth k=1..4 for all six groups. MECHANISM FINDING (prior
   refuted): whole-complex DriverA(relational) accepts ONLY purely-interior-edge proposals (zero

@@ -1318,3 +1318,52 @@ measurements must come from the complex.
 *Evidence:* `examples/f8_scaling_study.py`, `reference/local_qwen/data/f8_scaling.json`; CLAIMS row 58;
 triage F8 closed (property suite E064 + scaling study E065). Suite unaffected (no kernel changes);
 study script assertions all held.
+
+### E066. Free space v1: the track becomes dynamical — relinking is a real relocation channel, and naive object-tracking is exposed as a metric failure (MEASURED; one prior refuted in an unexpected direction) (2026-09-21, local Qwen)
+
+**Context.** User-directed queue item ("free space / self-laid track"): mainline DriverA only
+rewrites the gauge geometry of FIXED rails. DriverC (new, `src/constraintnet/drivers.py`) adds
+Pachner 2<->3 relinkings to the move set under the SAME relational acceptance — entailment can now
+lay adjacency while it travels. v1 scope: whole-complex regions (closed ball, boundary sphere
+frozen); observation region rebuilt from current tetrahedra every step (stored tets go stale under
+relinking). Tests (`tests/test_driverC.py`, 8): interior relinkings NEVER vetoed (Z2/A4 — if this
+ever fails, the observation secretly sees bulk triangulation); mixed runs freeze boundary labels and
+canonical state exactly, keep Euler V−E+F−T = 1, no degenerate tets; NO-TELEPORTATION: surviving
+faces provably keep holonomy under relinking (curvature changes only on faces added/removed by the
+move itself or containing the changed edge); provenance driver="C", model="freepach-v1".
+
+**Measurement (`examples/free_space_tracking.py`, A4 n=3, 300 steps x 3 seeds, C vs A control;
+priors P1-P3 stated in the script docstring before running).** Tracking boundary = combinatorial
+overlap lineage of curved-face sets as VERTEX TUPLES (face indices do not survive relinking — a
+tracker on a dynamical track must be identification-stable), recentered implicitly every step.
+
+- **P2 CONFIRMED — relinking is a genuine new channel.** First displacement of the seeded cluster's
+  support out of its initial tet-set: steps {4,3,1} under DriverC vs {34,20,1} under labels-only;
+  ~two-thirds of tracked-support relocations in C runs are attributable to Pachner moves (78+19 of
+  164 label-attributed... precisely: pachner23 78 + pachner32 19 vs label 47 across seeds). Curvature
+  can move because THE GROUND MOVES, without any label changing — motion via re-laid adjacency, the
+  thing pure-label dynamics cannot do. Zero lineage ambiguities in all six runs.
+- **P1's real lesson was about our metrics, not the defect.** Naive overlap-lineage survival: 6/6
+  runs "survived" 300 steps — but global curvature energy grew 6 -> ~230 (A) / ~370 (C) curved faces
+  and the tracked cluster ended at 96-100% OF ALL GLOBAL CURVATURE. The seed did not persist; it
+  evaporated into a heating vacuum, and the tracker faithfully followed the heat. Under whole-complex
+  relational acceptance nothing constrains bulk pair creation (E065 mechanism), so "lifetime" without
+  size normalization against matched vacuum measures the tracker, not the physics. Any future
+  persistence claim must be extent-normalized with a vacuum control — this is now the concrete spec
+  for the queued "independent persistence criteria" item.
+- **Free space heats and grows.** Relinking accelerates heating (~1.6x at matched steps) and inflates
+  the triangulation (162 -> ~250 tets; DriverA arm fixed at 162): the proposal scheme has no
+  stationarity — flagged for the weighted-dynamics/detailed-balance queue item. Boundary conservation
+  itself held every step in both arms (asserted, not assumed).
+
+**Interpretation discipline.** Negative result kept visible: free space v1 does NOT confine anything;
+matter-protection requires Gauss-law completion or energetic acceptance, not just boundary freezing.
+The positive physics content is the relocation channel itself — a defect can now move by having its
+track relaid under it, which is exactly the "building its own track" mechanism asked for, measured to
+exist and to dominate relocation (~2/3 of events).
+
+*Evidence:* `src/constraintnet/drivers.py` (DriverC), `tests/test_driverC.py`,
+`examples/free_space_tracking.py`, `reference/local_qwen/data/free_space_tracking.json`,
+`reference/local_qwen/figures/e066_free_space_accretion.png`; CLAIMS row 59; triage free-space item
+updated (v1 done; follow-ups: subregion boundaries under relinking, edge birth/death beyond Pachner,
+stationary proposal scheme, extent-normalized persistence).

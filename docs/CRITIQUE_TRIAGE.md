@@ -219,7 +219,31 @@ no-signalling).
 ## Standing queue created by this triage (+ Round 3 additions)
 
 - P7 softened-predicate confinement pilot (area-law test) — first real physics target.
-- Independent persistence criteria (extent, similarity, lifetime, mobility).
+- **Free space / self-laid track — v1 DONE E066** (`DriverC`, `tests/test_driverC.py`,
+  `examples/free_space_tracking.py`, CLAIMS row 59). Relinking integrated under relational acceptance;
+  measured a genuine relinking-attributed relocation channel (~2/3 of tracked support changes) and a
+  combinatorial tracking boundary that follows the object off-frame. Exposed naive overlap-lineage
+  survival as a metric failure (vacuum heats, tracked cluster → ~100% of global curvature). FOLLOW-UPS
+  kept below (subregion boundaries under relinking, edge birth/death beyond Pachner, stationary
+  proposal scheme, extent-normalized persistence).
+  <details><summary>original item text</summary>
+
+  Integrate connectivity-changing moves
+  into the driver move set under boundary preservation, so an entailment can lay the adjacency it
+  travels on rather than only rewriting the gauge geometry of fixed rails. Current state: mainline
+  `DriverA` proposes label moves only (`propose_edge_move`: A_e -> A_e g); Pachner 2<->3 exists as a
+  reversible lab tool and is the dormant prototype for self-laid track; edge birth/death (implication
+  creation/annihilation) does not exist at all. E065 nuance to respect: whole-complex relational
+  acceptance is label-independent, so self-consistent track-building is expected to be a *boundary*
+  phenomenon — the feedback loop closes only for boundary-conditioned regions or with global (Gauss)
+  constraints. Needs a **tracking boundary** that follows an object wherever it wanders off the fixed
+  frame (combinatorial recentering, not coordinates). Ultimate goal this serves: reproduce recognizable
+  phenomena (p/e/n, atoms, fission/fusion, quantized line radiation) from first principles.
+
+  </details>
+- Independent persistence criteria (extent, similarity, lifetime, mobility) — E066 sharpens this: naive
+  overlap-lineage survival is vacuous under unconstrained acceptance; needs extent normalization against
+  a matched vacuum control.
 - Weighted dynamics + conserved ledger; detailed balance check.
 - Dynamic signal delay (backlog item 4) — gate for any gravity language.
 - Internal-observer agreement test (user-approved alongside god's-eye view).

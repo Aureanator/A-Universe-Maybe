@@ -16,6 +16,11 @@ vetoed proposal counts toward the density rho:
   coordinate by a fixed generator: a verified bijection whose cycle decomposition is
   the object's internal CLOCK SPECTRUM, with phase = index within the current cycle.
   Ontology: ``do-undo-churn`` -- every step is a real event.
+* :class:`DriverC` -- free space (v1).  Move set = label moves UNION Pachner 2<->3
+  relinkings under the SAME relational acceptance as DriverA(relational): the region's
+  canonical gauge-invariant state must be unchanged.  The entailment can now lay the
+  adjacency it travels on: connectivity is dynamical, boundary stays frozen.
+  Ontology: ``counterfactual-veto``.
 
 WHY sigma LIVES ON THE RAW SLICE, NOT ON ORBITS (the canonicalization trap, PHYSICS_
 NOTES §7.1): right-multiplication does not commute with conjugation, so "multiply then
@@ -38,7 +43,9 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Sequence, Tuple
 
 from .complex import SimplicialComplex
-from .moves import Move, apply_move, propose_edge_move, revert_move
+from .moves import (Move, apply_move, apply_pachner_2_3, apply_pachner_3_2,
+                    find_pachner_2_3_sites, find_pachner_3_2_sites,
+                    propose_edge_move, revert_move)
 from .region import Region
 
 __all__ = [
@@ -46,6 +53,7 @@ __all__ = [
     "DriverRecord",
     "DriverA",
     "DriverB",
+    "DriverC",
     "odometer_state",
     "conjugate_triple",
     "canonical_orbit_of_triple",
@@ -143,6 +151,97 @@ class DriverA(DynamicsDriver):
     def reversible(self) -> bool:
         # accepted moves are individually invertible, but the MAP on states is not
         # (randomness discards counterfactuals): declared non-invertible.
+        return False
+
+
+# --------------------------------------------------------------------------- #
+# Driver C -- free space: relational acceptance over label moves UNION relinking
+# --------------------------------------------------------------------------- #
+class DriverC(DynamicsDriver):
+    """Free-space driver (v1): the track itself becomes dynamical.
+
+    Proposes, with declared mixtures, either an elementary relabelling ``A_e -> A_e g``
+    or a Pachner 2<->3 relinking (new-edge label for 2-3 drawn uniformly: a genuine
+    internal degree of freedom created by the move).  Acceptance is IDENTICAL to
+    DriverA(relational): the whole-complex region's ``gauge_invariant_state()`` must be
+    unchanged after the applied move; otherwise revert exactly.
+
+    v1 SCOPE (deliberate): whole-complex regions only -- a closed ball whose boundary
+    sphere is frozen.  The observation region is REBUILT from the current tetrahedra on
+    every step because relinking invalidates any stored tet set; subregion boundaries
+    that survive relinking are future work.  Site pools are recomputed per proposal:
+    availability of each Pachner direction changes with the triangulation, and proposals
+    are uniform over currently legal sites.
+
+    Why acceptance of interior relinkings is expected (not assumed): an interior 2-3/3-2
+    preserves boundary combinatorics and touches no surface edge label, so transported
+    boundary loops -- the entirety of the observation -- are unchanged.  Tests pin this;
+    any veto of a purely-interior relinking means the observation depends on bulk
+    triangulation and that finding must be documented, not swept.
+    """
+
+    def __init__(
+        self,
+        cx: SimplicialComplex,
+        rng_seed: int = 0,
+        pachner_share: float = 0.5,
+        new_label_uniform: bool = True,
+    ):
+        if not 0.0 <= pachner_share <= 1.0:
+            raise ValueError("pachner_share must lie in [0, 1]")
+        self.cx = cx
+        self.rng = random.Random(rng_seed)
+        self.pachner_share = float(pachner_share)
+        self.new_label_uniform = new_label_uniform
+        self.step_index = 0
+        self.last_kind = None  # "label" | "pachner23" | "pachner32" (diagnostic only)
+
+    def _observe(self):
+        # Rebuild from CURRENT tetrahedra: after relinking a stored Region is stale.
+        return Region(self.cx, self.cx.tetrahedra(), "whole").gauge_invariant_state()
+
+    def _propose_applied(self):
+        """Apply one proposal to cx and return (move, kind); caller commits or reverts."""
+        if self.rng.random() < self.pachner_share:
+            sites = [("pachner23", s) for s in find_pachner_2_3_sites(self.cx)]
+            sites += [("pachner32", e) for e in find_pachner_3_2_sites(self.cx)]
+            if sites:
+                kind, site = sites[self.rng.randrange(len(sites))]
+                if kind == "pachner23":
+                    (a, b, _face) = site
+                    label = None
+                    if self.new_label_uniform:
+                        elems = tuple(self.cx.group.elements)
+                        label = elems[self.rng.randrange(len(elems))]
+                    return apply_pachner_2_3(self.cx, a, b, new_edge_label=label), kind
+                return apply_pachner_3_2(self.cx, site), kind
+            # no legal relinking: fall through to a label move
+        move = propose_edge_move(self.cx, self.rng, class_closed=True)
+        apply_move(self.cx, move)
+        return move, "label"
+
+    def advance(self) -> DriverRecord:
+        before = self._observe()
+        move, kind = self._propose_applied()
+        if self._observe() == before:
+            fate, counts = "accepted", True
+        else:
+            revert_move(self.cx, move)
+            fate, counts = "vetoed", False
+        self.last_kind = kind
+        record = DriverRecord(
+            driver="C", fate=fate, counts_toward_rho=counts,
+            detail=f"{kind}: {move.describe(self.cx.group)}",
+            model="freepach-v1",
+        )
+        self.step_index += 1
+        return record
+
+    def event_ontology(self) -> str:
+        return "counterfactual-veto"
+
+    def reversible(self) -> bool:
+        # individual moves invert, but the stochastic map discards counterfactuals
         return False
 
 
