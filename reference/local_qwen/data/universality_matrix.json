@@ -1,0 +1,337 @@
+{
+  "groups": {
+    "A4": {
+      "abelian": false,
+      "burnside_prediction_handcomputed": 178,
+      "conjugacy_classes": [
+        1,
+        3,
+        4,
+        4
+      ],
+      "landscape": {
+        "action_histogram_physical": {
+          "0": 1,
+          "2": 18,
+          "3": 48,
+          "4": 111
+        },
+        "max_shortest_nonincreasing_vacuum_path": 3,
+        "nonvacuum_closed_plateaus": 0,
+        "physical_states": 178,
+        "plateaus": [
+          {
+            "action": 0,
+            "downhill_exit_states": 0,
+            "physical_states": 1
+          },
+          {
+            "action": 2,
+            "downhill_exit_states": 1,
+            "physical_states": 18
+          },
+          {
+            "action": 3,
+            "downhill_exit_states": 18,
+            "physical_states": 48
+          },
+          {
+            "action": 4,
+            "downhill_exit_states": 66,
+            "physical_states": 111
+          }
+        ],
+        "proposals_enumerated": 114048,
+        "raw_states": 1728,
+        "states_with_nonincreasing_vacuum_path": 178
+      },
+      "little_group_census": {
+        "cyclic(order 3)": 26,
+        "noncyclic(order 4)": 21,
+        "trivial(order 1)": 130,
+        "whole group(order 12)": 1
+      },
+      "little_group_census_matches_pinned_A4": true,
+      "orbits_G3_bruteforce": 178,
+      "orbits_G3_burnside": 178,
+      "order": 12
+    },
+    "D4": {
+      "abelian": false,
+      "burnside_prediction_handcomputed": 176,
+      "conjugacy_classes": [
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "landscape": {
+        "action_histogram_physical": {
+          "0": 1,
+          "2": 24,
+          "3": 60,
+          "4": 91
+        },
+        "max_shortest_nonincreasing_vacuum_path": 3,
+        "nonvacuum_closed_plateaus": 0,
+        "physical_states": 176,
+        "plateaus": [
+          {
+            "action": 0,
+            "downhill_exit_states": 0,
+            "physical_states": 1
+          },
+          {
+            "action": 2,
+            "downhill_exit_states": 1,
+            "physical_states": 24
+          },
+          {
+            "action": 3,
+            "downhill_exit_states": 24,
+            "physical_states": 60
+          },
+          {
+            "action": 4,
+            "downhill_exit_states": 84,
+            "physical_states": 91
+          }
+        ],
+        "proposals_enumerated": 21504,
+        "raw_states": 512,
+        "states_with_nonincreasing_vacuum_path": 176
+      },
+      "little_group_census": {
+        "cyclic(order 2)": 84,
+        "cyclic(order 4)": 28,
+        "noncyclic(order 4)": 56,
+        "whole group(order 8)": 8
+      },
+      "orbits_G3_bruteforce": 176,
+      "orbits_G3_burnside": 176,
+      "order": 8
+    },
+    "Q8": {
+      "abelian": false,
+      "burnside_prediction_handcomputed": 176,
+      "conjugacy_classes": [
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "landscape": {
+        "action_histogram_physical": {
+          "0": 1,
+          "2": 24,
+          "3": 60,
+          "4": 91
+        },
+        "max_shortest_nonincreasing_vacuum_path": 3,
+        "nonvacuum_closed_plateaus": 0,
+        "physical_states": 176,
+        "plateaus": [
+          {
+            "action": 0,
+            "downhill_exit_states": 0,
+            "physical_states": 1
+          },
+          {
+            "action": 2,
+            "downhill_exit_states": 1,
+            "physical_states": 24
+          },
+          {
+            "action": 3,
+            "downhill_exit_states": 24,
+            "physical_states": 60
+          },
+          {
+            "action": 4,
+            "downhill_exit_states": 84,
+            "physical_states": 91
+          }
+        ],
+        "proposals_enumerated": 21504,
+        "raw_states": 512,
+        "states_with_nonincreasing_vacuum_path": 176
+      },
+      "little_group_census": {
+        "cyclic(order 2)": 84,
+        "cyclic(order 4)": 84,
+        "whole group(order 8)": 8
+      },
+      "orbits_G3_bruteforce": 176,
+      "orbits_G3_burnside": 176,
+      "order": 8
+    },
+    "S3": {
+      "abelian": false,
+      "burnside_prediction_handcomputed": 49,
+      "conjugacy_classes": [
+        1,
+        2,
+        3
+      ],
+      "landscape": {
+        "action_histogram_physical": {
+          "0": 1,
+          "2": 12,
+          "3": 16,
+          "4": 20
+        },
+        "max_shortest_nonincreasing_vacuum_path": 3,
+        "nonvacuum_closed_plateaus": 0,
+        "physical_states": 49,
+        "plateaus": [
+          {
+            "action": 0,
+            "downhill_exit_states": 0,
+            "physical_states": 1
+          },
+          {
+            "action": 2,
+            "downhill_exit_states": 1,
+            "physical_states": 12
+          },
+          {
+            "action": 3,
+            "downhill_exit_states": 12,
+            "physical_states": 16
+          },
+          {
+            "action": 4,
+            "downhill_exit_states": 28,
+            "physical_states": 20
+          }
+        ],
+        "proposals_enumerated": 6480,
+        "raw_states": 216,
+        "states_with_nonincreasing_vacuum_path": 49
+      },
+      "little_group_census": {
+        "cyclic(order 2)": 7,
+        "cyclic(order 3)": 13,
+        "trivial(order 1)": 28,
+        "whole group(order 6)": 1
+      },
+      "orbits_G3_bruteforce": 49,
+      "orbits_G3_burnside": 49,
+      "order": 6
+    },
+    "Z2": {
+      "abelian": true,
+      "burnside_prediction_handcomputed": 8,
+      "conjugacy_classes": [
+        1,
+        1
+      ],
+      "landscape": {
+        "action_histogram_physical": {
+          "0": 1,
+          "2": 6,
+          "4": 1
+        },
+        "max_shortest_nonincreasing_vacuum_path": 2,
+        "nonvacuum_closed_plateaus": 0,
+        "physical_states": 8,
+        "plateaus": [
+          {
+            "action": 0,
+            "downhill_exit_states": 0,
+            "physical_states": 1
+          },
+          {
+            "action": 2,
+            "downhill_exit_states": 1,
+            "physical_states": 6
+          },
+          {
+            "action": 4,
+            "downhill_exit_states": 6,
+            "physical_states": 1
+          }
+        ],
+        "proposals_enumerated": 48,
+        "raw_states": 8,
+        "states_with_nonincreasing_vacuum_path": 8
+      },
+      "little_group_census": {
+        "whole group(order 2)": 8
+      },
+      "orbits_G3_bruteforce": 8,
+      "orbits_G3_burnside": 8,
+      "order": 2
+    },
+    "Z3": {
+      "abelian": true,
+      "burnside_prediction_handcomputed": 27,
+      "conjugacy_classes": [
+        1,
+        1,
+        1
+      ],
+      "landscape": {
+        "action_histogram_physical": {
+          "0": 1,
+          "2": 12,
+          "3": 8,
+          "4": 6
+        },
+        "max_shortest_nonincreasing_vacuum_path": 2,
+        "nonvacuum_closed_plateaus": 0,
+        "physical_states": 27,
+        "plateaus": [
+          {
+            "action": 0,
+            "downhill_exit_states": 0,
+            "physical_states": 1
+          },
+          {
+            "action": 2,
+            "downhill_exit_states": 1,
+            "physical_states": 12
+          },
+          {
+            "action": 3,
+            "downhill_exit_states": 12,
+            "physical_states": 4
+          },
+          {
+            "action": 3,
+            "downhill_exit_states": 12,
+            "physical_states": 4
+          },
+          {
+            "action": 4,
+            "downhill_exit_states": 20,
+            "physical_states": 6
+          }
+        ],
+        "proposals_enumerated": 324,
+        "raw_states": 27,
+        "states_with_nonincreasing_vacuum_path": 27
+      },
+      "little_group_census": {
+        "whole group(order 3)": 27
+      },
+      "orbits_G3_bruteforce": 27,
+      "orbits_G3_burnside": 27,
+      "order": 3
+    }
+  },
+  "provenance": {
+    "model": "local Qwen (LM Studio), universality matrix session",
+    "nature": "exploratory cross-group search; Burnside values are analytic cross-checks computed by hand before running code",
+    "related_claims": [
+      "CLAIMS row 26 (P8): A4/Z3 zero closed nonvacuum basins"
+    ],
+    "script": "examples/universality_matrix.py"
+  },
+  "verdict": {
+    "closed_nonvacuum_basin_found_for": [],
+    "universality_within_tested_groups": "vacuum is the only closed equal-action basin for every tested group"
+  }
+}
