@@ -348,10 +348,132 @@ class AlternatingGroup4(Group):
         return "".join("(" + " ".join(str(c + 1) for c in cycle) + ")" for cycle in cycles)
 
 
+class TableGroup(Group):
+    """Finite group defined by an explicit element list and a product rule.
+
+    Used for the universality matrix (S3, Q8, D4). Axioms are VERIFIED at construction
+    (closure, associativity, identity, inverses) -- small groups only; a broken table
+    must fail loudly where it is built, not silently inside physics code.
+    """
+
+    def __init__(self, name: str, elements, product, generators):
+        elems = tuple(elements)
+        index = {e: i for i, e in enumerate(elems)}
+        n = len(elems)
+        table = [[index[product(a, b)] for b in elems] for a in elems]
+        # find identity: two-sided
+        ident = None
+        for i, e in enumerate(elems):
+            if all(table[i][j] == j for j in range(n)) and all(table[j][i] == j for j in range(n)):
+                ident = i
+                break
+        if ident is None:
+            raise ValueError(f"{name}: no two-sided identity in table")
+        for i in range(n):  # inverses exist (finite monoid with cancellation follows from assoc+identity)
+            if not any(table[i][j] == ident for j in range(n)):
+                raise ValueError(f"{name}: element {elems[i]!r} has no right inverse")
+        for i, j, k in itertools.product(range(n), repeat=3):  # associativity
+            if table[table[i][j]][k] != table[i][table[j][k]]:
+                raise ValueError(f"{name}: associativity fails at "
+                                 f"{elems[i]!r},{elems[j]!r},{elems[k]!r}")
+        self.name = name
+        self._elements = elems
+        self._index = index
+        self._table = table
+        self._ident_index = ident
+        self._generators = tuple(generators)
+        # the generator SET must generate the whole group (single BFS over all gens
+        # and their inverses -- each individual generator need not)
+        gen_steps = []
+        for g in self._generators:
+            gi = index[g]
+            inv_gi = next(j for j in range(n) if table[gi][j] == ident)
+            gen_steps.extend([gi, inv_gi])
+        seen = {ident}
+        frontier = [ident]
+        while frontier:
+            cur = frontier.pop()
+            for step in gen_steps:
+                nxt = table[cur][step]
+                if nxt not in seen:
+                    seen.add(nxt)
+                    frontier.append(nxt)
+        if len(seen) != n:
+            raise ValueError(f"{name}: generator set {self._generators} generates "
+                             f"only {len(seen)} of {n}")
+
+    @property
+    def elements(self) -> tuple:
+        return self._elements
+
+    def identity(self):
+        return self._elements[self._ident_index]
+
+    def multiply(self, a, b):
+        return self._elements[self._table[self._index[a]][self._index[b]]]
+
+    def inverse(self, a):
+        i = self._index[a]
+        return self._elements[next(j for j in range(len(self._elements))
+                                  if self._table[i][j] == self._ident_index)]
+
+    def generators(self) -> tuple:
+        return self._generators
+
+    def format(self, a) -> str:  # pragma: no cover - cosmetic
+        return str(a)
+
+
+def symmetric_group_3() -> TableGroup:
+    """S3 = permutations of three objects (order 6; smallest non-abelian group)."""
+    elems = tuple(itertools.permutations(range(3)))
+    return TableGroup("S3", elems, perm_multiply,
+                      generators=((1, 0, 2), (1, 2, 0)))
+
+
+def quaternion_group_8() -> TableGroup:
+    """Q8 = {+-1, +-i, +-j, +-k} as (sign, unit) with unit in {1,i,j,k}."""
+    units = (0, 1, 2, 3)  # 1, i, j, k
+    elems = tuple((s, u) for s in (1, -1) for u in units)
+
+    def product(a, b):
+        sa, ua = a
+        sb, ub = b
+        sign = sa * sb
+        if ua == 0:
+            return (sign, ub)
+        if ub == 0:
+            return (sign, ua)
+        if ua == ub:
+            return (-sign, 0)          # i^2 = j^2 = k^2 = -1
+        cyclic = {(1, 2): 3, (2, 3): 1, (3, 1): 2}   # ij=k, jk=i, ki=j
+        if cyclic.get((ua, ub)) is not None:
+            return (sign, cyclic[(ua, ub)])
+        return (-sign, cyclic[(ub, ua)])             # ji=-k etc.
+
+    return TableGroup("Q8", elems, product, generators=((1, 1), (1, 2)))  # i, j
+
+
+def dihedral_group_4() -> TableGroup:
+    """D4 = symmetries of the square: r^p s^eps with s r = r^-1 s (order 8)."""
+    elems = tuple((p, eps) for p in range(4) for eps in (0, 1))
+
+    def product(a, b):
+        (p, eps), (q, delta) = a, b
+        if eps == 0:
+            return ((p + q) % 4, delta)
+        return ((p - q) % 4, 1 - delta)
+
+    return TableGroup("D4", elems, product, generators=((1, 0), (0, 1)))  # r, s
+
+
 _REGISTRY = {
     "Z2": lambda: CyclicGroup(2),
     "Z3": lambda: CyclicGroup(3),
     "Z4": lambda: CyclicGroup(4),
+    "S3": symmetric_group_3,
+    "D4": dihedral_group_4,
+    "Q8": quaternion_group_8,
     "A4": AlternatingGroup4,
 }
 

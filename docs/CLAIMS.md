@@ -423,3 +423,18 @@ Evidence: `src/constraintnet/defect_perturb.py`, `tests/test_defect_perturb.py` 
 `examples/p33_effective_local.py`, `reference/local_qwen/data/p33_effective.json`; protocol
 `docs/P33_VIRTUAL_PAIRS.md` (commits b8e462f, a836e7d); Astra records
 `reference/astra_session/data/p33_virtual_pairs.json`. Diary E063.
+
+**57 — MEASURED, exploratory (local Qwen, universality matrix):** the tetrahedron-seed landscape
+result of row 26 ("vacuum is the only closed equal-action basin under action H with exact
+edge-multiplier dynamics") holds for every group in {Z2, Z3, S3, D4, Q8, A4}: zero nonvacuum closed
+plateaus across all six (physical state counts 8/27/49/176/176/178). Orbit decomposition of G^3 under
+residual global conjugation agrees with Burnside's lemma for every group against values hand-computed
+before execution; the A4 little-group census reproduces the pinned histogram (130 trivial / 26 Z3 /
+21 V4 / 1 whole-group). Q8 — non-abelian with center {±1} and three distinct order-4 centralizers —
+traps no basin, so a large center is not sufficient to protect one under this action. *Scope:* six
+small groups, single action H, tetrahedron seed, declared multiplier dynamics; exploratory search,
+NOT a theorem for arbitrary finite groups or other actions; strengthens but does not universalize
+row 26. New machinery: `TableGroup` verifies closure/associativity/identity/inverses/generation at
+construction (a broken table fails where it is built). *Evidence:* `examples/universality_matrix.py`,
+`reference/local_qwen/data/universality_matrix.json`, `src/constraintnet/groups.py`,
+`tests/test_properties.py::test_kernel_orbit_quotient_matches_burnside`. Diary E064.

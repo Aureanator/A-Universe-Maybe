@@ -172,10 +172,15 @@ has already earned its keep twice this session (P4 miss caught a real bug narrat
 showed the demand "returns 3" was itself naive).
 
 ### Item 16 — No universality matrix (S₃, Q₈, D₄)
-**Verdict: ACCEPTED, queued.** Kernel is group-generic by construction (`Group` interface; Z₃ and
-A₄ arms exist); the S₃/Q₈/D₄ sweep mapping each physical feature to the group property that
-produces it (center, commutator subgroup, class structure) is a medium task with no current
-blocker. No universality claim is made beyond "group-generic architecture".
+**Verdict: FIXED (E064, local Qwen).** S3/Q8/D4 registered via axiom-verified `TableGroup`; sweep
+run on the tetrahedron seed across {Z2,Z3,S3,D4,Q8,A4}: zero closed nonvacuum plateaus for every
+group, orbit counts == Burnside (values hand-computed before execution), A4 little-group census
+reproduces the pinned 130/26/21/1. Row 26's vacuum-only-basin result now holds within the tested
+set including non-abelian groups with centers — a large center (Q8) is not sufficient to protect a
+basin under action H. Feature-to-group-property mapping beyond this (commutator subgroups etc.)
+remains open if future results need it.
+Evidence: `examples/universality_matrix.py`, `reference/local_qwen/data/universality_matrix.json`,
+CLAIMS row 57.
 
 ### Item 17 — Unpositioned against literature
 **Verdict: FIXED.** `docs/RELATED_WORK.md` maps every module to lattice gauge theory,
@@ -196,7 +201,7 @@ no-signalling).
 | **F5** Pachner orphan face + reverse-revert raise | FIXED + hardened | Drop uncarried face; revert via `move.added`; Astra guards: link conditions, `_realized`/`_tet_orders` snapshot-restore, exact-snapshot undo test |
 | **F6** cavity blindness in canonical state | FIXED (Astra caught a bug IN the first fix — shell-swapping sort) | Per-component independent canonicalization in min-vertex order; `test_curvature_cannot_swap_surface_components`; completeness claim domain stated exactly |
 | **F7** Driver B not gauge-equivariant | ACCEPTED as labelling | Cycle spectrum labelled SCHEDULER DIAGNOSTICS in class docstring; physics claims from sigma must be orbit-canonicalised |
-| **F8** word-cost gauge dependence; property-suite coverage | PARTIALLY ADDRESSED | Class-closed arm cost = 1 per nontrivial relabelling (conjugation-invariant); legacy keeps word metric. Property-based invariant suite + scaling study remain in queue |
+| **F8** word-cost gauge dependence; property-suite coverage | PARTIALLY ADDRESSED | Class-closed arm cost = 1 per nontrivial relabelling (conjugation-invariant); legacy keeps word metric. Property-based invariant suite LANDED E064 (`tests/test_properties.py`, 73 seeded tests across six groups); scaling study remains in queue |
 | P7 design note | ADOPTED | Start-configuration control required alongside λ sweep (near-flat start is an independent forcing reason) — recorded in `PREDICTIONS.md` before any run |
 
 ---
@@ -218,8 +223,8 @@ no-signalling).
 - Weighted dynamics + conserved ledger; detailed balance check.
 - Dynamic signal delay (backlog item 4) — gate for any gravity language.
 - Internal-observer agreement test (user-approved alongside god's-eye view).
-- Universality matrix S₃/Q₈/D₄.
+- ~~Universality matrix S₃/Q₈/D₄~~ DONE E064 (CLAIMS row 57; zero closed nonvacuum basins, all six groups).
 - Heat-kernel extrapolation or larger meshes for absolute d_s.
 - Arrow-of-time: Lyapunov candidate or formal renaming decision (open problem, named).
-- F8 remainder: property-based invariant suite (hypothesis-style over random complexes/moves) + scaling study.
+- F8 remainder: ~~property-based invariant suite~~ DONE E064 (`tests/test_properties.py`); scaling study remains.
 - Particle program gates 1–4 (`docs/PARTICLE_PROGRAM.md`): unpinned persistent-structure search with negative controls; fusion/fission trajectory replay; bound-composite barrier; chemistry. Astra's audit queue items 1–4 closed this round; gate 2 onward is next.
