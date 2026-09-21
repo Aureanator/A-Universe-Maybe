@@ -6,6 +6,17 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- Universality matrix + property suite (local Qwen, diary E064): generic `TableGroup` with axioms
+  verified at construction; S3/Q8/D4 registered alongside Z2/Z3/A4. Tetrahedron-seed landscape:
+  zero closed nonvacuum plateaus for ALL six groups (physical states 8/27/49/176/176/178;
+  brute-force orbits == Burnside against hand-computed values; A4 little-group census reproduces
+  pinned 130/26/21/1) — CLAIMS row 26's vacuum-only-basin result survives non-abelian generalization
+  within the tested set (row 57). New `tests/test_properties.py` (73 seeded tests: gauge invariance,
+  DriverA relational conservation recomputed from the complex, cross-group Pachner round-trips,
+  oriented-edge consistency, quotient==Burnside); first P2 draft failing on interior-face churn
+  confirmed the designed boundary-only conservation asymmetry. Triage item 16 closed; F8 remainder
+  partially closed (scaling study still queued). `examples/universality_matrix.py`,
+  `reference/local_qwen/data/universality_matrix.json`. Suite green 454.
 - P33 local recreation (local Qwen): independent from-scratch implementation of the registered
   virtual-pair perturbation protocol (`docs/P33_VIRTUAL_PAIRS.md`) without reading Astra's
   uncommitted sibling module — `src/constraintnet/defect_perturb.py`,

@@ -1215,3 +1215,63 @@ postulate for LEADING hopping only — no fermions, no binding, no derivation fr
 *Evidence:* `src/constraintnet/defect_perturb.py`, `tests/test_defect_perturb.py` (9 tests),
 `examples/p33_effective_local.py`, `reference/local_qwen/data/p33_effective.json`; PREDICTIONS
 P33 outcome; CLAIMS row 56.
+
+### E064. Universality matrix across six groups + property suite: the vacuum-only-basin result survives non-abelian generalization (MEASURED, exploratory; 2026-09-21, local Qwen)
+
+**Context.** Two standing triage items closed in one unit. Item 16: no universality matrix —
+every landscape/persistence result was A4/Z3-only, so "group-generic architecture" had never been
+exercised past two groups. F8 remainder: property-based invariant suite (referee R3 complaint that
+the green-test count exceeds coverage). The specific target was CLAIMS row 26: on the tetrahedron
+seed with curvature action H and exact edge-multiplier dynamics, vacuum is the ONLY closed
+equal-action basin (measured exhaustively for A4; Z3 arm ≤3 moves). If that fact is A4-specific,
+the "no classical particles from sector labels alone" story narrows; if it survives S3/Q8/D4/Z2,
+it strengthens within the tested class.
+
+**Method.** New groups via a generic `TableGroup` (explicit element list + product rule) that
+VERIFIES AXIOMS AT CONSTRUCTION: two-sided identity search, right inverses, full associativity
+triple loop, and generator-set coverage by BFS — a broken table fails loudly where it is built.
+S3 as permutations of 3; Q8 as (sign, unit) pairs with the i/j/k rules; D4 as r^p s^eps with
+s r = r^-1 s. Probe (`examples/universality_matrix.py`): for G in {Z2,Z3,S3,D4,Q8,A4}, orbit
+decomposition of G^3 under residual global conjugation, cross-checked against Burnside
+(1/|G|)·Σ_g |C_G(g)|³ with values hand-computed BEFORE running code (8/27/49/176/176/178), plus
+the little-group census and the exact landscape (`constraintnet.landscape`) on the tetrahedron
+boundary. Recorded as an EXPLORATORY search, not a pre-registration; the Burnside numbers are
+analytic cross-checks of the orbit code, not physics predictions.
+
+**Result 1 — universality holds within the tested set.** Zero closed nonvacuum plateaus for every
+group: Z2 (8 physical states), Z3 (27), S3 (49), D4 (176), Q8 (176), A4 (178). Brute-force orbit
+counts equal Burnside everywhere; the A4 little-group census reproduces the pinned histogram
+(130 trivial / 26 Z3 / 21 V4 / 1 A4). Notably Q8 — with its large center {±1} and three distinct
+order-4 centralizers — traps no basin either. Scope limits stated: six small groups, one action H,
+tetrahedron seed, declared multiplier dynamics; not a theorem for arbitrary finite groups.
+
+**Result 2 — property suite (73 seeded tests, `tests/test_properties.py`).** P1 vertex gauge
+preserves Region.gauge_invariant_state and face-holonomy classes while moving raw labels; P2
+DriverA(relational) conserves the region's gauge-invariant state AND boundary-surface face classes,
+recomputed from the complex every step (never driver bookkeeping); P3 Pachner 2-3 / 3-2 apply+revert
+exact snapshots across all six groups with randomized labels; P4 oriented-edge inverse consistency
+survives random relabeling and gauge transformation; P5 kernel orbit quotient == Burnside for every
+registered group including the new TableGroups.
+
+**Harvest — a test failure that was physics (design confirmation).** The first version of P2 asserted
+conservation of ALL face-holonomy classes under DriverA(relational) and failed on every non-abelian
+seed: accepted moves churn INTERIOR face curvature while preserving exactly the boundary-surface
+observables. That is not a kernel bug — it is the designed asymmetry (bulk curvature invisible to a
+region's boundary observables churns freely; only boundary data is the conserved quantity), and the
+gauge_invariant_state assertion itself never failed once across 6 groups × 3 seeds × 60 steps. The
+test was corrected to assert boundary-surface conservation with an explicit comment that interior
+churn is expected. Recorded because a naive "everything observable is conserved" reading of the
+relational model is WRONG in exactly this direction, and future tests must state which surface they
+observe.
+
+**Development bug (fixed before commit).** The TableGroup generator-coverage check initially BFS'd
+each generator individually and demanded each generate the whole group alone — S3's transposition
+legitimately generates only 2 of 6. Corrected to set semantics (single BFS over all generators and
+inverses). Same class of error as E063: a check that passes/fails on friendly inputs only.
+
+**Status.** MEASURED within the tested groups; strengthens row 26's scope from {A4, Z3} to six
+groups including non-abelian ones with centers and dihedral structure. No new physics claimed; no
+claim about arbitrary finite groups or other actions. Suite green: 454 tests.
+*Evidence:* `src/constraintnet/groups.py` (TableGroup + S3/Q8/D4), `examples/universality_matrix.py`,
+`reference/local_qwen/data/universality_matrix.json`, `tests/test_properties.py`; CLAIMS row 57;
+triage item 16 closed, F8 remainder partially closed (scaling study still queued).
