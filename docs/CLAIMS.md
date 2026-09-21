@@ -454,3 +454,25 @@ rates must not be compared to single-tetrahedron baselines. All F8 scaling asser
 invariance at n=3, conservation recomputed-from-complex over 500×2 steps per cell, Pachner exact
 round-trips at n=3, kernel quotient == Burnside for k = 1..4 free edges. *Evidence:*
 `examples/f8_scaling_study.py`, `reference/local_qwen/data/f8_scaling.json`. Diary E065.
+
+**59 — MEASURED (local Qwen, E066 free-space v1; DriverC characterization + tracking-methodology):**
+(a) STRUCTURAL (pinned by tests): Pachner 2<->3 relinkings integrate cleanly into relational dynamics
+-- interior relinkings are never vetoed (boundary observables cannot see them), boundary sphere and
+canonical state stay exactly frozen across mixed label+relinking runs, Euler characteristic V-E+F-T=1
+is preserved step-by-step, and NO-TELEPORTATION holds: surviving faces keep their holonomy under
+relinking; curvature changes only on move-added/move-removed faces or faces containing the changed
+edge. (b) NEW PHYSICS CHANNEL (exploratory measurement, A4 n=3, 300 steps x 3 seeds vs label-only
+control): relocation of a seeded curvature cluster acquires a relinking-attributed component (~2/3 of
+tracked support changes in DriverC runs; first displacement at steps {4,3,1} vs {34,20,1}) -- motion by
+having the track relaid under the object, without label change. (c) NEGATIVE/METHODOLOGICAL: under
+whole-complex relational acceptance nothing confines bulk curvature creation -- vacuum energy grows
+6 -> ~230 (A) / ~370 (C) curved faces at matched steps (relinking heats ~1.6x faster; triangulation
+inflates 162 -> ~250 tets, no stationarity of the proposal scheme), and naive overlap-lineage
+"survival" is a METRIC FAILURE: tracked clusters end at 96-100% of global curvature (the tracker
+follows the heat). Persistence claims therefore require extent normalization against matched vacuum
+AND confinement beyond boundary freezing (Gauss completion or energetic acceptance) -- free space v1
+provides neither, by design. *Scope:* A4 n=3 balls, whole-complex regions, uniform site-pool
+proposals; exploratory for (b), structural pins for (a). *Evidence:* `src/constraintnet/drivers.py`,
+`tests/test_driverC.py` (8 tests), `examples/free_space_tracking.py`,
+`reference/local_qwen/data/free_space_tracking.json`, figure
+`reference/local_qwen/figures/e066_free_space_accretion.png`. Diary E066.
