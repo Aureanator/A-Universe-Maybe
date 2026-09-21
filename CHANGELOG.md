@@ -6,6 +6,16 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- Hard Gauss completion v1 (local Qwen, diary E067): explicit matter-coupled classical Z2 phase space
+  (`src/constraintnet/gauss.py`, `DriverG` in drivers.py) satisfying HANDOFF correction 2 — charges are
+  DEFINED as q_v := div(E)_v over electric flux bits, so the Gauss constraint is SOLVED not penalized.
+  By construction: charge parity identically even, isolated charge unconfigurable (charges are string
+  endpoints), boundary vertices absorb charge as an exterior reservoir (the open-boundary channel P32-3).
+  `tests/test_gauss.py` (9 tests). `examples/gauss_confinement.py` measures a CONFINEMENT SCALE: mean live
+  charge count falls monotonically in string tension beta_E (30.3→1.5 across 0..8), bound-pair fraction
+  rises 0→0.75; and the magnetic vacuum stays COLD (#curved faces max = 0) at every beta_E — E066's runaway
+  heating was an artifact of RELATIONAL acceptance, not intrinsic. CLAIMS row 60;
+  figure `reference/local_qwen/figures/e067_gauss_confinement.png`.
 - Free space v1 — DriverC (local Qwen, diary E066): Pachner 2<->3 relinkings added to the relational
   move set (`src/constraintnet/drivers.py::DriverC`, model `freepach-v1`); entailment can now lay the
   adjacency it travels on. `tests/test_driverC.py` (8 tests) pin: interior relinkings never vetoed,

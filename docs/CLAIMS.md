@@ -476,3 +476,21 @@ proposals; exploratory for (b), structural pins for (a). *Evidence:* `src/constr
 `tests/test_driverC.py` (8 tests), `examples/free_space_tracking.py`,
 `reference/local_qwen/data/free_space_tracking.json`, figure
 `reference/local_qwen/figures/e066_free_space_accretion.png`. Diary E066.
+
+**60 - MEASURED (local Qwen, E067 hard-Gauss completion v1; classical Z2 phase space):** an explicit
+matter-coupled Gauss construction satisfying HANDOFF correction 2's demand: charges are DEFINED as q_v
+:= div(E)_v over electric flux bits E_e on the complex edges, so the constraint is SOLVED not penalized.
+Structural consequences verified (9 tests + asserted every step): total charge parity identically even,
+isolated charge unconfigurable (charges are string endpoints), loaded strings carry charge only at their
+two ends, boundary vertices absorb charge as an exterior reservoir (the open-boundary channel P32-3 asked
+for). Measurement (Z2 n=3, 600 steps x 4 seeds; priors G1-G3 stated before running): (G2) the magnetic
+vacuum stays COLD (#curved faces max = 0) at every string tension scanned -- E066's runaway heating was an
+artifact of RELATIONAL acceptance, not intrinsic; energy-based Metropolis acceptance removes it. (G3) a
+CONFINEMENT SCALE: mean live charge count falls monotonically in beta_E (energy per flux edge) 30.3 ->
+26.4 -> 17.8 -> 3.9 -> 1.5 across beta_E = 0..8, bound-pair fraction rises 0 -> 0.75 while the deconfined
+multi-charge phase vanishes; at high tension a seeded interior pair persists as a bound string. *Scope:*
+classical Z2 (connection + flux bits), NOT quantum amplitudes, NOT nonabelian, no magnetic-electric sector
+coupling yet -- this is the completion v1 HANDOFF required, not mobile matter under a full local Gauss law
+and not a claim of nature's confinement. *Evidence:* `src/constraintnet/gauss.py`, `tests/test_gauss.py`,
+`examples/gauss_confinement.py`, `reference/local_qwen/data/gauss_completion.json`, figure
+`reference/local_qwen/figures/e067_gauss_confinement.png`. Diary E067.
