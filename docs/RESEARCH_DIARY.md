@@ -1415,3 +1415,53 @@ electric-string sectors (so a defect is BOTH - a dyon) are the named next steps.
 `tests/test_gauss.py` (9 tests), `examples/gauss_confinement.py`,
 `reference/local_qwen/data/gauss_completion.json`, figure
 `reference/local_qwen/figures/e067_gauss_confinement.png`; CLAIMS row 60; triage hard-Gauss item updated.
+
+### E068. Independent extent-based persistence criterion: validated against E066, and two honest findings about the metric itself (MEASURED + METHODOLOGY; one prior refuted) (2026-09-21, local Qwen)
+
+**Context.** E066 exposed that naive overlap-lineage survival is vacuous under unconstrained
+acceptance (tracker follows the heat; clusters end at ~100% of global curvature). It promised a fix:
+extent normalization against matched vacuum. This unit builds that criterion as an INDEPENDENT test
+that consults NO charge signature -- deliberately separate from the Milestone-4 charge-signature
+`is_persistent` in persistence.py (which stays untouched and load-bearing). If two independent notions
+of "object" agree, that is evidence; if not, which one is load-bearing becomes the finding.
+
+**Safety note (methodological).** Before writing I overwrote an existing tracked file `persistence.py`
+with a new module of the same name -- caught immediately via git (348 lines of Milestone-4 work),
+restored with `git checkout HEAD --`, then verified all three target filenames absent before writing.
+Lesson recorded: CHECK EXISTENCE before creating any file; the handoff warned about exactly this class
+of duplicate-work error.
+
+**Criterion (`src/constraintnet/persistence_metrics.py`, pure, no RNG; 14 tests).** extent_stability
+|S(t)|/|S(0)|; lifetime_until band [1/k,k]; locality median tracked/global; vacuum_noise mean spurious
+components in matched vacuum; signal_to_noise (mean support minus vacuum level)/vacuum. Verdict =
+survived-horizon AND localized (locality gate), with a second SNR gate reported side by side.
+
+**Experiment (`examples/e068_extent_vs_charge.py`, Z2 n=3, 500 steps x 3 seeds; priors stated before
+running).** Two regimes, each with a matched no-seed vacuum control:
+- **R1 relational-curvature (DriverA(relational)): prior NOT persistent. CONFIRMED.** lifetime 38,
+  locality 0.881 (became the background), vacuum level 118 curved faces, SNR -0.20 -> rejected by BOTH
+  gates. The criterion reproduces E066's verdict WITHOUT consulting charge -- independent validation.
+- **R2 gauss-confined-pair (DriverG high beta_E): prior INDEPENDENTLY PERSISTENT. REFUTED / INCONCLUSIVE.**
+  SNR 0.62, extent undefined at t=0 (averaged initial support collapsed). The pair does not sustain
+  trackable excess-over-vacuum structure.
+
+**Two findings about the metric itself (the real harvest).**
+1. **Locality alone misfires on a cold vacuum.** R2 locality = 0.667 in a regime where matched vacuum is
+   empty (level ~0): a LONE object trivially dominates global structure, so tracked/global -> 1 looks like
+   E066's "became the background" but is the opposite -- dominance, not dilution. Fix: the load-bearing
+   gate must be VACUUM-RELATIVE signal-to-noise (does the seed sustain what unseeded churn does not?),
+   with locality demoted to a reported diagnostic. Stated as a principle, not retrofitted to force R2 True.
+2. **Confinement is not persistence.** At high beta_E retracting a flux string LOWERS energy, so Metropolis
+   drives a pre-existing pair toward annihilation; Gauss protects charge NUMBER but nothing prevents the
+   pair meeting and vanishing. "Confined" (bounded separation) != "persistent" (survives). Matter needs a
+   charge-conjugation SELECTION rule preventing annihilation -- which neither Gauss nor string tension
+   supplies. Directly informs docs/ELECTRON_TARGET.md (why an electron must be stable, not merely confined).
+
+**Status.** Criterion delivered and independently validated on R1; R2 reported honestly as inconclusive
+(annihilation vs averaging-artifact not separated under this tracking) rather than tuned to a prior. No
+new physics claim beyond the metric + the confinement!=persistence observation. Figure omitted
+deliberately (budget); numbers table is decisive.
+
+*Evidence:* `src/constraintnet/persistence_metrics.py`, `tests/test_persistence_metrics.py` (14 tests),
+`examples/e068_extent_vs_charge.py`, `reference/local_qwen/data/e068_extent_persistence.json`; CLAIMS
+row 61; triage persistence-criteria item updated.
