@@ -6,6 +6,16 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- Independent extent-based persistence criterion (local Qwen, diary E068): `persistence_metrics.py` — pure,
+  charge-signature-free test of objecthood via extent stability + locality + matched-vacuum signal-to-noise
+  (14 tests). INDEPENDENT of Milestone-4 `is_persistent`. Validated on relational curvature (`examples/e068_extent_vs_charge.py`,
+  Z2 n=3, 500×3 seeds + matched vacuum): seeded lump rejected by both gates (lifetime 38, locality 0.88,
+  SNR −0.2) — reproduces E066's negative verdict without using charge. TWO metric findings: locality alone
+  misfires on a cold vacuum (lone object dominates → need vacuum-relative SNR); and CONFINEMENT ≠ PERSISTENCE
+  (a Gauss-confined pair at high β_E annihilates — retracting the string lowers energy; matter needs a
+  charge-conjugation selection rule). Confined-pair regime reported INCONCLUSIVE, not tuned to prior.
+  CLAIMS row 61. Safety note: an accidental same-name overwrite of `persistence.py` was caught via git and
+  restored before any harm.
 - Hard Gauss completion v1 (local Qwen, diary E067): explicit matter-coupled classical Z2 phase space
   (`src/constraintnet/gauss.py`, `DriverG` in drivers.py) satisfying HANDOFF correction 2 — charges are
   DEFINED as q_v := div(E)_v over electric flux bits, so the Gauss constraint is SOLVED not penalized.

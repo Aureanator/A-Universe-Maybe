@@ -98,6 +98,23 @@ class PersistenceVerdict:
         return self.survived_horizon and self.localized
 
 
+def signal_to_noise(support_series: Sequence[float], vacuum_level: float) -> float:
+    """Mean tracked support in EXCESS of the matched-vacuum structure level.
+
+    E068 finding: locality alone misfires. A lone object in a COLD vacuum has tracked/global
+    near 1 simply because global IS the object -- dominance, not dilution (E066's failure was
+    the opposite: tracked grew BECAUSE churned global grew, indistinguishable from spurious
+    structure). The load-bearing test is therefore signal-to-noise against matched vacuum:
+    does the seed sustain support that unseeded churn does NOT produce? SNR >> 1 with bounded
+    extent = object; SNR ~ 0 = the 'object' is just what the medium makes anyway.
+    """
+    if not support_series:
+        return 0.0
+    mean_support = sum(support_series) / len(support_series)
+    denom = max(1.0, float(vacuum_level))
+    return (mean_support - vacuum_level) / denom
+
+
 def evaluate(support_series, global_series, *, band=3.0, vacuum_components=None) -> PersistenceVerdict:
     """Assemble a verdict from raw trajectories (support = object size over time)."""
     stab = extent_stability(support_series)

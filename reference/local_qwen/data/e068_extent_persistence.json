@@ -1,0 +1,49 @@
+{
+  "config": {
+    "band": 3.0,
+    "n": 3,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "steps": 500
+  },
+  "provenance": {
+    "model": "local Qwen (LM Studio), E068 extent-based persistence criterion",
+    "nature": "extent-only criterion INDEPENDENT of charge-signature is_persistent; priors R1/R2 stated in docstring before running; matched-vacuum controls included",
+    "script": "examples/e068_extent_vs_charge.py"
+  },
+  "results": {
+    "R1_relational_curvature": {
+      "extent_defined_at_t0": true,
+      "lifetime_step": 38,
+      "localized": false,
+      "median_locality": 0.8806,
+      "persistent_LOCALITY_gate": false,
+      "persistent_SNR_gate": false,
+      "signal_to_noise": -0.2,
+      "survived_horizon": false,
+      "vacuum_level": 118.28,
+      "vacuum_noise_mean": 3.443
+    },
+    "R2_gauss_confined_pair": {
+      "extent_defined_at_t0": true,
+      "lifetime_step": null,
+      "localized": false,
+      "median_locality": 0.6667,
+      "persistent_LOCALITY_gate": false,
+      "persistent_SNR_gate": false,
+      "signal_to_noise": 0.62,
+      "survived_horizon": true,
+      "vacuum_level": 0,
+      "vacuum_noise_mean": 0
+    }
+  },
+  "verdicts": {
+    "R1_not_persistent_both_gates": true,
+    "R2_INCONCLUSIVE_extent_undefined_or_annihilated": true,
+    "R2_prior_refuted_confinement_is_not_persistence": false,
+    "metric_finding_locality_alone_misfires_on_cold_vacuum": true
+  }
+}

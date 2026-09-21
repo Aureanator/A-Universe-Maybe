@@ -494,3 +494,21 @@ coupling yet -- this is the completion v1 HANDOFF required, not mobile matter un
 and not a claim of nature's confinement. *Evidence:* `src/constraintnet/gauss.py`, `tests/test_gauss.py`,
 `examples/gauss_confinement.py`, `reference/local_qwen/data/gauss_completion.json`, figure
 `reference/local_qwen/figures/e067_gauss_confinement.png`. Diary E067.
+
+**61 - MEASURED / METHODOLOGICAL (local Qwen, E068 independent extent-based persistence criterion):** an
+extent-only persistence test that consults NO charge signature (independent of Milestone-4 is_persistent),
+built to close E066's promise of "extent normalization against matched vacuum". Validated on relational
+curvature (DriverA(relational), Z2 n=3, 500x3 seeds + matched no-seed vacuum): a seeded lump is rejected
+by both gates (lifetime 38 steps, locality 0.881 = became-the-background, SNR -0.20 against a hot vacuum
+of ~118 curved faces) -- the criterion reproduces E066's negative verdict WITHOUT using charge, so two
+independent notions of objecthood agree that unconstrained curvature is not matter. TWO metric findings:
+(i) LOCALITY ALONE MISFIRES ON A COLD VACUUM -- a lone object in an empty background has tracked/global
+-> 1 (dominance), indistinguishable from E066 dilution; the load-bearing gate must be vacuum-relative
+signal-to-noise, locality demoted to diagnostic. (ii) CONFINEMENT IS NOT PERSISTENCE -- a Gauss-confined
+charge pair at high beta_E is driven to ANNIHILATE (retracting the string lowers energy); Gauss protects
+charge number but nothing prevents annihilation, so "confined" != "persistent"; matter needs a charge-
+conjugation selection rule. The confined-pair regime is reported INCONCLUSIVE (extent undefined at t=0;
+annihilation vs averaging-artifact not separated) rather than tuned to the prior that it would persist.
+*Scope:* Z2 n=3, classical; metric + observation, no new physics entity claimed. *Evidence:*
+`src/constraintnet/persistence_metrics.py`, `tests/test_persistence_metrics.py`,
+`examples/e068_extent_vs_charge.py`, `reference/local_qwen/data/e068_extent_persistence.json`. Diary E068.

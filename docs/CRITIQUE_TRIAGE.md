@@ -251,7 +251,12 @@ no-signalling).
 - Independent persistence criteria (extent, similarity, lifetime, mobility) — E066 sharpens this: naive
   overlap-lineage survival is vacuous under unconstrained acceptance; needs extent normalization against
   a matched vacuum control. E067 adds the tool: with Gauss solved, charge number is protected by construction,
-  so persistence becomes measurable rather than tracker-dependent.
+  so persistence becomes measurable rather than tracker-dependent. **DONE E068** (`persistence_metrics.py`,
+  `examples/e068_extent_vs_charge.py`, CLAIMS row 61): charge-signature-free extent criterion with matched-
+  vacuum SNR, independently validated on relational curvature (rejects the E066 lump without using charge).
+  Findings: locality alone misfires on a cold vacuum → use vacuum-relative SNR; CONFINEMENT ≠ PERSISTENCE
+  (Gauss-confined pairs annihilate — matter needs a charge-conjugation selection rule, feeding
+  docs/ELECTRON_TARGET.md). Confined-pair regime left INCONCLUSIVE, not tuned.
 - Weighted dynamics + conserved ledger; detailed balance check.
 - Dynamic signal delay (backlog item 4) — gate for any gravity language.
 - Internal-observer agreement test (user-approved alongside god's-eye view).

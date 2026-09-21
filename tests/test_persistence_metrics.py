@@ -10,6 +10,7 @@ from constraintnet.persistence_metrics import (
     extent_stability,
     lifetime_until,
     locality,
+    signal_to_noise,
     vacuum_noise,
 )
 
@@ -70,6 +71,17 @@ def test_evaluate_dissolving_blob_is_not_localized():
     v = evaluate(tracked, glob, band=3.0, vacuum_components=[3, 4, 5])
     assert not v.localized
     assert not v.independently_persistent
+
+
+def test_signal_to_noise_lone_object_in_cold_vacuum_is_high():
+    # E068 finding: a lone persistent object in an empty (cold) vacuum has locality ~1 but
+    # is genuinely there -- SNR against near-zero vacuum is the load-bearing signal.
+    assert signal_to_noise([6] * 40, vacuum_level=0.0) > 5.0
+
+
+def test_signal_to_noise_seed_matching_vacuum_is_zero():
+    # E066 regime: seed sustains no more structure than unseeded churn -> SNR ~ 0 (no object)
+    assert abs(signal_to_noise([30] * 40, vacuum_level=30.0)) < 1e-9
 
 
 def test_evaluate_reports_thresholds_verbatim():
