@@ -37,6 +37,7 @@ specification's M1..M8.
 from __future__ import annotations
 
 import itertools
+import math
 import random
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
@@ -54,6 +55,7 @@ __all__ = [
     "DriverA",
     "DriverB",
     "DriverC",
+    "DriverG",
     "odometer_state",
     "conjugate_triple",
     "canonical_orbit_of_triple",
@@ -242,6 +244,67 @@ class DriverC(DynamicsDriver):
 
     def reversible(self) -> bool:
         # individual moves invert, but the stochastic map discards counterfactuals
+        return False
+
+
+# --------------------------------------------------------------------------- #
+# Driver G -- hard-Gauss classical Z2 phase space: Metropolis over (g, E) flips
+# --------------------------------------------------------------------------- #
+class DriverG(DynamicsDriver):
+    """Matter-coupled Z2 dynamics with the Gauss constraint SOLVED (E067).
+
+    State is a :class:`~constraintnet.gauss.GaussState`: connection bits g_e plus
+    electric flux bits E_e; charges are q_v := div(E)_v, so every move satisfies the
+    Gauss law by construction -- charges are string endpoints, never independent DOF,
+    and can only annihilate their partner or exit through the boundary reservoir.
+
+    Proposals: uniform over {flip g_e} U {flip E_e}; Metropolis acceptance on
+    H = beta_B * #{curved faces} + beta_E * sum E_e (energy-based, NOT relational-
+    acceptance -- E066 showed unconstrained acceptance heats the vacuum; here the
+    question is precisely what constraint-plus-energy protects).
+
+    Ontology: counterfactual-veto. Non-invertible as a stochastic map.
+    """
+
+    def __init__(self, state, rng_seed: int = 0, beta_B: float = 4.0, beta_E: float = 2.0):
+        self.state = state
+        self.rng = random.Random(rng_seed)
+        self.beta_B = float(beta_B)
+        self.beta_E = float(beta_E)
+        self.step_index = 0
+        self.last_kind = None  # "flip_g" | "flip_E" (diagnostic)
+
+    def advance(self) -> DriverRecord:
+        st = self.state
+        before = st.energy(self.beta_B, self.beta_E)
+        kind = "flip_E" if self.rng.random() < 0.5 else "flip_g"
+        edge = st.edges[self.rng.randrange(len(st.edges))]
+        if kind == "flip_E":
+            st.flip_E(edge)
+        else:
+            st.flip_g(edge)
+        delta = st.energy(self.beta_B, self.beta_E) - before
+        if delta <= 0 or self.rng.random() < math.exp(-delta):
+            fate, counts = "accepted", True
+        else:
+            if kind == "flip_E":
+                st.flip_E(edge)   # involutive: flip again to revert
+            else:
+                st.flip_g(edge)
+            fate, counts = "vetoed", False
+        assert st.check_gauss(), "Gauss violated -- impossible by construction"
+        self.last_kind = kind
+        record = DriverRecord(
+            driver="G", fate=fate, counts_toward_rho=counts,
+            detail=f"{kind} {edge}: dH={delta:+.2f}", model="gauss-z2-v1",
+        )
+        self.step_index += 1
+        return record
+
+    def event_ontology(self) -> str:
+        return "counterfactual-veto"
+
+    def reversible(self) -> bool:
         return False
 
 

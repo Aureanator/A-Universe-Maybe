@@ -241,9 +241,17 @@ no-signalling).
   phenomena (p/e/n, atoms, fission/fusion, quantized line radiation) from first principles.
 
   </details>
+- **Hard Gauss completion v1 — DONE E067** (`gauss.py`, `DriverG`, `tests/test_gauss.py`,
+  `examples/gauss_confinement.py`, CLAIMS row 60). Explicit matter-coupled classical Z2 phase space with
+  the constraint SOLVED (q_v := div E), satisfying HANDOFF correction 2. Measured a confinement scale
+  (mean charge count 30→1.5 in beta_E; bound-pair fraction 0→0.75) and showed the magnetic vacuum stays
+  cold at every beta_E — E066's heating was an acceptance-rule artifact, not intrinsic. FOLLOW-UPS: quantum
+  amplitudes + nonabelian div; couple magnetic flux to electric strings (dyons = BOTH sectors); then mobile
+  matter under a literal local Gauss law.
 - Independent persistence criteria (extent, similarity, lifetime, mobility) — E066 sharpens this: naive
   overlap-lineage survival is vacuous under unconstrained acceptance; needs extent normalization against
-  a matched vacuum control.
+  a matched vacuum control. E067 adds the tool: with Gauss solved, charge number is protected by construction,
+  so persistence becomes measurable rather than tracker-dependent.
 - Weighted dynamics + conserved ledger; detailed balance check.
 - Dynamic signal delay (backlog item 4) — gate for any gravity language.
 - Internal-observer agreement test (user-approved alongside god's-eye view).

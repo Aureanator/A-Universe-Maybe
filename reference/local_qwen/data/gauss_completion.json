@@ -1,0 +1,328 @@
+{
+  "boundary_exit_demo": {
+    "final_exited_charge": 0,
+    "gauss_held_throughout": true,
+    "min_live_charges": 0,
+    "seed": 0
+  },
+  "config": {
+    "beta_B": 8.0,
+    "beta_E_scan": [
+      0.0,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "n": 3,
+    "seeds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "steps": 600
+  },
+  "provenance": {
+    "model": "local Qwen (LM Studio), E067 hard-Gauss completion v1",
+    "nature": "explicit classical Z2 matter-coupled Gauss construction; priors G1-G3 stated in docstring before running; Gauss asserted every step",
+    "script": "examples/gauss_confinement.py"
+  },
+  "scan": {
+    "0.0": [
+      {
+        "beta_E": 0.0,
+        "final_charge_count": 32,
+        "frac_bound_pair": 0.005,
+        "frac_multi": 0.995,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 29.68,
+        "mean_sep_when_pair": 2,
+        "seed": 0,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 0.0,
+        "final_charge_count": 42,
+        "frac_bound_pair": 0.0,
+        "frac_multi": 1.0,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 32.09,
+        "mean_sep_when_pair": null,
+        "seed": 1,
+        "sep_ratio_when_pair": null
+      },
+      {
+        "beta_E": 0.0,
+        "final_charge_count": 30,
+        "frac_bound_pair": 0.002,
+        "frac_multi": 0.998,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 30.65,
+        "mean_sep_when_pair": 2,
+        "seed": 2,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 0.0,
+        "final_charge_count": 32,
+        "frac_bound_pair": 0.0,
+        "frac_multi": 1.0,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 28.63,
+        "mean_sep_when_pair": null,
+        "seed": 3,
+        "sep_ratio_when_pair": null
+      }
+    ],
+    "1.0": [
+      {
+        "beta_E": 1.0,
+        "final_charge_count": 42,
+        "frac_bound_pair": 0.013,
+        "frac_multi": 0.987,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 27.1,
+        "mean_sep_when_pair": 2,
+        "seed": 0,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 1.0,
+        "final_charge_count": 36,
+        "frac_bound_pair": 0.0,
+        "frac_multi": 1.0,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 26.55,
+        "mean_sep_when_pair": null,
+        "seed": 1,
+        "sep_ratio_when_pair": null
+      },
+      {
+        "beta_E": 1.0,
+        "final_charge_count": 36,
+        "frac_bound_pair": 0.017,
+        "frac_multi": 0.983,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 25.57,
+        "mean_sep_when_pair": 2,
+        "seed": 2,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 1.0,
+        "final_charge_count": 38,
+        "frac_bound_pair": 0.0,
+        "frac_multi": 1.0,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 26.44,
+        "mean_sep_when_pair": null,
+        "seed": 3,
+        "sep_ratio_when_pair": null
+      }
+    ],
+    "2.0": [
+      {
+        "beta_E": 2.0,
+        "final_charge_count": 24,
+        "frac_bound_pair": 0.052,
+        "frac_multi": 0.948,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 19.64,
+        "mean_sep_when_pair": 2,
+        "seed": 0,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 2.0,
+        "final_charge_count": 28,
+        "frac_bound_pair": 0.003,
+        "frac_multi": 0.997,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 19.46,
+        "mean_sep_when_pair": 2,
+        "seed": 1,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 2.0,
+        "final_charge_count": 20,
+        "frac_bound_pair": 0.048,
+        "frac_multi": 0.952,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 15.42,
+        "mean_sep_when_pair": 2,
+        "seed": 2,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 2.0,
+        "final_charge_count": 24,
+        "frac_bound_pair": 0.0,
+        "frac_multi": 1.0,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 16.47,
+        "mean_sep_when_pair": null,
+        "seed": 3,
+        "sep_ratio_when_pair": null
+      }
+    ],
+    "4.0": [
+      {
+        "beta_E": 4.0,
+        "final_charge_count": 4,
+        "frac_bound_pair": 0.208,
+        "frac_multi": 0.792,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 4.41,
+        "mean_sep_when_pair": 2,
+        "seed": 0,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 4.0,
+        "final_charge_count": 8,
+        "frac_bound_pair": 0.43,
+        "frac_multi": 0.57,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 3.6,
+        "mean_sep_when_pair": 1.03,
+        "seed": 1,
+        "sep_ratio_when_pair": 0.514
+      },
+      {
+        "beta_E": 4.0,
+        "final_charge_count": 4,
+        "frac_bound_pair": 0.315,
+        "frac_multi": 0.685,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 4.98,
+        "mean_sep_when_pair": 2,
+        "seed": 2,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 4.0,
+        "final_charge_count": 4,
+        "frac_bound_pair": 0.515,
+        "frac_multi": 0.415,
+        "frac_vacuum": 0.07,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 2.69,
+        "mean_sep_when_pair": 1.28,
+        "seed": 3,
+        "sep_ratio_when_pair": 0.641
+      }
+    ],
+    "8.0": [
+      {
+        "beta_E": 8.0,
+        "final_charge_count": 2,
+        "frac_bound_pair": 1.0,
+        "frac_multi": 0.0,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 2,
+        "mean_sep_when_pair": 1.73,
+        "seed": 0,
+        "sep_ratio_when_pair": 0.863
+      },
+      {
+        "beta_E": 8.0,
+        "final_charge_count": 0,
+        "frac_bound_pair": 0.328,
+        "frac_multi": 0.0,
+        "frac_vacuum": 0.672,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 0.66,
+        "mean_sep_when_pair": 1.56,
+        "seed": 1,
+        "sep_ratio_when_pair": 0.779
+      },
+      {
+        "beta_E": 8.0,
+        "final_charge_count": 2,
+        "frac_bound_pair": 1.0,
+        "frac_multi": 0.0,
+        "frac_vacuum": 0.0,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 2,
+        "mean_sep_when_pair": 2,
+        "seed": 2,
+        "sep_ratio_when_pair": 1.0
+      },
+      {
+        "beta_E": 8.0,
+        "final_charge_count": 2,
+        "frac_bound_pair": 0.657,
+        "frac_multi": 0.0,
+        "frac_vacuum": 0.343,
+        "initial_separation": 2,
+        "magE_final": 0,
+        "magE_max": 0,
+        "mean_charge_count": 1.31,
+        "mean_sep_when_pair": 1.22,
+        "seed": 3,
+        "sep_ratio_when_pair": 0.61
+      }
+    ]
+  },
+  "verdicts": {
+    "G1_gauss_by_construction": true,
+    "G2_vacuum_cold_all_betaE": true,
+    "G3_charge_count_monotone_decreasing_in_betaE": true
+  }
+}

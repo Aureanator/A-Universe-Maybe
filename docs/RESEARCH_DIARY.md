@@ -1367,3 +1367,51 @@ exist and to dominate relocation (~2/3 of events).
 `reference/local_qwen/figures/e066_free_space_accretion.png`; CLAIMS row 59; triage free-space item
 updated (v1 done; follow-ups: subregion boundaries under relinking, edge birth/death beyond Pachner,
 stationary proposal scheme, extent-normalized persistence).
+
+### E067. Hard Gauss completion v1: matter-coupled Z2 phase space with the constraint SOLVED - confinement scale measured, and E066's vacuum heating exposed as an acceptance-rule artifact (MEASURED; three priors held) (2026-09-21, local Qwen)
+
+**Context.** HANDOFF correction 2: H = -sum A_v - sum B_f is a FINITE PENALTY model whose bare
+charge-defect states violate the literal A_v=1 restriction; "a charge-sector/matter-coupled Gauss
+constraint needs an explicit construction". E066 had just shown whole-complex RELATIONAL acceptance
+cannot confine anything (heats the vacuum, tracked object -> ~100% of global curvature) and named the
+prerequisite: confinement beyond boundary freezing. This unit builds that completion at the classical
+Z2 phase-space level and measures what constraint-plus-energy protects.
+
+**Construction (`src/constraintnet/gauss.py`, no RNG; `DriverG` in drivers.py).** State = (connection
+bits g_e, electric flux bits E_e). Charges are NOT independent DOF: q_v := XOR_{e incident to v} E_e -
+the Gauss constraint SOLVED (div E = rho), not penalized. Consequences by construction: an isolated
+charge cannot be configured at all (charges ARE string endpoints); total charge parity is identically
+even; a boundary vertex with q_v=1 is an absorption channel (exterior reservoir) - the open-boundary
+channel P32-3 asked for, defined rather than postulated. DriverG = Metropolis over {flip g_e} U
+{flip E_e} on H = beta_B * #{curved faces} + beta_E * sum E_e. Scope stated plainly: classical Z2 phase
+space, not quantum amplitudes, not nonabelian - that is what "completion v1" means here.
+
+**Tests (`tests/test_gauss.py`, 9).** Vacuum has no charges; single edge flip creates an even pair;
+200 random flips keep parity even every step (isolated charge impossible); a loaded string carries
+charge ONLY at its two ends (interior points balanced); double-flip is identity; boundary charge counts
+as exited; DriverG preserves Gauss and keeps the magnetic sector bounded at high beta_B; near-zero-
+temperature vetoes uphill moves; nonabelian group rejected (declared scope).
+
+**Measurement (`examples/gauss_confinement.py`, Z2 n=3, 600 steps x 4 seeds; priors G1-G3 stated in
+the script docstring BEFORE running).** Gauss asserted every step in every run.
+- **G1 CONFIRMED (structural):** charge parity even throughout; isolated charge never appears. The
+  constraint is real because it is solved, not because a penalty makes violations rare.
+- **G2 CONFIRMED - the E066 contrast:** magnetic vacuum stays COLD at every beta_E scanned (#curved
+  faces max = 0 across all runs). E066's runaway heating (6 -> ~370 curved faces) was purely an artifact
+  of RELATIONAL acceptance, NOT intrinsic to the model. Energy-based acceptance fixes it.
+- **G3 CONFIRMED - confinement scale:** mean live charge count falls monotonically with string tension
+  beta_E: 30.3 (beta_E=0) -> 26.4 -> 17.8 -> 3.9 -> 1.5 (beta_E=8); bound-pair fraction rises 0 -> 0.75,
+  multi-charge (deconfined) fraction falls 1.0 -> 0. At high tension the seeded interior pair persists as
+  a bound pair - the string cannot cheaply break because breaking it costs two endpoints.
+
+**Interpretation discipline.** This is NOT mobile matter under a literal local Gauss law in the full
+quantum sense, and not a claim of electrons/quarks/confinement-in-nature: it is the explicit classical
+Z2 completion HANDOFF asked for, showing that (a) solving rather than penalizing Gauss makes charge a
+conserved string-endpoint by construction, and (b) constraint + energy gives the persistence E066's
+acceptance rule lacked. The quantum/nonabelian completion and any coupling between the magnetic flux and
+electric-string sectors (so a defect is BOTH - a dyon) are the named next steps.
+
+*Evidence:* `src/constraintnet/gauss.py`, `src/constraintnet/drivers.py` (DriverG),
+`tests/test_gauss.py` (9 tests), `examples/gauss_confinement.py`,
+`reference/local_qwen/data/gauss_completion.json`, figure
+`reference/local_qwen/figures/e067_gauss_confinement.png`; CLAIMS row 60; triage hard-Gauss item updated.
