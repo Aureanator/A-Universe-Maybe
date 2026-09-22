@@ -1533,3 +1533,10 @@ The search for a stability mechanism continues, now narrowed to superselection o
 *Evidence:* `src/constraintnet/gauss_zn.py`, `src/constraintnet/drivers.py` (DriverGZN),
 `tests/test_gauss_zn.py` (21 tests), `examples/e069_nality_and_dyons.py`,
 `reference/local_qwen/data/e069_nality_dyons.json`; CLAIMS row 62; PREDICTIONS E069 outcome appended.
+
+**Animation.** `examples/e069_nality_movie.py` renders `reference/local_qwen/figures/e069_meson_vs_baryon.gif`: the
+two regimes side by side under an identical move law (seed 5, beta_E = 12). The replay asserts it reproduces the
+harness decay times exactly (meson 1797, baryon 3966) before drawing a frame. Near t ~ 2200 the baryon panel flips
+to "MESONIC (0 irreducible)" with two live charges -- the fusion step that kills it -- while the meson panel already
+reads ANNIHILATED. Mesh lines are projection only; every change shown is an accepted local rewrite, and the HUD
+prints sum q mod 3 as a running Gauss-leak check.
