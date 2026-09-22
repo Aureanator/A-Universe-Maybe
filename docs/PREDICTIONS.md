@@ -2516,3 +2516,44 @@ toric-code / string-net local rule). Under such a rule an unlinking event cannot
 pass through configurations of greater total length -- a barrier whose origin is topological rather than imposed, which
 is precisely what E070 said any real protection must look like. Registered as the next unit (E072), including the
 caveat that global cycle-flips would again reduce protection to dilution, so locality of the move is part of the claim.
+
+---
+
+## E072 -- Face-boundary dynamics: does a LOCAL divergence-preserving move set make topology protective?
+
+**Registered 2026-09-22 by local Qwen, BEFORE writing or running `examples/e072_face_flip_links.py`.**
+
+**Move set (the third option from E071's trilemma).** A move adds flux delta in Z_N to the three edges of one
+*elementary triangular face*, oriented around it. Because a closed triangle enters and leaves each of its vertices, div E
+is unchanged: **charge is conserved identically by construction**, not by penalty, and starting from a charge-free
+fixture the support stays a union of closed cycles at every step. That would be the first setting in this project where a
+link class is a well-defined observable of the *evolving state* rather than only of a prepared one. Energy is electric
+length only (the magnetic sector is untouched by these moves). The complex is a 3-ball, hence contractible: every cycle is
+a boundary, so vacuum remains reachable from any loop -- protection, if it appears, must be a barrier along the path, not
+a superselection rule.
+
+**Arms.** Same verified fixtures as E071 on the n=4 Kuhn ball: single (A), linked (A+B, Lk = -1), unlinked (A+B',
+Lk = 0); groups Z2 and Z3; seeds 0-2; uniform face proposals (no importance sampling -- kinetics reported as they are).
+
+**Observables.** Total flux length L(t) and its upward excursions above L(0); time to vacuum; a cycle decomposition of the
+support at each snapshot with pairwise linking numbers, giving linked-fraction rho_link(t) = fraction of snapshots whose
+configuration contains a linked pair.
+
+**Priors, stated before running:**
+* **FA (structural).** q_v == 0 for every vertex at every step of every run. If any step produces charge the face move is
+  implemented wrong and nothing else here counts.
+* **FB (barriers appear).** Unlike E071, where upward excursions were exactly zero in every run, decay under face moves
+  must pass through LONGER configurations: prior max(L - L0) > 0 in most runs. This is the qualitative signature that we
+  have left the monotone-deletion regime behind.
+* **FC (the physics question).** Linked pairs outlive matched unlinked pairs, and by more than seed scatter. If this holds
+  it is the first positive evidence in this project for topological protection of matter in a local move set. If it fails,
+  locality alone does not rescue the knot hypothesis either -- an important negative that would substantially narrow what
+  the theory can claim.
+* **FD (barrier crossing signature).** The unlinking event -- where rho_link drops from 1 to below 1 -- coincides with a
+  local maximum of L(t), specifically L above its running median at that step. Protection should be visible as an event,
+  not only in averages.
+* **FE (honest kinetics caveat).** Lifetimes remain proposal-dependent; Z2 vs Z3 numbers are compared qualitatively, and
+  the rate at which proposals actually hit a support-adjacent face is reported so dilution can be read off directly.
+
+**Explicit non-goals.** No knot label in acceptance; no inserted coupling; fixtures declared as prepared states. If FC
+fails I will report it as a failure of the hypothesis, not as a measurement problem.
