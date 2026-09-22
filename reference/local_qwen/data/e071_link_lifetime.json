@@ -1,0 +1,499 @@
+{
+  "config": {
+    "mesh": 4,
+    "beta_B": 6.0,
+    "beta_E": 12.0,
+    "horizon": 2000,
+    "seeds": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "fixtures": {
+    "Lk_AB": -1,
+    "Lk_ABp": 0,
+    "lengths": {
+      "A": 8,
+      "B": 8,
+      "Bp": 8
+    }
+  },
+  "runs": [
+    {
+      "group": "Z2",
+      "arm": "single",
+      "seed": 0,
+      "loops": [
+        "A"
+      ],
+      "L0": 8.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 5,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z2",
+      "arm": "single",
+      "seed": 1,
+      "loops": [
+        "A"
+      ],
+      "L0": 8.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 6,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.042
+    },
+    {
+      "group": "Z2",
+      "arm": "single",
+      "seed": 2,
+      "loops": [
+        "A"
+      ],
+      "L0": 8.0,
+      "t_vacuum_flux": 1441,
+      "survived_to_horizon": false,
+      "component_gone_at": {
+        "A": 1441
+      },
+      "deletions": 8,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.3095
+    },
+    {
+      "group": "Z2",
+      "arm": "single",
+      "seed": 3,
+      "loops": [
+        "A"
+      ],
+      "L0": 8.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 6,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z2",
+      "arm": "linked",
+      "seed": 0,
+      "loops": [
+        "A",
+        "B"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 11,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z2",
+      "arm": "linked",
+      "seed": 1,
+      "loops": [
+        "A",
+        "B"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 13,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.042
+    },
+    {
+      "group": "Z2",
+      "arm": "linked",
+      "seed": 2,
+      "loops": [
+        "A",
+        "B"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": 1638,
+      "survived_to_horizon": false,
+      "component_gone_at": {
+        "A": 1442,
+        "B": 1638
+      },
+      "deletions": 16,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.211
+    },
+    {
+      "group": "Z2",
+      "arm": "linked",
+      "seed": 3,
+      "loops": [
+        "A",
+        "B"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 13,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z2",
+      "arm": "unlinked",
+      "seed": 0,
+      "loops": [
+        "A",
+        "Bp"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 11,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z2",
+      "arm": "unlinked",
+      "seed": 1,
+      "loops": [
+        "A",
+        "Bp"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {
+        "Bp": 1393
+      },
+      "deletions": 14,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.042
+    },
+    {
+      "group": "Z2",
+      "arm": "unlinked",
+      "seed": 2,
+      "loops": [
+        "A",
+        "Bp"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": 1443,
+      "survived_to_horizon": false,
+      "component_gone_at": {
+        "Bp": 874,
+        "A": 1443
+      },
+      "deletions": 16,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.3085
+    },
+    {
+      "group": "Z2",
+      "arm": "unlinked",
+      "seed": 3,
+      "loops": [
+        "A",
+        "Bp"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 12,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z3",
+      "arm": "single",
+      "seed": 0,
+      "loops": [
+        "A"
+      ],
+      "L0": 8.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 3,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z3",
+      "arm": "single",
+      "seed": 1,
+      "loops": [
+        "A"
+      ],
+      "L0": 8.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 5,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.042
+    },
+    {
+      "group": "Z3",
+      "arm": "single",
+      "seed": 2,
+      "loops": [
+        "A"
+      ],
+      "L0": 8.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 7,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.0295
+    },
+    {
+      "group": "Z3",
+      "arm": "single",
+      "seed": 3,
+      "loops": [
+        "A"
+      ],
+      "L0": 8.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 2,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z3",
+      "arm": "linked",
+      "seed": 0,
+      "loops": [
+        "A",
+        "B"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 7,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z3",
+      "arm": "linked",
+      "seed": 1,
+      "loops": [
+        "A",
+        "B"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 12,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.042
+    },
+    {
+      "group": "Z3",
+      "arm": "linked",
+      "seed": 2,
+      "loops": [
+        "A",
+        "B"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 13,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.0295
+    },
+    {
+      "group": "Z3",
+      "arm": "linked",
+      "seed": 3,
+      "loops": [
+        "A",
+        "B"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 8,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z3",
+      "arm": "unlinked",
+      "seed": 0,
+      "loops": [
+        "A",
+        "Bp"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 6,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    },
+    {
+      "group": "Z3",
+      "arm": "unlinked",
+      "seed": 1,
+      "loops": [
+        "A",
+        "Bp"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 9,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.042
+    },
+    {
+      "group": "Z3",
+      "arm": "unlinked",
+      "seed": 2,
+      "loops": [
+        "A",
+        "Bp"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 11,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.0295
+    },
+    {
+      "group": "Z3",
+      "arm": "unlinked",
+      "seed": 3,
+      "loops": [
+        "A",
+        "Bp"
+      ],
+      "L0": 16.0,
+      "t_vacuum_flux": null,
+      "survived_to_horizon": true,
+      "component_gone_at": {},
+      "deletions": 4,
+      "creations": 0,
+      "max_upward_excursion_over_L0": 0.0,
+      "frac_steps_divergence_free": 0.02
+    }
+  ],
+  "LD": [
+    {
+      "group": "Z2",
+      "moves_tested": 604,
+      "charge_free_preserving_moves": 0,
+      "examples": []
+    },
+    {
+      "group": "Z3",
+      "moves_tested": 1208,
+      "charge_free_preserving_moves": 0,
+      "examples": []
+    }
+  ],
+  "summary": {
+    "Z2/single": {
+      "median_t": 1441,
+      "survivors": 3,
+      "deletions": 25,
+      "creations": 0,
+      "max_upward": 0.0,
+      "frac_free": 0.0979
+    },
+    "Z2/linked": {
+      "median_t": 1638,
+      "survivors": 3,
+      "deletions": 53,
+      "creations": 0,
+      "max_upward": 0.0,
+      "frac_free": 0.0732
+    },
+    "Z2/unlinked": {
+      "median_t": 1443,
+      "survivors": 3,
+      "deletions": 53,
+      "creations": 0,
+      "max_upward": 0.0,
+      "frac_free": 0.0976
+    },
+    "Z3/single": {
+      "median_t": null,
+      "survivors": 4,
+      "deletions": 17,
+      "creations": 0,
+      "max_upward": 0.0,
+      "frac_free": 0.0279
+    },
+    "Z3/linked": {
+      "median_t": null,
+      "survivors": 4,
+      "deletions": 40,
+      "creations": 0,
+      "max_upward": 0.0,
+      "frac_free": 0.0279
+    },
+    "Z3/unlinked": {
+      "median_t": null,
+      "survivors": 4,
+      "deletions": 30,
+      "creations": 0,
+      "max_upward": 0.0,
+      "frac_free": 0.0279
+    }
+  }
+}

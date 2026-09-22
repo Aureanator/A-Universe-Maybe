@@ -2443,3 +2443,76 @@ only bias rates among reductions that exist; it cannot remove a reduction. Cost 
 **only structure can**: an obstruction that makes the shortening rewrite unavailable, not expensive. That is precisely
 what knotting/topological flux-tube closure is supposed to supply, so E070 converts the project's knot hypothesis from
 a preference into a requirement: if matter is to be stable, its protection must be a missing move, not a high one.
+
+---
+
+## E071 -- Does link type protect electric flux? (the knot hypothesis put against the move set)
+
+**Registered 2026-09-22 by local Qwen, BEFORE writing or running `examples/e071_link_lifetime.py`.**
+
+**Context.** P13-P15 already established that MAGNETIC flux links give no activation barrier under the curvature
+action (linking forces a tether; the tether shortens and the loops unlink and shrink). Untested is the ELECTRIC sector
+built in E067-E069: closed electric flux loops with div E = 0, i.e. flux with no charges at all. This is the cleanest
+possible test of the project's core claim -- that entanglement in 3D is what makes matter persist -- because a Hopf
+link is an exact, computable invariant of the prepared fixture.
+
+**Fixtures (verified before running; grid coordinates used ONLY to build and measure them, never in any rule).** On
+the n=4 Kuhn ball: A = an 8-edge square loop at z=2; B = an 8-edge rectangle with linking_number(A,B) = -1 (Hopf);
+B' = the same shape displaced with linking_number(A,B') = 0. All three are closed, hence carry zero charge. Arms:
+single (A), linked (A+B, Lk=-1), unlinked (A+B', Lk=0); linked and unlinked arms have identical total flux length
+(16 edges), so any lifetime difference is topological rather than size.
+
+**Dynamics.** DriverGZN on Z2 and Z3 at beta_B = 6, beta_E = 12 (above the E069 plasma threshold, so vacuum stays
+clean and single objects are trackable). Horizon 4000 steps, seeds 0-5.
+
+**Priors, stated before running:**
+* **LA -- no topological protection.** Median lifetime(linked) == median lifetime(unlinked) within seed scatter. The
+  reason is structural: decay proceeds by deleting one flux edge at a time, and deleting an edge of a loop never
+  requires changing the link type of what remains. Sub-prediction: t(pair) > t(single) simply because two components
+  are eaten independently (roughly the max of two single lifetimes), with the SAME factor for linked and unlinked.
+* **LB -- deletion dominates.** At beta_E = 12 accepted flux-DELETING moves far outnumber creations, and upward
+  excursions of total flux length stay small; decay is close to monotone in flux length.
+* **LC -- the invariant is mostly undefined along trajectories.** Deleting one edge creates two charges, so the flux
+  support stops being a union of closed loops almost immediately; link/knot class exists for the prepared fixture and
+  for rare divergence-free slices, not generically during decay. Reported as a measured fraction.
+* **LD (proposition, to be tested exhaustively rather than sampled).** Restricting moves to those that keep q = 0
+everywhere admits NO single-edge move at all: changing flux on edge (u,v) by delta shifts q_u by -delta and q_v by
++delta, both nonzero for any delta != 0. So "charge-free = protected" is really "charge-free = frozen": a theory with
+no dynamics. If some edge/delta pair survives the restriction, my reasoning is wrong and that matters.
+* **LE -- what would count as a discovery.** linked >> unlinked by more than seed scatter. That would mean abelian
+  electric flux does have topological protection after all, contradicting LA's mechanism argument, and I would report
+  it as the headline result rather than explain it away.
+
+**Explicit non-goals.** No new move types inserted to help or hurt knots; no knot label fed into acceptance; fixtures
+are prepared states (declared), not claimed emergent.
+
+**E071 OUTCOME (`examples/e071_link_lifetime.py`, data `reference/local_qwen/data/e071_link_lifetime.json`):**
+Fixtures verified before use: Lk(A,B) = -1, Lk(A,B') = 0, all three loops 8 edges and charge-free.
+
+* **LA -- HIT (no topological protection).** Z2 medians: linked 1638 vs unlinked 1443 from one decayed seed each,
+  with 3/4 survivors in BOTH arms; Z3: 0 decays in either arm within the horizon. Link type changes nothing.
+* **LB -- HIT, more strongly than expected.** Creations = 0 and max upward excursion = 0 in every run at beta_E = 12:
+  total flux length is monotonically non-increasing. Decay is pure deletion, exactly as the mechanism argument said.
+* **LC -- HIT.** Fraction of steps that are divergence-free: 0.028-0.098. The link/knot class exists for under a
+  tenth of every trajectory; after the first deletion it is gone entirely. Topological labels are properties of
+  prepared fixtures here, not of evolving states.
+* **LD -- HIT (with an important limit).** Exhaustive over single-edge moves: Z2 604/604 and Z3 1208/1208 create
+  charges; zero preserve q == 0. So the charge-free sector is frozen *against single-edge moves*. It is NOT frozen
+  against multi-edge moves -- adding flux along a closed cycle preserves divergence -- and that loophole is the whole
+  point of what follows.
+* **LE -- not triggered.** No discovery: abelian electric flux has no topological protection in this move set.
+
+**Unplanned finding (the real harvest): apparent longevity here is proposal dilution, not structure.** Deletions are
+rare (~6 per 2000 steps) purely because a deleting proposal must hit one of the 8 occupied edges; Z3 lives longer than
+Z2 only because 1 of 2 nonzero deltas deletes rather than 1 of 1 -- the same proposal-law confound flagged in E069.
+Nothing about the loop's topology entered the accounting.
+
+**The trilemma this closes (register as the standing frame for matter-model work).** For flux in this kind of move set:
+(1) if the dynamics can act at all, flux decays by local deletion and link/knot type is irrelevant -- and undefined
+most of the time; (2) if you forbid what creates charges, single-edge dynamics vanish and the sector is frozen -- no
+physics; (3) therefore protection needs a THIRD option: a *local* move set that preserves divergence so topology is the
+only obstruction, while still permitting motion. Concretely: flux updates along boundaries of elementary faces (the
+toric-code / string-net local rule). Under such a rule an unlinking event cannot be done by deleting one edge; it must
+pass through configurations of greater total length -- a barrier whose origin is topological rather than imposed, which
+is precisely what E070 said any real protection must look like. Registered as the next unit (E072), including the
+caveat that global cycle-flips would again reduce protection to dilution, so locality of the move is part of the claim.

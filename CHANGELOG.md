@@ -6,6 +6,17 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- **Link-type vs lifetime experiment + the trilemma** (local Qwen, diary E071): `examples/e071_link_lifetime.py` seeds
+  verified Hopf-linked and matched unlinked pairs of closed electric flux loops on the n=4 Kuhn ball (Lk = −1 vs 0,
+  identical 16-edge flux length, charge-free asserted) and evolves them under DriverGZN. Result: **no topological
+  protection** — linked 1638 vs unlinked 1443 (Z2), zero decays in either arm for Z3; **zero flux creations / zero upward
+  excursions**, so decay is monotone edge deletion, which never needs to change link type; the divergence-free fraction
+  of steps is only 0.028–0.098, i.e. the knot/link class is undefined ~95% of every trajectory; and exhaustively (604/604
+  Z2, 1208/1208 Z3) **no single-edge move preserves q ≡ 0**, so forbidding charge creation freezes dynamics outright.
+  Apparent longevity is proposal dilution (~6 deletions per 2000 steps; Z3 beats Z2 only via the delta-count in the
+  proposal law). Registered consequence: protection needs a *local divergence-preserving* move set (elementary face
+  boundaries — toric-code/string-net rule) where unlinking must pass through longer configurations, i.e. a barrier of
+  topological rather than imposed origin → E072.
 - **Imposed-wall API + stability-cost measurement** (local Qwen, diary E070): `gauss_zn.py` gains `bfs_layers`,
   `wall_between_layers`, `apply_wall(hard=…, lam=…)`, `region_charge`; `DriverGZN` now proposes from `proposal_edges()`
   (identical pool and rng stream when no wall exists). Measured on Z3 at β_E = 12: **hard wall gives absolute stability**
