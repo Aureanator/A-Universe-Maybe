@@ -1540,3 +1540,41 @@ harness decay times exactly (meson 1797, baryon 3966) before drawing a frame. Ne
 to "MESONIC (0 irreducible)" with two live charges -- the fusion step that kills it -- while the meson panel already
 reads ANNIHILATED. Mesh lines are projection only; every change shown is an accepted local rewrite, and the HUD
 prints sum q mod 3 as a running Gauss-leak check.
+
+
+### E070. Cost cannot protect a particle -- only structure can: hard-wall superselection stabilises absolutely,
+soft-wall energy barriers do nothing (MEASURED; SC refuted with mechanism) (2026-09-21, local Qwen)
+
+**Claim under test.** E068 demanded a selection rule; E069 showed abelian charge arithmetic is not one. Before hunting
+for an emergent mechanism, measure which mechanisms work at all here and what their signature is. Two imposed boundary
+conditions on admissible rewrites were built relationally (BFS layers of the 1-skeleton; grid coordinates never used):
+a **hard wall** (flux proposals across a closed sphere structurally disallowed) and a **soft wall** (crossings allowed
+but weighted by lambda in H). A meson is seeded with one charge inside, its partner outside.
+
+**Results.**
+1. **SA holds.** With the hard wall the enclosed charge sum was invariant at every step of every run (asserted).
+2. **SB holds -- absolute stability exists here.** Hard-wall runs: 3/3 survive the full 8,000-step horizon with >=1
+   live defect inside; the identical no-wall control neutralises at t = [11, 3393, 2408]. Not a barrier but an
+   invariant: region neutrality would require changing frozen crossing flux. **Stability = "the region cannot become
+   neutral"** -- superselection realised as a restriction on rewrites.
+3. **SC refuted, and the census says why.** The soft-wall scan is bit-for-bit flat over lambda in {1,2,4,8} (log-log
+   slope 0.000). Instrumenting accepted crossing-flux changes gives up = 0, down = 3: every accepted change to crossing
+   flux is RETRACTIVE. Retracting a string lowers energy for every lambda, so weighting crossings pays the system MORE
+   to annihilate; no lambda slows a path with no uphill segment. Kramers scaling needs a barrier ON the decay path.
+4. **SD not triggered** -- restricting admissibility was sufficient.
+
+**Conceptual harvest (load-bearing).** In this axiom system energy is an observer-level weighting over reductions that
+exist: it can bias rates but cannot remove a reduction. Therefore **no amount of cost makes matter stable -- protection
+must be combinatorial: the shortening rewrite must be unavailable, not expensive.** This converts the knot hypothesis
+from aesthetic preference into a hard requirement (a stable object is one whose contraction is blocked by topology,
+not sitting in an energy hole), and explains why E069's baryons and E067/E068's confined pairs all evaporated: they
+were protected by cost, or by nothing.
+
+**Status.** Wall API delivered (`bfs_layers`, `wall_between_layers`, `apply_wall`, `region_charge`, driver-side
+`proposal_edges`; 23 tests incl. hard-wall invariance and a soft-wall energy-only check). SB hit, SC refuted with an
+instrumented mechanism. Next unit inherits one requirement: find or build a rewrite set where contraction is
+*impossible* rather than costly.
+
+*Evidence:* `src/constraintnet/gauss_zn.py`, `src/constraintnet/drivers.py`, `tests/test_gauss_zn.py`,
+`examples/e070_wall_stability.py`, `reference/local_qwen/data/e070_wall_stability.json`,
+`reference/local_qwen/figures/e070_arrhenius.png`; CLAIMS row 63; PREDICTIONS E070 outcome appended.

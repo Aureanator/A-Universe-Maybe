@@ -2384,3 +2384,62 @@ N-ality does not supply stability either, and will be reported as such.
 abelian. Next candidates, in order of cheapness: (i) superselection with an inaccessible balancing charge --
 decay then requires walking to the boundary reservoir, giving a distance-scaling lifetime that is measurable;
 (ii) nonabelian Gauss completion where fusion rules restrict which outcomes exist at all.
+
+---
+
+## E070 -- What would stability actually cost? Superselection and Kramers scaling of a confined charge
+
+**Registered 2026-09-21 by local Qwen, BEFORE writing or running `examples/e070_wall_stability.py`.**
+
+**Why this is the right next question.** E068 demanded a selection rule; E069 showed abelian charge arithmetic does
+not supply one. Before hunting for an emergent mechanism, measure which mechanisms *would* work here and what their
+signature is. This unit claims NO emergence: the wall is imposed structure, declared as such. The purpose is to learn
+what an emergent version must reproduce -- otherwise "stability" is unfalsifiable hand-waving.
+
+**Construction (coordinate-free).** A *wall* is a set of edges defined by graph-distance layers around a chosen seed
+charge: W_k = {edges joining BFS layer k to layer k+1 from that charge}. Grid coordinates are not used; the definition
+is purely relational. Two variants: **hard wall** -- flux proposals on W_k are structurally disallowed (the driver may
+not propose them); **soft wall** -- flux crossing W_k costs an extra lambda per unit |a_e|, i.e. electric weight w_e =
+lambda on wall edges and 1 elsewhere. A meson is seeded with one charge inside the wall and its partner outside; Gauss
+still holds by construction because only admissibility of rewrites changed.
+
+**Priors, stated before running:**
+* **SA (conservation law, asserted every step).** With a hard wall the total charge enclosed is invariant under every
+  allowed move: flux cannot cross, so the interior sum of q is frozen. If it changes, the wall leaks and nothing else
+  here means anything.
+* **SB (hard wall = absolute stability).** An interior charge whose balancing partner sits outside can neither
+  annihilate (no antiparticle can enter) nor escape (flux cannot cross). Prior: lifetime = full horizon for every seed,
+  at any beta_E, while the no-wall control decays near E069's value (~1800 steps at beta_E = 12).
+* **SC (soft wall = Kramers/Arrhenius scaling).** With finite lambda the pair can still annihilate by diffusing around
+  or through the wall, and mean first-passage time should grow exponentially in the barrier: log t_vacuum ~ c * lambda
+  plus a lambda-independent attempt-time offset. Prior: positive slope, roughly linear over lambda in {1,2,4,8}, with
+  censoring (survivors) appearing at the top of the scan.
+* **SD (what would falsify the framing).** If the hard wall does NOT stabilize, then restricting admissible rewrites is
+  not sufficient here -- annihilation must be proceeding through a channel I have not modelled (a charge riding on the
+  wall itself, or my enclosure failing to be a true cut). That would be the most interesting outcome and would be
+  reported as such.
+
+**Explicit non-goals.** No claim that walls emerge; no particle label, site-specific pinning potential, or forced
+survival. The wall is a boundary condition on admissible rewrites -- the honest analogue of putting the balancing
+charge somewhere the dynamics cannot reach.
+
+**E070 OUTCOME (`examples/e070_wall_stability.py`, data `reference/local_qwen/data/e070_wall_stability.json`):**
+
+* **SA -- HIT.** With a hard wall the enclosed charge sum was asserted invariant at every step of every run; no leak.
+* **SB -- HIT (absolute stability by superselection).** Hard-wall runs: 3/3 survive the full 8,000-step horizon with
+  at least one live defect inside at all times (min live inside = 1), while the identical no-wall control neutralises
+  at t = [11, 3393, 2408]. The enclosed sector cannot be emptied because neutrality would require net crossing flux to
+  change and crossing flux is frozen. **Stability = the region cannot become neutral.**
+* **SC -- REFUTED, with the mechanism identified by census rather than assumed.** The soft-wall scan is exactly flat:
+  t_region_neutral identical for lambda in {1,2,4,8} ([11, 3393, 2408] every time; log-log slope 0.000). The census of
+  accepted wall-touching moves explains it: **up = 0, down = 3** -- every accepted change to crossing flux is
+  RETRACTIVE. Retracting a string lowers energy for every lambda, so weighting crossings pays the system MORE to
+  annihilate; no value of lambda can slow a path that never has to go uphill. Kramers scaling requires an uphill
+  segment on the decay path, and string retraction has none.
+* **SD -- not triggered.** The hard wall did stabilize, so restricting admissible rewrites IS sufficient here.
+
+**The lesson registered for the theory (this is the load-bearing sentence of E070).** In this framework energy can
+only bias rates among reductions that exist; it cannot remove a reduction. Cost therefore cannot protect a particle --
+**only structure can**: an obstruction that makes the shortening rewrite unavailable, not expensive. That is precisely
+what knotting/topological flux-tube closure is supposed to supply, so E070 converts the project's knot hypothesis from
+a preference into a requirement: if matter is to be stable, its protection must be a missing move, not a high one.

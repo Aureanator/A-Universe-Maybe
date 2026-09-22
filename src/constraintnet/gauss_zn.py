@@ -67,6 +67,10 @@ class GaussStateZN:
         self.boundary_vertices = frozenset(
             v for f, c in use.items() if c == 1 for v in f if v in self._inc
         )
+        # wall bookkeeping (E070): empty means no imposed structure at all
+        self.wall: frozenset = frozenset()
+        self.frozen: set = set()
+        self.weights: Dict[Tuple[int, int], float] = {}
 
     # ------------------------------------------------------------- constraint (SOLVED)
     def charges(self) -> Dict[int, int]:
@@ -97,9 +101,17 @@ class GaussStateZN:
         return min(a, N - a)
 
     def electric_count(self) -> float:
-        """Total electric flux cost sum_e |a_e| (word-length norm)."""
+        """Total electric flux cost sum_e w_e |a_e| (word-length norm with per-edge weights).
+
+        ``w_e`` is 1 everywhere unless a wall has been imposed (:meth:`apply_wall`), in which case
+        crossing edges carry weight lambda.  This is the only place weights enter -- nothing else in
+        the kernel knows a wall exists.
+        """
         N = self.N
-        return float(sum(self.weight(a, N) for a in self.E))
+        if not self.weights:
+            return float(sum(self.weight(a, N) for a in self.E))
+        w = self.weights
+        return float(sum(w.get(e, 1.0) * self.weight(a, N) for e, a in zip(self.edges, self.E)))
 
     def invalidate_caches(self) -> None:
         """Drop the curvature cache.  Needed only if labels are mutated behind our back;
@@ -124,6 +136,64 @@ class GaussStateZN:
         """Sites carrying nonzero charge (defect SITES, not partons: two unit charges that
         have merged onto one vertex appear here as a single site of charge 2 in Z3)."""
         return {v: q for v, q in self.charges().items() if q}
+
+    # ------------------------------------------------------------- imposed wall (E070)
+    def bfs_layers(self, source: int) -> Dict[int, int]:
+        """Graph-distance layers from `source` -- relational, no coordinates involved."""
+        adj: Dict[int, set] = {}
+        for (u, w) in self.edges:
+            adj.setdefault(u, set()).add(w)
+            adj.setdefault(w, set()).add(u)
+        dist = {source: 0}
+        frontier = [source]
+        while frontier:
+            nxt = []
+            for u in frontier:
+                for w in adj.get(u, ()):
+                    if w not in dist:
+                        dist[w] = dist[u] + 1
+                        nxt.append(w)
+            frontier = nxt
+        return dist
+
+    def wall_between_layers(self, source: int, k: int) -> frozenset:
+        """Edges joining BFS layer k to layer k+1 around `source`: a closed relational surface."""
+        dist = self.bfs_layers(source)
+        return frozenset(
+            e for e in self.edges
+            if abs(dist.get(e[0], -1) - dist.get(e[1], -1)) == 1
+            and min(dist.get(e[0], -1), dist.get(e[1], -1)) == k
+        )
+
+    def apply_wall(self, wall_edges, hard: bool = True, lam: float = 1.0) -> None:
+        """Impose a wall on admissible rewrites / flux energy (E070; imposed structure, declared).
+
+        ``hard=True`` forbids the driver proposing any crossing edge at all -- flux there is frozen,
+        so the charge sum inside the enclosed region becomes an exact invariant of the dynamics.
+        ``hard=False`` leaves crossings possible but weights their energy by ``lam``, turning
+        stability into a first-passage problem (Kramers scaling, prediction SC).
+        """
+        self.wall = frozenset(tuple(e) for e in wall_edges)
+        if hard:
+            self.frozen = set(self.wall)
+            self.weights = {}
+        else:
+            self.frozen = set()
+            self.weights = {tuple(e): float(lam) for e in self.wall}
+
+    def is_frozen(self, edge) -> bool:
+        return tuple(sorted(edge)) in self.frozen
+
+    def proposal_edges(self):
+        """Edges the driver may propose on.  With no wall this is exactly ``self.edges`` in the same
+        order, so existing runs and their rng streams are untouched."""
+        if not self.frozen:
+            return self.edges
+        return tuple(e for e in self.edges if e not in self.frozen)
+
+    def region_charge(self, region_vertices) -> int:
+        """Sum of q over a vertex set, mod N.  Invariant under hard-wall dynamics (prediction SA)."""
+        return sum(self.charges()[v] for v in region_vertices) % self.N
 
     def exited_charge(self) -> int:
         """Net charge sitting on boundary vertices = handed to the exterior reservoir."""

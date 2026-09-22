@@ -548,3 +548,24 @@ frame); comparisons ACROSS N are confounded by the proposal law (in Z_N a random
 probability 1/(N-1)), which is why the load-bearing comparison is within N=3. *Evidence:*
 `src/constraintnet/gauss_zn.py`, `tests/test_gauss_zn.py` (21 tests), `examples/e069_nality_and_dyons.py`,
 `reference/local_qwen/data/e069_nality_dyons.json`. Diary E069.
+
+**63 - MEASURED (local Qwen, E070 wall stability: hard superselection vs soft energy barrier):** stability in this
+framework is a property of WHICH rewrites exist, not of what they cost. Two imposed boundary conditions on admissible
+rewrites, defined relationally (BFS layers of the 1-skeleton -- no grid coordinates), tested on Z3 at beta_E = 12:
+* **Hard wall = absolute stability.** With flux proposals across a closed sphere structurally disallowed, the enclosed
+  charge sum is invariant (asserted every step; no leak) and the region can never become neutral: 3/3 seeds survive the
+  full 8,000-step horizon with >=1 live defect inside, while the identical no-wall control neutralises at t = [11,
+  3393, 2408]. Mechanism is superselection -- neutrality would require changing frozen crossing flux -- not a barrier.
+* **Soft wall = NO stability (negative).** Weighting crossings by lambda in {1,2,4,8} leaves decay time bit-for-bit
+  unchanged (log-log slope 0.000). The census of accepted crossing-flux changes explains it: up = 0, down = 3 -- every
+  accepted change is RETRACTIVE, and retraction is downhill for every lambda, so raising lambda pays the system MORE to
+  annihilate. Kramers/Arrhenius scaling needs an uphill segment on the decay path; string retraction has none.
+* **Consequence for the particle programme.** Energy can bias rates among existing reductions but cannot remove a
+  reduction; therefore cost cannot protect matter -- only structure can (a missing move, not an expensive one). This
+  turns the knot/topological-closure hypothesis from a preference into a REQUIREMENT: a stable object must block the
+  shortening rewrite combinatorially.
+*Scope:* classical abelian Z3, n=3 Kuhn ball, walls imposed (no emergence claimed); Metropolis driver, so "admissible"
+means proposed-and-accepted and uphill moves are already effectively removed at beta_E = 12. *Evidence:*
+`src/constraintnet/gauss_zn.py` (wall API), `tests/test_gauss_zn.py` (23 tests incl. hard-wall invariance),
+`examples/e070_wall_stability.py`, `reference/local_qwen/data/e070_wall_stability.json`,
+`reference/local_qwen/figures/e070_arrhenius.png`. Diary E070.

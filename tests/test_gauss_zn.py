@@ -222,3 +222,55 @@ def test_no_rng_in_this_kernel_module():
 
 def test_correlation_is_zero_on_vacuum(z3):
     assert charge_curvature_correlation(z3) == 0.0
+
+
+# ------------------------------------------------------------------ imposed wall (E070)
+def _enclosed_setup(st, k=1):
+    """Seed a meson across the layer-k sphere around a vertex, then close that sphere."""
+    pool = [v for v in st.vertices if v not in st.boundary_vertices]
+    src = max(pool, key=lambda v: len(st.wall_between_layers(v, k)))
+    dist = st.bfs_layers(src)
+    # any vertex strictly outside the enclosure works: the n=3 Kuhn ball has graph diameter ~3,
+    # so demanding two extra layers would be unsatisfiable (caught by this test failing first)
+    outside = min((w for w in st.vertices if dist.get(w, -1) > k), default=None)
+    assert outside is not None
+    st.load_string(st.shortest_path(src, outside), flux=1)
+    region = frozenset(v for v, d in dist.items() if d <= k)
+    st.apply_wall(st.wall_between_layers(src, k), hard=True)
+    return src, region, outside
+
+
+def test_hard_wall_freezes_enclosed_charge(z3):
+    """SA + SB: with flux unable to cross the sphere, the enclosed charge sum is an exact invariant and
+    the interior can never become empty -- stability as superselection, not as a barrier."""
+    from constraintnet.drivers import DriverGZN
+    src, region, _outside = _enclosed_setup(z3)
+    q_in_0 = z3.region_charge(region)
+    assert q_in_0 != 0, "seed did not leave net charge inside the wall"
+    driver = DriverGZN(z3, rng_seed=0, beta_B=6.0, beta_E=12.0)
+    frozen_snapshot = {e: z3.E[z3._eindex[e]] for e in z3.wall}
+    for _ in range(400):
+        driver.advance()
+        assert z3.check_gauss()
+        assert z3.region_charge(region) == q_in_0, "wall leaked"
+        assert [v for v in z3.live_defects() if v in region], "enclosed sector reached vacuum"
+    assert {e: z3.E[z3._eindex[e]] for e in z3.wall} == frozen_snapshot
+
+
+def test_no_wall_proposal_pool_is_unchanged(z3):
+    assert z3.proposal_edges() == z3.edges
+    assert not z3.frozen and not z3.weights
+
+
+def test_soft_wall_changes_only_energy(z3):
+    """A soft wall must weight crossing flux, never forbid it."""
+    src = 21
+    wall = z3.wall_between_layers(src, 1)
+    assert wall
+    z3.apply_wall(wall, hard=False, lam=5.0)
+    assert not z3.frozen and len(z3.proposal_edges()) == len(z3.edges)
+    e_cross = sorted(next(iter(sorted(wall))))
+    base = z3.electric_count()
+    z3.add_flux(e_cross, 1)
+    after = z3.electric_count()
+    assert abs((after - base) - 5.0) < 1e-9      # weight lambda applied to that edge only
