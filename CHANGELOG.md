@@ -6,6 +6,17 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- **Z_N Gauss completion + N-ality classifier** (local Qwen, diary E069): `gauss_zn.py` — electric flux a_e ∈ Z_N
+  with charges DEFINED by the solved constraint q_v := div(E)_v mod N (never configured independently), plus a pure
+  pair-cancellation classifier that reports irreducible *N-ality content* (mesonic vs baryonic); `drivers.DriverGZN`
+  Metropolis driver with exact inverse reverts (21 tests). Measured on the n=3 Kuhn ball
+  (`examples/e069_nality_and_dyons.py`): **abelian N-ality delays annihilation but is NOT a selection rule** — all
+  six seeded Z3 baryons decay within 12k steps (median delay only ×1.4 over mesons; the pre-registered three-body
+  barrier does not exist because charge fuses additively at a vertex: two unit charges become the antiparticle of the
+  third). **Abelian models contain no dyons** — magnetic observable unchanged by an electric string (4.508 vs 4.510)
+  and a co-located charge–curvature correlation decays 0.257 → 0.053 (control level 0.053). Plasma threshold
+  quantified: at β_E = 2 the *unseeded* vacuum carries ~26 spontaneous charges (baryonic 66% of steps); clean only
+  for β_E ≥ 8 — E068's matched-vacuum lesson with numbers. Z2 confirmed to carry no baryonic content ever.
 - Independent extent-based persistence criterion (local Qwen, diary E068): `persistence_metrics.py` — pure,
   charge-signature-free test of objecthood via extent stability + locality + matched-vacuum signal-to-noise
   (14 tests). INDEPENDENT of Milestone-4 `is_persistent`. Validated on relational curvature (`examples/e068_extent_vs_charge.py`,

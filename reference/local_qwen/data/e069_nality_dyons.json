@@ -1,0 +1,2161 @@
+{
+  "config": {
+    "mesh": 3,
+    "steps_plasma": 800,
+    "steps_life": 3000,
+    "beta_B": 6.0,
+    "plasma_scan": [
+      2.0,
+      4.0,
+      8.0,
+      12.0
+    ],
+    "cold": [
+      8.0,
+      12.0
+    ],
+    "steps_long": 12000,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "classification": [
+    {
+      "group": "Z2",
+      "regime": "vacuum",
+      "pairs": 0,
+      "residual": [],
+      "constituents": 0,
+      "kind": "vacuum",
+      "total_charge": 0,
+      "seed_info": {}
+    },
+    {
+      "group": "Z2",
+      "regime": "meson",
+      "pairs": 1,
+      "residual": [],
+      "constituents": 0,
+      "kind": "mesonic",
+      "total_charge": 0,
+      "seed_info": {
+        "separation": 2
+      }
+    },
+    {
+      "group": "Z3",
+      "regime": "vacuum",
+      "pairs": 0,
+      "residual": [],
+      "constituents": 0,
+      "kind": "vacuum",
+      "total_charge": 0,
+      "seed_info": {}
+    },
+    {
+      "group": "Z3",
+      "regime": "meson",
+      "pairs": 1,
+      "residual": [],
+      "constituents": 0,
+      "kind": "mesonic",
+      "total_charge": 0,
+      "seed_info": {
+        "separation": 2
+      }
+    },
+    {
+      "group": "Z3",
+      "regime": "baryon",
+      "pairs": 0,
+      "residual": [
+        [
+          1,
+          3
+        ]
+      ],
+      "constituents": 3,
+      "kind": "baryonic",
+      "total_charge": 0,
+      "seed_info": {
+        "center": 22,
+        "ends": [
+          25,
+          37,
+          41
+        ],
+        "arm_lengths": [
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "group": "Z4",
+      "regime": "vacuum",
+      "pairs": 0,
+      "residual": [],
+      "constituents": 0,
+      "kind": "vacuum",
+      "total_charge": 0,
+      "seed_info": {}
+    },
+    {
+      "group": "Z4",
+      "regime": "meson",
+      "pairs": 1,
+      "residual": [],
+      "constituents": 0,
+      "kind": "mesonic",
+      "total_charge": 0,
+      "seed_info": {
+        "separation": 2
+      }
+    },
+    {
+      "group": "Z4",
+      "regime": "baryon",
+      "pairs": 0,
+      "residual": [
+        [
+          1,
+          4
+        ]
+      ],
+      "constituents": 4,
+      "kind": "baryonic",
+      "total_charge": 0,
+      "seed_info": {
+        "center": 22,
+        "ends": [
+          25,
+          37,
+          41
+        ],
+        "arm_lengths": [
+          2,
+          2,
+          2
+        ]
+      }
+    }
+  ],
+  "plasma": {
+    "2.0": [
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 0,
+        "beta_E": 2.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.989,
+        "frac_vacuum": 0.011,
+        "frac_baryonic": 0.554,
+        "mean_live_defects": 28.36,
+        "max_live_defects": 40
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 1,
+        "beta_E": 2.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.985,
+        "frac_vacuum": 0.015,
+        "frac_baryonic": 0.696,
+        "mean_live_defects": 22.01,
+        "max_live_defects": 40
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 2,
+        "beta_E": 2.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.965,
+        "frac_vacuum": 0.035,
+        "frac_baryonic": 0.858,
+        "mean_live_defects": 31.5,
+        "max_live_defects": 43
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 3,
+        "beta_E": 2.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.955,
+        "frac_vacuum": 0.045,
+        "frac_baryonic": 0.679,
+        "mean_live_defects": 23.85,
+        "max_live_defects": 37
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 4,
+        "beta_E": 2.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.98,
+        "frac_vacuum": 0.02,
+        "frac_baryonic": 0.517,
+        "mean_live_defects": 22.84,
+        "max_live_defects": 37
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 5,
+        "beta_E": 2.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.964,
+        "frac_vacuum": 0.036,
+        "frac_baryonic": 0.656,
+        "mean_live_defects": 25.02,
+        "max_live_defects": 38
+      }
+    ],
+    "4.0": [
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 0,
+        "beta_E": 4.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.921,
+        "frac_vacuum": 0.079,
+        "frac_baryonic": 0.043,
+        "mean_live_defects": 8.93,
+        "max_live_defects": 15
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 1,
+        "beta_E": 4.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.869,
+        "frac_vacuum": 0.131,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 2.15,
+        "max_live_defects": 4
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 2,
+        "beta_E": 4.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.96,
+        "frac_vacuum": 0.04,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 7.08,
+        "max_live_defects": 10
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 3,
+        "beta_E": 4.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.843,
+        "frac_vacuum": 0.158,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 5.26,
+        "max_live_defects": 12
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 4,
+        "beta_E": 4.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.266,
+        "frac_vacuum": 0.734,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 1.91,
+        "max_live_defects": 10
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 5,
+        "beta_E": 4.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.69,
+        "frac_vacuum": 0.31,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 4.55,
+        "max_live_defects": 10
+      }
+    ],
+    "8.0": [
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 0,
+        "beta_E": 8.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.784,
+        "frac_vacuum": 0.216,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 1.62,
+        "max_live_defects": 4
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 1,
+        "beta_E": 8.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 2,
+        "beta_E": 8.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 3,
+        "beta_E": 8.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 4,
+        "beta_E": 8.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 5,
+        "beta_E": 8.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      }
+    ],
+    "12.0": [
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 0,
+        "beta_E": 12.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 1,
+        "beta_E": 12.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 2,
+        "beta_E": 12.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 3,
+        "beta_E": 12.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 4,
+        "beta_E": 12.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      },
+      {
+        "group": "Z3",
+        "regime": "vacuum",
+        "seed": 5,
+        "beta_E": 12.0,
+        "steps": 800,
+        "seed_info": {},
+        "initial_nality": {
+          "kind": "vacuum",
+          "constituents": 0
+        },
+        "t_vacuum": 1,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.0,
+        "frac_vacuum": 1.0,
+        "frac_baryonic": 0.0,
+        "mean_live_defects": 0,
+        "max_live_defects": 0
+      }
+    ]
+  },
+  "lifetimes": {
+    "Z2/meson/8.0": [
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 0,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 145,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.403,
+        "frac_mesonic": 0.416,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.584,
+        "mean_live_defects": 0.85,
+        "max_live_defects": 4
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 1,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1050,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.278,
+        "frac_mesonic": 0.353,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.647,
+        "mean_live_defects": 0.71,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 2,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1551,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.851,
+        "frac_mesonic": 0.979,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.021,
+        "mean_live_defects": 1.96,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 3,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 737,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.153,
+        "frac_mesonic": 0.245,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.755,
+        "mean_live_defects": 0.49,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 4,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1682,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.819,
+        "frac_mesonic": 0.862,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.138,
+        "mean_live_defects": 1.83,
+        "max_live_defects": 4
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 5,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 522,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.296,
+        "frac_mesonic": 0.341,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.659,
+        "mean_live_defects": 0.68,
+        "max_live_defects": 2
+      }
+    ],
+    "Z3/meson/8.0": [
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 0,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1896,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.609,
+        "frac_mesonic": 0.596,
+        "frac_baryonic": 0.035,
+        "frac_vacuum": 0.368,
+        "mean_live_defects": 2.05,
+        "max_live_defects": 6
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 1,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 2845,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.873,
+        "frac_mesonic": 0.673,
+        "frac_baryonic": 0.275,
+        "frac_vacuum": 0.052,
+        "mean_live_defects": 2.29,
+        "max_live_defects": 4
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 2,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": null,
+        "survived_to_horizon": true,
+        "exited_charge_at_vacuum": null,
+        "frac_boundary_occupied": 0.871,
+        "frac_mesonic": 1.0,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.0,
+        "mean_live_defects": 2.3,
+        "max_live_defects": 4
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 3,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1001,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.241,
+        "frac_mesonic": 0.215,
+        "frac_baryonic": 0.119,
+        "frac_vacuum": 0.667,
+        "mean_live_defects": 0.79,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 4,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1832,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.876,
+        "frac_mesonic": 0.933,
+        "frac_baryonic": 0.064,
+        "frac_vacuum": 0.003,
+        "mean_live_defects": 2.26,
+        "max_live_defects": 4
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 5,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1797,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.721,
+        "frac_mesonic": 0.766,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.234,
+        "mean_live_defects": 1.53,
+        "max_live_defects": 2
+      }
+    ],
+    "Z3/baryon/8.0": [
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 0,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 1900,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.61,
+        "frac_baryonic": 0.119,
+        "frac_vacuum": 0.367,
+        "mean_live_defects": 3.56,
+        "max_live_defects": 10
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 1,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 2849,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.874,
+        "frac_baryonic": 0.309,
+        "frac_vacuum": 0.051,
+        "mean_live_defects": 4.01,
+        "max_live_defects": 7
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 2,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": null,
+        "survived_to_horizon": true,
+        "exited_charge_at_vacuum": null,
+        "frac_boundary_occupied": 0.871,
+        "frac_baryonic": 0.141,
+        "frac_vacuum": 0.0,
+        "mean_live_defects": 5.32,
+        "max_live_defects": 8
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 3,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": null,
+        "survived_to_horizon": true,
+        "exited_charge_at_vacuum": null,
+        "frac_boundary_occupied": 0.242,
+        "frac_baryonic": 0.181,
+        "frac_vacuum": 0.0,
+        "mean_live_defects": 3.34,
+        "max_live_defects": 7
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 4,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 1833,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.876,
+        "frac_baryonic": 0.163,
+        "frac_vacuum": 0.003,
+        "mean_live_defects": 2.63,
+        "max_live_defects": 5
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 5,
+        "beta_E": 8.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": null,
+        "survived_to_horizon": true,
+        "exited_charge_at_vacuum": null,
+        "frac_boundary_occupied": 0.721,
+        "frac_baryonic": 0.339,
+        "frac_vacuum": 0.0,
+        "mean_live_defects": 3.77,
+        "max_live_defects": 5
+      }
+    ],
+    "Z2/meson/12.0": [
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 0,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 145,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.035,
+        "frac_mesonic": 0.048,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.952,
+        "mean_live_defects": 0.1,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 1,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1050,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.275,
+        "frac_mesonic": 0.35,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.65,
+        "mean_live_defects": 0.7,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 2,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1551,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.388,
+        "frac_mesonic": 0.517,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.483,
+        "mean_live_defects": 1.03,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 3,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 737,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.153,
+        "frac_mesonic": 0.245,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.755,
+        "mean_live_defects": 0.49,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 4,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1682,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.517,
+        "frac_mesonic": 0.56,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.44,
+        "mean_live_defects": 1.12,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z2",
+        "regime": "meson",
+        "seed": 5,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 522,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.129,
+        "frac_mesonic": 0.174,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.826,
+        "mean_live_defects": 0.35,
+        "max_live_defects": 2
+      }
+    ],
+    "Z3/meson/12.0": [
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 0,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1895,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.526,
+        "frac_mesonic": 0.596,
+        "frac_baryonic": 0.035,
+        "frac_vacuum": 0.369,
+        "mean_live_defects": 1.3,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 1,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1992,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.589,
+        "frac_mesonic": 0.389,
+        "frac_baryonic": 0.275,
+        "frac_vacuum": 0.336,
+        "mean_live_defects": 1.6,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 2,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 2060,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.558,
+        "frac_mesonic": 0.686,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.314,
+        "mean_live_defects": 1.37,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 3,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1001,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.241,
+        "frac_mesonic": 0.215,
+        "frac_baryonic": 0.119,
+        "frac_vacuum": 0.667,
+        "mean_live_defects": 0.79,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 4,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1832,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.567,
+        "frac_mesonic": 0.546,
+        "frac_baryonic": 0.064,
+        "frac_vacuum": 0.39,
+        "mean_live_defects": 1.28,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 5,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1797,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.554,
+        "frac_mesonic": 0.599,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.401,
+        "mean_live_defects": 1.2,
+        "max_live_defects": 2
+      }
+    ],
+    "Z3/baryon/12.0": [
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 0,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 1899,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.527,
+        "frac_baryonic": 0.119,
+        "frac_vacuum": 0.367,
+        "mean_live_defects": 2.81,
+        "max_live_defects": 6
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 1,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 2261,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.59,
+        "frac_baryonic": 0.309,
+        "frac_vacuum": 0.247,
+        "mean_live_defects": 3.33,
+        "max_live_defects": 7
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 2,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": null,
+        "survived_to_horizon": true,
+        "exited_charge_at_vacuum": null,
+        "frac_boundary_occupied": 0.558,
+        "frac_baryonic": 0.141,
+        "frac_vacuum": 0.0,
+        "mean_live_defects": 4.4,
+        "max_live_defects": 6
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 3,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": null,
+        "survived_to_horizon": true,
+        "exited_charge_at_vacuum": null,
+        "frac_boundary_occupied": 0.242,
+        "frac_baryonic": 0.181,
+        "frac_vacuum": 0.0,
+        "mean_live_defects": 3.34,
+        "max_live_defects": 7
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 4,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 1833,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.568,
+        "frac_baryonic": 0.163,
+        "frac_vacuum": 0.389,
+        "mean_live_defects": 1.66,
+        "max_live_defects": 5
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 5,
+        "beta_E": 12.0,
+        "steps": 3000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": null,
+        "survived_to_horizon": true,
+        "exited_charge_at_vacuum": null,
+        "frac_boundary_occupied": 0.554,
+        "frac_baryonic": 0.339,
+        "frac_vacuum": 0.0,
+        "mean_live_defects": 3.44,
+        "max_live_defects": 5
+      }
+    ]
+  },
+  "decoupling": [
+    {
+      "with_string": false,
+      "co_locate": false,
+      "runs": [
+        {
+          "seed": 0,
+          "with_string": false,
+          "co_locate": false,
+          "mean_magE_tail": 3,
+          "corr_early": 0.0,
+          "corr_tail": 0.0
+        },
+        {
+          "seed": 1,
+          "with_string": false,
+          "co_locate": false,
+          "mean_magE_tail": 5.03,
+          "corr_early": 0.0,
+          "corr_tail": 0.0
+        },
+        {
+          "seed": 2,
+          "with_string": false,
+          "co_locate": false,
+          "mean_magE_tail": 5,
+          "corr_early": 0.0,
+          "corr_tail": 0.0
+        },
+        {
+          "seed": 3,
+          "with_string": false,
+          "co_locate": false,
+          "mean_magE_tail": 5,
+          "corr_early": 0.0,
+          "corr_tail": 0.0
+        }
+      ]
+    },
+    {
+      "with_string": true,
+      "co_locate": false,
+      "runs": [
+        {
+          "seed": 0,
+          "with_string": true,
+          "co_locate": false,
+          "mean_magE_tail": 3,
+          "corr_early": 0.0566,
+          "corr_tail": 0.0431
+        },
+        {
+          "seed": 1,
+          "with_string": true,
+          "co_locate": false,
+          "mean_magE_tail": 5.03,
+          "corr_early": 0.0482,
+          "corr_tail": 0.0641
+        },
+        {
+          "seed": 2,
+          "with_string": true,
+          "co_locate": false,
+          "mean_magE_tail": 5,
+          "corr_early": 0.0486,
+          "corr_tail": 0.0508
+        },
+        {
+          "seed": 3,
+          "with_string": true,
+          "co_locate": false,
+          "mean_magE_tail": 5,
+          "corr_early": 0.0482,
+          "corr_tail": 0.0533
+        }
+      ]
+    },
+    {
+      "with_string": true,
+      "co_locate": true,
+      "runs": [
+        {
+          "seed": 0,
+          "with_string": true,
+          "co_locate": true,
+          "mean_magE_tail": 3,
+          "corr_early": 0.2667,
+          "corr_tail": 0.0
+        },
+        {
+          "seed": 1,
+          "with_string": true,
+          "co_locate": true,
+          "mean_magE_tail": 5.04,
+          "corr_early": 0.2948,
+          "corr_tail": 0.1415
+        },
+        {
+          "seed": 2,
+          "with_string": true,
+          "co_locate": true,
+          "mean_magE_tail": 5,
+          "corr_early": 0.1713,
+          "corr_tail": 0.0214
+        },
+        {
+          "seed": 3,
+          "with_string": true,
+          "co_locate": true,
+          "mean_magE_tail": 5,
+          "corr_early": 0.2948,
+          "corr_tail": 0.0508
+        }
+      ]
+    }
+  ],
+  "long_horizon": {
+    "meson": [
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 0,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1895,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.132,
+        "frac_mesonic": 0.149,
+        "frac_baryonic": 0.009,
+        "frac_vacuum": 0.842,
+        "mean_live_defects": 0.32,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 1,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1992,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.147,
+        "frac_mesonic": 0.097,
+        "frac_baryonic": 0.069,
+        "frac_vacuum": 0.834,
+        "mean_live_defects": 0.4,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 2,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 2060,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.139,
+        "frac_mesonic": 0.172,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.828,
+        "mean_live_defects": 0.34,
+        "max_live_defects": 2
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 3,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1001,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.06,
+        "frac_mesonic": 0.054,
+        "frac_baryonic": 0.03,
+        "frac_vacuum": 0.917,
+        "mean_live_defects": 0.2,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 4,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1832,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.142,
+        "frac_mesonic": 0.137,
+        "frac_baryonic": 0.016,
+        "frac_vacuum": 0.847,
+        "mean_live_defects": 0.32,
+        "max_live_defects": 3
+      },
+      {
+        "group": "Z3",
+        "regime": "meson",
+        "seed": 5,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "sites": [
+            22,
+            25
+          ],
+          "separation": 2
+        },
+        "initial_nality": {
+          "kind": "mesonic",
+          "constituents": 0
+        },
+        "t_vacuum": 1797,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.139,
+        "frac_mesonic": 0.15,
+        "frac_baryonic": 0.0,
+        "frac_vacuum": 0.85,
+        "mean_live_defects": 0.3,
+        "max_live_defects": 2
+      }
+    ],
+    "baryon": [
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 0,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 1899,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.132,
+        "frac_baryonic": 0.03,
+        "frac_vacuum": 0.842,
+        "mean_live_defects": 0.7,
+        "max_live_defects": 6
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 1,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 2261,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.147,
+        "frac_baryonic": 0.077,
+        "frac_vacuum": 0.812,
+        "mean_live_defects": 0.83,
+        "max_live_defects": 7
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 2,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 3023,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.14,
+        "frac_baryonic": 0.035,
+        "frac_vacuum": 0.748,
+        "mean_live_defects": 1.1,
+        "max_live_defects": 6
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 3,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 3135,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.06,
+        "frac_baryonic": 0.045,
+        "frac_vacuum": 0.739,
+        "mean_live_defects": 0.86,
+        "max_live_defects": 7
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 4,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 1833,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.142,
+        "frac_baryonic": 0.041,
+        "frac_vacuum": 0.847,
+        "mean_live_defects": 0.41,
+        "max_live_defects": 5
+      },
+      {
+        "group": "Z3",
+        "regime": "baryon",
+        "seed": 5,
+        "beta_E": 12.0,
+        "steps": 12000,
+        "seed_info": {
+          "center": 22,
+          "ends": [
+            25,
+            37,
+            41
+          ],
+          "arm_lengths": [
+            2,
+            2,
+            2
+          ]
+        },
+        "initial_nality": {
+          "kind": "baryonic",
+          "constituents": 3
+        },
+        "t_vacuum": 3966,
+        "survived_to_horizon": false,
+        "exited_charge_at_vacuum": 0,
+        "frac_boundary_occupied": 0.139,
+        "frac_baryonic": 0.085,
+        "frac_vacuum": 0.67,
+        "mean_live_defects": 1.02,
+        "max_live_defects": 5
+      }
+    ]
+  }
+}

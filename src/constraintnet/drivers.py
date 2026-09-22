@@ -308,6 +308,70 @@ class DriverG(DynamicsDriver):
         return False
 
 
+class DriverGZN(DynamicsDriver):
+    """Matter-coupled Z_N dynamics with the Gauss constraint SOLVED (E069).
+
+    State is a :class:`~constraintnet.gauss_zn.GaussStateZN`: connection labels g_e plus integer
+    electric flux a_e in Z_N, charges q_v := div(E)_v.  Same Metropolis law as DriverG,
+    H = beta_B * #{curved faces} + beta_E * sum_e |a_e|, with two deliberate differences:
+
+    * electric proposals are shifts a_e -> a_e + delta for uniform nonzero delta in Z_N (Z_N moves
+      are not involutions), reverted by the exact inverse shift;
+    * magnetic proposals multiply a label by the generator, also reverted exactly.
+
+    The point of the N >= 3 setting is that charges stop being self-inverse, so neutral composites
+    carry an irreducible N-ality content (see :func:`constraintnet.gauss_zn.nality_content`).  No
+    flux-charge cross term exists in this driver and none was inserted: prediction PD of E069
+    measures the resulting decoupling rather than assuming it.
+
+    Ontology: counterfactual-veto.  Non-invertible as a stochastic map.
+    """
+
+    def __init__(self, state, rng_seed: int = 0, beta_B: float = 4.0, beta_E: float = 2.0):
+        self.state = state
+        self.rng = random.Random(rng_seed)
+        self.beta_B = float(beta_B)
+        self.beta_E = float(beta_E)
+        self.step_index = 0
+        self.last_kind = None      # "shift_E" | "shift_g"
+        self.last_delta = None
+
+    def advance(self) -> DriverRecord:
+        st = self.state
+        N = st.N
+        before = st.energy(self.beta_B, self.beta_E)
+        edge = st.edges[self.rng.randrange(len(st.edges))]
+        kind = "shift_E" if self.rng.random() < 0.5 else "shift_g"
+        delta = self.rng.randrange(1, N) if kind == "shift_E" else 1
+        if kind == "shift_E":
+            st.add_flux(edge, delta)
+        else:
+            st.shift_g(edge, delta)
+        dH = st.energy(self.beta_B, self.beta_E) - before
+        accepted = dH <= 0 or self.rng.random() < math.exp(-dH)
+        if not accepted:
+            if kind == "shift_E":
+                st.sub_flux(edge, delta)
+            else:
+                st.unshift_g(edge, delta)
+        assert st.check_gauss(), "Gauss violated -- impossible by construction"
+        self.last_kind, self.last_delta = (kind, delta) if accepted else (None, None)
+        record = DriverRecord(
+            driver="GZN", fate="accepted" if accepted else "vetoed",
+            counts_toward_rho=accepted,
+            detail=f"{kind} {edge} +{delta}: dH={dH:+.2f}",
+            model=f"gauss-z{N}-v1",
+        )
+        self.step_index += 1
+        return record
+
+    def event_ontology(self) -> str:
+        return "counterfactual-veto"
+
+    def reversible(self) -> bool:
+        return False
+
+
 # --------------------------------------------------------------------------- #
 # orbit helpers for triples of free labels (single-tetrahedron gauge slice)
 # --------------------------------------------------------------------------- #

@@ -1465,3 +1465,71 @@ deliberately (budget); numbers table is decisive.
 *Evidence:* `src/constraintnet/persistence_metrics.py`, `tests/test_persistence_metrics.py` (14 tests),
 `examples/e068_extent_vs_charge.py`, `reference/local_qwen/data/e068_extent_persistence.json`; CLAIMS
 row 61; triage persistence-criteria item updated.
+
+
+### E069. N-ality: non-self-dual charge delays annihilation but is not a selection rule, and abelian
+sectors provably contain no dyons (MEASURED + NEGATIVE for PC; PD confirmed) (2026-09-21, local Qwen)
+
+**Claim under test.** E068 ended by demanding a *charge-conjugation selection rule*: Gauss protects charge
+number, yet a confined pair still annihilates because retracting the string lowers energy and in Z2 every
+charge is its own antiparticle. Hypothesis: move to Z_N (N >= 3), where charges are not self-inverse, so that
+neutral composites split into pair-cancellable (**mesonic**) and irreducible (**baryonic**) content, and the
+lattice arithmetic itself forbids the baryon's decay.
+
+**Method.** `gauss_zn.GaussStateZN`: electric flux a_e in Z_N per edge (canonically oriented u<v; flow u->v),
+charges DEFINED by the solved constraint q_v := div(E)_v mod N -- never configured independently. Magnetic
+sector unchanged. Pure classifier `nality_content` performs maximal cancellation k <-> (N-k) and reports
+residual content. Dynamics: new `drivers.DriverGZN`, Metropolis on H = beta_B*#{curved faces} +
+beta_E*sum_e|a_e| with exact inverse reverts (Z_N moves are not involutions). Seeds: meson = flux string
+between the two furthest interior vertices; baryon = 3-arm Y from a junction, which is neutral because
+q_junction = -3 = 0 mod 3 while carrying no cancelling pair. Priors PA-PD registered in PREDICTIONS.md first.
+
+**Results.**
+1. **PA holds by construction** (asserted every step): total charge identically 0 mod N, and a flux update
+   moves charge only at its two endpoints, oppositely.
+2. **PB holds: Z2 has no baryonic content at all** -- exhaustive over neutral multisets up to size 6, the
+   residual is always empty. E068's annihilating pair was therefore the generic behaviour of a self-dual
+   charge group, not an artefact of that experiment.
+3. **Structural bonus:** an equal-flux star junction is invisible iff it has exactly N arms. Z3 gives an
+   irreducible triple (neutral, 0 pairs, 3 constituents); Z4's three-arm seed leaves the junction charged and
+   reads as a 4-site object. Neutrality-counts-as-N-ality in one line.
+4. **PC REFUTED as stability; direction only partially right.** At beta_E = 12 with a 12,000-step horizon every
+   seeded baryon decays: t_vacuum = [1899, 2261, 3023, 3135, 1833, 3966], 0/6 survivors (meson: [1895, 1992,
+   2060, 1001, 1832, 1797]). Median delay is x1.4 only (2642 vs 1863), and per-seed it is bimodal: +1 to +4
+   steps for two seeds, +269 to +2169 for the rest. The horizon-3000 "survivors" were slow decays, not stable
+   objects.
+5. **The pre-registered mechanism was wrong, and instructively so.** I predicted decay would require a
+   three-body coincidence. It does not: charge is *additive at a vertex*, so two unit charges meeting FUSE into
+   a single q=2 site -- which is precisely the antiparticle of the third. A two-step route (merge, then
+   annihilate) always exists; N-ality only adds encounters. **N-ality is a kinetic hindrance, not a forbidden
+   process.** Consequence for the particle programme: absolute stability cannot be obtained from abelian charge
+   arithmetic. It requires either (a) a balancing charge that is dynamically inaccessible (superselection:
+   partner held in the exterior reservoir, so decay means walking to the boundary) or (b) nonabelian fusion
+   rules that constrain which outcomes exist at all.
+6. **PD confirmed: abelian models contain no dyons.** With identical magnetic initial condition and rng stream,
+   adding an electric string leaves the curved-face count untouched in the tail (4.508 vs 4.510). Seeding a
+   charge ONTO a curved cluster produces correlation 0.2569 early, decaying to 0.0534 -- indistinguishable from
+   a charge placed far away (0.0528). Flux and charge diffuse independently; the sector factorisation is now
+   measured rather than asserted. Any dyon must therefore come from nonabelian flux x centralizer-irrep
+   structure (the D(A4) layer), not from an inserted cross term.
+7. **Plasma threshold, quantified.** At beta_E = 2 the *unseeded* vacuum carries ~25.6 spontaneous charges and
+   reads baryonic in 66% of steps; at beta_E = 8 it holds 0.27, at 12 exactly 0. My first run of this harness was
+   performed at beta_E = 2 and its "lifetimes" were meaningless -- a single object cannot be tracked inside a
+   charge plasma. This is E068's matched-vacuum/SNR lesson with concrete numbers attached.
+8. **Removal channel.** exited_charge = 0 at every observed t_vacuum: these objects annihilate rather than being
+   absorbed by the exterior reservoir, even though live charges sit on boundary vertices 25-70% of the time.
+
+**Two harness bugs worth recording.** (i) `load_string` copied from the Z2 module ignored edge orientation; in
+Z2 flipping is its own inverse so nothing complained, but in Z3 it *doubled* flux instead of cancelling -- caught
+by a forward-then-backward regression test. (ii) The first star-seed helper silently returned zero arms (the n=3
+Kuhn ball's 8 interior vertices are mutually at distance <= 2, so a min-arm-length filter was unsatisfiable),
+which classified a supposedly baryonic seed as 'vacuum'. Both now fail loudly: seeding asserts the intended
+N-ality landed.
+
+**Status.** Delivered: Z_N Gauss completion, N-ality classifier (21 tests), decoupling measurement. Verdict:
+hypothesis PC refuted in its strong form and weakened to a measured kinetic delay; PD confirmed; PB and PA hold.
+The search for a stability mechanism continues, now narrowed to superselection or nonabelian fusion.
+
+*Evidence:* `src/constraintnet/gauss_zn.py`, `src/constraintnet/drivers.py` (DriverGZN),
+`tests/test_gauss_zn.py` (21 tests), `examples/e069_nality_and_dyons.py`,
+`reference/local_qwen/data/e069_nality_dyons.json`; CLAIMS row 62; PREDICTIONS E069 outcome appended.
