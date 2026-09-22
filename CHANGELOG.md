@@ -6,6 +6,16 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- **Imposed-wall API + stability-cost measurement** (local Qwen, diary E070): `gauss_zn.py` gains `bfs_layers`,
+  `wall_between_layers`, `apply_wall(hard=…, lam=…)`, `region_charge`; `DriverGZN` now proposes from `proposal_edges()`
+  (identical pool and rng stream when no wall exists). Measured on Z3 at β_E = 12: **hard wall gives absolute stability**
+  — enclosed charge sum invariant every step, 3/3 seeds survive 8k steps with a live defect inside while the identical
+  control neutralises at t = [11, 3393, 2408] (superselection: the region cannot become neutral). **Soft wall gives
+  none** — decay time bit-for-bit flat in λ ∈ {1,2,4,8} (log-log slope 0.000), because a census shows every accepted
+  crossing-flux change is retractive (up = 0, down = 3): retraction is downhill for every λ, so an energy-cost barrier
+  cannot slow annihilation — it pays the system more to do it. Registered conclusion: **cost cannot protect matter here,
+  only structure can** (a missing move, not an expensive one), making the knot/topological-closure requirement hard
+  rather than stylistic. 23 tests; `examples/e070_wall_stability.py`; figure `e070_arrhenius.png`.
 - **Z_N Gauss completion + N-ality classifier** (local Qwen, diary E069): `gauss_zn.py` — electric flux a_e ∈ Z_N
   with charges DEFINED by the solved constraint q_v := div(E)_v mod N (never configured independently), plus a pure
   pair-cancellation classifier that reports irreducible *N-ality content* (mesonic vs baryonic); `drivers.DriverGZN`

@@ -1,0 +1,250 @@
+{
+  "config": {
+    "mesh": 3,
+    "beta_B": 6.0,
+    "beta_E": 12.0,
+    "horizon": 8000,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "lambdas": [
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ]
+  },
+  "hard_wall": [
+    {
+      "mode": "hard",
+      "lam": null,
+      "seed": 0,
+      "q_in_initial": 2,
+      "t_region_neutral": null,
+      "survived_to_horizon": true,
+      "min_live_inside": 1,
+      "final_q_in": 2,
+      "wall_moves_up": 0,
+      "wall_moves_down": 0
+    },
+    {
+      "mode": "hard",
+      "lam": null,
+      "seed": 1,
+      "q_in_initial": 2,
+      "t_region_neutral": null,
+      "survived_to_horizon": true,
+      "min_live_inside": 1,
+      "final_q_in": 2,
+      "wall_moves_up": 0,
+      "wall_moves_down": 0
+    },
+    {
+      "mode": "hard",
+      "lam": null,
+      "seed": 2,
+      "q_in_initial": 2,
+      "t_region_neutral": null,
+      "survived_to_horizon": true,
+      "min_live_inside": 1,
+      "final_q_in": 2,
+      "wall_moves_up": 0,
+      "wall_moves_down": 0
+    }
+  ],
+  "control": [
+    {
+      "mode": "control",
+      "lam": null,
+      "seed": 0,
+      "q_in_initial": 2,
+      "t_region_neutral": 11,
+      "survived_to_horizon": false,
+      "min_live_inside": 0,
+      "final_q_in": 0,
+      "wall_moves_up": 0,
+      "wall_moves_down": 0
+    },
+    {
+      "mode": "control",
+      "lam": null,
+      "seed": 1,
+      "q_in_initial": 2,
+      "t_region_neutral": 3393,
+      "survived_to_horizon": false,
+      "min_live_inside": 0,
+      "final_q_in": 0,
+      "wall_moves_up": 0,
+      "wall_moves_down": 0
+    },
+    {
+      "mode": "control",
+      "lam": null,
+      "seed": 2,
+      "q_in_initial": 2,
+      "t_region_neutral": 2408,
+      "survived_to_horizon": false,
+      "min_live_inside": 0,
+      "final_q_in": 0,
+      "wall_moves_up": 0,
+      "wall_moves_down": 0
+    }
+  ],
+  "soft_scan": {
+    "1.0": [
+      {
+        "mode": "soft",
+        "lam": 1.0,
+        "seed": 0,
+        "q_in_initial": 2,
+        "t_region_neutral": 11,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 0
+      },
+      {
+        "mode": "soft",
+        "lam": 1.0,
+        "seed": 1,
+        "q_in_initial": 2,
+        "t_region_neutral": 3393,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 0
+      },
+      {
+        "mode": "soft",
+        "lam": 1.0,
+        "seed": 2,
+        "q_in_initial": 2,
+        "t_region_neutral": 2408,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 0
+      }
+    ],
+    "2.0": [
+      {
+        "mode": "soft",
+        "lam": 2.0,
+        "seed": 0,
+        "q_in_initial": 2,
+        "t_region_neutral": 11,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      },
+      {
+        "mode": "soft",
+        "lam": 2.0,
+        "seed": 1,
+        "q_in_initial": 2,
+        "t_region_neutral": 3393,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      },
+      {
+        "mode": "soft",
+        "lam": 2.0,
+        "seed": 2,
+        "q_in_initial": 2,
+        "t_region_neutral": 2408,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      }
+    ],
+    "4.0": [
+      {
+        "mode": "soft",
+        "lam": 4.0,
+        "seed": 0,
+        "q_in_initial": 2,
+        "t_region_neutral": 11,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      },
+      {
+        "mode": "soft",
+        "lam": 4.0,
+        "seed": 1,
+        "q_in_initial": 2,
+        "t_region_neutral": 3393,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      },
+      {
+        "mode": "soft",
+        "lam": 4.0,
+        "seed": 2,
+        "q_in_initial": 2,
+        "t_region_neutral": 2408,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      }
+    ],
+    "8.0": [
+      {
+        "mode": "soft",
+        "lam": 8.0,
+        "seed": 0,
+        "q_in_initial": 2,
+        "t_region_neutral": 11,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      },
+      {
+        "mode": "soft",
+        "lam": 8.0,
+        "seed": 1,
+        "q_in_initial": 2,
+        "t_region_neutral": 3393,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      },
+      {
+        "mode": "soft",
+        "lam": 8.0,
+        "seed": 2,
+        "q_in_initial": 2,
+        "t_region_neutral": 2408,
+        "survived_to_horizon": false,
+        "min_live_inside": 0,
+        "final_q_in": 0,
+        "wall_moves_up": 0,
+        "wall_moves_down": 1
+      }
+    ]
+  },
+  "arrhenius_slope_log_t_vs_log_lambda": 0.0
+}

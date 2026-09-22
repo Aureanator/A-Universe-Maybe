@@ -340,7 +340,10 @@ class DriverGZN(DynamicsDriver):
         st = self.state
         N = st.N
         before = st.energy(self.beta_B, self.beta_E)
-        edge = st.edges[self.rng.randrange(len(st.edges))]
+        # proposal_edges() is exactly st.edges in the same order unless a wall was imposed (E070),
+        # so no-wall runs keep their rng stream bit-for-bit
+        pool = st.proposal_edges()
+        edge = pool[self.rng.randrange(len(pool))]
         kind = "shift_E" if self.rng.random() < 0.5 else "shift_g"
         delta = self.rng.randrange(1, N) if kind == "shift_E" else 1
         if kind == "shift_E":
