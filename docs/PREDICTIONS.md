@@ -2557,3 +2557,35 @@ configuration contains a linked pair.
 
 **Explicit non-goals.** No knot label in acceptance; no inserted coupling; fixtures declared as prepared states. If FC
 fails I will report it as a failure of the hypothesis, not as a measurement problem.
+
+**E072 OUTCOME (`examples/e072_face_flip_links.py`, data `reference/local_qwen/data/e072_face_flip_links.json`):**
+360k accepted-or-vetoed face moves across 18 runs; charge asserted zero at EVERY step (FA HIT -- the local
+divergence-preserving move set works as designed, and for the first time a link class was measurable along evolving
+trajectories: rho_link = 1.000 for the Hopf arm and 0.000 for the matched unlinked control, read off the state itself).
+
+* **FB -- HIT but weak.** Upward excursions of total flux length became positive (max +2 in Z2, +1..+3 in Z3) where
+  E071 gave exactly zero everywhere. Barriers exist under this move set, but they are only a few units tall at beta_E = 4.
+* **FC -- REFUTED for Z2; inconclusive for Z3.** Z2: linked median 8431 vs matched unlinked 9831, survivors 0/3 vs 2/3
+  -- linking did NOT slow decay, it slightly ACCELERATED it. Mechanism visible in the readout: the pair never unlinked
+  (unlink_step = None in every run); instead the two components MERGED where they ran adjacent and the merged cycle then
+  shrank. Linking brings strands into contact, so it hands annihilation a shortcut. Z3: linked [6078, 19159, 19700] vs
+  unlinked [None, 11702, None] -- longer medians but censored near the horizon and driven by one arm; reported as
+  inconclusive, not as support.
+* **FD -- UNTESTABLE.** No unlinking event ever occurred (unlink_step = None in all runs), so the predicted coincidence
+  with a length maximum could not be measured. Reported as untestable rather than passed.
+* **FE -- dilution confirmed small but real:** accepted moves touching existing flux were 0.09-0.24% of steps; lifetimes
+  remain move-law dependent and Z2/Z3 are compared qualitatively only.
+
+**Verdict, as pre-committed: this is a failure of the hypothesis at this scale, not a measurement problem.** A local,
+charge-conserving move set does NOT make topology protective for contractible flux in a ball. Two caveats stated rather
+than used as excuses: fixtures are small (8-edge loops, so linking is shallow and merging is cheap) and Z3 numbers are
+censored by the horizon.
+
+**Where protection actually lives, and what to test next (E073).** Face-boundary moves change flux by a BOUNDARY, so
+the flux class in H_1(complex; Z_N) is conserved EXACTLY -- not as a barrier but as an invariant. In a 3-ball that group
+is trivial, which is precisely why everything evaporated in E069-E072. Give the relational complex nontrivial homology
+(a periodic / 3-torus Kuhn lattice) and any noncontractible flux cycle becomes absolutely stable: no local rewrite can
+remove it, because removal would make a boundary out of a non-boundary. That is the third option from E071 fully
+realised -- protection as a missing move, supplied by the global topology of the entailment network rather than by cost,
+and it matches the theory's own wording (matter as a persistent topological fixed point of reduction). Registered for
+E073: build a periodic Kuhn lattice, seed noncontractible vs contractible loops, assert the former never vanishes.

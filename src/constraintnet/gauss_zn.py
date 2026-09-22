@@ -264,6 +264,30 @@ class GaussStateZN:
             paths.append(p)
         return paths
 
+    # ------------------------------------------------------------- local face move (E072)
+    def add_face_flux(self, face, delta: int = 1) -> None:
+        """Add ``delta`` to every edge of the oriented triangle boundary i->j->k->i.
+
+        Divergence-preserving BY CONSTRUCTION: the cycle enters and leaves each vertex it touches, so q_v
+        is unchanged for every v. This is E072's third option -- a LOCAL move set that conserves charge
+        without freezing the dynamics (single-edge moves cannot do that: see the exhaustive LD check in
+        examples/e071_link_lifetime.py). It is the toric-code / string-net rule, here on electric flux.
+        """
+        i, j, k = face
+        for u, w in ((i, j), (j, k), (k, i)):
+            idx = self._eindex[tuple(sorted((u, w)))]
+            signed = delta if u < w else -delta
+            self.E[idx] = (self.E[idx] + signed) % self.N
+
+    def sub_face_flux(self, face, delta: int = 1) -> None:
+        """Exact inverse of :meth:`add_face_flux`."""
+        self.add_face_flux(face, -delta)
+
+    def face_edge_indices(self, face) -> tuple:
+        """Edge indices of a triangular face, in traversal order."""
+        i, j, k = face
+        return tuple(self._eindex[tuple(sorted(e))] for e in ((i, j), (j, k), (k, i)))
+
     def shortest_path(self, a: int, b: int):
         """BFS on the 1-skeleton; returns a vertex path or None."""
         adj: Dict[int, set] = {}

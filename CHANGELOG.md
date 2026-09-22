@@ -6,6 +6,19 @@ programming specification; `[Unreleased]` holds work in progress.
 ## [Unreleased] — Round 3 panel response + Astra merge
 
 ### Added
+- **Face-boundary (local divergence-preserving) dynamics + live link-class readout** (local Qwen, diary E072): `gauss_zn.py`
+  gains `face_edge_indices` / `add_face_flux` / `sub_face_flux` — the elementary move is ±delta on the three edges of one
+  triangular face, so the cycle enters and leaves every vertex it touches and div E cannot change: charge conservation
+  without the E071 freeze. `drivers.DriverHZN` implements it (electric-only energy, exposes `last_hit_support`). First
+  live topological readout on *evolving* states: mod-2 cycle decomposition + exact linking numbers give rho_link = 1.000
+  for the Hopf arm and 0.000 for the matched unlinked control across 360k moves with charge identically zero (27 tests).
+  Measured (`examples/e072_face_flip_links.py`): **locality alone does not make topology protective** — linked median
+  lifetime 8431 vs matched unlinked 9831 (Z2), survivors 0/3 vs 2/3: linking slightly *accelerated* annihilation because
+  the pair never unlinked but MERGED where adjacent, and the merged cycle then shrank. Upward flux-length excursions went
+  from exactly zero (E071) to +1..+3: barriers exist under this move set but are only a few units tall at beta_E = 4.
+  Z3 arm censored near horizon → reported inconclusive, not as support. Registered consequence → E073: face moves change
+  flux by a BOUNDARY, so the H_1(complex; Z_N) class is conserved EXACTLY — protection as a missing move supplied by
+  global topology (nontrivial H₁ of the entailment network), not by cost.
 - **Link-type vs lifetime experiment + the trilemma** (local Qwen, diary E071): `examples/e071_link_lifetime.py` seeds
   verified Hopf-linked and matched unlinked pairs of closed electric flux loops on the n=4 Kuhn ball (Lk = −1 vs 0,
   identical 16-edge flux length, charge-free asserted) and evolves them under DriverGZN. Result: **no topological
