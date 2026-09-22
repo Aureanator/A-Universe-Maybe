@@ -512,3 +512,39 @@ annihilation vs averaging-artifact not separated) rather than tuned to the prior
 *Scope:* Z2 n=3, classical; metric + observation, no new physics entity claimed. *Evidence:*
 `src/constraintnet/persistence_metrics.py`, `tests/test_persistence_metrics.py`,
 `examples/e068_extent_vs_charge.py`, `reference/local_qwen/data/e068_extent_persistence.json`. Diary E068.
+
+**62 - MEASURED / NEGATIVE (local Qwen, E069 Z_N Gauss completion + N-ality classifier):** abelian
+N-ality **delays** annihilation but does **not** supply the charge-conjugation selection rule that E068
+demanded. Built `gauss_zn.GaussStateZN` (electric flux a_e in Z_N; charges DEFINED by the solved
+constraint q_v := div(E)_v mod N) and a pure classifier `nality_content` that pair-cancels live charges
+(k <-> N-k) and reports irreducible content. Measured on the n=3 Kuhn ball under `DriverGZN` (Metropolis,
+H = beta_B*#curved + beta_E*sum|a_e|):
+* **Structural (holds).** Z2 carries NO baryonic content whatsoever (exhaustive over all neutral charge
+  multisets up to size 6): every charge is self-inverse, so E068's annihilating pair was the generic case,
+  not an artefact. An equal-flux star junction is invisible iff it has exactly N arms -- a genuinely
+  irreducible triple in Z3 (neutral, zero cancelling pairs, 3 constituents), a 4-site object in Z4.
+* **PC REFUTED as a stability claim.** Seeded Z3 baryons ALL decay: t_vacuum = [1899, 2261, 3023, 3135,
+  1833, 3966] within 12,000 steps (0/6 survivors) against meson [1895, 1992, 2060, 1001, 1832, 1797].
+  Median delay only x1.4 (2642 vs 1863); per-seed bimodal (+1 to +2169 steps). The pre-registered
+  mechanism -- decay needing three-body coincidence -- is WRONG: charge is additive at a site, so two unit
+  charges FUSE into the antiparticle of the third and a two-step route always exists. N-ality is a kinetic
+  hindrance (extra encounters), not a forbidden process. Absolute stability therefore cannot come from
+  abelian charge arithmetic; it needs an inaccessible balancing charge (superselection / lightest-in-sector)
+  or nonabelian fusion constraints.
+* **PD MEASURED -- abelian models contain no dyons.** The magnetic observable is unchanged by an electric
+  string (mean curved faces in the tail: 4.508 without vs 4.510 with), and a charge deliberately seeded ON
+  a curved cluster has its charge-curvature correlation decay from 0.2569 (early quarter) to 0.0534 -- the
+  level of a charge merely present somewhere (0.0528). Flux and charge diffuse independently: the product
+  structure of the sectors is confirmed rather than assumed. Dyon coupling requires nonabelian flux x
+  centralizer-irrep structure, not an added cross term.
+* **Plasma threshold quantified.** At beta_E = 2 the *unseeded* vacuum carries ~25.6 spontaneous charges and
+  reads baryonic in 66% of steps; at beta_E >= 8 it is clean (0.27 -> 0.00). Single-object language requires
+  a measured plasma threshold plus matched-vacuum controls -- E068's SNR lesson, now with numbers.
+* **Removal channel identified.** exited_charge = 0 at every t_vacuum: these objects annihilate rather than
+  being absorbed by the exterior reservoir, despite boundary occupancy in 0.25-0.70 of steps.
+*Scope:* classical abelian Z_N (N=2,3,4), n=3 Kuhn ball (interior is only 8 mutually close vertices, every
+one adjacent to the boundary -- annihilation and absorption cannot be separated geometrically on this
+frame); comparisons ACROSS N are confounded by the proposal law (in Z_N a random shift retracts with
+probability 1/(N-1)), which is why the load-bearing comparison is within N=3. *Evidence:*
+`src/constraintnet/gauss_zn.py`, `tests/test_gauss_zn.py` (21 tests), `examples/e069_nality_and_dyons.py`,
+`reference/local_qwen/data/e069_nality_dyons.json`. Diary E069.

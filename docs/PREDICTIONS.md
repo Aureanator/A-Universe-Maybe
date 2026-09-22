@@ -2317,3 +2317,70 @@ counts to vacuum (6,638 / 11,204 / 9,591 / 37,969 / 28,454 / 47,305 / 49,479 / 5
 s1→H=10 at A4 n=5), identical endpoint audits (downhill 2/2, equal 20/2). Deterministic
 seeded streams make the campaign exactly reproducible across checkouts; log:
 `out/particle_search/scale_rerun.log`.
+
+---
+
+## E069 — N-ality: does a non-self-dual charge supply the selection rule E068 said was missing?
+
+**Registered 2026-09-21 by local Qwen, BEFORE running `examples/e069_nality_and_dyons.py`.**
+
+**Context.** E068 closed with: *confinement is not persistence* — Gauss protects charge number but
+nothing prevents a confined pair from meeting and annihilating, because retracting the string lowers
+energy. It concluded that matter needs a **charge-conjugation selection rule**. This experiment asks
+where such a rule can come from, in the cheapest available setting: replace the gauge group Z2 by
+Z_N (N = 3), so that charges are no longer all self-inverse.
+
+**Construction.** `GaussStateZN`: electric flux a_e ∈ Z_N on each edge (oriented u<v, flow u→v),
+charges DEFINED by the solved constraint q_v := div(E)_v mod N. Magnetic sector unchanged
+(curvature B_f = face holonomy of connection labels). Energy H = β_B·#{curved faces} +
+β_E·Σ_e |a_e| with |a| = min(a, N−a). Dynamics in `drivers.DriverGZN` (RNG lives only there).
+
+**Definitions under test.** Maximal pairwise cancellation of live defect charges {k ↔ N−k} leaves a
+residual multiset R (the *N-ality content*). Config with R = ∅ is **mesonic** (pair-cancellable);
+R ≠ ∅ is **baryonic** — in Z3 the minimal such object is three like charges (1,1,1), which sum to 0
+mod 3 yet contain no cancelling pair.
+
+**Priors, stated before running:**
+
+- **PA (structural, asserted every step).** Σ_v q_v ≡ 0 mod N identically; a flux update on edge e
+  changes charges only at the two endpoints of e, by opposite amounts. If either fails it is a bug.
+- **PB (Z2 control).** For N = 2 every neutral configuration is pair-cancellable: R = ∅ always, so
+  Z2 has NO baryonic content and no selection rule of this kind exists there. Expected to hold
+  identically; reproduces E068's annihilation as the generic case rather than an accident.
+- **PC (the new physics).** In Z3 a seeded triple (1,1,1) is irreducible: its live-defect count is
+  invariant at 3 until an annihilation event drops it to 0, whereas a meson goes 2 → 0 by pairwise
+  contact. Prior: **median time-to-vacuum(baryon) > median time-to-vacuum(meson)** at matched β_E,
+  because decay requires multi-body coincidence instead of a two-body encounter.
+- **PD (dyons).** The abelian model has NO flux–charge coupling: proposals and energies factorise
+  between the g-sector and the E-sector, so it is a product chain. Prior: (i) the magnetic observable
+  #{curved faces} has the same distribution with an electric string present as absent (within sampling
+  error), and (ii) the per-vertex charge–curvature cross-correlation stays at the level of the separated
+  control for all t, seeded co-located or not. If a correlation grows, my factorisation claim is wrong
+  and that is the interesting result.
+
+**Explicit non-goals.** No cross-coupling term is inserted to manufacture dyons; no particle label,
+pinning or trajectory is introduced. A null on PC (baryons decay as fast as mesons) would mean
+N-ality does not supply stability either, and will be reported as such.
+
+**E069 OUTCOME (`examples/e069_nality_and_dyons.py`, data `reference/local_qwen/data/e069_nality_dyons.json`):**
+
+* **PA -- HIT.** Held at every step of every run (asserted in the driver): total charge 0 mod N, endpoint-only
+  support changes.
+* **PB -- HIT.** Z2 exhibits no baryonic content whatsoever (exhaustive classifier test over neutral multisets);
+  E068's annihilation was the generic self-dual case.
+* **PC -- REFUTED in its strong form; direction partially right, mechanism WRONG.** Baryons do outlive mesons
+  (median t_vacuum 2642 vs 1863 at beta_E=12, per-seed delay +1 to +2169 steps) but **all six decay** within
+  12,000 steps: [1899, 2261, 3023, 3135, 1833, 3966], 0/6 survivors. The claimed three-body-coincidence barrier
+  does not exist: charge is additive at a vertex, so two unit charges fuse into the antiparticle of the third and
+  annihilation proceeds by a two-step route. N-ality = kinetic hindrance, NOT selection rule.
+* **PD -- HIT (confirmed).** Tail curved-face count identical with/without an electric string (4.508 vs 4.510);
+  charge-curvature correlation seeded co-located decays 0.2569 -> 0.0534, i.e. to the merely-present level
+  (0.0528). Abelian sectors factorise: no dyons.
+* **Unplanned finding.** Plasma threshold: at beta_E=2 the unseeded vacuum carries ~25.6 spontaneous charges and
+  reads baryonic 66% of steps; clean only for beta_E >= 8. My first harness run was done below threshold and its
+  lifetime numbers were discarded as meaningless -- matched-vacuum discipline is now enforced by seeding asserts.
+
+**Consequence (registered here so the next unit inherits it).** The stability mechanism E068 asked for cannot be
+abelian. Next candidates, in order of cheapness: (i) superselection with an inaccessible balancing charge --
+decay then requires walking to the boundary reservoir, giving a distance-scaling lifetime that is measurable;
+(ii) nonabelian Gauss completion where fusion rules restrict which outcomes exist at all.
