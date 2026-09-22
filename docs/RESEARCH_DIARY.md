@@ -1578,3 +1578,47 @@ instrumented mechanism. Next unit inherits one requirement: find or build a rewr
 *Evidence:* `src/constraintnet/gauss_zn.py`, `src/constraintnet/drivers.py`, `tests/test_gauss_zn.py`,
 `examples/e070_wall_stability.py`, `reference/local_qwen/data/e070_wall_stability.json`,
 `reference/local_qwen/figures/e070_arrhenius.png`; CLAIMS row 63; PREDICTIONS E070 outcome appended.
+
+
+### E071. Link type does not protect electric flux -- and the reason is a trilemma, not an accident (MEASURED +
+STRUCTURAL; LA-LE all resolved as registered) (2026-09-22, local Qwen)
+
+**Claim under test.** The project's core idea is that entanglement in 3D is what makes matter persist. P13-P15 had
+already shown magnetic flux links give no activation barrier. Here: the ELECTRIC sector (closed div E = 0 flux loops,
+no charges), where linking number is an exact invariant of the prepared fixture -- the cleanest possible test.
+
+**Fixtures.** Built on the n=4 Kuhn ball and verified before any dynamics: A = 8-edge square loop; B with Lk(A,B) = -1
+(Hopf); B' displaced with Lk(A,B') = 0. Linked and unlinked arms therefore have identical flux length (16 edges), so a
+lifetime difference could only be topological. Grid coordinates were used to build and measure fixtures only.
+
+**Results (priors LA-LE registered first).**
+1. **LA hit -- no protection.** Z2: linked 1638 vs unlinked 1443 (one decayed seed each; 3/4 survivors in both arms).
+   Z3: no decays in either arm within the horizon. Link type is not a lifetime predictor.
+2. **LB hit, harder than expected.** Zero flux creations and zero upward excursions in every run at beta_E = 12: total
+   flux length decreases monotonically. Decay is edge-by-edge deletion -- an operation that never has to change link
+   type, which is exactly why topology cannot matter here.
+3. **LC hit.** Divergence-free fraction of steps = 0.028-0.098. After the first deletion the support is not a union of
+   loops, so 'the knot class of the evolving object' is undefined for roughly 95% of every trajectory.
+4. **LD hit, with its limit stated.** Exhaustively: Z2 604/604 and Z3 1208/1208 single-edge moves create charges; none
+   preserves q == 0. So forbidding charge creation freezes single-edge dynamics -- a protected sector would also be a
+   dead one. Multi-edge moves along closed cycles do preserve divergence, and that is the loophole below.
+5. **LE not triggered.** No discovery to report.
+6. **Unplanned, and arguably the real finding: the longevity we did see is proposal dilution.** Only ~6 deletions occur
+   per 2000 steps because a deleting proposal must happen to hit one of the 8 occupied edges; Z3 outlives Z2 solely
+   because 1 of 2 nonzero deltas deletes instead of 1 of 1. Nothing topological entered the accounting.
+
+**The trilemma (now the standing frame for matter-model work).** For flux in a move set like this: (i) if dynamics can
+act, flux decays by local deletion and topology is irrelevant -- and undefined most of the time; (ii) if you forbid what
+creates charges, single-edge dynamics vanish and nothing evolves; (iii) so protection requires a THIRD option: a *local*
+move set that preserves divergence -- flux updates along boundaries of elementary faces, the toric-code/string-net rule.
+There, unlinking cannot be achieved by deleting an edge; it must pass through configurations of greater total length,
+which is a barrier whose origin is topological rather than imposed. That is precisely what E070 said protection must
+look like: a missing move, not an expensive one. Registered as E072, with the caveat that *global* cycle flips would
+degenerate back into dilution -- locality is part of the claim.
+
+**Status.** Harness delivered with fixture verification built in (asserts Lk values and charge-freedom before running,
+and closes polygons correctly -- an earlier version seeded open paths and therefore charges). All five priors resolved
+as registered; no tuning, no rescue. Next: E072 face-boundary dynamics.
+
+*Evidence:* `examples/e071_link_lifetime.py`, `reference/local_qwen/data/e071_link_lifetime.json`; CLAIMS row 64;
+PREDICTIONS E071 outcome + trilemma appended.

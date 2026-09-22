@@ -569,3 +569,28 @@ means proposed-and-accepted and uphill moves are already effectively removed at 
 `src/constraintnet/gauss_zn.py` (wall API), `tests/test_gauss_zn.py` (23 tests incl. hard-wall invariance),
 `examples/e070_wall_stability.py`, `reference/local_qwen/data/e070_wall_stability.json`,
 `reference/local_qwen/figures/e070_arrhenius.png`. Diary E070.
+
+**64 - MEASURED / NEGATIVE + STRUCTURAL (local Qwen, E071 link type vs electric-flux lifetime; the trilemma):**
+link/knot type does NOT protect abelian electric flux in the current move set, for structural rather than numerical
+reasons. Prepared fixtures on the n=4 Kuhn ball (verified: Lk(A,B) = -1 Hopf, Lk(A,B') = 0; all loops 8 edges and
+charge-free; grid coordinates used only to build and measure them), evolved with DriverGZN at beta_E = 12:
+* **No protection.** Linked vs unlinked arms of identical flux length are indistinguishable: Z2 medians 1638 vs 1443
+  (one decayed seed each, 3/4 survivors in both); Z3 zero decays in either arm within 2000 steps.
+* **Mechanism confirmed.** Creations = 0 and max upward excursion = 0 in every run: total flux length decreases
+  monotonically. Decay is edge-by-edge deletion, which never needs to change link type.
+* **The invariant barely exists along trajectories.** Divergence-free fraction of steps = 0.028-0.098; after the first
+  deletion the support is not a union of loops at all, so 'the knot class of the evolving object' is undefined ~95% of
+  the time.
+* **Charge-freedom is frozen (exhaustive).** Z2 604/604 and Z3 1208/1208 single-edge moves create charges; none keeps
+  q == 0. Limit stated honestly: multi-edge moves along closed cycles DO preserve divergence, so the freeze claim covers
+  single-edge dynamics only -- and that loophole is where E072 goes.
+* **Apparent longevity = proposal dilution.** ~6 deletions per 2000 steps purely from hitting-rate; Z3 outlives Z2 for a
+  reason in the proposal law (1 of 2 deltas deletes), not physics -- same confound flagged in E069.
+* **The trilemma (standing frame).** Either dynamics can act -> flux decays by local deletion and topology is irrelevant;
+or you forbid charge creation -> single-edge dynamics vanish and nothing evolves; or protection needs a THIRD option: a
+local divergence-preserving move set (flux updates along elementary face boundaries -- the toric-code/string-net rule)
+where unlinking cannot be done by deletion and must pass through longer configurations: a barrier of topological rather
+than imposed origin, exactly what E070 demanded. Registered as E072.
+*Scope:* abelian Z2/Z3 electric sector, n=4 Kuhn ball, prepared loop fixtures (declared), Metropolis at beta_E = 12.
+*Evidence:* `examples/e071_link_lifetime.py`, `reference/local_qwen/data/e071_link_lifetime.json`.
+Diary E071.
