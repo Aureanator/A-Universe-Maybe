@@ -375,6 +375,62 @@ class DriverGZN(DynamicsDriver):
         return False
 
 
+class DriverHZN(DynamicsDriver):
+    """LOCAL divergence-preserving dynamics (E072): flux updates along elementary face boundaries.
+
+    A proposal picks one triangular face and a nonzero delta in Z_N, adding it around the boundary. Such a
+    move cannot create charge -- the cycle enters and leaves every vertex it touches -- so this is the third
+    option from E071's trilemma: charge conserved WITHOUT freezing (single-edge moves either create charge
+    or do nothing; see the exhaustive LD check in examples/e071_link_lifetime.py). Energy is electric length
+    only, which is why beta_B does not appear here.
+
+    Acceptance is Metropolis on H = beta_E * sum_e |a_e|. Proposals are uniform over faces -- no importance
+    sampling -- so measured kinetics are the move law's own, dilution included; ``last_hit_support`` is
+    exposed so dilution can be read off rather than guessed at.
+
+    Ontology: counterfactual-veto. Non-invertible as a stochastic map even though each move is invertible.
+    """
+
+    def __init__(self, state, rng_seed: int = 0, beta_E: float = 1.0):
+        self.state = state
+        self.rng = random.Random(rng_seed)
+        self.beta_E = float(beta_E)
+        self.faces = tuple(tuple(f) for f in state.cx.faces())
+        self.step_index = 0
+        self.last_face = None
+        self.last_delta = None
+        self.last_hit_support = False
+
+    def energy(self) -> float:
+        return self.beta_E * self.state.electric_count()
+
+    def advance(self) -> DriverRecord:
+        st = self.state
+        before = self.energy()
+        face = self.faces[self.rng.randrange(len(self.faces))]
+        delta = self.rng.randrange(1, st.N)
+        hit = any(st.E[i] for i in st.face_edge_indices(face))    # proposal near existing flux?
+        st.add_face_flux(face, delta)
+        dH = self.energy() - before
+        accepted = dH <= 0 or self.rng.random() < math.exp(-dH)
+        if not accepted:
+            st.sub_face_flux(face, delta)
+        self.last_face, self.last_delta = (face, delta) if accepted else (None, None)
+        self.last_hit_support = bool(hit and accepted)
+        record = DriverRecord(
+            driver="HZN", fate="accepted" if accepted else "vetoed", counts_toward_rho=accepted,
+            detail=f"face {face} +{delta}: dH={dH:+.2f}", model=f"gauss-z{st.N}-faceflip",
+        )
+        self.step_index += 1
+        return record
+
+    def event_ontology(self) -> str:
+        return "counterfactual-veto"
+
+    def reversible(self) -> bool:
+        return False
+
+
 # --------------------------------------------------------------------------- #
 # orbit helpers for triples of free labels (single-tetrahedron gauge slice)
 # --------------------------------------------------------------------------- #

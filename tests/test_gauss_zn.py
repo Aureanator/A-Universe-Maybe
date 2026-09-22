@@ -274,3 +274,99 @@ def test_soft_wall_changes_only_energy(z3):
     z3.add_flux(e_cross, 1)
     after = z3.electric_count()
     assert abs((after - base) - 5.0) < 1e-9      # weight lambda applied to that edge only
+
+
+# ------------------------------------------------------------------ local face move (E072)
+def _loop_state(group="Z3", n=4):
+    """Charge-free square loop fixture (same shape as examples/e071_link_lifetime.py)."""
+    cx = kuhn_ball(group, n=n)
+    gmap = {cx.vertex(v).metadata["grid"]: v for v in cx.vertices()}
+    st = GaussStateZN(cx)
+    sq = [(1, 1, 2), (3, 1, 2), (3, 3, 2), (1, 3, 2)]
+    # rasterise the square into unit lattice steps (same routine as examples/e071)
+    path = [tuple(sq[0])]
+    for p, q in zip(sq, sq[1:] + sq[:1]):
+        cur = list(p)
+        for ax in range(3):
+            while cur[ax] != q[ax]:
+                cur[ax] += 1 if q[ax] > cur[ax] else -1
+                path.append(tuple(cur))
+    path = path[:-1]
+    verts = [gmap[g] for g in path]
+    st.load_string(verts + [verts[0]], flux=1)
+    assert all(q == 0 for q in st.charges().values())
+    return st
+
+
+def test_face_move_is_divergence_preserving(z3):
+    """FA: adding flux around a triangular face cannot create charge -- the cycle enters and leaves
+    every vertex it touches. Checked from both vacuum and a seeded loop."""
+    rng = random.Random(5)
+    faces = [tuple(f) for f in z3.cx.faces()]
+    for _ in range(200):
+        f = faces[rng.randrange(len(faces))]
+        d = rng.randrange(1, z3.N)
+        before = z3.charges()
+        z3.add_face_flux(f, d)
+        after = z3.charges()
+        assert before == after, (f, d)
+        z3.sub_face_flux(f, d)
+    loop = _loop_state()
+    faces_l = [tuple(f) for f in loop.cx.faces()]
+    for _ in range(200):
+        f = faces_l[rng.randrange(len(faces_l))]
+        d = rng.randrange(1, loop.N)
+        before = loop.charges()
+        loop.add_face_flux(f, d)
+        assert loop.charges() == before
+        loop.sub_face_flux(f, d)
+    assert all(q == 0 for q in loop.charges().values())
+
+
+def test_face_move_is_local_to_three_edges(z3):
+    """A face move may change only that face's three edges -- locality is the point of E072."""
+    rng = random.Random(9)
+    faces = [tuple(f) for f in z3.cx.faces()]
+    for _ in range(60):
+        f = faces[rng.randrange(len(faces))]
+        snap = list(z3.E)
+        z3.add_face_flux(f, 1)
+        changed = {i for i, (a, b) in enumerate(zip(z3.E, snap)) if a != b}
+        assert changed <= set(z3.face_edge_indices(f)), f
+        z3.sub_face_flux(f, 1)
+    assert z3.E == [0] * len(z3.E)
+
+
+def test_face_move_inverts_exactly(z3):
+    """sub_face_flux must undo add_face_flux exactly -- the driver's veto path depends on it."""
+    rng = random.Random(13)
+    faces = [tuple(f) for f in z3.cx.faces()]
+    for _ in range(80):
+        f = faces[rng.randrange(len(faces))]
+        d = rng.randrange(1, z3.N)
+        snap = list(z3.E)
+        k = rng.randint(1, 4)
+        for _ in range(k):
+            z3.add_face_flux(f, d)
+        for _ in range(k):
+            z3.sub_face_flux(f, d)
+        assert z3.E == snap
+    st = _loop_state()
+    f = tuple(st.cx.faces()[3])
+    snap = list(st.E)
+    for _ in range(5):
+        st.add_face_flux(f, 2)
+    for _ in range(5):
+        st.sub_face_flux(f, 2)
+    assert st.E == snap
+
+
+def test_driver_hzn_never_creates_charge():
+    from constraintnet.drivers import DriverHZN
+    st = _loop_state("Z2")
+    d = DriverHZN(st, rng_seed=1, beta_E=4.0)
+    L0 = st.electric_count()
+    for _ in range(600):
+        d.advance()
+        assert all(q == 0 for q in st.charges().values()), "face-flip dynamics created charge"
+    assert st.electric_count() <= L0 + 12      # length may wander, but not explode at beta_E=4

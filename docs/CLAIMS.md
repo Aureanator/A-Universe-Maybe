@@ -594,3 +594,26 @@ than imposed origin, exactly what E070 demanded. Registered as E072.
 *Scope:* abelian Z2/Z3 electric sector, n=4 Kuhn ball, prepared loop fixtures (declared), Metropolis at beta_E = 12.
 *Evidence:* `examples/e071_link_lifetime.py`, `reference/local_qwen/data/e071_link_lifetime.json`.
 Diary E071.
+
+**65 - MEASURED / NEGATIVE (local Qwen, E072 face-boundary dynamics: locality does not make topology protective):** a
+LOCAL charge-conserving move set still fails to protect contractible flux in a ball -- and linking slightly ACCELERATED
+annihilation. DriverHZN updates flux only along boundaries of elementary triangles, so div E is preserved by construction
+(verified over 360k moves: charge zero at every step) and the support stays a union of closed cycles -- which made rho_link
+measurable on EVOLVING states for the first time: 1.000 (Hopf arm) vs 0.000 (matched unlinked control), read off the state.
+* **Barriers appear but are tiny:** upward excursions of total flux length became positive (max +2 Z2, +1..+3 Z3) where
+  E071 gave exactly zero -- we left monotone deletion, but a few units at beta_E = 4 protects nothing.
+* **No protection; mild anti-protection (Z2):** linked median 8431 vs matched unlinked 9831, survivors 0/3 vs 2/3. The
+  readout shows why: the pair NEVER unlinked (unlink_step None everywhere); components MERGED where adjacent and the merged
+  cycle then shrank -- linking brings strands into contact and hands annihilation a shortcut.
+* **Z3 inconclusive** ([6078, 19159, 19700] vs [None, 11702, None], censored near horizon) -- reported as inconclusive, not
+  support. FD untestable (no unlinking event ever occurred).
+* **Verdict as pre-committed:** failure of the knot hypothesis at this scale, not a measurement problem; caveats stated
+  (8-edge fixtures => shallow linking; Z3 censoring) but not used as excuses.
+* **Consequence for E073.** Face moves change flux by a BOUNDARY, so its class in H_1(complex; Z_N) is conserved EXACTLY.
+  That group is trivial in a 3-ball -- which is exactly why everything evaporated from E069 through E072. Give the relational
+  complex nontrivial homology (periodic / 3-torus Kuhn lattice) and a noncontractible flux cycle cannot be removed by ANY
+  local rewrite: protection as a missing move, supplied by global topology of the entailment network rather than by cost.
+*Scope:* abelian Z2/Z3 electric flux, n=4 Kuhn ball, prepared loop fixtures, Metropolis at beta_E = 4, horizon 20k, seeds
+0-2. *Evidence:* `src/constraintnet/gauss_zn.py` (add_face_flux), `src/constraintnet/drivers.py` (DriverHZN),
+`tests/test_gauss_zn.py` (27 tests), `examples/e072_face_flip_links.py`,
+`reference/local_qwen/data/e072_face_flip_links.json`. Diary E072.

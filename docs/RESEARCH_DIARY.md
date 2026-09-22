@@ -1622,3 +1622,42 @@ as registered; no tuning, no rescue. Next: E072 face-boundary dynamics.
 
 *Evidence:* `examples/e071_link_lifetime.py`, `reference/local_qwen/data/e071_link_lifetime.json`; CLAIMS row 64;
 PREDICTIONS E071 outcome + trilemma appended.
+
+
+### E072. Locality does not make topology protective: face-boundary dynamics conserves charge, and linking helps
+annihilation (MEASURED + NEGATIVE for FC; first live link-class readout) (2026-09-22, local Qwen)
+
+**Claim under test.** E071's trilemma left a third option: a LOCAL move set that preserves divergence so topology is the
+only obstruction while motion remains possible. Implemented as DriverHZN: add flux delta around one elementary triangle.
+The cycle enters and leaves every vertex it touches, so div E cannot change -- charge conserved without freezing.
+
+**First-time capability.** Because the support stays a union of closed cycles at every step (asserted over 360k moves,
+charge identically zero), a link class is measurable on *evolving* states rather than only on prepared ones: rho_link =
+1.000 for the Hopf arm and 0.000 for the matched unlinked control, computed from the state itself via mod-2 cycle
+decomposition plus exact linking numbers.
+
+**Results (priors FA-FE registered first).**
+1. **FA hit.** No charge ever created; moves local to three edges; inverse moves exact (27 tests).
+2. **FB hit, weakly.** Upward excursions of total flux length became positive (+2 Z2, +1..+3 Z3) where E071 gave exactly
+   zero: barriers exist under this move set, but only a few units tall at beta_E = 4.
+3. **FC REFUTED (Z2).** Linked median 8431 vs matched unlinked 9831; survivors 0/3 vs 2/3. Linking did not slow decay --
+   it slightly accelerated it. The readout gives the mechanism: the pair never unlinked (unlink_step None in every run);
+   the two components MERGED where they ran adjacent, and the merged cycle then shrank. Linking brings strands into
+   contact, so it hands annihilation a shortcut.
+4. **Z3 inconclusive** ([6078, 19159, 19700] vs [None, 11702, None]) -- censored near the horizon and driven by one arm;
+   reported as inconclusive rather than as support. **FD untestable**: no unlinking event ever occurred.
+
+**Verdict, exactly as pre-committed.** This is a failure of the knot hypothesis at this scale, not a measurement problem.
+Caveats stated but not used as excuses: 8-edge fixtures make linking shallow and merging cheap; Z3 numbers are censored.
+
+**The turn this forces (E073).** Face moves change flux by a BOUNDARY, so its class in H_1(complex; Z_N) is conserved
+EXACTLY -- an invariant, not a barrier. In a 3-ball that group is trivial, which is precisely why everything evaporated
+from E069 through E072. Give the relational complex nontrivial homology (periodic / 3-torus Kuhn lattice) and any
+noncontractible flux cycle cannot be removed by *any* local rewrite: protection as a missing move, supplied by the global
+topology of the entailment network rather than by cost -- the theory's own phrase 'persistent topological fixed point of
+reduction' finally having a mechanism.
+
+*Evidence:* `src/constraintnet/gauss_zn.py` (add_face_flux / sub_face_flux / face_edge_indices),
+`src/constraintnet/drivers.py` (DriverHZN), `tests/test_gauss_zn.py` (27 tests),
+`examples/e072_face_flip_links.py`, `reference/local_qwen/data/e072_face_flip_links.json`; CLAIMS row 65;
+PREDICTIONS E072 outcome + E073 registration.
